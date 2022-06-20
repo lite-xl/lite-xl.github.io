@@ -84,6 +84,51 @@ The project module can be edited by running the `core:open-project-module`
 command — if the module does not exist for the current project when the
 command is run it will be created.
 
+## Ignore files
+
+The variable `config.ignore_files` holds a list of patterns for files or directories
+that should be ignored by the application.
+
+Each item in `config.ignore_files` should be a Lua pattern that corresponds to
+files or directories to ignore.
+The pattern is applied to the file or directory basename or in other term to its
+name without the path.
+
+For example:
+
+`^%.` will match any file or directory whose name begins with a dot.
+`%.zip$` will match any file or directory whose name ends in '.zip'.
+
+Since version 2.0.5 Lite XL also support special pattern rules for directories
+and for paths.
+
+### Directory patterns
+
+If the pattern ends with a '/' or with '/$' it will match only directories.
+In turn, when using a directory pattern, an '/' will be added to the name of
+any directory before checking if it matches the given pattern.
+
+For example:
+
+`^%.git/` will match any directory named '.git'.
+
+Please note that a final '$' at the end of the pattern is not needed because
+the final '/' can only match at the end of the directory name.
+
+### Full path patterns
+
+If a '/' appears in the pattern anywhere except at the end then the
+pattern will be applied on the complete path of the file or directory.
+In addition, when checking if an item match the pattern, an
+initial '/' will be added to the path of the file or directory.
+
+For example:
+
+`^/node_modules/` will match a directory named `node_modules` at the project's root.
+`^/build.*/` will match any top level directory whose name begins with "build".
+`^/subprojects/.+/` will match any directory inside a top-level directory named "subprojects".
+`/foo/bar/` matches a directory "bar" anywhere that is directly under directory "foo".
+
 ## Add directories to a project
 
 In addition to the project directories it is possible to add other directories
