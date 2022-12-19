@@ -59,7 +59,7 @@ local config = require "core.config"
 -- the "keymap" module will allow us to set keybindings for our commands
 local keymap = require "core.keymap"
 
--- since we wants to modify RootView, we'll need to require it first
+-- since we want to modify RootView, we'll need to require it first
 local RootView = require "core.rootview"
 
 -----------------------------------------------------------------------
@@ -71,7 +71,7 @@ config.plugins.simple = {}
 config.plugins.simple.text_color = {200, 140, 220} -- or use `{ common.color "#C88CDC" }`
 -----------------------------------------------------------------------
 -- Let's create a function to calculate the coordinates of our text.
--- While we're at it, let's add out function to the `config` module.
+-- While we're at it, let's add our function to the `config` module.
 -- We'll take the message we want to display as the argument to the
 -- function to determine the x and y coordinates of the text.
 
