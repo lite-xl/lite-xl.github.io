@@ -1,0 +1,69 @@
+/*!
+  Theme: Lite XL
+  Author: Lite XL Team
+  License: ~ MIT
+*/
+pre code.hljs{
+  display:block;
+  overflow-x:auto;
+  padding:1em;
+  color: #97979c
+}
+code.hljs{
+  padding:3px 5px
+}
+.hljs{
+  color:#97979c;
+  background:#2e2e32
+}
+.hljs ::selection,.hljs::selection{
+  background-color:#48484f;
+  color:#97979c
+}
+.hljs-comment{
+  color:#676b6f
+}
+.hljs-tag{
+  color:#E58AC9
+}
+.hljs-operator,.hljs-punctuation,.hljs-subst{
+  color:#93DDFA
+}
+.hljs-operator{
+  opacity:.7
+}
+.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{
+  color:#F77483
+}
+.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{
+  color:#FFA94D
+}
+.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{
+  color:#F77483
+}
+.hljs-strong{
+  font-weight:700;
+  color:#e1e1e6
+}
+.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{
+  color:#f7c95c
+}
+.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{
+  color:#E58AC9
+}
+.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{
+  color:#93DDFA
+}
+.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{
+  color:#E58AC9
+}
+.hljs-emphasis{
+  color:#e1e1e6;
+  font-style:italic
+}
+.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{
+  color:#F77483
+}
+.hljs-meta .hljs-keyword,.hljs-meta-keyword{
+  font-weight:700
+}

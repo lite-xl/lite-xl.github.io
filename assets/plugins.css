@@ -1,0 +1,300 @@
+:root {
+  --color-background: #2e2e32;
+  --color-background2: #252529;
+  --color-text: #97979c;
+  --color-caret: #93DDFA;
+  --color-accent: #e1e1e6;
+  --color-dim: #525257;
+  --color-divider: #202024;
+  --color-selection: #48484f;
+  --color-line-number: #525259;
+  --color-line-number2: #83838f;
+  --color-line-highlight: #343438;
+  --color-scrollbar: #414146;
+  --color-scrollbar2: #4b4b52;
+  --color-scrollbar-track: #252529;
+
+  --color-syntax-normal: #e1e1e6;
+  --color-syntax-comment: #676b6f;
+  --color-syntax-keyword: #E58AC9;
+  --color-syntax-keyword2: #F77483;
+  --color-syntax-literal: #FFA94D;
+  --color-syntax-string: #f7c95c;
+  --color-syntax-function: #93DDFA;
+}
+
+page { width: 100%; }
+
+p.noscript {
+  font-size: 24px;
+  text-align: center;
+  background-color: var(--color-background);
+  padding: 10px;
+  margin-bottom: 0;
+  border-bottom: solid 1px var(--color-line-number2);
+}
+
+p.noscript strong {
+  color: var(--color-syntax-keyword2);
+}
+
+#plugins h2, #plugins .container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#plugins h2 {
+  text-align: left;
+  font-weight: normal;
+  font-size: 24px;
+  border-bottom: solid 1px var(--color-accent);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  color: var(--color-normal);
+}
+
+#plugins .search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  margin: 0 auto 0 auto;
+}
+
+#plugins .search input, #plugins .search button,
+.plugin-details input, .plugin-details button, .plugin-details .button a {
+  font-size: 18px;
+  padding: 10px 10px;
+  background-color: #2e2e32;
+  border: 0;
+  color: var(--color-text);
+}
+
+#plugins .search input, .plugin-details input {
+  flex-grow: 1;
+  border: solid 1px var(--color-dim);
+}
+
+#plugins .search input:focus, .plugin-details input {
+  outline: none;
+  border-color: var(--color-text);
+}
+
+#plugins .search button, .plugin-details button, .plugin-details .button a {
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: var(--color-background2);
+  border: solid 2px var(--color-background2);
+}
+
+#plugins .search button:hover,
+.plugin-details button:hover, .plugin-details .button a:hover {
+  background-color: var(--color-selection);
+  border-color: var(--color-selection);
+}
+
+#plugins .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#plugins .plugin {
+  position: relative;
+  text-align: center;
+  border: 1px solid var(--color-divider);
+  padding: 10px;
+  min-width: 165px;
+  max-width: 165px;
+  transition: all 0.3s;
+  background-color: var(--color-background2);
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+}
+
+#plugins .plugin:hover {
+  transform: scale(1.1);
+  z-index: 10000;
+  border: 1px solid var(--color-dim);
+}
+
+#plugins .plugin img {
+  position: relative;
+  max-width: 64px;
+  width: 100%;
+  margin: 0 auto 0 auto;
+}
+
+#plugins .plugin .title {
+  white-space: nowrap;
+  width: 169px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  color: var(--color-accent);
+  border-bottom: solid 1px var(--color-line-number);
+}
+
+#plugins .plugin .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+#plugins .plugin .info > div {
+  font-size: 13px;
+}
+
+#plugins .plugin .info .author {
+  color: var(--color-text);
+}
+
+#plugins .plugin .info .version {
+  color: var(--color-line-number2);
+}
+
+@keyframes details-show {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.plugin-details {
+  width: 100%;
+  opacity: 0;
+  animation-name: details-show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  max-width: 100%;
+  z-index: 20000;
+}
+
+.plugin-details .details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plugin-details .details .icon {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.plugin-details .details .icon img {
+  max-width: 350px;
+  width: 100%;
+}
+
+.plugin-details .details .info {
+  flex-grow: 2;
+  padding-right: 10px;
+}
+
+.plugin-details .details .subinfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.plugin-details .details .subinfo > div {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: solid 1px var(--color-line-number2);
+}
+
+.plugin-details .details .subinfo > div:last-child {
+  border-right: 0;
+}
+
+.plugin-details .details .title {
+  font-size: 40px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.plugin-details .details .description * {
+  font-size: 20px;
+}
+
+.plugin-details .details .install .command {
+  padding: 8px 10px;
+  color: var(--color-text);
+  border: solid 1px var(--color-text);
+  font-size: 18px;
+  background-color: var(--color-background);
+  display: inline-block;
+  min-width: 300px;
+  margin-top: 5px;
+}
+
+.plugin-details .button {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.plugin-details .button a {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  max-width: 120px;
+  margin-left: auto;
+}
+
+.plugin-details .readme {
+  margin-top: 20px;
+}
+
+@media all and (max-width: 680px) {
+  #plugins .container {
+    justify-content: space-around;
+  }
+
+  .plugin-details .readme {
+    padding: 10px;
+  }
+
+  .plugin-details .details {
+    flex-direction: column;
+  }
+
+  .plugin-details .details .icon {
+    padding-right: 10px;
+    text-align: center;
+  }
+
+  .plugin-details .details .icon img {
+    max-width: 300px;
+  }
+
+  .plugin-details .details .info {
+    padding-left: 10px;
+  }
+}
+
+@media all and (max-width: 420px) {
+  #plugins .container .plugin {
+    max-width: 100%;
+    flex-grow: 1;
+  }
+
+  #plugins .search {
+    max-width: 100%;
+  }
+
+  #plugins .container .plugin .title {
+    width: 100%;
+  }
+
+  .plugin-details .details .install .command {
+    min-width: auto;
+  }
+
+  .plugin-details .button a {
+    max-width: 100%;
+  }
+}
