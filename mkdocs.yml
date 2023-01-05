@@ -34,6 +34,10 @@ extra:
       link: https://discord.gg/RWzqC3nx7K
     - icon: simple/matrix
       link: https://matrix.to/#/#lite-xl:matrix.org
+plugins:
+  - search
+  - social:
+      cards_font: Roboto
 markdown_extensions:
   - admonition
   - attr_list

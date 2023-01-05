@@ -11,11 +11,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install deps
+        run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
+          cache; 'pip'
+      - name: Cache social cards
+        with:
+          key: lite-xl-docs-${{ github.ref }}
+          path: .cache
       - name: Install mkdocs-material
-        run: pip install mkdocs-material
+        run: pip install -r requirements.txt
       - name: Build and deploy
         run: mkdocs gh-deploy --force
