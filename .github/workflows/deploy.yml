@@ -19,6 +19,7 @@ jobs:
           python-version: 3.x
           cache: 'pip'
       - name: Cache social cards
+        uses: actions/cache@v2
         with:
           key: lite-xl-docs-${{ github.ref }}
           path: .cache
