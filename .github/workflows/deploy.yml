@@ -21,7 +21,7 @@ jobs:
       - name: Cache social cards
         uses: actions/cache@v2
         with:
-          key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
           path: .cache
       - name: Install mkdocs-material
         run: pip install -r requirements.txt
