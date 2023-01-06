@@ -56,7 +56,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/setup/install/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/setup/linux/</loc>
+         <lastmod>2023-01-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/setup/overview/</loc>
          <lastmod>2023-01-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
