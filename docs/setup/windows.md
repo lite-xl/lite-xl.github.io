@@ -10,6 +10,29 @@ You can get them from [GitHub releases][1].
 
 Alternatively, you may download the [zip archive][3], extract it and run it directly.
 
+## Install via package managers
+
+Lite XL can be installed with Chocolatey and Scoop.
+
+!!! note "These packages are maintained by the community."
+
+### Chocolatey
+
+Lite XL can be installed on Chocolatey with the following command:
+
+```sh
+choco install lite-xl
+```
+
+### Scoop
+
+Lite XL can be installed on Scoop by installing the Extras manifest and installing the package:
+
+```sh
+scoop bucket add extras
+scoop install lite-xl
+```
+
 ## Portable application
 
 The installer provides a "Portable Mode" checkbox which can be used to extract
@@ -66,4 +89,4 @@ The first option can be enabled with the following steps.
 [4]: https://github.com/lite-xl/lite-xl/releases/download/v2.1.1/lite-xl-v2.1.1-addons-windows-i686.zip
 [5]: https://github.com/libsdl-org/SDL/issues/4776
 [6]: https://github.com/takase1121/lite-xl-immersive-title
-[7]: /assets/settings/borderless.png
+[7]: ../assets/settings/borderless.png
