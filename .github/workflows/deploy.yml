@@ -11,14 +11,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install deps
-        run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+      # environment has these deps.
+      # - name: Install dependencies
+      #   run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
           cache: 'pip'
-      - name: Cache social cards
+      - name: Cache build data
         uses: actions/cache@v2
         with:
           key: ${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
