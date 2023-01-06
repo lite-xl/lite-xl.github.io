@@ -1,4 +1,4 @@
-# Installing Lite XL
+# Setting up Lite XL
 
 Setting up Lite XL is easy and takes about 2 MB of internet bandwidth.
 Lite XL comes in `.zip` or `.tar.gz` packages depending on the platform.
@@ -6,24 +6,30 @@ Lite XL comes in `.zip` or `.tar.gz` packages depending on the platform.
 Lite XL also ships packages with extra plugins, marked with `addons`.
 These packages provide better out-of-the-box experience.
 
-# Platform-specific installation
+# Install
 
 Installing Lite XL is usually as simple as downloading the package and extracting it.
 However, here are some platform-specific installation instructions.
 
-- Windows
-- Linux
-- macOS
+- [Windows][1]
+- [Linux][2]
+- [macOS][3]
 
-## Windows
+# Plugins
 
-Lite XL provides installers (`.exe`) and `.zip` packages for Windows.
+Plugins are a means to extend Lite XL for more features.
+Lite XL comes with a default set of plugins, and the user can install their own.
 
-1. Download the Lite XL installer for your appropriate architecture.
-2. Once it is downloaded, run the installer to install Lite XL.
+There are a few types of plugins, namely:
 
-Alternatively, you may download a `.zip` archive, extract it and run Lite XL from there.
+- Language plugins
+- Theme plugins
+- Other plugins
+
+Themes and support for other languages are implemented via plugins.
 
 
 
-
+[1]: windows.md
+[2]: linux.md
+[3]: macos.md
