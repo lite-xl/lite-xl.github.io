@@ -21,9 +21,11 @@ jobs:
       - name: Cache social cards
         uses: actions/cache@v2
         with:
-          key: lite-xl-docs-${{ github.ref }}
+          key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
           path: .cache
       - name: Install mkdocs-material
         run: pip install -r requirements.txt
+      - name: Set up environment variables
+        run: echo "CARDS=true" >> $GITHUB_ENV
       - name: Build and deploy
         run: mkdocs gh-deploy --force
