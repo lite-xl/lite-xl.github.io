@@ -1,4 +1,11 @@
-site_name: Lite XL Documentation
+site_name: Documentation for Lite XL
+
+site_url: !ENV [SITE_URL, "https://takase1121.github.io/lite-xl-docs/"]
+repo_url: !ENV [REPO_URL, "https://github.com/takase1121/lite-xl-docs/"]
+
+site_description: Documentation for Lite XL, a text editor for Windows, Linux and macOS.
+site_author: Takase
+
 theme:
   name: material
   palette:
@@ -15,15 +22,17 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  # no custom fonts
   font: false
   logo: assets/icon.svg
   favicon: assets/favicon.png
   features:
+    - navigation.footer
     - navigation.instant
     - navigation.tracking
-    - navigation.footer
-    - header.autohide
     - content.code.copy
+    - header.autohide
+
 extra:
   version:
     provider: mike
@@ -34,10 +43,13 @@ extra:
       link: https://discord.gg/RWzqC3nx7K
     - icon: simple/matrix
       link: https://matrix.to/#/#lite-xl:matrix.org
+
 plugins:
   - search
   - social:
+      cards: !ENV [CARDS, false]
       cards_font: Roboto
+
 markdown_extensions:
   - admonition
   - attr_list
