@@ -31,6 +31,8 @@ theme:
     - navigation.instant
     - navigation.tracking
     - content.code.copy
+    - content.action.view
+    - content.action.edit
     - header.autohide
 
 extra:
@@ -46,9 +48,12 @@ extra:
 
 plugins:
   - search
+  - git-revision-date-localized
   - social:
       cards: !ENV [CARDS, false]
       cards_font: Roboto
+  - minify:
+      minify_html: true
 
 markdown_extensions:
   - admonition
