@@ -67,32 +67,6 @@ but this is not officially supported.
 
 You need to [vibe].
 
-#### Plugin recommendations
-
-Just in case you don't want to comb through our [plugin repository],
-these are a list of plugins that just makes Lite XL a lot more pleasant.
-Most of these plugins work on v2.1.0 or the master branch.
-
-| Plugin               | Use case
-| ------               | --------
-| [align_carets]       | Align text on multiple carets and selections
-| [autoinsert]         | Automatically insert closing brackets and quotes
-| [autosave]           | Automatically saves the file when it is modified
-| [bracketmatch]       | Highlight matching brackets
-| [editorconfig]       | EditorConfig for Lite XL
-| [ephemeral_tabs]     | Ephemeral tabs (previewing files without creating multiple tabs)
-| [fontconfig]         | Adds support for system fonts via fontconfig
-| [gitdiff_highlight]  | Git diff gutter
-| [indentguide]        | Indent guides
-| [lint+]              | Linter support
-| [litepresence]       | Discord rich presence
-| [lsp]                | Language Server support for Lite XL
-| [lspkind]            | Completion menu kind/type icons for Lite XL LSP
-| [minimap]            | Minimap
-| [selectionhighlight] | Highlight code that matches the selection
-| [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
-| [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
-
 #### Where's feature X? How about Y?
 
 You can get more info in [Features].

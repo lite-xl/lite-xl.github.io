@@ -6,30 +6,115 @@ Lite XL comes in `.zip` or `.tar.gz` packages depending on the platform.
 Lite XL also ships packages with extra plugins, marked with `addons`.
 These packages provide better out-of-the-box experience.
 
-# Install
+## Install
 
 Installing Lite XL is usually as simple as downloading the package and extracting it.
 However, here are some platform-specific installation instructions.
 
-- [Windows][1]
-- [Linux][2]
-- [macOS][3]
+- [Windows]
+- [Linux]
+- [macOS]
 
-# Plugins
+## Portable application
 
-Plugins are a means to extend Lite XL for more features.
-Lite XL comes with a default set of plugins, and the user can install their own.
+Lite XL stores user configuration in the OS-specific configuration directory.
+This directory is colloquially known as `USERDIR`.
 
-There are a few types of plugins, namely:
+The following sequence of paths are used as `USERDIR`.
 
-- Language plugins
-- Theme plugins
-- Other plugins
+1. `<directory_to_lite-xl_binary>/user`
+2. `$LITE_USERDIR`
+3. `$XDG_CONFIG_HOME/lite-xl`
+4. `$HOME/.config/lite-xl` or `$USERPROFILE/.config/lite-xl` on Windows
 
-Themes and support for other languages are implemented via plugins.
+As such, if the user wants to create a portable installation of Lite XL
+that does not depend on OS-specific configuration directories,
+they must create a `user` directory in the directory where `lite-xl` executable
+resides.
+This will cause Lite XL to write user configuration to the correct directory.
+
+Alternatively, users can also set the `LITE_USERDIR` environment variable to
+achieve the same thing.
+
+## Plugins
+
+Lite XL is made extensible via plugins.
+In fact, most of Lite XL's features comes from plugins; the core is kept simple and
+feature are added via plugins if possible.
+
+Lite XL comes with a set of plugins and users can install more on their own.
+
+??? tip "Here are some recommended plugins that provide a better editing experience."
+
+    | Plugin               | Use case
+    | ------               | --------
+    | [align_carets]       | Align text on multiple carets and selections
+    | [autoinsert]         | Automatically insert closing brackets and quotes
+    | [autosave]           | Automatically saves the file when it is modified
+    | [bracketmatch]       | Highlight matching brackets
+    | [editorconfig]       | EditorConfig support for Lite XL
+    | [ephemeral_tabs]     | Ephemeral tabs (previewing files without creating multiple tabs)
+    | [gitdiff_highlight]  | Git diff gutter
+    | [indentguide]        | Indent guides
+    | [lint+]              | Linter support
+    | [litepresence]       | Discord rich presence
+    | [lsp]                | Language Server support for Lite XL
+    | [lspkind]            | Completion menu kind/type icons for Lite XL LSP
+    | [minimap]            | Minimap
+    | [selectionhighlight] | Highlight code that matches the selection
+    | [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
+    | [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
+
+
+## Further reading
+
+You may be interested on these topics:
+
+- [Introduction] - An introduction to core concepts of Lite XL.
+- [User Interface] - A simple guide around Lite XL's UI elements.
+- [Editing] - A write-up on editing features available on Lite XL.
+- [Keymap] - A guide on how to configure keyboard shortcuts.
+- [Themes] - How to change colors in Lite XL.
+- [Plugins] - An introduction to plugin management.
+
+These topics are for plugin developers:
+
+- [Creating Themes] - A tutorial on how to write themes for Lite XL.
+- [Creating Syntaxes] - A guide on how to add support for new languages.
+- [Simple plugin] - A tutorial on writing a simple plugin.
+- [Regular expressions] - A guide on how to use regular expressions in Lite XL.
+- [Child processes] - A guide on how to start and manage child processes.
 
 
 
-[1]: windows.md
-[2]: linux.md
-[3]: macos.md
+[Windows]:              windows.md
+[Linux]:                linux.md
+[macOS]:                macos.md
+[align_carets]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/align_carets.lua?raw=1
+[autoinsert]:           https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1
+[autosave]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autosave.lua?raw=1
+[bracketmatch]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/bracketmatch.lua?raw=1
+[editorconfig]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/editorconfig
+[ephemeral_tabs]:       https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/ephemeral_tabs.lua?raw=1
+[gitdiff_highlight]:    https://github.com/vincens2005/lite-xl-gitdiff-highlight
+[indentguide]:          https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/indentguide.lua?raw=1
+[lint+]:                https://github.com/liquid600pgm/lintplus
+[litepresence]:         https://github.com/TorchedSammy/Litepresence
+[lsp]:                  https://github.com/lite-xl/lite-xl-lsp
+[lspkind]:              https://github.com/TorchedSammy/lite-xl-lspkind
+[minimap]:              https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/minimap.lua?raw=1
+[selectionhighlight]:   https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
+[settings]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
+[widgets]:              https://github.com/lite-xl/lite-xl-widgets
+[Introduction]:         ../guides/introduction
+[User Interface]:       ../guides/user-interface
+[Editing]:              ../user-guide/editing
+[Keymap]:               ../user-guide/keymap
+[Plugins]:              ../user-guide/plugins
+[Themes]:               ../user-guide/themes
+[Plugins]:              ../user-guide/plugins
+[Creating Themes]:      ../developer-guide/creating-themes
+[Creating Syntaxes]:    ../developer-guide/creating-syntaxes
+[Simple plugin]:        ../developer-guide/simple-plugin
+[Regular expressions]:  ../developer-guide/regular-expressions
+[Child processes]:      ../developer-guide/child-processes
