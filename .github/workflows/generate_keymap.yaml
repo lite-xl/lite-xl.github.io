@@ -46,9 +46,9 @@ jobs:
         run: |
           wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
           hdiutil mount -noverify "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
-          sudo cp -vR "/Volumes/Lite XL/Lite XL.app" /Applications
-          sudo xattr -cr "/Applications/Lite XL.app"
-          hdiutil unmount "/Volumes/Lite XL"
+          # sudo cp -vR "/Volumes/Lite XL/Lite XL.app" /Applications
+          # sudo xattr -cr "/Applications/Lite XL.app"
+          # hdiutil unmount "/Volumes/Lite XL"
       - name: Install keymap-export
         run: |
           mkdir -p user/plugins
