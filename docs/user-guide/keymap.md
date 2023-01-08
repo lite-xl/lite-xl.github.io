@@ -117,4 +117,4 @@ Lite XL has different keybinds for [non-macOS platforms][6] and [macOS][7].
 [4]: ../assets/settings/keybinds/keybind-remove-dialog.png
 [5]: ../assets/settings/keybinds/keybind-remove-after.png
 [6]: ../references/keymap.md
-[7]: ../references/keymap-macos.md
+[7]: ../references/macos-keymap.md
