@@ -49,9 +49,11 @@ extra:
 plugins:
   - search
   - macros:
+      include_dir: include
       include_yaml:
         # yes, this can safely load json
         - keymap: docs/assets/keymap.json
+        - keymap_macos: docs/assets/keymap-macos.json
   - git-revision-date-localized
   - social:
       cards: !ENV [CARDS, false]
@@ -71,4 +73,49 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
-  - pymdownx.keys
+  - pymdownx.keys:
+      key_map: {
+        "wheel": "Mouse wheel",
+        "hwheel": "Horizontal mouse wheel",
+        "wheelup": "Mouse wheel up",
+        "wheeldown": "Mouse wheel down"
+      }
+
+extra:
+  extra_key_map: {
+    "\\": "backslash",
+    "|": "bar",
+    "[": "bracket-left",
+    "]": "bracket-right",
+    "{": "brace-left",
+    "}": "brace-right",
+    ":": "colon",
+    ",": "comma",
+    "\"": "double-quote",
+    "=": "equal",
+    "!": "exclam",
+    "`": "grave",
+    ">": "greater",
+    "<": "less",
+    "-": "minus",
+    ".": "period",
+    "+": "plus",
+    "?": "question",
+    ";": "semicolon",
+    "'": "single-quote",
+    "/": "slash",
+    "~": "tilde",
+    "_": "underscore",
+    "pageup": "page-up",
+    "pagedown": "page-down",
+    "printscreen": "print-screen",
+    "scrolllock": "scroll-lock",
+    "capslock": "caps-lock",
+    "keypad enter": "num-enter",
+    "left gui": "left-windows",
+    "lclick": "left-button",
+    "rclick": "right-button",
+    "mclick": "middle-button",
+    "xclick": "x-button1",
+    "yclick": "x-button2",
+  }
