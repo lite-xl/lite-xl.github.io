@@ -6,6 +6,7 @@ on:
       lite_xl_version:
         description: 'Lite XL version'
         required: true
+        default: 'v2.1.1'
 
 jobs:
   generate_keymap:
@@ -44,10 +45,10 @@ jobs:
       - name: Install Lite XL
         run: |
           wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
-          sudo hdiutil attach "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
-          sudo cp -R "/Volumes/Lite XL/Lite XL.app" /Applications
+          hdiutil attach "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
+          sudo cp -vR "/Volumes/Lite XL/Lite XL.app" /Applications
           sudo xattr -cr "/Applications/Lite XL.app"
-          sudo hdiutil unmount "/Volumes/Lite XL"
+          hdiutil unmount "/Volumes/Lite XL"
       - name: Install keymap-export
         run: |
           mkdir -p user/plugins
