@@ -1,0 +1,91 @@
+name: Generate keymap files
+
+on:
+  workflow_dispatch:
+    inputs:
+      lite_xl_version:
+        description: 'Lite XL version'
+        required: true
+        default: 'v2.1.1'
+
+jobs:
+  generate_keymap:
+    name: Generate keymap
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Lite XL
+        run: |
+          curl -sSL "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz" | tar -xvzf -
+      - name: Install keymap-export
+        run: |
+          mkdir -p user/plugins
+          wget -O user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
+      - name: Set up environment variables
+        run: |
+          echo "LITE_USERDIR=$PWD/user" >> $GITHUB_ENV
+          echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_TYPE=reverse_map" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_DESTINATION=$PWD/keymap.json" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
+      - name: Run Lite XL
+        run: |
+          cd lite-xl
+          ./lite-xl
+      - name: Archive keymap.json
+        uses: actions/upload-artifact@v3
+        with:
+          name: keymap
+          path: keymap.json
+
+  generate_keymap_macos:
+    name: Generate macOS keymap
+    runs-on: macos-latest
+    steps:
+      - name: Install Lite XL
+        run: |
+          wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
+          hdiutil mount -noverify "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
+      - name: Install keymap-export
+        run: |
+          mkdir -p user/plugins
+          wget -O user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
+      - name: Set up environment variables
+        run: |
+          echo "LITE_USERDIR=$PWD/user" >> $GITHUB_ENV
+          echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_TYPE=reverse_map" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_DESTINATION=$PWD/keymap-macos.json" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
+      - name: Run Lite XL
+        run: open -a "Lite XL"
+      - name: Archive keymap-macos.json
+        uses: actions/upload-artifact@v3
+        with:
+          name: keymap
+          path: keymap-macos.json
+
+  create_pr:
+    name: Create PR
+    runs-on: ubuntu-latest
+    needs: [generate_keymap, generate_keymap_macos]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: keymap
+          path: docs/assets
+      - run: ls -la docs/assets
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: Update keymap files
+          body: |
+            This is an automated PR that updates keymap.json and keymap-macos.json
+            based on changes in Lite XL ${{ inputs.lite_xl_version }}.
+          commit-message: Update keymap.json and keymap-macos.json with changes from ${{ inputs.lite_xl_version }}
+          add-paths: |
+            docs/assets/keymap*.json
