@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/</loc>
+         <lastmod>2023-01-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://takase1121.github.io/lite-xl-docs/about/faq/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
