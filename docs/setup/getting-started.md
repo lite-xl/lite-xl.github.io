@@ -1,4 +1,4 @@
-# Setting up Lite XL
+# Getting Started
 
 Setting up Lite XL is easy and takes about 2 MB of internet bandwidth.
 Lite XL comes in `.zip` or `.tar.gz` packages depending on the platform.
@@ -43,27 +43,27 @@ In fact, most of Lite XL's features comes from plugins; the core is kept simple 
 feature are added via plugins if possible.
 
 Lite XL comes with a set of plugins and users can install more on their own.
+Here are common plugins that most users install:
 
-??? tip "Here are some recommended plugins that provide a better editing experience."
 
-    | Plugin               | Use case
-    | ------               | --------
-    | [align_carets]       | Align text on multiple carets and selections
-    | [autoinsert]         | Automatically insert closing brackets and quotes
-    | [autosave]           | Automatically saves the file when it is modified
-    | [bracketmatch]       | Highlight matching brackets
-    | [editorconfig]       | EditorConfig support for Lite XL
-    | [ephemeral_tabs]     | Ephemeral tabs (previewing files without creating multiple tabs)
-    | [gitdiff_highlight]  | Git diff gutter
-    | [indentguide]        | Indent guides
-    | [lint+]              | Linter support
-    | [litepresence]       | Discord rich presence
-    | [lsp]                | Language Server support for Lite XL
-    | [lspkind]            | Completion menu kind/type icons for Lite XL LSP
-    | [minimap]            | Minimap
-    | [selectionhighlight] | Highlight code that matches the selection
-    | [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
-    | [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
+| Plugin               | Use case
+| ------               | --------
+| [align_carets]       | Align text on multiple carets and selections
+| [autoinsert]         | Automatically insert closing brackets and quotes
+| [autosave]           | Automatically saves the file when it is modified
+| [bracketmatch]       | Highlight matching brackets
+| [editorconfig]       | EditorConfig support for Lite XL
+| [ephemeral_tabs]     | Ephemeral tabs (previewing files without creating multiple tabs)
+| [gitdiff_highlight]  | Git diff gutter
+| [indentguide]        | Indent guides
+| [lint+]              | Linter support
+| [litepresence]       | Discord rich presence
+| [lsp]                | Language Server support for Lite XL
+| [lspkind]            | Completion menu kind/type icons for Lite XL LSP
+| [minimap]            | Minimap
+| [selectionhighlight] | Highlight code that matches the selection
+| [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
+| [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
 
 
 ## Further reading
@@ -77,7 +77,7 @@ You may be interested on these topics:
 - [Themes] - How to change colors in Lite XL.
 - [Plugins] - An introduction to plugin management.
 
-These topics are for plugin developers:
+These are advanced topics that are useful for power users or plugin developers:
 
 - [Creating Themes] - A tutorial on how to write themes for Lite XL.
 - [Creating Syntaxes] - A guide on how to add support for new languages.

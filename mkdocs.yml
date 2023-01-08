@@ -119,3 +119,22 @@ extra:
     "xclick": "x-button1",
     "yclick": "x-button2",
   }
+
+nav:
+  - "Set Up":
+      - "Getting Started": setup/getting-started.md
+      - "Windows": setup/windows.md
+      - "Linux": setup/linux.md
+      - "macOS": setup/macos.md
+      - "Building": setup/building.md
+  - "User Guide":
+      - "Keymap": user-guide/keymap.md
+      - "Creating Syntaxes": user-guide/creating-syntaxes.md
+      - "Simple Plugin": user-guide/simple-plugin.md
+      - "Using regular expressions": user-guide/using-regular-expressions.md
+      - "Interacting with the OS": user-guide/interacting-with-the-os.md
+      - "Child processes": user-guide/child-processes.md
+  - "References":
+      - "Contributors": references/contributors.md
+      - "Keymap": references/keymap.md
+      - "macOS Keymap": references/macos-keymap.md
