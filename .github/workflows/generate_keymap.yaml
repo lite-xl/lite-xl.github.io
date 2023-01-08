@@ -1,0 +1,25 @@
+name: Generate keymap files
+
+on:
+  workflow_dispatch:
+    inputs:
+      lite_xl_version:
+        description: 'Lite XL version'
+        required: true
+
+jobs:
+  generate_keymap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Lite XL
+        run: |
+          wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz"
+          tar -xvzf "lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz"
+      - name: Install keymap-export
+        run: |
+          mkdir -p user/plugins
+          wget -O user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
+      - name: Set up environment variables
+        run: echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
+      - name: Run Lite XL
+        run: ls -lah
