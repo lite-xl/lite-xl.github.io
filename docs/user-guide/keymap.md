@@ -107,16 +107,7 @@ Users can unbind keybindings by using `keymap.unbind()`.
 
 ## Default keybindings
 
-These are the default keybindings on non-macOS platforms:
-
-| Keys      | Commands |
-| --------- | -------- |
-{%- for keybind, commands in keymap.items() %}
-| ++{{ keybind }}++ | {% for c in commands %}`{{ c }}`{% if not loop.last %}, {% endif %}{% endfor %}
-{%- endfor %}
-
-
-
+Lite XL has different keybinds for [non-macOS platforms][6] and [macOS][7].
 
 
 
@@ -125,3 +116,5 @@ These are the default keybindings on non-macOS platforms:
 [3]: ../assets/settings/keybinds/keybind-add-after.png
 [4]: ../assets/settings/keybinds/keybind-remove-dialog.png
 [5]: ../assets/settings/keybinds/keybind-remove-after.png
+[6]: ../references/keymap.md
+[7]: ../references/keymap-macos.md
