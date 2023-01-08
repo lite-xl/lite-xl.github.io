@@ -28,7 +28,7 @@ jobs:
           echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
       - name: Run Lite XL
-        run:
+        run: |
           cd lite-xl
           ./lite-xl
       - name: Create PR
