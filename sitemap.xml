@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/getting-started/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/about/contributors/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://takase1121.github.io/lite-xl-docs/about/faq/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
@@ -36,22 +21,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/documentation/build/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/references/contributors/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/documentation/keymap-macos/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/references/keymap/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/documentation/keymap/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/references/macos-keymap/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/documentation/usage/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/setup/building/</loc>
+         <lastmod>2023-01-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/setup/getting-started/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -61,7 +51,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/setup/overview/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/setup/macos/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -71,42 +61,37 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/api-overview/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/child-processes/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/simple-plugin/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/creating-syntaxes/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/syntax-highlighting/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/system-fonts/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/overview/process/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/overview/regex/</loc>
-         <lastmod>2023-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/tutorials/overview/system/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/interacting-with-the-os/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://takase1121.github.io/lite-xl-docs/user-guide/keymap/</loc>
+         <lastmod>2023-01-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/simple-plugin/</loc>
+         <lastmod>2023-01-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/usage/</loc>
+         <lastmod>2023-01-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/using-regular-expressions/</loc>
          <lastmod>2023-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
