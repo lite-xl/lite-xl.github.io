@@ -122,7 +122,7 @@ extra:
   }
 
 nav:
-  - "Home": index.md
+  - "Lite XL": index.md
   - "Set Up":
       - "Getting Started": setup/getting-started.md
       - "Windows": setup/windows.md

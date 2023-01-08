@@ -2,6 +2,7 @@
 hide:
   - navigation
   - toc
+  - footer
 ---
 
 <style>
@@ -10,6 +11,8 @@ hide:
     display: none;
   }
 </style>
+
+# Lite XL
 
 Lite XL is a lightweight but powerful text editor for Windows, Linux and macOS,
 written in C and Lua.
