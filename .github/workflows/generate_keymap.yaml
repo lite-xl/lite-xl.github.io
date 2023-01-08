@@ -75,6 +75,7 @@ jobs:
         with:
           name: keymap
           path: docs/assets
+      - run: ls -la docs/assets
       - name: Create PR
         uses: peter-evans/create-pull-request@v4
         with:
