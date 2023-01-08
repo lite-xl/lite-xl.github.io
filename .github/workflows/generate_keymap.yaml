@@ -50,8 +50,8 @@ jobs:
         run: |
           wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
           hdiutil mount "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
-          sudo cp -R "/Volumes/Lite XL.app" /Applications
-          sudo xattr -cr /Applications/Lite\ XL.app
+          sudo cp -R "/Volumes/Lite XL/Lite XL.app" /Applications
+          sudo xattr -cr "/Applications/Lite XL.app"
 
 
       # - name: Install keymap-export
