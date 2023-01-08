@@ -34,5 +34,45 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v4
         with:
+          title: Update keymap files
+          body: |
+            This is an automated PR that updates keymap.json and keymap-macos.json
+            based on changes in Lite XL ${{ inputs.lite_xl_version }}.
+          commit-message: Update keymap.json with changes from ${{ inputs.lite_xl_version }}
           add-paths: |
             docs/assets/keymap.json
+  generate_keymap_macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Lite XL
+        run: |
+          wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
+          hdiutil mount "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
+
+      # - name: Install keymap-export
+      #   run: |
+      #     mkdir -p lite-xl/user/plugins
+      #     wget -O lite-xl/user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
+      # - name: Set up environment variables
+      #   run: |
+      #     echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
+      #     echo "KEYMAP_EXPORT_TYPE=reverse_map" >> $GITHUB_ENV
+      #     echo "KEYMAP_EXPORT_DESTINATION=$PWD/docs/assets/keymap.json" >> $GITHUB_ENV
+      #     echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
+      #     echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
+      # - name: Run Lite XL
+      #   run: |
+      #     cd lite-xl
+      #     ./lite-xl
+      # - name: Create PR
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     title: Update keymap files
+      #     body: |
+      #       This is an automated PR that updates keymap.json and keymap-macos.json
+      #       based on changes in Lite XL ${{ inputs.lite_xl_version }}.
+      #     commit-message: Update keymap.json with changes from ${{ inputs.lite_xl_version }}
+      #     add-paths: |
+      #       docs/assets/keymap.json
