@@ -11,15 +11,28 @@ jobs:
   generate_keymap:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Install Lite XL
         run: |
-          wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz"
-          tar -xvzf "lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz"
+          curl -sSL "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz" | tar -xvzf -
       - name: Install keymap-export
         run: |
-          mkdir -p user/plugins
-          wget -O user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
+          mkdir -p lite-xl/user/plugins
+          wget -O lite-xl/user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
       - name: Set up environment variables
-        run: echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
+        run: |
+          echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_TYPE=reverse_map" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_DESTINATION=$PWD/docs/assets/keymap.json" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
       - name: Run Lite XL
-        run: ls -lah
+        run:
+          cd lite-xl
+          ./lite-xl
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v4
+        with:
+          add-paths: |
+            docs/assets/keymap.json
