@@ -590,7 +590,8 @@ class Plugins {
       this.results.innerHTML = "";
       this.renderSection(this.text.results + ": " + found_plugins.length, function(){
         return found_plugins.sort(function(a, b) {
-          return a.search_score < b.search_score;
+          if (a.search_score == b.search_score) return 0;
+          return a.search_score > b.search_score ? -1 : 1;
         });
       });
     } else {
