@@ -1,6 +1,6 @@
 ---
 template: home.html
-title: Home
+title: Lite XL
 hide:
   - navigation
   - toc
