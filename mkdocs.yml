@@ -1,4 +1,4 @@
-site_name: Documentation for Lite XL
+site_name: Lite XL
 
 site_url: !ENV [SITE_URL, "https://takase1121.github.io/lite-xl-docs/"]
 repo_url: !ENV [REPO_URL, "https://github.com/takase1121/lite-xl-docs/"]
@@ -8,6 +8,7 @@ site_author: Takase
 
 theme:
   name: material
+  custom_dir: docs/overrides/
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -46,43 +47,6 @@ extra:
       link: https://discord.gg/RWzqC3nx7K
     - icon: simple/matrix
       link: https://matrix.to/#/#lite-xl:matrix.org
-
-plugins:
-  - search
-  - macros:
-      include_dir: include
-      include_yaml:
-        # yes, this can safely load json
-        - keymap: docs/assets/keymap.json
-        - keymap_macos: docs/assets/keymap-macos.json
-  - git-revision-date-localized
-  - social:
-      cards: !ENV [CARDS, false]
-      cards_font: Roboto
-  - minify:
-      minify_html: true
-
-markdown_extensions:
-  - admonition
-  - attr_list
-  - md_in_html
-  - pymdownx.details
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true 
-  - pymdownx.keys:
-      key_map: {
-        "wheel": "Mouse wheel",
-        "hwheel": "Horizontal mouse wheel",
-        "wheelup": "Mouse wheel up",
-        "wheeldown": "Mouse wheel down"
-      }
-
-extra:
   extra_key_map: {
     "\\": "backslash",
     "|": "bar",
@@ -121,8 +85,44 @@ extra:
     "yclick": "x-button2",
   }
 
+plugins:
+  - search
+  - glightbox
+  - macros:
+      include_dir: docs/.include
+      include_yaml:
+        # yes, this can safely load json
+        - keymap: docs/assets/keymap.json
+        - keymap_macos: docs/assets/keymap-macos.json
+  - git-revision-date-localized
+  - social:
+      cards: !ENV [CARDS, false]
+      cards_font: Roboto
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.keys:
+      key_map: {
+        "wheel": "Mouse wheel",
+        "hwheel": "Horizontal mouse wheel",
+        "wheelup": "Mouse wheel up",
+        "wheeldown": "Mouse wheel down"
+      }
+
 nav:
-  - "Lite XL": index.md
+  - Home: index.md
   - "Set Up":
       - "Getting Started": setup/getting-started.md
       - "Windows": setup/windows.md
