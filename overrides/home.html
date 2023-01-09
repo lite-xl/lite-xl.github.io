@@ -1,0 +1,120 @@
+{# The homepage. #}
+{% extends "main.html" %}
+{% block tabs %}
+	{{ super() }}
+	<style>
+		/* code to disable whatever mkdocs does */
+		/* application header should be static for the landing page */
+		.md-header{position:initial}
+		/* remove spacing */
+		.md-main__inner{margin:0}
+		/* hide all markdown content */
+		.md-content{display:none}
+		/* hide nav and toc */
+		@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}
+		@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}
+
+		/* our own */
+		.hero {
+			display:flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.hero-content { flex: 1; margin: 25px; }
+		.heading h1 { margin-bottom: 0; }
+		.hero,.features { text-align: center; }
+		.features {
+			display: flex;
+			align-items: stretch;
+			flex-direction: column;
+			justify-content: space-evenly;
+			margin: auto;
+		}
+		.features-card { margin: 25px; }
+		.features svg { width: 48px; height: 48px; fill: var(--md-default-fg-color); }
+
+		/* widescreen */
+		@media screen and (min-width: 60em) {
+			.hero {
+				flex-direction: row;
+				height: 95vh;
+			}
+			.hero-content:first-child { margin-left: 25px; }
+			.hero-content:last-child { margin-right: 25px; }
+			.features {
+				margin: 0;
+				flex-direction: row;
+			}
+			.features-card {
+				max-width: 10rem;
+			}
+		}
+	</style>
+	<section class="md-typeset hero">
+		<div class="hero-content hero-text">
+			<div class="heading">
+				<h1>Lightweight and Powerful Text Editor.</h1>
+				<p>Fast and extensible. No Electron required.</p>
+			</div>
+			<div class="download">
+				<a
+          href="{{ page.next_page.url | url }}"
+          title="{{ page.next_page.title | e }}"
+          class="md-button md-button--primary"
+        >
+          Get Started
+        </a>
+        <a
+        	href="https://github.com/lite-xl/lite-xl"
+        	class="md-button"
+        >
+        	GitHub
+      	</a>
+			</div>
+		</div>
+		<div class="hero-content hero-img">
+			<img src="assets/editor.png" draggable=false />
+		</div>
+	</section>
+	<section class="md-typeset features">
+		<div class="features-card">
+			{% include ".icons/material/feather.svg" %}
+			<h5>Lightweight</h5>
+			<p>
+				30 MB of RAM, 5 MB of disk space.
+				Lite XL runs on many devices without
+				performance issues.
+			</p>
+		</div>
+		<div class="features-card">
+			{% include ".icons/material/code-tags.svg" %}
+			<h5>Powerful</h5>
+			<p>
+				Multi-cursor support, code completions,
+				command palette and tab-dragging
+				to maximize your productivity.
+				Lite XL is intuitive and easy to learn.
+			</p>
+		</div>
+		<div class="features-card">
+			{% include ".icons/material/power-plug.svg" %}
+			<h5>Extensible</h5>
+			<p>
+				Written in C and Lua, Lite XL is easily extensible.
+				Lite XL has a diverse plugin ecosystem that supercharges
+				it into an IDE-like editing experience.
+			</p>
+		</div>
+		<div class="features-card">
+			{% include ".icons/material/monitor-shimmer.svg" %}
+			<h5>Cross-platform</h5>
+			<p>
+				Built on SDL, Lite XL runs on Windows, Linux and macOS.
+				Porting to other systems is trivial.
+			</p>
+		</div>
+	</section>
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
