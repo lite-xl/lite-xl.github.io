@@ -25,19 +25,37 @@
 			</div>
 			<div class="download">
 				<a
+					id="download-button"
+					data-latest-version="{{ config.extra.lite_xl_version }}"
+					data-platform-detected="false"
           href="{{ page.next_page.url | url }}"
           title="{{ page.next_page.title | e }}"
           class="md-button md-button--primary"
         >
+        	<span
+        		class="twemoji"
+        		style="display: none;"
+        	>
+        		{% include ".icons/material/download.svg" %}
+        	</span>
           Get Started
         </a>
         <a
-        	href="https://github.com/lite-xl/lite-xl"
+        	id="alt-download-button"
+        	href="#"
         	class="md-button"
+        	style="display: none;"
         >
-        	GitHub
+        	<span class="twemoji">
+        		{% include ".icons/material/download.svg" %}
+        	</span>
       	</a>
 			</div>
+			<a
+				href="https://github.com/lite-xl/lite-xl/releases"
+			>
+				<h6>Other platforms and formats</h6>
+			</a>
 		</div>
 		<div class="hero-content hero-img">
 			<img src="assets/editor.png" draggable=false />

@@ -39,6 +39,7 @@ theme:
     - header.autohide
 
 extra:
+  lite_xl_version: v2.1.1
   version:
     provider: mike
   social:
@@ -102,8 +103,11 @@ plugins:
   - minify:
       minify_html: true
       minify_css: true
+      minify_js: true
       css_files:
         - assets/stylesheets/custom.css
+      js_files:
+        - assets/javascript/custom.js
 
 markdown_extensions:
   - admonition
