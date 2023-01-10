@@ -1,0 +1,79 @@
+/* center all text in these sections */
+.hero,
+.features {
+  text-align: center;
+}
+
+/* the hero section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  margin: auto 25px auto;
+}
+
+/* content inside the hero section */
+.hero-content {
+  flex: 1;
+}
+
+/* remove margin from heading */
+.heading h1 {
+  margin-bottom: 0;
+}
+
+/* the download button */
+.download a {
+  display: inline-block;
+  margin: 2px auto;
+}
+
+/* add margins to hero on mobile */
+.hero-content:first-child {
+  margin-top: 25px;
+}
+.hero-content:last-child {
+  margin-bottom: 25px;
+}
+
+/* the features section */
+.features {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* cards in the features section */
+.features-card {
+  margin: 25px;
+}
+/* svg theming */
+.features svg {
+  width: 48px;
+  height: 48px;
+  fill: var(--md-default-fg-color);
+}
+
+/* configuration for widescreen monitors */
+@media screen and (min-width: 60em) {
+  /* make hero and features flex horizontally */
+  .hero,
+  .features {
+    flex-direction: row;
+  }
+  /* make hero almost full width */
+  .hero {
+    height: 90vh;
+    margin: auto;
+  }
+  /* fix margins on the hero */
+  .hero-content:first-child {
+    margin: auto auto auto 25px;
+  }
+  .hero-content:last-child {
+    margin: auto 25px auto auto;
+  }
+  /* limit the feature card to reasonable sizes */
+  .features-card {
+    width: 15rem;
+  }
+}

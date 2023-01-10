@@ -101,6 +101,9 @@ plugins:
       cards_font: Roboto
   - minify:
       minify_html: true
+      minify_css: true
+      css_files:
+        - assets/stylesheets/custom.css
 
 markdown_extensions:
   - admonition
