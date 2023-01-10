@@ -32,6 +32,7 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.top
+    - navigation.tabs
     - content.code.copy
     - content.action.view
     - content.action.edit
