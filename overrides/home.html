@@ -1,9 +1,11 @@
-{# The homepage. #}
+{#-
+	The homepage
+-#}
 {% extends "main.html" %}
 {% block tabs %}
 	{{ super() }}
 	<style>
-		/* code to disable whatever mkdocs does */
+		/* code to disable markdown content */
 		/* application header should be static for the landing page */
 		.md-header{position:initial}
 		/* remove spacing */
@@ -13,64 +15,47 @@
 		/* hide nav and toc */
 		@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}
 		@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}
-
-		/* our own */
-		.hero {
-			display:flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-		}
-		.hero-content { flex: 1; margin: 25px; }
-		.heading h1 { margin-bottom: 0; }
-		.hero,.features { text-align: center; }
-		.features {
-			display: flex;
-			align-items: stretch;
-			flex-direction: column;
-			justify-content: space-evenly;
-			margin: auto;
-		}
-		.features-card { margin: 25px; }
-		.features svg { width: 48px; height: 48px; fill: var(--md-default-fg-color); }
-
-		/* widescreen */
-		@media screen and (min-width: 60em) {
-			.hero {
-				flex-direction: row;
-				height: 95vh;
-			}
-			.hero-content:first-child { margin-left: 25px; }
-			.hero-content:last-child { margin-right: 25px; }
-			.features {
-				flex-direction: row;
-			}
-			.features-card {
-				max-width: 10rem;
-			}
-		}
 	</style>
+
 	<section class="md-grid md-typeset hero">
 		<div class="hero-content hero-text">
 			<div class="heading">
-				<h1>Lightweight and Powerful Text Editor.</h1>
+				<h1>Lightweight and Powerful Text Editor</h1>
 				<p>Fast and extensible. No Electron required.</p>
 			</div>
 			<div class="download">
 				<a
+					id="download-button"
+					data-latest-version="{{ config.extra.lite_xl_version }}"
+					data-platform-detected="false"
           href="{{ page.next_page.url | url }}"
           title="{{ page.next_page.title | e }}"
           class="md-button md-button--primary"
         >
+        	<span
+        		class="twemoji"
+        		style="display: none;"
+        	>
+        		{% include ".icons/material/download.svg" %}
+        	</span>
           Get Started
         </a>
         <a
-        	href="https://github.com/lite-xl/lite-xl"
+        	id="alt-download-button"
+        	href="#"
         	class="md-button"
+        	style="display: none;"
         >
-        	GitHub
+        	<span class="twemoji">
+        		{% include ".icons/material/download.svg" %}
+        	</span>
       	</a>
 			</div>
+			<a
+				href="https://github.com/lite-xl/lite-xl/releases"
+			>
+				<h6>Other platforms and formats</h6>
+			</a>
 		</div>
 		<div class="hero-content hero-img">
 			<img src="assets/editor.png" draggable=false />
