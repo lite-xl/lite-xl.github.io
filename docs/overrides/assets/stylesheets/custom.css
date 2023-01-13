@@ -1,79 +1,122 @@
-/* center all text in these sections */
+/* import Roboto and Roboto Mono from a GDPR-friendly website */
+@import url(https://fonts.bunny.net/css?family=roboto:400|roboto-mono:400);
+
 .hero,
-.features {
+.features,
+.previews {
+  /* variables */
+  --landing-gap: 1em;
+  --landing-margin: calc(2 * var(--landing-gap));
+
+  /* set margin on mobile */
+  margin: auto var(--landing-margin);
+}
+
+.hero h1,
+.features h1,
+.previews h1 {
+  /* remove all bottom margins and center align them */
   text-align: center;
-}
-
-/* the hero section */
-.hero {
-  display: flex;
-  flex-direction: column;
-  margin: auto 25px auto;
-}
-
-/* content inside the hero section */
-.hero-content {
-  flex: 1;
-}
-
-/* remove margin from heading */
-.heading h1 {
   margin-bottom: 0;
 }
 
-/* the download button */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--landing-gap);
+
+  text-align: center;
+  margin: 25px auto;
+}
+
+.hero-content {
+  width: 100%;
+}
+
+.download {
+  display: flex;
+  justify-content: center;
+  gap: var(--landing-gap);
+  margin: auto var(--landing-gap);
+}
+
 .download a {
-  display: inline-block;
-  margin: 2px auto;
+/* disallow growth but allow shrink */
+  flex: 0 1 auto;
 }
 
-/* add margins to hero on mobile */
-.hero-content:first-child {
-  margin-top: 25px;
-}
-.hero-content:last-child {
-  margin-bottom: 25px;
-}
-
-/* the features section */
 .features {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: var(--landing-gap);
 }
 
-/* cards in the features section */
 .features-card {
-  margin: 25px;
-}
-/* svg theming */
-.features svg {
-  width: 48px;
-  height: 48px;
-  fill: var(--md-default-fg-color);
+  display: grid;
+  grid-template-columns: 20% 80%;
+  column-gap: var(--landing-gap);
+
+  width: 100%;
 }
 
-/* configuration for widescreen monitors */
+.features svg {
+  width: 64px;
+  height: 64px;
+  fill: var(--md-default-fg-color);
+
+  margin: auto;
+}
+
+.previews figure {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--landing-gap);
+
+  /* reset text align because mkdocs-material set it */
+  text-align: initial;
+}
+
+.previews figcaption {
+  /* reset text formatting */
+  font-style: normal;
+  max-width: initial;
+}
+
+.previews-card img {
+  width: 100%;
+}
+
+/* widescreen */
 @media screen and (min-width: 60em) {
-  /* make hero and features flex horizontally */
   .hero,
-  .features {
-    flex-direction: row;
+  .features,
+  .previews {
+    /* remove mobile margins */
+    margin: var(--landing-margin) auto;
   }
-  /* make hero almost full width */
-  .hero {
-    height: 90vh;
-    margin: auto;
+
+  /* make the hero content half-width */
+  .hero-content, .features-card {
+    width: calc(50% - var(--landing-gap));
   }
-  /* fix margins on the hero */
-  .hero-content:first-child {
-    margin: auto auto auto 25px;
+
+  /* 60-40 split between caption and image */
+  .previews figcaption {
+    width: calc(60% - var(--landing-gap));
   }
-  .hero-content:last-child {
-    margin: auto 25px auto auto;
+  .previews img {
+    width: 40%;
+
   }
-  /* limit the feature card to reasonable sizes */
-  .features-card {
-    width: 15rem;
+
+  /* reverse the order of images on even figures */
+  .previews figure:nth-child(even) {
+    flex-flow: row-reverse;
   }
 }
