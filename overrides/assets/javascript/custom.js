@@ -4,8 +4,14 @@ window.addEventListener("load", function() {
   var observer = new MutationObserver(function(mutations) {
     for (var i = 0; i < mutations.length; i++) {
       // run platform detection if nodes are added (md-content)
-      if (mutations[i].addedNodes.length > 0)
-        return changeDownload();
+      if (mutations[i].addedNodes.length > 0) {
+        changeDownload();
+        changeScreenshot();
+        return;
+      }
+      // only change screenshot on theme change
+      if (mutations[i].attributeName === "data-md-color-scheme")
+        return changeScreenshot();
     }
   });
 
@@ -114,7 +120,19 @@ window.addEventListener("load", function() {
     }
   }
 
+  /**
+   * Changes the screenshot depending on the theme
+   */
+  function changeScreenshot() {
+    var screenshot = document.getElementById("screenshot-main");
+    var theme = document.body.dataset.mdColorScheme === "slate" ? "default" : "summer";
+    var newURL = screenshot.src.replace(/theme-.+\.png$/, "theme-" + theme + ".png")
+    if (screenshot.src !== newURL)
+      screenshot.src = newURL;
+  }
+
   // try to run once
   changeDownload();
-  observer.observe(document.body, { childList: true });
+  changeScreenshot();
+  observer.observe(document.body, { childList: true, attributes: true });
 });
