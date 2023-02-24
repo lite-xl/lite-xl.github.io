@@ -1,5 +1,7 @@
+/* load Roboto and Roboto Mono from a GDPR friendly source */
 @import url(https://fonts.bunny.net/css?family=roboto:300,400,400i,700|roboto-mono:400);
 
+/* use the font */
 :root {
   --md-text-font: "Roboto";
   --md-code-font: "Roboto Mono";
