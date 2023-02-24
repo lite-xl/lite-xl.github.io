@@ -1,7 +1,5 @@
 # Syntax Highlighting
 
-## How to create syntax highlighting plugins for Lite XL
-
 Syntax highlighting plugins for Lite XL are Lua files.
 These define some patterns or regular expressions that
 match different parts of a given language,
@@ -103,7 +101,7 @@ local syntax = require "core.syntax"
 We then add a syntax definition to Lite XL with `syntax.add {...}`.
 The contents of this definition are covered next.
 
-#### Files
+### Files
 
 The `files` property tells Lite XL which files this syntax should be used for.
 This is a Lua pattern that matches against the full path of the current file.

@@ -56,7 +56,8 @@ This project follows typical [MkDocs] file structure.
   - `about/`
   - `assets/`
     - `screenshots/`: Screenshots of the editor.
-    - `settings/`: Demo images for the settings GUI.
+    - `user-guide/`: User guide-related content.
+      - `settings/`: Demo images for the settings GUI.
     - `favicon.png`
     - `icon.svg`: Vector icon of Lite XL.
     - `keymap-macos.json`: Keymap file for macOS.

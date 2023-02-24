@@ -82,18 +82,18 @@
 		<div class="features-card">
 			{% include ".icons/material/code-tags.svg" %}
 			<div>
-				<h5>Highly customizable</h5>
+				<h5>Hyperextensible</h5>
 				<p>
-					Lite XL is highly customizable.
+					Lite XL is based on Lite, an editor that is already very extensible.
+					Lite XL expands on its design, making it even easier to extend.
 				</p>
 			</div>
 		</div>
 		<div class="features-card">
 			{% include ".icons/material/power-plug.svg" %}
 			<div>
-				<h5>Extensible</h5>
+				<h5>Many plugins</h5>
 				<p>
-					Written in C and Lua, Lite XL is easily extensible.
 					Lite XL has a diverse plugin ecosystem that supercharges
 					it into an IDE-like editing experience.
 				</p>
@@ -111,6 +111,7 @@
 		</div>
 	</section>
 
+  <!--
 	<section class="md-grid md-typeset previews">
 		<h1>See Lite XL in action.</h1>
 		<figure class="previews-card">
@@ -125,6 +126,21 @@
 				<p>
 					Command palette, multi-line editing and draggable UI elements - we
 					provide a familiar transition from other text editors.
+				</p>
+			</figcaption>
+		</figure>
+		<figure class="previews-card">
+			<img src="assets/screenshots/theme-default.png" draggable=false />
+			<figcaption class="previews-text">
+				<h2>Keyboard-friendly</h2>
+				<p>
+					Lite XL has a simple but powerful keymap system.
+					Most of the functionality can be used from the keyboard.
+					Your hands will never need to leave your keyboard ever again.
+					The default shortcuts provides a familiar, out of the box experience.
+				</p>
+				<p>
+					If you're a power user, a vim-like editing plugin is also available.
 				</p>
 			</figcaption>
 		</figure>
@@ -153,6 +169,8 @@
 					No lengthly configuration sections,
 					no custom templating syntax - you get the power of a programming
 					language at hand.
+					We provide ergonomic APIs for configuring Lite XL that are intuitive
+					and behave as you expect.
 				</p>
 				<p>
 					We also bundle a settings GUI for those who prefers clicking away
@@ -160,26 +178,8 @@
 				</p>
 			</figcaption>
 		</figure>
-		<figure class="previews-card">
-			<img src="assets/screenshots/theme-default.png" draggable=false />
-			<figcaption class="previews-text">
-				<h2>Hyperextensible</h2>
-				<p>
-					Lite XL is not only configurable in Lua; it is entirely written in Lua.
-					We made Lite XL on top of custom Lua bindings and this meant almost
-					everything can be overriden for custom functionality.
-					If Lua is not powerful enough, you can use Lua bindings for
-					C libraries directly in Lite XL.
-				</p>
-				<p>
-					Lite XL uses immediate-mode rendering - simply draw rectangles
-					and text anywhere you want. We provide base classes and utilities
-					so you can extend and use them to create complex plugins without
-					hassle.
-				</p>
-			</figcaption>
-		</figure>
 	</section>
+  -->
 {% endblock %}
 {% block content %}{% endblock %}
 {% block footer %}{% endblock %}

@@ -177,4 +177,4 @@ Lite XL will draw a client-side decoration.
 [10]: https://packages.guix.gnu.org/packages/lite-xl/
 [11]: https://www.makedeb.org/
 [12]: https://mpr.makedeb.org/lite-xl.git
-[13]: ../assets/settings/borderless.png
+[13]: ../assets/user-guide/settings/borderless.png

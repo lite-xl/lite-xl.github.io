@@ -125,6 +125,8 @@ window.addEventListener("load", function() {
    */
   function changeScreenshot() {
     var screenshot = document.getElementById("screenshot-main");
+    if (!screenshot) return;
+
     var theme = document.body.dataset.mdColorScheme === "slate" ? "default" : "summer";
     var newURL = screenshot.src.replace(/theme-.+\.png$/, "theme-" + theme + ".png")
     if (screenshot.src !== newURL)

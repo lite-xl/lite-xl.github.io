@@ -70,20 +70,17 @@ Here are common plugins that most users install:
 
 You may be interested on these topics:
 
-- [Introduction] - An introduction to core concepts of Lite XL.
-- [User Interface] - A simple guide around Lite XL's UI elements.
-- [Editing] - A write-up on editing features available on Lite XL.
-- [Keymap] - A guide on how to configure keyboard shortcuts.
-- [Themes] - How to change colors in Lite XL.
-- [Plugins] - An introduction to plugin management.
+- [Introduction] — A introduction to various Lite XL features and concepts.
+- [Configuration] — A guide on how to configure Lite XL.
+- [Plugins] — An introduction to plugin management.
 
 These are advanced topics that are useful for power users or plugin developers:
 
-- [Creating Themes] - A tutorial on how to write themes for Lite XL.
-- [Creating Syntaxes] - A guide on how to add support for new languages.
-- [Simple plugin] - A tutorial on writing a simple plugin.
-- [Regular expressions] - A guide on how to use regular expressions in Lite XL.
-- [Child processes] - A guide on how to start and manage child processes.
+- [Creating Themes] — A tutorial on how to write themes for Lite XL.
+- [Creating Syntaxes] — A guide on how to add support for new languages.
+- [Simple plugin] — A tutorial on writing a simple plugin.
+- [Regular expressions] — A guide on how to use regular expressions in Lite XL.
+- [Child processes] — A guide on how to start and manage child processes.
 
 
 
@@ -106,13 +103,9 @@ These are advanced topics that are useful for power users or plugin developers:
 [selectionhighlight]:   https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
 [settings]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
 [widgets]:              https://github.com/lite-xl/lite-xl-widgets
-[Introduction]:         ../guides/introduction
-[User Interface]:       ../guides/user-interface
-[Editing]:              ../user-guide/editing
-[Keymap]:               ../user-guide/keymap
-[Plugins]:              ../user-guide/plugins
-[Themes]:               ../user-guide/themes
-[Plugins]:              ../user-guide/plugins
+[Introduction]:         ../../user-guide/introduction
+[Configuration]:        ../../user-guide/configuration
+[Plugins]:              ../../user-guide/plugins
 [Creating Themes]:      ../developer-guide/creating-themes
 [Creating Syntaxes]:    ../developer-guide/creating-syntaxes
 [Simple plugin]:        ../developer-guide/simple-plugin

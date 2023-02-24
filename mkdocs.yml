@@ -140,13 +140,15 @@ nav:
       - "macOS": setup/macos.md
       - "Building": setup/building.md
   - "User Guide":
+      - "Introduction": user-guide/introduction.md
+      - "Configuration": user-guide/configuration.md
+      - "Plugins": user-guide/plugins.md
       - "Keymap": user-guide/keymap.md
-      - "Creating Syntaxes": user-guide/creating-syntaxes.md
-      - "Simple Plugin": user-guide/simple-plugin.md
-      - "Using regular expressions": user-guide/using-regular-expressions.md
-      - "Interacting with the OS": user-guide/interacting-with-the-os.md
-      - "Child processes": user-guide/child-processes.md
-  - "References":
-      - "Contributors": references/contributors.md
-      - "Keymap": references/keymap.md
-      - "macOS Keymap": references/macos-keymap.md
+      - "macOS Keymap": user-guide/macos-keymap.md
+  - "Developer Guide":
+      - "Creating Syntaxes": developer-guide/creating-syntaxes.md
+      - "Simple Plugin": developer-guide/simple-plugin.md
+      - "Using regular expressions": developer-guide/using-regular-expressions.md
+      - "Interacting with the OS": developer-guide/interacting-with-the-os.md
+      - "Child processes": developer-guide/child-processes.md
+  - "About": []

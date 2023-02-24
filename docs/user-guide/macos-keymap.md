@@ -1,6 +1,5 @@
-# Keymap
-
-This is the keymap on macOS.
+This is the default keyboard shortcuts on macOS.
+Your configuration may differ as plugins can modify them.
 
 {% import 'keyboard_renderer.j2' as keybinds with context %}
 

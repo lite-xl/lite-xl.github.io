@@ -89,4 +89,4 @@ The first option can be enabled with the following steps.
 [4]: https://github.com/lite-xl/lite-xl/releases/download/v2.1.1/lite-xl-v2.1.1-addons-windows-i686.zip
 [5]: https://github.com/libsdl-org/SDL/issues/4776
 [6]: https://github.com/takase1121/lite-xl-immersive-title
-[7]: ../assets/settings/borderless.png
+[7]: ../assets/user-guide/settings/borderless.png
