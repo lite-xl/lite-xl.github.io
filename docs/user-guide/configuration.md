@@ -422,7 +422,6 @@ It will not load nor unload the plugin from the current instance.
 
 === "init.lua"
 
-
     In this example, we'll enable the `drawwhitespace` plugin
     and set it to only draw whitespaces in the selected text.
 
