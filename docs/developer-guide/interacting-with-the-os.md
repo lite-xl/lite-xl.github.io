@@ -20,7 +20,7 @@ function system.set_clipboard(text: string) end
 function system.get_clipboard(text: string): string end
 ```
 
-#### Examples
+**Examples:**
 
 ```lua
 system.set_clipboard("wow magic")
@@ -59,7 +59,7 @@ All the functions listed above except `system.chdir()` will return `nil`
 followed by an error message when an error occurred.
 `system.chdir()` will throw an error if an error occurred.
 
-#### Examples
+**Examples:**
 
 ```lua
 -- DO NOT RUN THIS CODE!
@@ -123,7 +123,7 @@ It is a high-precision alternative to `os.time()`.
 function system.get_time(): number end
 ```
 
-#### Examples
+**Examples:**
 
 ```lua
 -- prints:

@@ -54,7 +54,7 @@ pattern modifiers.
 The function returns a compiled `Regex` object.
 If an error occurred, `nil` is returned along with an error message.
 
-#### Example
+**Example:**
 
 ```lua
 local s = "Hello world!\nWow!"
@@ -151,7 +151,7 @@ Otherwise, if an error occurred, both functions throw an error.
     Never use `regex:cmatch()` as its return values are off by 1.
     Instead, use `regex:find_offsets()` which have the correct behavior.
 
-#### Example
+**Example:**
 
 ```lua
 local s = "Apples, Oranges, Bananas"
@@ -191,7 +191,7 @@ Both functions return `nil` if no match was found.
     strings.
     Use `regex.find_offsets()` for that.
 
-#### Example
+**Example:**
 
 ```lua
 local s = "Apples, Oranges, Bananas"
@@ -209,7 +209,7 @@ or the whole match if no captures are specified in the regex.
 
 It accepts the same arguments as `regex.find()` and `regex.match()`.
 
-#### Example
+**Example:**
 
 ```lua
 local s = "John doe, Jeanne Doe, Jane Doe"
@@ -274,7 +274,7 @@ Other than that, `\U` and `\L` can be used to toggle uppercase or lowercase,
 while `\u` and `\l` causes the **next character** to be in uppercase
 or lowercase.
 
-#### Example
+**Example:**
 
 ```lua
 local s = "John Doe, Jane Doe, Peter Doe"

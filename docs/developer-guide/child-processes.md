@@ -138,7 +138,7 @@ The function returns a `Process` object that the user should hold onto until
 the child process can be safely terminated.
 If the `Process` object is garbage-collected, the child process will be killed.
 
-##### Examples
+**Examples:**
 
 ```lua
 -- run something in the background
@@ -174,7 +174,7 @@ bytes to read from the stream.
 These methods return a string with size up to `len` if data can be read.
 Otherwise, they will return `nil`, an error message and the error code.
 
-##### Examples
+**Examples:**
 
 ```lua
 -- proc is a process with stdout set to process.REDIRECT_PIPE
@@ -222,7 +222,7 @@ If `time` is `process.WAIT_DEADLINE`, the method uses the `timeout` value
 specified when calling `process.start()`.
 If this value is not specified, it will wait until the child process ends.
 
-##### Examples
+**Examples:**
 
 ```lua
 -- wait for a process to end
@@ -266,7 +266,7 @@ to simulate CTRL+BREAK.
     request cancellation of all pending IO operations.
     This is impossible on POSIX platforms.
 
-##### Examples
+**Examples:**
 
 ```lua
 -- try to terminate child process
