@@ -383,8 +383,8 @@ config.animation_rate = 0.5
 ### Other options
 
 ??? Abstract "A quick reference of other options."
-    | Options | Description
-    | ------- | -----------
+    | Options                   | Description
+    | -------                   | -----------
     | `max_log_items`           | Maximum number of log items to store before discarding them.
     | `message_timeout`         | Time (seconds) to show each message on the StatusView.
     | `mouse_wheel_scroll`      | Number of pixels per "scroll".
