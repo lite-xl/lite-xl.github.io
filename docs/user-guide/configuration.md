@@ -275,7 +275,7 @@ the appropriate theme file.
 ## Other options
 
 There are a lot of configuration options that can be modified.
-A list of these options can be found in [`data/core/config.lua`],
+A list of these options can be found in [`data/core/config.lua`][11],
 but we'll list a few common ones here.
 
 ### Indentation
@@ -450,11 +450,11 @@ It will not load nor unload the plugin from the current instance.
     To enable the `drawwhitespace` plugin, expand the "Installed" section
     and enable the corresponding plugin.
 
-    ![The Installed section][11]{ loading=lazy }
+    ![The Installed section][12]{ loading=lazy }
 
     To modify the configuration for a plugin, expand the relevant section.
     The changes will apply automatically.
-    ![Settings for drawwhitespace][12]{ loading=lazy }
+    ![Settings for drawwhitespace][13]{ loading=lazy }
 
 
 [1]:  ../assets/user-guide/settings/fonts/font-option.png
@@ -467,5 +467,6 @@ It will not load nor unload the plugin from the current instance.
 [8]:  ../assets/user-guide/settings/keybinds/keybinds-after.png
 [9]:  ../assets/user-guide/settings/keybinds/keybind-selector-after.png
 [10]: ../assets/user-guide/settings/colors.png
-[11]: ../assets/user-guide/settings/plugins/installed.png
-[12]: ../assets/user-guide/settings/plugins/options.png
+[11]: https://github.com/lite-xl/lite-xl/blob/master/data/core/config.lua
+[12]: ../assets/user-guide/settings/plugins/installed.png
+[13]: ../assets/user-guide/settings/plugins/options.png
