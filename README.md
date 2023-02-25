@@ -9,25 +9,23 @@ We also use [mkdocs-macros-plugin] for rendering certain pages.
 
 ## Getting started
 
-To get started, you will need a recent version of Python 3 and pip.
+If you want to make small changes without changing how the website
+is structured, you can simply use GitHub's online editor and open a PR.
 
-Install the required dependencies with `pip`,
-preferably in a virtual environment.
-
-```sh
-pip install -r requirements.txt
-```
-
-Afterwards, run `mkdocs serve` to start a development web server.
+If you want to make huge changes or build the website yourself, install
+[poetry] and run:
 
 ```sh
-mkdocs serve
+$ poetry install
+$ poetry run mkdocs serve
 ```
+
+This will install all dependencies and run `mkdocs serve`.
 
 The server supports auto code reloading, so the website will automatically
 refresh if changes were made.
 
-To build the website, run `mkdocs build`.
+To build the website, run `poetry run mkdocs build`.
 The website will be built in the `site/` directory.
 
 ## Configuration
@@ -80,3 +78,4 @@ This project follows typical [MkDocs] file structure.
 [MkDocs]:               https://www.mkdocs.org/
 [mkdocs-material]:      https://squidfunk.github.io/mkdocs-material/
 [mkdocs-macros-plugin]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/
+[poetry]:               https://python-poetry.org
