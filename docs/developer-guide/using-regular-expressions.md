@@ -13,7 +13,7 @@ for hello, world in regex.gmatch("(hello)\\s+(world)", s) do
 end
 ```
 
-## Another example: replacing words with a regular expression
+## Example: replacing words with a regular expression
 
 ```lua
 local s = "hello world John!"

@@ -64,9 +64,9 @@ To prevent confusion, these terms are used to describe various things:
 | Parent process  | The parent process that owns the child. This usually refers to Lite XL.
 | Process         | Any process (including child and parent processes).
 | Stream          | An entity used to transfer data between child and parent processes. Think of it as a queue that can only be enqueued and dequeued.
-| Standard input  | The standard input of most processes. Colloquially known as stdin.
-| Standard error  | The standard error of most processes. Colloquially known as stderr.
-| Standard output | The standard output of most processes. Colloquially known as stdout.
+| Standard input  | The standard input of most processes, also known as stdin.
+| Standard error  | The standard error of most processes, also known as stderr.
+| Standard output | The standard output of most processes, also known as stdout.
 
 ## Using the Process API
 
