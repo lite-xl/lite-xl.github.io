@@ -6,3 +6,61 @@
   --md-text-font: "Roboto";
   --md-code-font: "Roboto Mono";
 }
+
+/* extend themes to have our highlighting theme (default) */
+[data-md-color-scheme="slate"] {
+  --md-code-fg-color:             hsla(40,   9%, 89%, 1); /* normal */
+  --md-code-bg-color:             hsla(240,  4%, 19%, 1); /* background */
+
+  --md-code-hl-color:             hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
+  --md-code-hl-number-color:      hsla(31, 100%, 65%, 1); /* number */
+  --md-code-hl-special-color:     hsla(353, 89%, 71%, 1); /* keyword2 */
+  --md-code-hl-function-color:    hsla(197, 91%, 78%, 1); /* function */
+  --md-code-hl-constant-color:    hsla(31, 100%, 65%, 1); /* literal */
+  --md-code-hl-keyword-color:     hsla(318, 64%, 72%, 1); /* keyword */
+  --md-code-hl-string-color:      hsla(42,  91%, 66%, 1); /* string */
+  --md-code-hl-name-color:        var(--md-code-fg-color);
+  --md-code-hl-operator-color:    hsla(197, 91%, 78%, 1); /* operator */
+  --md-code-hl-punctuation-color: var(--md-code-fg-color);
+  --md-code-hl-comment-color:     hsla(210,  4%, 42%, 1); /* comment */
+  --md-code-hl-generic-color:     var(--md-default-fg-color--light);
+  --md-code-hl-variable-color:    var(--md-code-fg-color);
+}
+
+/* extend slate to have our syntax highlighting theme (summer) */
+[data-md-color-scheme="default"] {
+  --md-code-fg-color:             hsla(0,    0%,  9%, 1); /* normal */
+  --md-code-bg-color:             hsla(0,    0%, 98%, 1); /* background */
+
+  --md-code-hl-color:             hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
+  --md-code-hl-number-color:      hsla(204, 82%, 45%, 1); /* number */
+  --md-code-hl-special-color:     hsla(331, 97%, 54%, 1); /* keyword2 */
+  --md-code-hl-function-color:    hsla(331, 97%, 54%, 1); /* function */
+  --md-code-hl-constant-color:    hsla(204, 82%, 45%, 1); /* literal */
+  --md-code-hl-keyword-color:     hsla(19,  96%, 55%, 1); /* keyword */
+  --md-code-hl-string-color:      hsla(204, 82%, 45%, 1); /* string */
+  --md-code-hl-name-color:        var(--md-code-fg-color);
+  --md-code-hl-operator-color:    hsla(19,  96%, 55%, 1); /* operator */
+  --md-code-hl-punctuation-color: var(--md-code-fg-color);
+  --md-code-hl-comment-color:     hsla(119, 68%, 38%, 1); /* comment */
+  --md-code-hl-generic-color:     var(--md-default-fg-color--light);
+  --md-code-hl-variable-color:    var(--md-code-fg-color);
+}
+
+/* override some color choices for the highlight */
+.highlight .nc {
+  /** Name.Class */
+  color: var(--md-code-fg-color);
+}
+.highlight .ow {
+  /** Operator.Word */
+  color: var(--md-code-hl-keyword-color);
+}
+.highlight .kt {
+  /** Keyword.Type */
+  color: var(--md-code-hl-special-color);
+}
+.highlight .kc {
+  /** Keyword.Constant */
+  color: var(--md-code-hl-constant-color);
+}
