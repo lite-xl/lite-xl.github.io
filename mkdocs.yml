@@ -151,4 +151,6 @@ nav:
       - "Using regular expressions": developer-guide/using-regular-expressions.md
       - "Interacting with the OS": developer-guide/interacting-with-the-os.md
       - "Child processes": developer-guide/child-processes.md
-  - "About": []
+  - "About":
+      - "Contributors": about/contributors.md
+      - "FAQ": about/faq.md
