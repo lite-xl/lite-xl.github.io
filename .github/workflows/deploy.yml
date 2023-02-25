@@ -17,19 +17,21 @@ jobs:
       # environment has these deps.
       # - name: Install dependencies
       #   run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
-          cache: 'pip'
+          cache: poetry
       - name: Cache build data
         uses: actions/cache@v3
         with:
-          key: ${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+          key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/mkdocs.yml') }}
           path: .cache
-      - name: Install mkdocs-material
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: poetry install
       - name: Set up environment variables
         run: echo "CARDS=true" >> $GITHUB_ENV
       - name: Build and deploy
-        run: mkdocs gh-deploy --force
+        run: poetry run mkdocs gh-deploy --force
