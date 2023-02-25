@@ -1,3 +1,7 @@
+---
+description: Install Lite XL and configure it for your use.
+---
+
 # Getting Started
 
 Setting up Lite XL is easy and takes about 2 MB of internet bandwidth.

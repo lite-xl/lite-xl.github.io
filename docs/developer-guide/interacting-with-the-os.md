@@ -1,3 +1,10 @@
+---
+description: Learn how to interact with the OS, such
+              as reading and writing to the clipboard,
+              setting window properties and getting
+              high-resolution time.
+---
+
 # System API
 
 This is where Lite XL's Lua code interact with its underlying C engine.

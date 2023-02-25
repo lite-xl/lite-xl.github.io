@@ -1,3 +1,8 @@
+---
+description: Learn how to configure Lite XL — configure
+              fonts, themes and other options.
+---
+
 ## Location
 
 Lite XL searches a list of paths to store user configuration.

@@ -1,3 +1,8 @@
+---
+description: Learn how to use the Process API
+              to start and manage child processes.
+---
+
 # Process API
 
 Lite XL provides a process API to launch external applications.

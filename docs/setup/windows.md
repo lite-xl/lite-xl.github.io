@@ -1,3 +1,7 @@
+---
+description: Windows-specific instructions for setting up Lite XL.
+---
+
 # Windows
 
 ## Install

@@ -1,3 +1,7 @@
+---
+description: Learn about basic operations in Lite XL.
+---
+
 ## Opening files
 
 Lite XL comes with a file browser by default.

@@ -1,3 +1,7 @@
+---
+description: Build Lite XL from source code.
+---
+
 # Build
 
 Once you have downloaded the source code, you can build Lite XL using Meson.

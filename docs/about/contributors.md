@@ -1,3 +1,7 @@
+---
+description: A list of contributors that contributed to Lite XL.
+---
+
 # Contributors
 
 This is a non-exhaustive list of people that contributed to Lite XL.

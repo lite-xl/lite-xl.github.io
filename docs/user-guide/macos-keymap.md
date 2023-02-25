@@ -1,3 +1,7 @@
+---
+description: A list of default keyboard shortcuts on macOS.
+---
+
 This is the default keyboard shortcuts on macOS.
 Your configuration may differ as plugins can modify them.
 

@@ -1,3 +1,10 @@
+---
+description: A syntax is a plugin for Lite XL that provides
+              highlighting for a certain type of file.
+              Learn how to create syntaxes for highlighting
+              various types of files.
+---
+
 # Syntax Highlighting
 
 Syntax highlighting plugins for Lite XL are Lua files.

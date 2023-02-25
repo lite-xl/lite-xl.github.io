@@ -1,3 +1,7 @@
+---
+description: A list of frequently-asked questions.
+---
+
 # FAQ
 
 #### Is there an easier way to configure Lite XL without learning Lua?

@@ -1,3 +1,7 @@
+---
+description: Learn to manage plugins manually or via a plugin manager.
+---
+
 Lite XL implements many features as plugins.
 By default, Lite XL bundles a few plugins to provide some features
 editors would usually have.

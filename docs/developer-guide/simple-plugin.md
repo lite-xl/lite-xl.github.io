@@ -1,3 +1,8 @@
+---
+description: Learn to write a simple plugin that draws text
+              in the top right corner of the editor window.
+---
+
 # Simple Plugin
 
 ### What is Simple?

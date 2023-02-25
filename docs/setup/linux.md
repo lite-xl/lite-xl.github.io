@@ -1,3 +1,7 @@
+---
+description: Linux-specific instructions for setting up Lite XL.
+---
+
 # Linux
 
 ## Install
