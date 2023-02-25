@@ -97,8 +97,8 @@ This may help with legacy software on Windows such as `cmd.exe`.
 However, this should not be done on POSIX platforms as the entire string will be
 treated as the program name and cause issues.
 
-> **Note**
-> Before v2.1.0, this table is not escaped on Windows.
+!!! note
+    Before v2.1.0, this table is not escaped on Windows.
 
 The second argument specifies options to control process creation.
 
@@ -129,10 +129,10 @@ There are four possible values:
 `env` is a table containing the environment variables for the child process as
 key-value pairs.
 
-> **Note**
-> On POSIX platforms, this table will **extend** the parent's environment.
-> On Windows, this table will **replace** the parent's environment.
-> In the future, this inconsistency may be fixed.
+!!! note
+    On POSIX platforms, this table will **extend** the parent's environment.
+    On Windows, this table will **replace** the parent's environment.
+    In the future, this inconsistency may be fixed.
 
 The function returns a `Process` object that the user should hold onto until
 the child process can be safely terminated.
@@ -202,12 +202,12 @@ function process:wait(timeout: number or nil): number or (nil, string, number) e
 `process:running()` returns a boolean immediately indicating whether the process
 has ended.
 
-> **Note**
-> Do not use `process:running()` to determine when to stop reading the output
-> of a child process.
-> A child process can end and leave residual data in the stream.
-> Instead, you should call `process.read_stdout()` or `process.read_stderr()`
-> until an appropriate error (`process.ERROR_PIPE`) occurs.
+!!! note
+    Do not use `process:running()` to determine when to stop reading the output
+    of a child process.
+    A child process can end and leave residual data in the stream.
+    Instead, you should call `process.read_stdout()` or `process.read_stderr()`
+    until an appropriate error (`process.ERROR_PIPE`) occurs.
 
 `process:wait(time)` will wait for specified number of milliseconds before
 returning.
@@ -258,13 +258,13 @@ On Windows, `process:terminate()` uses `GenerateConsoleCtrlEvent(CTRL_BREAK_EVEN
 to simulate CTRL+BREAK.
 `process:kill()` uses `TerminateProcess()` to terminate the process immediately.
 
-> **Note**
-> `process:kill()` can only **request** a process to be killed.
-> On POSIX, signals are delivered asynchronously; a child process can be too
-> busy to process them (e.g. stuck at a blocking `read()` or `write()` call).
-> This is the same on Windows except `TerminateProcess()` will
-> request cancellation of all pending IO operations.
-> This is impossible on POSIX platforms.
+!!! note
+    `process:kill()` can only **request** a process to be killed.
+    On POSIX, signals are delivered asynchronously; a child process can be too
+    busy to process them (e.g. stuck at a blocking `read()` or `write()` call).
+    This is the same on Windows except `TerminateProcess()` will
+    request cancellation of all pending IO operations.
+    This is impossible on POSIX platforms.
 
 ##### Examples
 
@@ -300,9 +300,9 @@ function process.strerror(errcode: number): string or nil
 function process:close_stream(stream: number): number or (nil, string, number)
 ```
 
-> **Note**
-> `process:pid()` will not return the correct process ID if
-> the child process ended early.
+!!! note
+    `process:pid()` will not return the correct process ID if
+    the child process ended early.
 
 
 ### Error handling

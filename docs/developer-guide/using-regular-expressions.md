@@ -147,9 +147,9 @@ of start and end indices for each capture.
 If no matches were found, both functions return `nil`.
 Otherwise, if an error occurred, both functions throw an error.
 
-> **Warning**
-> Never use `regex:cmatch()` as it returns end indices that are off by 1.
-> Instead, use `regex:.find_offsets()` which have the correct behavior.
+!!! warning
+    Never use `regex:cmatch()` as its return values are off by 1.
+    Instead, use `regex:find_offsets()` which have the correct behavior.
 
 #### Example
 
@@ -186,10 +186,10 @@ If a capture is empty, its offset will be returned.
 
 Both functions return `nil` if no match was found.
 
-> **Note**
-> There are no functions that return the start and end indices of captured
-> strings.
-> Use `regex.find_offsets()` for that.
+!!! note
+    There are no functions that return the start and end indices of captured
+    strings.
+    Use `regex.find_offsets()` for that.
 
 #### Example
 

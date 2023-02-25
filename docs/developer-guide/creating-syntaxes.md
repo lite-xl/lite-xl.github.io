@@ -316,8 +316,9 @@ to the syntax highlighting definition.
 
 ## Example advanced syntax: Markdown
 
-> **Note: This example has features from 2.1.
-> It is not compatible with older versions of Lite XL.**
+!!! note
+    This example has features from 2.1.
+    It is not compatible with older versions of Lite XL.
 
 Not all languages are as simple as SSH config files.
 Markup languages like HTML and Markdown are especially hard to parse correctly.
