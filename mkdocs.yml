@@ -101,6 +101,9 @@ plugins:
   - git-revision-date-localized
   - social:
       cards: !ENV [CARDS, false]
+      cards_color:
+        fill: "#252529"
+        text: "#e1e1e6"
       cards_font: Roboto
   - minify:
       minify_html: true
