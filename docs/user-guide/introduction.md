@@ -20,7 +20,7 @@ exposed by the command palette.
 The command palette is bound to ++ctrl+shift+p++ by default and is
 used to enter commands and execute them.
 
-The command palette supports fuzzy matching so you don't need to enter
+The command palette supports fuzzy matching, so you don't need to enter
 the full name of the command. For instance, to create a new file, you can
 type `new doc` and the correct command `Core: New Doc` will show up as
 the first choice. You can press ++up++ or ++down++ to select other commands.
