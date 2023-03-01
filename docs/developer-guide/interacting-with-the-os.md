@@ -5,8 +5,6 @@ description: Learn how to interact with the OS, such
               high-resolution time.
 ---
 
-# System API
-
 This is where Lite XL's Lua code interact with its underlying C engine.
 
 ## Using the System API

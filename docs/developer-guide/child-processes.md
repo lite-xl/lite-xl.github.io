@@ -3,8 +3,6 @@ description: Learn how to use the Process API
               to start and manage child processes.
 ---
 
-# Process API
-
 Lite XL provides a process API to launch external applications.
 This API is meant to replace Lua's `io.popen`,
 `system.exec()` and lite's [pipe-to-a-file][1] approach.

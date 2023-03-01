@@ -3,8 +3,6 @@ description: Learn to use regular expressions in your configurations
               or plugins.
 ---
 
-# Regex API
-
 This API provides PCRE (Perl-Compatible Regular Expressions)
 and is written in C and Lua.
 The API bears some similarity to Lua's pattern library with some differences.
