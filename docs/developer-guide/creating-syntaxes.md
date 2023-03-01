@@ -11,24 +11,6 @@ match different parts of a given language,
 assigning token types to each match.
 These different token types are then given different colors by your chosen color scheme.
 
-Like other plugins, syntax definitions are sourced from the following folders,
-in order:
-
-- `/usr/share/lite-xl/plugins/`
-- `$HOME/.config/lite-xl/plugins/`
-
-NOTE: The exact location of these folders depends on the OS and installation method.
-For example, on Windows, the variable `$USERPROFILE` will be used instead of `$HOME`.
-
-The user module folder for Lite XL can generally be found in these places:
-
-- Windows: `C:\Users\(username)\.config\lite-xl`
-- macOS: `/Users/(usernmame)/.config/lite-xl`
-- Linux: `/home/(username)/.config/lite-xl`
-
-So, to create a new syntax definition on Linux,
-you can just create a `.lua` file in your `$HOME/.config/lite-xl/plugins/` folder.
-
 ## What syntax token types are supported?
 
 The supported syntax token types, defined by `lite-xl/core/style.lua`, are:
