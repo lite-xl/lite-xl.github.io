@@ -149,8 +149,14 @@ nav:
       - "Keymap": user-guide/keymap.md
       - "macOS Keymap": user-guide/macos-keymap.md
   - "Developer Guide":
-      - "Creating Syntaxes": developer-guide/creating-syntaxes.md
+      - "Introduction": developer-guide/introduction.md
+      - "Syntaxes and Themes":
+        - "Creating Syntaxes": developer-guide/creating-syntaxes.md
+        - "Creating Themes": developer-guide/creating-themes.md
       - "Simple Plugin": developer-guide/simple-plugin.md
+      - "Commands": developer-guide/commands.md
+      - "Managing Keyboard Shortcuts": developer-guide/managing-keyboard-shortcuts.md
+      - "Classes and Objects": developer-guide/classes-and-objects.md
       - "Using regular expressions": developer-guide/using-regular-expressions.md
       - "Interacting with the OS": developer-guide/interacting-with-the-os.md
       - "Child processes": developer-guide/child-processes.md
