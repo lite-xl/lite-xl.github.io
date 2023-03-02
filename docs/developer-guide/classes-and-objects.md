@@ -7,7 +7,7 @@ in the introduction.
 In this article, we'll talk about how to use the implementation
 efficiently.
 
-??? note
+!!! note
     Some methods here will be written differently than in
     the source code.
     This is to clarify how the methods _should_ be called.
