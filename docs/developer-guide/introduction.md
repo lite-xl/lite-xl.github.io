@@ -71,12 +71,14 @@ To use the debugger, install it as a plugin and call
 `command.perform "debugger:break"` to stop the VM and
 start debugging interactively.
 
-### Differing stack traces when a critical error occur
+### Differing stack traces on a critical error
 
-When a critical error occur, the stack trace printed in the terminal
-may be incomplete.
-To get the complete stack trace, consult `error.txt`
-in the executable directory or `USERDIR`.
+On an older version of Lite XL, the stack trace printed on the terminal
+when a critical error occur may differ with the stack trace printed
+in `error.txt`.
+In this case, the stack trace in `error.txt` is more complete and
+should be referred.
+This is a bug and will be fixed in future versions of Lite XL.
 
 ### `print()` function does not work in Windows
 
