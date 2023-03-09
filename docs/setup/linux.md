@@ -155,7 +155,7 @@ By default, Lite XL (SDL under the hood) will use `libdecor` to draw client-side
 To work around this, set `config.borderless` to `true`.
 Lite XL will draw a client-side decoration.
 
-=== "init.lua"
+=== "User Module"
 
     ```lua
     local config = require "core.config"

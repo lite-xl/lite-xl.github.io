@@ -4,11 +4,12 @@ description: Install Lite XL and configure it for your use.
 
 # Getting Started
 
-Setting up Lite XL is easy and takes about 2 MB of internet bandwidth.
-Lite XL comes in `.zip` or `.tar.gz` packages depending on the platform.
+Setting up Lite XL is easy.
+Lite XL comes in `.zip` or `.tar.gz` packages and installers
+depending on the platform.
 
-Lite XL also ships packages with extra plugins, marked with `addons`.
-These packages provide better out-of-the-box experience.
+Lite XL packages marked with `addons` provide extra plugins
+that improve the out-of-the-box experience.
 
 ## Install
 
@@ -22,29 +23,25 @@ However, here are some platform-specific installation instructions.
 ## Portable application
 
 Lite XL stores user configuration in the OS-specific configuration directory.
-This directory is colloquially known as `USERDIR`.
+This directory is also known as `USERDIR`.
 
-The following sequence of paths are used as `USERDIR`.
+These paths are checked to determine `USERDIR`:
 
 1. `<directory_to_lite-xl_binary>/user`
 2. `$LITE_USERDIR`
 3. `$XDG_CONFIG_HOME/lite-xl`
 4. `$HOME/.config/lite-xl` or `$USERPROFILE/.config/lite-xl` on Windows
 
-As such, if the user wants to create a portable installation of Lite XL
-that does not depend on OS-specific configuration directories,
-they must create a `user` directory in the directory where `lite-xl` executable
-resides.
-This will cause Lite XL to write user configuration to the correct directory.
-
-Alternatively, users can also set the `LITE_USERDIR` environment variable to
-achieve the same thing.
+In order to create a portable installation of Lite XL,
+you can create a `user` directory where the executable resides.
+Lite XL will then store configuration data in that directory.
 
 ## Plugins
 
-Lite XL is made extensible via plugins.
-In fact, most of Lite XL's features comes from plugins; the core is kept simple and
-feature are added via plugins if possible.
+Lite XL can be extended via plugins written in Lua.
+In fact, most of Lite XL's features comes from plugins;
+the core is kept simple and features are added via plugins
+if possible.
 
 Lite XL comes with a set of plugins and users can install more on their own.
 Here are common plugins that most users install:

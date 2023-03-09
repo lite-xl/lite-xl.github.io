@@ -73,7 +73,7 @@ This function takes in a table of fonts loaded by
 Lite XL will attempt to render fonts based on the order
 the fonts are added to the table.
 
-=== "init.lua"
+=== "User Module"
 
     For this example, we'll load Noto Sans Mono, which is
     located in `/usr/share/fonts/noto/NotoSansMono-Regular.ttf`
@@ -150,7 +150,7 @@ For a list of default keyboard shortcuts, check out these pages:
 
 To add keyboard shortcuts, you can use `keymap.add()`.
 
-=== "init.lua"
+=== "User Module"
 
     For example, to bind ++ctrl+m++ to move the cursor backwards
     and then upwards, do:
@@ -214,7 +214,7 @@ To add keyboard shortcuts, you can use `keymap.add()`.
 To remove an existing keyboard shortcut, you can use
 `keymap.unbind()`.
 
-=== "init.lua"
+=== "User Module"
 
     In this example, we will unbind ++ctrl+m++.
 
@@ -260,7 +260,7 @@ variables of Lite XL.
 This can be changed with `core.reload_module()` and loading
 the appropriate theme file.
 
-=== "init.lua"
+=== "User Module"
 
     To load the theme `summer`, add `core.reload_module "colors.summer"`.
 
@@ -425,7 +425,7 @@ It will not load nor unload the plugin from the current instance.
 ??? note "Some plugins may have options to enable/disable themselves."
     This allows the plugins to be loaded and toggled without a restart.
 
-=== "init.lua"
+=== "User Module"
 
     In this example, we'll enable the `drawwhitespace` plugin
     and set it to only draw whitespaces in the selected text.

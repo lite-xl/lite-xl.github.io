@@ -53,26 +53,25 @@ A [zip archive][4] is also available.
 ??? warning "32-bit version of Lite XL is not actively tested for bugs."
     Due to a lack of testers, we've only been able to test whether the code
     can compile on a 32-bit system.
-    This does not mean that Lite XL may run correctly.
+    Lite XL may not run correctly on these systems.
 
 ## Custom title bar
 
 Windows users may notice that the title bar (window decoration) does not follow
 device theme.
-This is a known [upstream issue][5] related to SDL, so we are not planning to fix it.
+This is a known [upstream issue][5] related to SDL.
 
-In the meantime, there are two alternatives:
+In the meantime, there are a few workarounds:
 
-1. Enable custom title bar by setting `config.borderless` to `true` in `init.lua`.
+1. Enable the custom title bar by setting `config.borderless` to `true` in `init.lua`.
    The custom title bar will follow Lite XL's color scheme.
-2. Install [immersive-title][6].
+2. Install the [immersive-title][6] plugin.
    This approach will preserve Windows' title bar while having the correct
    appearance on theme change.
-   However, it is a workaround to the original issue.
 
 The first option can be enabled with the following steps.
 
-=== "init.lua"
+=== "User Module"
 
     ```lua
     local config = require "core.config"
