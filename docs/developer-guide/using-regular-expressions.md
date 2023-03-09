@@ -41,7 +41,7 @@ frequently.
 
 ```lua
 function regex.compile(pattern:  string,
-                        options: string or nil): Regex or (nil, string)
+                        options?: string): Regex, string
 end
 ```
 
@@ -92,32 +92,34 @@ and high-level matching functions
 ```lua
 function regex:cmatch(subject: string,
                       offset:  number,
-                      options: number): ...number or nil
+                      options: number): number...
 end
 
-function regex.find_offsets(pattern: string or Regex,
-                            subject: string,
-                            offset:  number or nil,
-                            options: number or nil): ...number or nil
+function regex.find_offsets(pattern:  string | Regex,
+                            subject:  string,
+                            offset?:  number,
+                            options?: number): number...
 end
 
-function regex.match(pattern:  string or Regex,
-                      subject: string,
-                      offset:  number or nil,
-                      options: number or nil): ...(number or string) or nil
+local type Captures = number | string
+
+function regex.match(pattern:   string | Regex,
+                      subject:  string,
+                      offset?:  number,
+                      options?: number): Captures...
 end
 
-function regex.find(pattern: string or Regex,
+function regex.find(pattern: string | Regex,
                     subject: string,
-                    offset:  number or nil,
-                    options: number or nil): ...(number or string) or nil
+                    offset?:  number,
+                    options?: number): Captures...
 end
 
 -- since v2.1.1
-function regex.gmatch(pattern: string or Regex,
+function regex.gmatch(pattern: string | Regex,
                       subject: string,
-                      offset:  number or nil,
-                      options: number or nil): function(): ...string
+                      offset?:  number,
+                      options?: number): function(): string
 end
 ```
 
@@ -241,10 +243,10 @@ end
 `regex.gsub()` can be used to perform simple string substitution.
 
 ```lua
-function regex.gsub(pattern:     string or Regex,
+function regex.gsub(pattern:     string | Regex,
                     subject:     string,
                     replacement: string,
-                    limit:       number or nil): (string, number)
+                    limit?:      number): string, number
 end
 ```
 

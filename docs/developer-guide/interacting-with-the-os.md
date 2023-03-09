@@ -21,7 +21,7 @@ while `system.get_clipboard()` retrieves the clipboard content.
 The functions do not support rich content such as images and files.
 
 ```lua
-function system.set_clipboard(text: string) end
+function system.set_clipboard(text: string): () end
 function system.get_clipboard(text: string): string end
 ```
 
@@ -40,17 +40,32 @@ These functions deal with files, directories and paths.
 
 ```lua
 -- Returns a list of files and directories in a directory.
-function system.list_dir(path: string): string[] or (nil, string) end
+function system.list_dir(path: string): {string}, string end
 -- Creates a new directory.
-function system.mkdir(path: string): (boolean, string or nil) end
+function system.mkdir(path: string): boolean, string end
 -- Removes a directory.
-function system.rmdir(path: string): (boolean, string or nil) end
+function system.rmdir(path: string): boolean string end
 -- Changes the current working directory (equivalent to the `cd` command)
-function system.chdir(path: string) end
+function system.chdir(path: string): () end
 -- Resolves the input path (removing all '.' and '..') into an absolute path.
-function system.absolute_path(path: string) end
+function system.absolute_path(path: string): () end
+
+-- Types of paths
+local enum FileType
+  "file"
+  "dir"
+end
+
+-- The information for a path
+local record FileInfo
+  modified: number
+  size: number
+  type: FileType
+  symlink: boolean
+end
+
 -- Returns information for a file or a directory.
-function system.get_file_info(path: string): table or (nil, string) end
+function system.get_file_info(path: string): FileInfo, string end
 ```
 
 `system.get_file_info()` returns a table with the following properties:
@@ -144,31 +159,37 @@ These functions deal with Lite XL window.
 -- Sets the window opacity from 0 to 1.
 function system.set_window_opacity(opacity: number): boolean end
 -- Sets the window title.
-function system.set_window_title(title: string) end
+function system.set_window_title(title: string): () end
+
+local enum WindowMode
+  "normal"
+  "maximized"
+  "minimized"
+  "fullscreen"
+end
+
 -- Sets the window mode.
-function system.set_window_mode(mode: "normal"
-                                      or "maximized"
-                                      or "minimized"
-                                      or "fullscreen") end
+function system.set_window_mode(mode: WindowMode): () end
+
 -- Enables/disables window borders (decoration).
-function system.set_window_bordered(enable: boolean) end
+function system.set_window_bordered(enable: boolean): () end
 -- Sets the window hit test region.
-function system.set_window_hit_test(height:        number or nil,
-                                    control_width: number or nil,
-                                    resize_border: number or nil)
+function system.set_window_hit_test(height?: number,
+                                    control_width?: number,
+                                    resize_border?: number): ()
 end
 -- Gets the window dimension and position.
-function system.get_window_size(): (number, number, number, number) end
+function system.get_window_size(): {number, number, number, number} end
 -- Sets the window dimension and position.
 function system.set_window_size(width:  number,
                                 height: number,
                                 x:      number,
-                                y:      number)
+                                y:      number): ()
 end
 -- Checks whether windows has input focus.
 function system.window_has_focus(): boolean end
 -- Shows a message box with an error message.
-function system.show_fatal_error(title: string, msg: string) end
+function system.show_fatal_error(title: string, msg: string): () end
 ```
 
 The `height` parameter in `system.set_window_hit_test()` refers to the height
@@ -195,7 +216,7 @@ If you want more features, consider using the [Process API][1].
 `system.fuzzy_match()` generates a score for sorting text based on relevance.
 
 ```lua
-function system.exec(command: string) end
+function system.exec(command: string): () end
 function system.fuzzy_match(haystack: string,
                             needle:   string,
                             file:     boolean): number

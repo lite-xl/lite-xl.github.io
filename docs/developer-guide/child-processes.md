@@ -76,17 +76,20 @@ To prevent confusion, these terms are used to describe various things:
 To create a child process, use `process.start()`.
 
 ```lua
-function process.start(
-  program_args: string[] or string,
-  options: {
-    timeout: number,
-    cwd: string,
-    stdin: process.redirecttype,
-    stdout: process.redirecttype,
-    stderr: process.redirecttype,
-    env: table(string, string)
-  }
-): Process
+local type RedirectType = number
+
+local record ProcessOptions
+  timeout: number,
+  cwd: string,
+  stdin: RedirectType,
+  stdout: RedirectType,
+  stderr: RedirectType,
+  env: {string: string}
+end
+
+function process.start(program_args: {string} | string,
+                        options: ProcessOptions): Process
+end
 ```
 
 The first argument of the function is a table containing the program name
@@ -167,8 +170,8 @@ To read from the child process' standard output, use `process:read_stdout(len)`.
 To read from the child process' standard error, use `process:read_stderr(len)`.
 
 ```lua
-function process:read_stdout(len: number or nil): string or (nil, string, number) end
-function process:read_stdout(len: number or nil): string or (nil, string, number) end
+function process:read_stdout(len?: number): string, string, number end
+function process:read_stderr(len?: number): string, string, number end
 ```
 
 The `len` parameter is optional and is used to specify the maximum number of
@@ -199,7 +202,7 @@ To wait for a child process to end, use `process:wait(time)`.
 
 ```lua
 function process:running(): boolean end
-function process:wait(timeout: number or nil): number or (nil, string, number) end
+function process:wait(timeout: number): number, string, number end
 ```
 
 `process:running()` returns a boolean immediately indicating whether the process
@@ -250,8 +253,8 @@ Use `process:terminate()` to terminate a child process gracefully.
 If it fails, use `process:kill()` to forcefully terminate it.
 
 ```lua
-function process:terminate(): boolean or (nil, string, number) end
-function process:kill(): boolean or (nil, string, number) end
+function process:terminate(): boolean, string, number end
+function process:kill(): boolean, string, number end
 ```
 
 On POSIX platforms, `process:terminate()` sends `SIGTERM` to the child process
@@ -297,10 +300,10 @@ If an error message is unavailable, `nil` will be returned.
 `process:close_stream()` can be used to close the child process' streams.
 
 ```lua
-function process:pid(): number
-function process:returncode(): number or nil
-function process.strerror(errcode: number): string or nil
-function process:close_stream(stream: number): number or (nil, string, number)
+function process:pid(): number end
+function process:returncode(): number end
+function process.strerror(errcode: number): string end
+function process:close_stream(stream: number): number, string, number end
 ```
 
 !!! note

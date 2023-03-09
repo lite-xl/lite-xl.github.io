@@ -51,13 +51,10 @@ end
 To add a command, use `command.add()`.
 
 ```lua
-function predicate_function(...: any): boolean end
+local type function Predicate(any...): boolean
 
-function command.add(predicate: predicate_function
-                                  or string
-                                  or Object
-                                  or nil,
-                      commands: table(string, predicate_function)): none end
+function command.add(predicate: Predicate | string | Object,
+                      commands: {string, Predicate}): () end
 ```
 
 The first argument to `command.add()` is the predicate.

@@ -47,9 +47,9 @@ To add keyboard shortcuts programmatically, use `keymap.add()`.
 
 ```lua
 -- a composite type for commands
-local commands = string or string[]
+local type Commands = string | {string}
 
-function keymap.add(map: table(string, commands), overwrite: boolean): none end
+function keymap.add(map: {string: Commands}, overwrite: boolean): () end
 ```
 
 `keymap.add()` takes in a table of keyboard shortcuts and the commands
@@ -88,7 +88,7 @@ keymap.add({
 To remove a keyboard shortcut, you can use `keymap.unbind()`.
 
 ```lua
-function keymap.unbind(shortcut: string, command?: string): none end
+function keymap.unbind(shortcut: string, command?: string): () end
 ```
 
 The function accepts a keyboard shortcut and optionally a command to unbind.
@@ -102,9 +102,9 @@ To get all the keyboard shortcuts associated with a command, use
 `keymap.get_binding()` or `keymap.get_bindings()`.
 
 ```lua
-function keymap.get_binding(cmd: string): ...string end
+function keymap.get_binding(cmd: string): string... end
 
-function keymap.get_bindings(cmd: string): string[] end
+function keymap.get_bindings(cmd: string): {string} end
 ```
 
 Both functions accept a command and returns the keyboard
@@ -131,7 +131,7 @@ function keymap.on_mouse_pressed(button: string,
                                   y: number,
                                   clicks: number): boolean end
 
-function keymap.on_key_released(key: string): none end
+function keymap.on_key_released(key: string): () end
 ```
 
 `keymap.on_key_pressed()` accepts the key that is being pressed.
