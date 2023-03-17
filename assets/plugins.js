@@ -20,7 +20,7 @@
 /**
  * The list of plugins.
  * @typedef {Object} PluginsList
- * @property {PluginInfo[]} plugins
+ * @property {PluginInfo[]} addons
  */
 
 class Plugins {
@@ -194,7 +194,7 @@ class Plugins {
   renderRandom() {
     var that = this;
     this.renderSection(this.text.fortune, function(){
-      return that.getRandom(that.plugins.plugins, null, /^language_/);
+      return that.getRandom(that.plugins.addons, null, /^language_/);
     });
   }
 
@@ -202,10 +202,10 @@ class Plugins {
     var that = this;
     this.renderSection(this.text.languages, function(){
       var languages = [];
-      for (var index in that.plugins.plugins) {
-        var plugin = that.plugins.plugins[index];
+      for (var index in that.plugins.addons) {
+        var plugin = that.plugins.addons[index];
         if (plugin.id.match(/^language_/)) {
-          plugin = Object.assign({}, that.plugins.plugins[index]);
+          plugin = Object.assign({}, that.plugins.addons[index]);
           plugin.name = plugin.id.split(/[_\-]/).splice(1);
           languages.push(plugin);
         }
@@ -554,8 +554,8 @@ class Plugins {
       /** @type {PluginInfo[]} */
       var found_plugins = [];
 
-      for (var index in this.plugins.plugins) {
-        var plugin = this.plugins.plugins[index];
+      for (var index in this.plugins.addons) {
+        var plugin = this.plugins.addons[index];
         plugin.search_score = 0;
         var found = false;
         var matches = 0;
@@ -647,13 +647,13 @@ class Plugins {
    * @return {(PluginInfo|null)}
    */
   getItem(id_name) {
-    for (var index in this.plugins.plugins) {
+    for (var index in this.plugins.addons) {
       if (
-        this.plugins.plugins[index].id == id_name
+        this.plugins.addons[index].id == id_name
         ||
-        this.plugins.plugins[index].name == id_name
+        this.plugins.addons[index].name == id_name
       ) {
-        return this.plugins.plugins[index];
+        return this.plugins.addons[index];
       }
     }
 
