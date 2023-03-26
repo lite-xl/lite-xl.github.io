@@ -17,7 +17,7 @@
 	</style>
 
 	<section class="md-grid md-typeset hero">
-		<div class="hero-content hero-text">
+		<div class="text">
 			<div class="heading">
 				<h1>Lightweight and Powerful Text Editor</h1>
 				<p>Fast and extensible. No Electron required.</p>
@@ -56,130 +56,88 @@
 				<h6>Other platforms and formats</h6>
 			</a>
 		</div>
-		<div class="hero-content hero-img">
+		<div class="img">
 			<img
-				id="screenshot-main"
-				src="assets/screenshots/theme-default.png"
-				alt="Screenshot of Lite XL"
-				draggable=false
-			/>
+					id="screenshot-main"
+					src="assets/screenshots/theme-default.png"
+					alt="Screenshot of Lite XL"
+					draggable=false
+				/>
 		</div>
 	</section>
 
-	<section class="md-grid md-typeset features">
-		<h1>Modern text-editing experience without the bloat.</h1>
-		<div class="features-card">
-			{% include ".icons/material/feather.svg" %}
-			<div>
-				<h5>Lightweight</h5>
-				<p>
-					30 MB of RAM, 5 MB of disk space.
-					Lite XL runs on many devices without
-					performance issues.
-				</p>
+	<section class="md-grid md-typeset">
+		<h1 style="text-align: center;">Modern text-editing experience without the bloat.</h1>
+		<div class="features">
+			<div class="card">
+				{% include ".icons/material/feather.svg" %}
+				<div>
+					<h2>Lightweight</h2>
+					<p>
+						30 MB of RAM, 5 MB of disk space.
+						Lite XL runs on many devices without
+						performance issues.
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="features-card">
-			{% include ".icons/material/code-tags.svg" %}
-			<div>
-				<h5>Hyperextensible</h5>
-				<p>
-					Lite XL is based on Lite, an editor that is already very extensible.
-					Lite XL expands on its design, making it even easier to extend.
-				</p>
+			<div class="card">
+				{% include ".icons/material/lightning-bolt.svg" %}
+				<div>
+					<h2>Minimal but powerful</h2>
+					<p>
+						Syntax highlighting,
+						mulitple cursors, command palette and many more.
+						LSP and other features are available as plugins.
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="features-card">
-			{% include ".icons/material/power-plug.svg" %}
-			<div>
-				<h5>Many plugins</h5>
-				<p>
-					Lite XL has a diverse plugin ecosystem that supercharges
-					it into an IDE-like editing experience.
-				</p>
+			<div class="card">
+				{% include ".icons/material/code-tags.svg" %}
+				<div>
+					<h2>Hyperextensible</h2>
+					<p>
+						Lite XL allows you to extend the editor via Lua
+						and its C API. Documentation are available
+						for many parts of the editor.
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="features-card">
-			{% include ".icons/material/monitor-shimmer.svg" %}
-			<div>
-				<h5>Cross-platform</h5>
-				<p>
-					Built on SDL, C and Lua, Lite XL runs on Windows, Linux and macOS.
-					Porting to other systems is trivial.
-				</p>
+			<div class="card">
+				{% include ".icons/material/monitor-shimmer.svg" %}
+				<div>
+					<h2>Cross-platform</h2>
+					<p>
+						Built on SDL, C and Lua, Lite XL runs on Windows, Linux and macOS.
+						Porting to other systems is trivial.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				{% include ".icons/material/open-source-initiative.svg" %}
+				<div>
+					<h2>Free & Open Source</h2>
+					<p>
+						Lite XL is licensed under the MIT license.
+						No telemetry or data collection.
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
 
-  <!--
 	<section class="md-grid md-typeset previews">
 		<h1>See Lite XL in action.</h1>
-		<figure class="previews-card">
-			<img src="assets/screenshots/theme-default.png" draggable=false />
-			<figcaption class="previews-text">
-				<h2>Familiar workflow</h2>
-				<p>
-					Lite XL does not strive to be special among the sea of text editors.
-					We provide an experience similar to many other GUI-based text editors
-					but with minimalism in mind.
-				</p>
-				<p>
-					Command palette, multi-line editing and draggable UI elements - we
-					provide a familiar transition from other text editors.
-				</p>
-			</figcaption>
-		</figure>
-		<figure class="previews-card">
-			<img src="assets/screenshots/theme-default.png" draggable=false />
-			<figcaption class="previews-text">
-				<h2>Keyboard-friendly</h2>
-				<p>
-					Lite XL has a simple but powerful keymap system.
-					Most of the functionality can be used from the keyboard.
-					Your hands will never need to leave your keyboard ever again.
-					The default shortcuts provides a familiar, out of the box experience.
-				</p>
-				<p>
-					If you're a power user, a vim-like editing plugin is also available.
-				</p>
-			</figcaption>
-		</figure>
-		<figure class="previews-card">
-			<img src="assets/screenshots/theme-default.png" draggable=false />
-			<figcaption class="previews-text">
-				<h2>Powerful syntax highlighting</h2>
-				<p>
-					Lite XL has a powerful syntax highlighting system that is entirely
-					written in Lua patterns and regular expressions.
-					While it is not as powerful as tree-sitter, it is fast and flexible
-					compared to traditional Texmate grammars.
-					By default, Lite XL provides syntax highlighting for a few languages,
-					but we support over 70 languages as plugins that can be installed
-					if needed.
-				</p>
-				<p>Did we mention we have plugin for tree-sitter support too?</p>
-			</figcaption>
-		</figure>
-		<figure class="previews-card">
-			<img src="assets/screenshots/theme-default.png" draggable=false />
-			<figcaption class="previews-text">
-				<h2>Highly customizable</h2>
-				<p>
-					Lite XL can be customized in Lua.
-					No lengthly configuration sections,
-					no custom templating syntax - you get the power of a programming
-					language at hand.
-					We provide ergonomic APIs for configuring Lite XL that are intuitive
-					and behave as you expect.
-				</p>
-				<p>
-					We also bundle a settings GUI for those who prefers clicking away
-					mindlessly to change a few options.
-				</p>
-			</figcaption>
-		</figure>
+		<a href="assets/user-guide/command-palette.gif"
+				class="glightbox"
+				data-gallery="preview">
+			<img src="assets/user-guide/command-palette.gif" alt="the command palette" />
+		</a>
+		<a href="assets/user-guide/multi-cursor.gif"
+				class="glightbox"
+				data-gallery="preview">
+			<img src="assets/user-guide/multi-cursor.gif" alt="multiple cursors" />
+		</a>
 	</section>
-  -->
 {% endblock %}
 {% block content %}{% endblock %}
 {% block footer %}{% endblock %}
