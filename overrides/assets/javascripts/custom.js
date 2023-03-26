@@ -1,12 +1,13 @@
 window.addEventListener("load", function() {
   // since we enabled instant loading, this website is now a SPA.
   // we will need to observe DOM changes instead of onload events.
-  var observer = new MutationObserver(function(mutations) {
+  var mutationObserver = new MutationObserver(function(mutations) {
     for (var i = 0; i < mutations.length; i++) {
       // run platform detection if nodes are added (md-content)
       if (mutations[i].addedNodes.length > 0) {
         changeDownload();
         changeScreenshot();
+        attachScrollListener();
         return;
       }
       // only change screenshot on theme change
@@ -133,8 +134,26 @@ window.addEventListener("load", function() {
       screenshot.src = newURL;
   }
 
+  /**
+   * Attach a scroll listener for features card.
+   */
+  function attachScrollListener() {
+    var intersectionObserver = new IntersectionObserver(function(entries, opts) {
+      for (var i = 0; i < entries.length; i++) {
+        entries[i].target.classList.remove("visible", "invisible");
+        entries[i].target.classList.add(entries[i].isIntersecting ? "visible" : "invisible");
+      }
+    }, { root: null, threshold: 0.4 });
+    var elements = document.querySelectorAll(".features .card");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.add("invisible");
+      intersectionObserver.observe(elements[i]);
+    }
+  }
+
   // try to run once
   changeDownload();
   changeScreenshot();
-  observer.observe(document.body, { childList: true, attributes: true });
+  attachScrollListener();
+  mutationObserver.observe(document.body, { childList: true, attributes: true });
 });
