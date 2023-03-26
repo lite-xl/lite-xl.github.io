@@ -112,7 +112,7 @@ plugins:
       css_files:
         - assets/stylesheets/custom.css
       js_files:
-        - assets/javascript/custom.js
+        - assets/javascripts/custom.js
 
 markdown_extensions:
   - admonition
