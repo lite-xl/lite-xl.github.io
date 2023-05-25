@@ -44,7 +44,7 @@ local keymap = require "core.keymap"
 keymap.add { ["ctrl+q"] = "core:quit" }
 ```
 
-A list of default mappings can be viewed [here][1].
+A list of default mappings can be viewed [here][mapping].
 
 ## Multiple selections (multiple cursors)
 
@@ -154,3 +154,5 @@ when you restart the editor.
 [5]: ../assets/user-guide/project-search.png
 [6]: ../assets/user-guide/line-endings.png
 [7]: ../assets/user-guide/indent.png
+
+[mapping]: ../keymap
