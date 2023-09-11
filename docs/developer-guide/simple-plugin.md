@@ -30,7 +30,7 @@ of the code in the file does.
 ### The code
 
 ```lua
--- mod-version:2 -- lite-xl 2.0
+-- mod-version:3
 
 -- you MUST put mod-version:x on the first line of your plugin
 -- mod-version usually maps to lite-xl releases (eg. mod-version: 2 == lite-xl 2.0)
@@ -173,12 +173,14 @@ command.add(nil, {
    --    * a function that takes the "input" as its argument
    -- (NOTE: here the variable we are reading input into is `text`)
    ["simple:setshow"] = function()
-      core.command_view:enter("Test to display", function(text)
-         config.plugins.simple.hw_message = text
-         config.plugins.simple.show_my_message = true
-      end)
+      core.command_view:enter("Test to display", {
+         submit = function(text)
+            config.plugins.simple.hw_message = text
+            config.plugins.simple.show_my_message = true
+         end
+      })
    end
-}
+})
 -----------------------------------------------------------------------
 -- Just for fun, let's assign our commands their own keybindings.
 -- Here, we assign the keybinding the same string(its name) as the one
