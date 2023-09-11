@@ -178,7 +178,7 @@ command.add(nil, {
             config.plugins.simple.hw_message = text
             config.plugins.simple.show_my_message = true
          end
-         })
+      })
    end
 })
 -----------------------------------------------------------------------
