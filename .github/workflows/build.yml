@@ -13,6 +13,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
+      - name: Install node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
       - name: Install gems
         run: gem install redcarpet rouge
       - name: Set environment variables
@@ -23,6 +28,8 @@ jobs:
       - name: Build (for lite-xl org)
         if: ${{ github.repository_owner == 'lite-xl' }}
         run: ruby site.rb
+      - name: Minify files
+        run: npm ci
       - name: Upload to GitHub pages (for lite-xl org)
         if: ${{ github.repository_owner == 'lite-xl' }}
         uses: peaceiris/actions-gh-pages@v3

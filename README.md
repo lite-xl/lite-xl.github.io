@@ -60,6 +60,14 @@ However, some of the behavior can be changed via environment variables.
 
 \* This does not change the URL in generated HTML files.
 
+#### Minification
+
+> **Note**
+> This approach only works if you set `SITE_ROOT=deploy`.
+
+You can minify the CSS and JS files by running `npm ci`.
+You need to install node.js for this feature.
+
 # Credits
 
 [Material Design Icons][6] are used in the website.

@@ -1,0 +1,26 @@
+{
+  "name": "lite-xl.github.io",
+  "version": "1.0.0",
+  "description": "The source code for https://lite-xl.com",
+  "main": "index.js",
+  "scripts": {
+    "install": "esbuild assets/javascript.js --bundle --sourcemap --minify --outfile=deploy/assets/javascript.js --target=es2016 && postcss --use autoprefixer --use cssnano -m -o deploy/assets/stylesheet.css assets/stylesheet.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lite-xl/lite-xl.github.io.git"
+  },
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/lite-xl/lite-xl.github.io/issues"
+  },
+  "homepage": "https://github.com/lite-xl/lite-xl.github.io#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "esbuild": "^0.16.10",
+    "postcss-cli": "^10.1.0"
+  }
+}
