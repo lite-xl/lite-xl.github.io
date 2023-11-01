@@ -6,3 +6,4 @@ These pages contain tutorials and documentations for building plugins in Lite XL
 - [Simple Plugin](/en/tutorials/simple-plugin)
 - [Syntax Highlighting](/en/tutorials/syntax-highlighting)
 - [System Fonts](/en/tutorials/system-fonts)
+- [IDE Setup](/en/tutorials/lite-xl-ide)
