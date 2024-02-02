@@ -16,7 +16,7 @@ And much more.
 
 There is an attempt at setting up a configuration for C/C++ [here][1], with custom plugins for building and debugging.
 
-There also is an attempt at setting up a more complete (WIP) configuration [here][2].
+There is also an attempt at setting up a more complete (WIP) configuration [here][2].
 
 [1]: https://github.com/adamharrison/lite-xl-ide
 [2]: https://github.com/PerilousBooklet/lite-xl-ide
