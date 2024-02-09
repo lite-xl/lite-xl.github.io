@@ -6,8 +6,8 @@ authors = ["takase1121 <20792268+takase1121@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-mkdocs-material = "^9.0.14"
+python = "^3.8"
+mkdocs-material = "^9.5.8"
 Pillow = "^9.4.0"
 CairoSVG = "^2.6.0"
 mkdocs-git-revision-date-localized-plugin = "^1.1.0"
