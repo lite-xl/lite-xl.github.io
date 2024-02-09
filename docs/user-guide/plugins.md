@@ -135,7 +135,46 @@ To remove a plugin, simply delete the associated file/directory.
 
     **Uninstalling plugins in Miq is currently not supported.**
 
+## Recommended plugins
+
+Here are a list of plugins that most users would want:
+
+| Plugin               | Use case
+| ------               | --------
+| [align_carets]       | Align text on multiple carets and selections
+| [autoinsert]         | Automatically insert closing brackets and quotes
+| [autosave]           | Automatically saves the file when it is modified
+| [bracketmatch]       | Highlight matching brackets
+| [editorconfig]       | EditorConfig support for Lite XL
+| [ephemeral_tabs]     | Ephemeral tabs (previewing files without creating multiple tabs)
+| [gitdiff_highlight]  | Git diff gutter
+| [indentguide]        | Indent guides
+| [lint+]              | Linter support
+| [litepresence]       | Discord rich presence
+| [lsp]                | Language Server support for Lite XL
+| [lspkind]            | Completion menu kind/type icons for Lite XL LSP
+| [minimap]            | Minimap
+| [selectionhighlight] | Highlight code that matches the selection
+| [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
+| [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
+
 
 [lite-xl/lite-xl-plugins]: https://github.com/lite-xl/lite-xl-plugins
 [lpm]:                     https://github.com/lite-xl/lite-xl-plugin-manager
 [Miq]:                     https://github.com/TorchedSammy/Miq
+[align_carets]:            https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/align_carets.lua?raw=1
+[autoinsert]:              https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1
+[autosave]:                https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autosave.lua?raw=1
+[bracketmatch]:            https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/bracketmatch.lua?raw=1
+[editorconfig]:            https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/editorconfig
+[ephemeral_tabs]:          https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/ephemeral_tabs.lua?raw=1
+[gitdiff_highlight]:       https://github.com/vincens2005/lite-xl-gitdiff-highlight
+[indentguide]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/indentguide.lua?raw=1
+[lint+]:                   https://github.com/liquid600pgm/lintplus
+[litepresence]:            https://github.com/TorchedSammy/Litepresence
+[lsp]:                     https://github.com/lite-xl/lite-xl-lsp
+[lspkind]:                 https://github.com/TorchedSammy/lite-xl-lspkind
+[minimap]:                 https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/minimap.lua?raw=1
+[selectionhighlight]:      https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
+[settings]:                https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
+[widgets]:                 https://github.com/lite-xl/lite-xl-widgets

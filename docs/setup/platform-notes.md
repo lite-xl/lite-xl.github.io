@@ -12,6 +12,11 @@ If this mode is enabled, the installer will not allow user to uninstall Lite XL
 from the Settings / Control Panel.
 Users can just delete the installation folder.
 
+!!! note
+    This is **different** from the Portable Mode mentioned in [Getting Started][1].
+    The Portable Mode checkbox will not create the `user` directory,
+    thus the install **will use the user's configuration**.
+
 ### 32-bit support
 
 32-bit builds of Lite XL are provided, but they are not actively tested for bugs.
@@ -21,13 +26,13 @@ These builds has platform suffix "i386".
 
 Windows users may notice that the title bar (window decoration) does not follow
 device theme.
-This is a known [upstream issue][1] related to SDL.
+This is a known [upstream issue][2] related to SDL.
 
 In the meantime, there are a few workarounds:
 
 1. Enable the custom title bar by setting `config.borderless` to `true` in `init.lua`.
    The custom title bar will follow Lite XL's color scheme.
-2. Install the [immersive-title][2] plugin.
+2. Install the [immersive-title][3] plugin.
    This approach will preserve Windows' title bar while having the correct
    appearance on theme change.
 
@@ -43,7 +48,7 @@ The first option can be enabled with the following steps.
 === "Settings UI"
 
     Toggle the "Borderless" checkbox under _Core_ > _User Interface_.
-    ![screenshot indicating the borderless checkbox][3]{ loading=lazy }
+    ![screenshot indicating the borderless checkbox][4]{ loading=lazy }
 
 
 ## Linux
@@ -97,24 +102,7 @@ Lite XL will draw a client-side decoration.
     ![screenshot indicating the borderless checkbox][3]{ loading=lazy }
 
 
-## macOS
-
-Installing Lite XL on macOS is simple: just download the [DMG file], open it
-and drag the program into your Applications folder.
-
-For older versions of Lite XL (before v2.1.2),
-you will need to clear App attributes from the application to launch it.
-To do so,  you need to run the following command:
-
-```sh
-$ xattr -cr /Applications/Lite\ XL.app
-```
-
-For releases v2.1.2 and above, you just need to right-click on Lite XL
-in Finder and click "Open". If this is your first time launching Lite XL,
-macOS will display a prompt. Click "OK" and the Lite XL will launch.
-
-
-[1]: https://github.com/libsdl-org/SDL/issues/4776
-[2]: https://github.com/takase1121/lite-xl-immersive-title
-[3]: ../assets/user-guide/settings/borderless.png
+[1]: ./getting-started.md
+[2]: https://github.com/libsdl-org/SDL/issues/4776
+[3]: https://github.com/takase1121/lite-xl-immersive-title
+[4]: ../assets/user-guide/settings/borderless.png

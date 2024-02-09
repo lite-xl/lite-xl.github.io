@@ -30,11 +30,6 @@ To install Lite XL from a zip archive, extract it to a directory and run it dire
     Lite XL requires extra files that are present in the zip archive to function.
     Running it may cause crashes or unexpected errors.
 
-### 32-bit releases
-
-We provide 32-bit releases, but they are not tested thoroughly.
-Use at your own discretion.
-
 ## Linux
 
 Linux distributions usually install packages via their respective package managers.
@@ -93,13 +88,17 @@ xdg-desktop-menu forceupdate
 Installation on macOS is fairly straightforward — we provide DMG files that
 you can mount and drag-and-drop Lite XL into your Applications folder.
 
-However, this installation may not run out-of-the-box as macOS prohibits
-running unsigned code. Since an Apple Developer subscription is expensive,
-and we're not made of money, you can circumvent this by running the following command:
+For older versions of Lite XL (before v2.1.2),
+you will need to clear App attributes from the application to launch it.
+To do so,  you need to run the following command:
 
 ```sh
-xattr -cr /Applications/Lite\ XL.app
+$ xattr -cr /Applications/Lite\ XL.app
 ```
+
+For releases v2.1.2 and above, you just need to right-click on Lite XL
+in Finder and click "Open". If this is your first time launching Lite XL,
+macOS will display a prompt. Click "OK" and the Lite XL will launch.
 
 ## Other Platforms
 

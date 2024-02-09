@@ -191,14 +191,7 @@ keymap.add {
 }
 ```
 
-### Further reading
-
-- [Lite: An Implementation Overview][3],
-  an excellent post by rxi that stays mostly relevant to Lite XL.
-- [API overview][4], where some APIs are explained.
-
 
 [1]: https://devhints.io/lua
 [2]: https://www.lua.org/pil
 [3]: https://rxi.github.io/lite_an_implementation_overview.html
-[4]: /en/tutorials/api-overview
