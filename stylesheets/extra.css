@@ -64,3 +64,11 @@
   /** Keyword.Constant */
   color: var(--md-code-hl-constant-color);
 }
+
+
+/* custom classes */
+.text-center {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
