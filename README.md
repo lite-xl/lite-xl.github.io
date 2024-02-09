@@ -60,18 +60,12 @@ This project follows typical [MkDocs] file structure.
     - `icon.svg`: Vector icon of Lite XL.
     - `keymap-macos.json`: Keymap file for macOS.
     - `keymap.json`: Keymap file for non-macOS platforms.
-  - `documentation/`
-  - `overrides/`: Theme overrides for [mkdocs-material].
-    - `assets/`
-      - `javascript/`: Custom JavaScript files for the homepage.
-      - `stylesheets/`: Custom stylesheets for the homepage.
-      - `home.html`: The homepage.
-      - `main.html`: The main template for the homepage.
-  - `references/`
+  - `developer-guide/`
   - `setup/`
   - `stylesheets/`: Custom stylesheets for the entire website.
+    - `extra.css`: Styles for custom syntax highlighting.
   - `user-guide/`
-  - `index.md`: Stub file for the homepage.
+  - `index.md`: Homepage.
 
 
 
