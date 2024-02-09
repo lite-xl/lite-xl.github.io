@@ -10,7 +10,7 @@ The keymap holds the state of various keys, including the modifiers
 The keymap holds a map of key combinations to commands (`keymap.map`)
 and a map of commands to key combinations (`keymap.reverse_map`).
 
-### Keyboard shortcut format
+## Keyboard shortcut format
 
 The string is split into parts delimited by `+` and
 each part of the split string is treated as a key.
@@ -42,7 +42,7 @@ keymap.add { ["mclick"] = "core:find-command" }
 keymap.add { ["2mclick"] = "core:find-command" }
 ```
 
-### Adding Keyboard Shortcuts
+## Adding Keyboard Shortcuts
 
 Ways to add keyboard shortcuts were already discussed in the user guide.
 To add keyboard shortcuts programmatically, use `keymap.add()`.
@@ -85,7 +85,7 @@ keymap.add({
 }, true)
 ```
 
-### Removing a Keyboard Shortcut
+## Removing a Keyboard Shortcut
 
 To remove a keyboard shortcut, you can use `keymap.unbind()`.
 
@@ -98,7 +98,7 @@ If a command is specified, the function will unbind that command
 from the key.
 Otherwise, it will unbind all commands from the shortcut.
 
-### Getting Keyboard Shortcuts
+## Getting Keyboard Shortcuts
 
 To get all the keyboard shortcuts associated with a command, use
 `keymap.get_binding()` or `keymap.get_bindings()`.
@@ -114,7 +114,7 @@ shortcuts associated to it.
 However, `keymap.get_bindings()` returns a table instead
 of a list of values.
 
-### Overriding the Keymap
+## Overriding the Keymap
 
 If your plugin need to override the keymap for extra functionality
 (e.g. redirecting keyboard shortcuts to a terminal), you

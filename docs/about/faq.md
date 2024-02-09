@@ -71,10 +71,6 @@ but this is not officially supported.
 
 You need to [vibe].
 
-#### Where's feature X? How about Y?
-
-You can get more info in [Features].
-
 
 [v2.1.0]:               https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
 [lsp]:                  https://github.com/lite-xl/lite-xl-lsp
@@ -100,4 +96,3 @@ You can get more info in [Features].
 [selectionhighlight]:   https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
 [settings]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
 [widgets]:              https://github.com/lite-xl/lite-xl-widgets
-[Features]:             /en/about/features

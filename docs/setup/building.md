@@ -2,7 +2,7 @@
 description: Build Lite XL from source code.
 ---
 
-# Build
+# Build and Installation
 
 Once you have downloaded the source code, you can build Lite XL using Meson.
 In addition, the `build-packages.sh` script can be used to compile Lite XL and

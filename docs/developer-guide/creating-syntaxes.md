@@ -130,7 +130,7 @@ it will assign that token type to it and move on.
 Patterns are tested in the order that they are written in the syntax definition,
 so the first match will win.
 
-Patterns are based on Lua patterns or PCRE (Version 2).
+Patterns are based on Lua patterns or PCRE2.
 
 You may find detailed information on Lua patterns in the [Lua Reference Manual].
 For PCRE, there are various [regex tester websites] that provide documentation.
@@ -596,3 +596,6 @@ For example:
 This would highlight `` ```cpp `` and `` ``` `` with `"string"`
 while everything inside them will be highlighted
 with a syntax that matches `".cpp"`.
+
+
+[Lua Reference Manual]: https://www.lua.org/manual/5.4/manual.html

@@ -9,8 +9,7 @@ efficiently.
 
 !!! note
     Some methods here will be written differently than in
-    the source code.
-    This is to clarify how the methods _should_ be called.
+    the source code to illustrate how the methods _should_ be called.
 
 ## Creating classes
 

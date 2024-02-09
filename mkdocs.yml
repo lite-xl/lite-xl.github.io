@@ -8,7 +8,6 @@ site_author: "takase1121 <20792268+takase1121@users.noreply.github.com>"
 
 theme:
   name: material
-  custom_dir: docs/overrides/
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -101,18 +100,14 @@ plugins:
   - git-revision-date-localized
   - social:
       cards: !ENV [CARDS, false]
-      cards_color:
-        fill: "#252529"
-        text: "#e1e1e6"
-      cards_font: Roboto
+      cards_layout_options:
+        font_family: Roboto
+        background_color: "#252529"
+        color: "#e1e1e6"
   - minify:
       minify_html: true
       minify_css: true
       minify_js: true
-      css_files:
-        - assets/stylesheets/custom.css
-      js_files:
-        - assets/javascripts/custom.js
 
 markdown_extensions:
   - admonition
@@ -138,10 +133,10 @@ nav:
   - Home: index.md
   - "Set Up":
       - "Getting Started": setup/getting-started.md
-      - "Windows": setup/windows.md
-      - "Linux": setup/linux.md
-      - "macOS": setup/macos.md
+      - "Install from Releases": setup/install-from-releases.md
+      - "Install from Package Managers": setup/install-from-package-managers.md
       - "Building": setup/building.md
+      - "Platform-specific notes": setup/platform-notes.md
   - "User Guide":
       - "Introduction": user-guide/introduction.md
       - "Configuration": user-guide/configuration.md
@@ -157,6 +152,8 @@ nav:
       - "Commands": developer-guide/commands.md
       - "Managing Keyboard Shortcuts": developer-guide/managing-keyboard-shortcuts.md
       - "Classes and Objects": developer-guide/classes-and-objects.md
+      - "Documents": developer-guide/documents.md
+      - "Views": developer-guide/views.md
       - "Using Regular Expressions": developer-guide/using-regular-expressions.md
       - "Interacting with the OS": developer-guide/interacting-with-the-os.md
       - "Child Processes": developer-guide/child-processes.md

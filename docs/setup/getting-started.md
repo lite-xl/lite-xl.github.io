@@ -2,50 +2,29 @@
 description: Install Lite XL and configure it for your use.
 ---
 
-# Getting Started
-
-Setting up Lite XL is easy.
-Lite XL comes in `.zip` or `.tar.gz` packages and installers
-depending on the platform.
-
-Lite XL packages marked with `addons` provide extra plugins
-that improve the out-of-the-box experience.
-
 ## Install
 
-Installing Lite XL is usually as simple as downloading the package and extracting it.
-However, here are some platform-specific installation instructions.
+Official builds of Lite XL can be obtained from [GitHub releases].
+Alternatively, many package managers also provide Lite XL for installation.
+Finally, you can build Lite XL and install it directly.
 
-- [Windows]
-- [Linux]
-- [macOS]
+- [Install from Releases]
+- [Install from Package Managers]
+- [Building and Installing]
 
-## Portable application
+## Getting Started
 
-Lite XL stores user configuration in the OS-specific configuration directory.
-This directory is also known as `USERDIR`.
-
-These paths are checked to determine `USERDIR`:
-
-1. `<directory_to_lite-xl_binary>/user`
-2. `$LITE_USERDIR`
-3. `$XDG_CONFIG_HOME/lite-xl`
-4. `$HOME/.config/lite-xl` or `$USERPROFILE/.config/lite-xl` on Windows
-
-In order to create a portable installation of Lite XL,
-you can create a `user` directory where the executable resides.
-Lite XL will then store configuration data in that directory.
+Once you've installed Lite XL, it should work out-of-the-box.
+Here are some tips and tricks to customize and improve your Lite XL
+experience on various platforms.
 
 ## Plugins
 
-Lite XL can be extended via plugins written in Lua.
-In fact, most of Lite XL's features comes from plugins;
-the core is kept simple and features are added via plugins
-if possible.
+Lite XL can be extended via plugins written in Lua or C.
+In fact, plugins are a core part of Lite XL's approach to adding features
+— features not strictly necessary for text editing should be added as plugins.
 
-Lite XL comes with a set of plugins and users can install more on their own.
-Here are common plugins that most users install:
-
+Here are a list of plugins that most users would want:
 
 | Plugin               | Use case
 | ------               | --------
@@ -66,6 +45,21 @@ Here are common plugins that most users install:
 | [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
 | [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
 
+## Portable application
+
+Lite XL stores user configuration in the OS-specific configuration directory.
+This directory is also known as `USERDIR`.
+
+These paths are checked to determine `USERDIR`:
+
+1. `<directory_to_lite-xl_binary>/user`
+2. `$LITE_USERDIR`
+3. `$XDG_CONFIG_HOME/lite-xl`
+4. `$HOME/.config/lite-xl` or `$USERPROFILE/.config/lite-xl` on Windows
+
+In order to create a portable installation of Lite XL,
+you can create a `user` directory where the executable resides.
+Lite XL will then store configuration data in that directory.
 
 ## Further reading
 
@@ -77,38 +71,48 @@ You may be interested on these topics:
 
 These are advanced topics that are useful for power users or plugin developers:
 
-- [Creating Themes] — A tutorial on how to write themes for Lite XL.
 - [Creating Syntaxes] — A guide on how to add support for new languages.
+- [Creating Themes] — A tutorial on how to write themes for Lite XL.
+- [Custom commands] — A guide on how to add custom functionalities to Lite XL.
+- [Keyboard shortcuts] — A guide on how to manage keyboard shortcuts.
 - [Simple plugin] — A tutorial on writing a simple plugin.
+- [Classes and Objects] — An explaination on how Lite XL implements OOP in Lua.
+- [Documents] — A guide on how to access and manipulate opened Documents.
+- [Views] — A guide on how to create and manage user interfaces.
 - [Regular expressions] — A guide on how to use regular expressions in Lite XL.
 - [Child processes] — A guide on how to start and manage child processes.
 
 
 
-[Windows]:              windows.md
-[Linux]:                linux.md
-[macOS]:                macos.md
-[align_carets]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/align_carets.lua?raw=1
-[autoinsert]:           https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1
-[autosave]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autosave.lua?raw=1
-[bracketmatch]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/bracketmatch.lua?raw=1
-[editorconfig]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/editorconfig
-[ephemeral_tabs]:       https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/ephemeral_tabs.lua?raw=1
-[gitdiff_highlight]:    https://github.com/vincens2005/lite-xl-gitdiff-highlight
-[indentguide]:          https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/indentguide.lua?raw=1
-[lint+]:                https://github.com/liquid600pgm/lintplus
-[litepresence]:         https://github.com/TorchedSammy/Litepresence
-[lsp]:                  https://github.com/lite-xl/lite-xl-lsp
-[lspkind]:              https://github.com/TorchedSammy/lite-xl-lspkind
-[minimap]:              https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/minimap.lua?raw=1
-[selectionhighlight]:   https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
-[settings]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
-[widgets]:              https://github.com/lite-xl/lite-xl-widgets
-[Introduction]:         ../../user-guide/introduction
-[Configuration]:        ../../user-guide/configuration
-[Plugins]:              ../../user-guide/plugins
-[Creating Themes]:      ../developer-guide/creating-themes
-[Creating Syntaxes]:    ../developer-guide/creating-syntaxes
-[Simple plugin]:        ../developer-guide/simple-plugin
-[Regular expressions]:  ../developer-guide/regular-expressions
-[Child processes]:      ../developer-guide/child-processes
+[Install from Releases]:         ./install-from-releases.md
+[Install from Package Managers]: ./install-from-package-managers.md
+[Building and Installing]:       ./building.md
+[align_carets]:                  https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/align_carets.lua?raw=1
+[autoinsert]:                    https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1
+[autosave]:                      https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autosave.lua?raw=1
+[bracketmatch]:                  https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/bracketmatch.lua?raw=1
+[editorconfig]:                  https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/editorconfig
+[ephemeral_tabs]:                https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/ephemeral_tabs.lua?raw=1
+[gitdiff_highlight]:             https://github.com/vincens2005/lite-xl-gitdiff-highlight
+[indentguide]:                   https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/indentguide.lua?raw=1
+[lint+]:                         https://github.com/liquid600pgm/lintplus
+[litepresence]:                  https://github.com/TorchedSammy/Litepresence
+[lsp]:                           https://github.com/lite-xl/lite-xl-lsp
+[lspkind]:                       https://github.com/TorchedSammy/lite-xl-lspkind
+[minimap]:                       https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/minimap.lua?raw=1
+[selectionhighlight]:            https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
+[settings]:                      https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
+[widgets]:                       https://github.com/lite-xl/lite-xl-widgets
+[Introduction]:                  ../user-guide/introduction.md
+[Configuration]:                 ../user-guide/configuration.md
+[Plugins]:                       ../user-guide/plugins.md
+[Creating Syntaxes]:             ../developer-guide/creating-syntaxes.md
+[Creating Themes]:               ../developer-guide/creating-themes.md
+[Custom commands]:               ../developer-guide/commands.md
+[Keyboard shortcuts]:            ../developer-guide/managing-keyboard-shortcuts.md
+[Classes and Objects]:           ../developer-guide/classes-and-objects.md
+[Documents]:                     ../developer-guide/documents.md
+[Views]:                         ../developer-guide/views.md
+[Simple plugin]:                 ../developer-guide/simple-plugin.md
+[Regular expressions]:           ../developer-guide/using-regular-expressions.md
+[Child processes]:               ../developer-guide/child-processes.md

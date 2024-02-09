@@ -155,4 +155,4 @@ when you restart the editor.
 [6]: ../assets/user-guide/line-endings.png
 [7]: ../assets/user-guide/indent.png
 
-[mapping]: ../keymap
+[mapping]: ./keymap.md

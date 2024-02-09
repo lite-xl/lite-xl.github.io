@@ -464,8 +464,8 @@ It will not load nor unload the plugin from the current instance.
 [1]:  ../assets/user-guide/settings/fonts/font-option.png
 [2]:  ../assets/user-guide/settings/fonts/font-selector.png
 [3]:  ../assets/user-guide/settings/fonts/font-order.png
-[4]:  ../../user-guide/keymap
-[5]:  ../../user-guide/macos-keymap
+[4]:  ../user-guide/keymap.md
+[5]:  ../user-guide/macos-keymap.md
 [6]:  ../assets/user-guide/settings/keybinds/keybinds.png
 [7]:  ../assets/user-guide/settings/keybinds/keybind-selector.png
 [8]:  ../assets/user-guide/settings/keybinds/keybinds-after.png

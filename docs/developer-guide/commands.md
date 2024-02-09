@@ -46,7 +46,7 @@ local function predicate()
 end
 ```
 
-### Adding commands
+## Adding commands
 
 To add a command, use `command.add()`.
 
@@ -103,7 +103,7 @@ command.add("core.docview", { ["test:print-doc-name"] = print_doc_name })
 command.add("core.docview!", { ["test:print-doc-name"] = print_doc_name })
 ```
 
-### Running commands
+## Running commands
 
 Users can run these commands via the command palette while
 plugins can run these commands programmatically via `command.perform()`.
@@ -140,7 +140,7 @@ command.perform("test:print-doc-name", "custom message! %s")
 print(command.is_valid "core:find-command")
 ```
 
-### Utility functions
+## Utility functions
 
 To get a prettified name of a command, shown in the command palette,
 use `command.prettify_name()`.
