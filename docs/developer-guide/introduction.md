@@ -31,34 +31,6 @@ Syntaxes and colors are considered as subset of plugins.
 These subsets of plugins only interact with the syntax highlighter
 and the `style` table respectively.
 
-## More resources
-
-Here are more resources on how to create syntaxes, themes
-and other plugins for Lite XL.
-
-**Syntaxes and Themes**:
-
-- [Creating Syntaxes] — Learn how to create syntaxes
-                        for highlighting various types of files.
-- [Creating Themes]   — Learn to create themes for Lite XL.
-
-**Others**:
-
-- [Simple Plugin]               — Learn to write a simple plugin that draws text
-                                  in the top right corner of the editor window.
-- [Commands]                    — Learn how to create and call commands programmatically.
-- [Managing Keyboard Shortcuts] — Learn how to manage keyboard shortcuts.
-- [Classes and Objects]         — Learn how to extend Lite XL with
-                                  classes and objects.
-- [Using Regular Expressions]   — Learn how to use
-                                  regular expressions in Lite XL.
-- [Interacting with the OS]     — Learn how to interact with the OS, such
-                                  as reading and writing to the clipboard,
-                                  setting window properties and getting
-                                  high-resolution time.
-- [Child Processes]             — Learn how to use the Process API
-                                  to start and manage child processes.
-
 ## Tips and tricks
 
 Here are some tips for plugin developers.
