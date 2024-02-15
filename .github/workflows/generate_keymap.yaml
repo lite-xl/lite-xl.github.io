@@ -13,6 +13,8 @@ jobs:
     name: Generate keymap
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -37,7 +39,7 @@ jobs:
       - name: Fix keymap
         run: ./fix-keymap.py keymap-source.json keymap.json
       - name: Archive keymap.json
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: keymap
           path: keymap.json
@@ -46,6 +48,8 @@ jobs:
     name: Generate macOS keymap
     runs-on: macos-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -71,7 +75,7 @@ jobs:
       - name: Fix keymap
         run: ./fix-keymap.py keymap-macos-source.json keymap-macos.json
       - name: Archive keymap-macos.json
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: keymap
           path: keymap-macos.json
@@ -82,14 +86,14 @@ jobs:
     needs: [generate_keymap, generate_keymap_macos]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: keymap
           path: docs/assets
       - name: Create PR
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v6
         with:
           title: Update keymap files
           body: |
