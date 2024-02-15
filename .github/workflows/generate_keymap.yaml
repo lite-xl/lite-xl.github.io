@@ -77,7 +77,7 @@ jobs:
       - name: Archive keymap-macos.json
         uses: actions/upload-artifact@v4
         with:
-          name: keymap
+          name: keymap-macos
           path: keymap-macos.json
 
   create_pr:
@@ -90,7 +90,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: keymap
+          merge-multiple: true
           path: docs/assets
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
