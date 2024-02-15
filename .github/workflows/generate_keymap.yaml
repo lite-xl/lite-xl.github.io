@@ -6,13 +6,17 @@ on:
       lite_xl_version:
         description: 'Lite XL version'
         required: true
-        default: 'v2.1.1'
+        default: 'v2.1.3'
 
 jobs:
   generate_keymap:
     name: Generate keymap
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Install Lite XL
         run: |
           curl -sSL "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-linux-x86_64-portable.tar.gz" | tar -xvzf -
@@ -25,13 +29,13 @@ jobs:
           echo "LITE_USERDIR=$PWD/user" >> $GITHUB_ENV
           echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_TYPE=reverse_map" >> $GITHUB_ENV
-          echo "KEYMAP_EXPORT_DESTINATION=$PWD/keymap.json" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_DESTINATION=$PWD/keymap-source.json" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
       - name: Run Lite XL
-        run: |
-          cd lite-xl
-          ./lite-xl
+        run: cd lite-xl && ./lite-xl
+      - name: Fix keymap
+        run: ./fix-keymap.py keymap-source.json keymap.json
       - name: Archive keymap.json
         uses: actions/upload-artifact@v3
         with:
@@ -42,6 +46,10 @@ jobs:
     name: Generate macOS keymap
     runs-on: macos-latest
     steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Install Lite XL
         run: |
           wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
@@ -49,17 +57,19 @@ jobs:
       - name: Install keymap-export
         run: |
           mkdir -p user/plugins
-          wget -O user/plugins/keymap_export.lua "https://raw.githubusercontent.com/takase1121/lite-xl-plugins/PR/keymap_export/plugins/keymap_export.lua"
+          wget -O user/plugins/keymap_export.lua "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/plugins/keymap_export.lua"
       - name: Set up environment variables
         run: |
           echo "LITE_USERDIR=$PWD/user" >> $GITHUB_ENV
           echo "SDL_VIDEODRIVER=dummy" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_TYPE=reverse_map" >> $GITHUB_ENV
-          echo "KEYMAP_EXPORT_DESTINATION=$PWD/keymap-macos.json" >> $GITHUB_ENV
+          echo "KEYMAP_EXPORT_DESTINATION=$PWD/keymap-macos-source.json" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
       - name: Run Lite XL
         run: open -a "Lite XL"
+      - name: Fix keymap
+        run: ./fix-keymap.py keymap-macos-source.json keymap-macos.json
       - name: Archive keymap-macos.json
         uses: actions/upload-artifact@v3
         with:

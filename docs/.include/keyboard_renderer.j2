@@ -1,27 +1,7 @@
-{# renders a single key combination #}
-{% macro render_key(key) -%}
-  ++{%- for k in key.split('+') -%}
-    {%- if k.endswith('click') -%}
-      {#- strip any numbers from the text -#}
-      {%- set k = k.translate(k.maketrans('', '', '0123456789')) -%}
-    {%- endif -%}
-
-    {%- if k in extra_key_map -%}
-      {#- remap the key to something we know working -#}
-      {{ extra_key_map[k] }}
-    {%- else -%}
-      {#- render the key directly -#}
-      {{ k }}
-    {%- endif -%}
-    {#- render trailing comma -#}
-    {%- if not loop.last -%}+{%- endif -%}
-  {%- endfor -%}++
-{%- endmacro %}
-
 {# renders a list of key combinations #}
 {% macro render(keys) -%}
   {%- for key in keys -%}
-    {{ render_key(key) }}
+    ++{{ key }}++
     {%- if not loop.last %} , {% endif -%}
   {%- endfor -%}
 {%- endmacro %}

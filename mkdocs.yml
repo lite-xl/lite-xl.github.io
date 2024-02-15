@@ -126,10 +126,20 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.keys:
       key_map: {
-        "wheel": "Mouse wheel",
-        "hwheel": "Horizontal mouse wheel",
-        "wheelup": "Mouse wheel up",
-        "wheeldown": "Mouse wheel down"
+        "wheel": "Wheel",
+        "hwheel": "Horizontal Wheel",
+        "wheelup": "Wheel Up",
+        "wheeldown": "Wheel Down",
+        "2left-button": "Left Button",
+        "3left-button": "Left Button",
+        "2right-button": "Right Button",
+        "3right-button": "Right Button",
+        "2middle-button": "Middle Button",
+        "3middle-button": "Middle Button",
+        "2x-button1": "X Button 1",
+        "3x-button1": "X Button 1",
+        "2x-button2": "X Button 2",
+        "3x-button2": "X Button 2",
       }
 
 nav:
