@@ -71,7 +71,7 @@ jobs:
           echo "KEYMAP_EXPORT_AUTOSTART=true" >> $GITHUB_ENV
           echo "KEYMAP_EXPORT_QUIT_AFTER_EXPORT=true" >> $GITHUB_ENV
       - name: Run Lite XL
-        run: open -a "Lite XL"
+        run: open -a "/Volumes/Lite XL/Lite XL.app"
       - name: Fix keymap
         run: ./fix-keymap.py keymap-macos-source.json keymap-macos.json
       - name: Archive keymap-macos.json
