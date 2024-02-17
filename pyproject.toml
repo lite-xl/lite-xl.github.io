@@ -13,7 +13,7 @@ CairoSVG = "^2.6.0"
 mkdocs-git-revision-date-localized-plugin = "^1.1.0"
 mkdocs-glightbox = "^0.3.1"
 mkdocs-macros-plugin = "^0.7.0"
-mkdocs-minify-plugin = "^0.6.2"
+mkdocs-minify-plugin = {git = "https://github.com/takase1121/mkdocs-minify-plugin.git", rev = "workaround-pathlib-glob-not-supporting-dir-symlinks"}
 
 
 [build-system]
