@@ -1,7 +1,46 @@
 {# renders a list of key combinations #}
-{% macro render(keys) -%}
+{% macro render_keys(keys) -%}
   {%- for key in keys -%}
     ++{{ key }}++
     {%- if not loop.last %} , {% endif -%}
   {%- endfor -%}
+{%- endmacro %}
+
+{# Generate terms for search purposes #}
+{% macro slugify(keys) -%}
+  "{% if keys is string -%}
+    {{ keys | replace(":", " ") | replace("-", " ") | replace("+", " ") | forceescape }}
+  {%- else -%}
+    {{ keys | join(" ") | replace(":", " ") | replace("-", " ") | replace("+", " ") | forceescape }}
+  {%- endif -%}"
+{%- endmacro %}
+
+{# render the whole thing #}
+{% macro render_keymap(keymap) -%}
+<div markdown>
+  <form class="keymap-search md-search__form" onsubmit="return false;">
+      <input type="text" class="md-search__input" name="search" aria-label="Filter"
+        autocapitalize="off" spellcheck="false" size="1" placeholder="Filter keys and commands..." />
+      <label class="md-search__icon md-icon" for="__search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+          <svg onclick="return false;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+  </form>
+
+  | Command                                                 | Keys
+  | -------------------------------------------------------:|:----
+  {%- for entry in keymap %}
+  | `{{ entry[0] }}` { data-terms={{ slugify(entry[0]) }} } | {{ render_keys(entry[1]) }} { data-terms={{ slugify(entry[1]) }} }
+  {%- endfor %}
+
+  <script type="application/javascript">
+  (function(container) {
+   if (document.readyState === "complete")
+      setTimeout(function() { setupKeymapSearch(container) }, 0);
+    else
+      window.addEventListener("load", function() { setupKeymapSearch(container); });
+  })(document.currentScript.parentElement);
+  </script>
+
+</div>
 {%- endmacro %}

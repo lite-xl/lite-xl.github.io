@@ -4,29 +4,24 @@
  */
 
 function setupKeymapSearch(container) {
-    var searchBox = container.querySelector('input[type="text"][name="search"]');
+    var searchBox = container.querySelector('input[name="search"]');
     if (!searchBox) {
         console.log("Cannot find searchbox, aborting");
         return;
     }
-    function relocateSearchBox() {
-        // if the searchBox isn't in the table, move it
-        var searchForm = searchBox.parentElement;
-        if (searchForm) {
-            if (!searchForm.parentElement.classList.contains("md-typeset__table")) {
-                var tableWrap = container.querySelector(".md-typeset__table");
-                if (tableWrap) {
-                    searchForm.parentElement.removeChild(searchForm);
-                    tableWrap.prepend(searchForm);
-                } else {
-                    setTimeout(relocateSearchBox, 0);
-                }
+    // if the searchBox isn't in the table, move it
+    var searchForm = searchBox.parentElement;
+    if (searchForm) {
+        if (!searchForm.parentElement.classList.contains("md-typeset__table")) {
+            var tableWrap = container.querySelector(".md-typeset__table");
+            if (tableWrap) {
+                searchForm.parentElement.removeChild(searchForm);
+                tableWrap.prepend(searchForm);
             }
-            searchForm.classList.remove("hidden");
         }
+        searchForm.classList.remove("hidden");
     }
     // workaround for the whole PWA thing
-    setTimeout(relocateSearchBox, 0);
     var tableRows = container.querySelectorAll("tbody tr");
     var contentIndex = [], rowIndex = [];
     Array.prototype.forEach.call(tableRows, function(row) {
