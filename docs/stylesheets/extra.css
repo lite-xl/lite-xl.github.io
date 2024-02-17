@@ -123,6 +123,10 @@
   margin-bottom: 1em;
 }
 
+.keymap-search input {
+  background-color: var(--md-default-bg-color);
+}
+
 .keymap-search.hidden {
   display: none;
 }
