@@ -67,9 +67,18 @@ This project follows typical [MkDocs] file structure.
   - `user-guide/`
   - `index.md`: Homepage.
 
+# Keymap
+
+The "generate keymap" action should be run after each release to update
+the keymap.
+The keymap generation is currently a two-part process involving some
+fix up on our side to match [pymdown]'s syntax.
+This can be found in `fix-keymap.py`.
+
 
 
 [MkDocs]:               https://www.mkdocs.org/
 [mkdocs-material]:      https://squidfunk.github.io/mkdocs-material/
 [mkdocs-macros-plugin]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/
 [poetry]:               https://python-poetry.org
+[pymdown]:              https://facelessuser.github.io/pymdown-extensions/extensions/keys
