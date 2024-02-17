@@ -39,6 +39,11 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/wade.min.js
+  - javascripts/search.js
+
 extra:
   lite_xl_version: v2.1.1
   version:
@@ -50,43 +55,6 @@ extra:
       link: https://discord.gg/RWzqC3nx7K
     - icon: simple/matrix
       link: https://matrix.to/#/#lite-xl:matrix.org
-  extra_key_map: {
-    "\\": "backslash",
-    "|": "bar",
-    "[": "bracket-left",
-    "]": "bracket-right",
-    "{": "brace-left",
-    "}": "brace-right",
-    ":": "colon",
-    ",": "comma",
-    "\"": "double-quote",
-    "=": "equal",
-    "!": "exclam",
-    "`": "grave",
-    ">": "greater",
-    "<": "less",
-    "-": "minus",
-    ".": "period",
-    "+": "plus",
-    "?": "question",
-    ";": "semicolon",
-    "'": "single-quote",
-    "/": "slash",
-    "~": "tilde",
-    "_": "underscore",
-    "pageup": "page-up",
-    "pagedown": "page-down",
-    "printscreen": "print-screen",
-    "scrolllock": "scroll-lock",
-    "capslock": "caps-lock",
-    "keypad enter": "num-enter",
-    "left gui": "left-windows",
-    "lclick": "left-button",
-    "rclick": "right-button",
-    "mclick": "middle-button",
-    "xclick": "x-button1",
-    "yclick": "x-button2",
-  }
 
 plugins:
   - search
@@ -108,6 +76,12 @@ plugins:
       minify_html: true
       minify_css: true
       minify_js: true
+      cache_safe: true
+      js_files:
+        - javascripts/wade.min.js
+        - javascripts/search.js
+      css_files:
+        - stylesheets/extra.css
 
 markdown_extensions:
   - admonition

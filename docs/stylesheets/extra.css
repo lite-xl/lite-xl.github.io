@@ -117,3 +117,12 @@
   content: "×3";
   padding-left: 0.4em;
 }
+
+/* keymap search box */
+.keymap-search {
+  margin-bottom: 1em;
+}
+
+.keymap-search.hidden {
+  display: none;
+}
