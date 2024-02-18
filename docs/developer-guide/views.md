@@ -249,13 +249,13 @@ You should end up with some text drawn in the center of the screen.
 In the next section, we'll make it more interesting.
 
 !!! warning "Never draw anything outside the render method."
-		The render method is called after `renderer.begin_frame()`.
+    The render method is called after renderer.begin_frame().
 		Any draw calls before this function will be discarded.
 
 ## Events
 
 Views have several methods to handle events.
-Events are usually propagated from the top (`RootView`) to the bottom.
+Events are usually propagated from the top (RootView) to the bottom.
 Event handlers are usually called `on_<event_name>` except `update`.
 You can override these methods to provide your own handler logic.
 Some events require you to return `true` to indicate that the
@@ -733,3 +733,82 @@ keymap.add {
 There's a lot more to text editing than simply appending and removing text.
 This is just a simple example to acquaint you with how Lite XL handle
 events.
+
+## Layout
+
+Lite XL manages UI layout in a binary tree.
+Each View is stored in a Node, and the Node is stored in a binary tree with
+RootView as the root node.
+RootView manages input and rendering events for all the Views.
+
+A Node is the basic unit for a layout.
+A Node has several types — `hsplit`, `vsplit` and `leaf`.
+This corresponds to the `root:split-{up,down,left,right}` commands.
+A `hsplit` and `vsplit` Node has two children while a `leaf` node does not.
+
+To get the Node for a View, you can call `Node:get_node_for_view()`.
+This function recursively searches for the view to find its parent node.
+You can call `RootView:get_node_for_view()` to search the entire layout.
+
+After you got the Node containing the View, you can also call
+`Node:get_view_idx()`.
+This function will return the index of the View in the Node if the Node
+contains multiple Views.
+
+### Adding Views to the layout
+
+To split a Node, you can call `Node:split(direction, view, locked, resizable)`.
+This function takes 2 to 4 arguments, and returns the new Node containing
+the View passed into the function.
+
+`dir` specifies the split direction — `up`, `down`, `left` and `right`,
+and `view` is the View to add to the new Node.
+
+`locked` is a table in the form `#!lua { x = true, y = true }`.
+`x` and `y` corresponds to the axis of the new Node to "lock".
+A locked axis has a fixed size and cannot be resized by the user.
+
+`resizable` is also a table with the same format as `locked`,
+and corresponds to axes that will be resizable by the user.
+This table overrides the options in `locked`.
+
+Following the example above, if we want to add a command to open our View
+on the bottom, we can do:
+
+```lua
+command.add {
+  ["hello:split-down"] = function()
+    -- the new Node will have a fixed initial size based on
+    -- what the View provides, but the user can resize it.
+    -- The other (old) Node will take up the rest of the space.
+    core.root_view:get_active_node():split("down", view, { y = true }, { y = true })
+  end
+}
+```
+
+Other than splitting the current node, you can also add the View to
+an existing Node.
+To do this, use `Node:add_view()`.
+This function accepts a View and optionally an index to insert the View to.
+
+### Remove Views
+
+To remove a View, you can use `Node:remove_view()`. This function accepts the
+RootView and the View to remove.
+Alternatively, you can use `Node:close_view()` to close the View as well.
+This function accepts the same arguments as `Node:remove_view()`.
+
+## Overlays
+
+Sometimes, drawing outside the View is needed, for instance to render overlays
+and popups.
+
+Lite XL supports this by deferring draw calls after the entirety of RootView
+has been rendered.
+To do this, use `RootView:defer_draw()`.
+
+This function takes a callback that can use various `renderer` draw calls.
+The callback will be called after RootView (all Views) are rendered.
+
+!!! tip "The callback will be discarded after use."
+    `core.defer_draw()` is usually called in the View's render method.
