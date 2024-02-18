@@ -119,12 +119,35 @@
 }
 
 /* keymap search box */
+@media screen and (min-widdth: 60em) {
+  .keymap-search input {
+    padding-left: 3.6rem;
+    padding-right: 2.2rem;
+  }
+}
+
 .keymap-search {
   margin-bottom: 1em;
 }
 
 .keymap-search input {
   background-color: var(--md-default-bg-color);
+}
+
+/* make the search box bigger */
+[dir=ltr] .keymap-search input {
+  padding-left: 2.9rem;
+  padding-right: 0;
+}
+
+[dir=ltr] .keymap-search.md-search__icon[for=__search] {
+  left: 0.5rem;
+}
+
+@media screen and (min-width: 60em) {
+  [dir=ltr] .keymap-search input {
+    padding-left: 2.2rem;
+  }
 }
 
 .keymap-search.hidden {
