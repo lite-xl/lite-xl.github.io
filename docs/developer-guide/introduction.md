@@ -31,11 +31,7 @@ Syntaxes and colors are considered as subset of plugins.
 These subsets of plugins only interact with the syntax highlighter
 and the `style` table respectively.
 
-## Tips and tricks
-
-Here are some tips for plugin developers.
-
-### Interactive debugging
+## Interactive debugging
 
 Other than using GDB to debug the C part of Lite XL,
 you can also debug the Lua part with [lite-debugger][8].
