@@ -141,6 +141,7 @@ nav:
       - "Classes and Objects": developer-guide/classes-and-objects.md
       - "Documents": developer-guide/documents.md
       - "Views": developer-guide/views.md
+      - "Background Tasks": developer-guide/background-tasks.md
       - "Using Regular Expressions": developer-guide/using-regular-expressions.md
       - "Interacting with the OS": developer-guide/interacting-with-the-os.md
       - "Child Processes": developer-guide/child-processes.md
