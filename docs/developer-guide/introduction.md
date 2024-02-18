@@ -80,12 +80,3 @@ On `cmd.exe`:
 [6]: https://github.com/rxi/lite
 [7]: https://rxi.github.io/lite_an_implementation_overview.html
 [8]: https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/lite-debugger.lua?raw=1
-[Creating Syntaxes]:           creating-syntaxes.md
-[Creating Themes]:             creating-themes.md
-[Simple Plugin]:               simple-plugin.md
-[Commands]:                    commands.md
-[Managing Keyboard Shortcuts]: managing-keyboard-shortcuts.md
-[Classes and Objects]:         classes-and-objects.md
-[Using Regular Expressions]:   using-regular-expressions.md
-[Interacting with the OS]:     interacting-with-the-os.md
-[Child Processes]:             child-processes.md
