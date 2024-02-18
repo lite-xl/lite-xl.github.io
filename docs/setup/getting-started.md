@@ -36,7 +36,7 @@ for Lite XL.
 
 -   :simple-apple:{ .lg .middle } **macOS**
 
-    For macOS El Capitan and above.
+    For OSX El Capitan and above.
 
     - [Intel Mac DMG][macos-x86_64-dmg]
     - [Apple Silicon Mac DMG][macos-aarch64-dmg]
