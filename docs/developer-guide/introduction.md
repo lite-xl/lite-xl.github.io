@@ -39,37 +39,7 @@ Here are some tips for plugin developers.
 
 Other than using GDB to debug the C part of Lite XL,
 you can also debug the Lua part with [lite-debugger][8].
-To use the debugger, install it as a plugin and call
-`command.perform "debugger:break"` to stop the VM and
-start debugging interactively.
-
-### Differing stack traces on a critical error
-
-On an older version of Lite XL, the stack trace printed on the terminal
-when a critical error occur may differ with the stack trace printed
-in `error.txt`.
-In this case, the stack trace in `error.txt` is more complete and
-should be referred.
-This is a bug and will be fixed in future versions of Lite XL.
-
-### `print()` function does not work in Windows
-
-On Windows, we compile Lite XL using the GUI subsystem by default.
-This causes Lite XL to close the stdout.
-To work around this behavior, you can force Lite XL to keep
-stdout open by redirecting its output in a terminal.
-
-On PowerShell:
-
-```powershell
-./lite-xl | tee -variable null
-```
-
-On `cmd.exe`:
-
-```batch
-./lite-xl > NUL
-```
+Follow [this guide][9] to learn how it works.
 
 
 [1]: https://www.lua.org/manual/5.4/
@@ -80,3 +50,4 @@ On `cmd.exe`:
 [6]: https://github.com/rxi/lite
 [7]: https://rxi.github.io/lite_an_implementation_overview.html
 [8]: https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/lite-debugger.lua?raw=1
+[9]: ./debugging.md
