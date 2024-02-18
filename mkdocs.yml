@@ -120,7 +120,6 @@ nav:
   - "Home": index.md
   - "Set Up":
       - "Getting Started": setup/getting-started.md
-      - "Install from Releases": setup/install-from-releases.md
       - "Install from Package Managers": setup/install-from-package-managers.md
       - "Building": setup/building.md
       - "Platform-specific notes": setup/platform-notes.md
