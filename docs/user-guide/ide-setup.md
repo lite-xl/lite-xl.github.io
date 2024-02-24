@@ -41,7 +41,7 @@ Snippets can be easily added following the [official guide][5].
 `formatter` provides automatic file-specific formatting for several programming languages.
 
 ### Integrated terminal
-`lite-xl-terminal` provides and integrated terminal.
+`lite-xl-terminal` provides an integrated terminal.
 
 ### Version control
 `scm` provides source code control integration to Lite XL.
