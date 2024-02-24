@@ -66,7 +66,7 @@ At the moment it only supports `gdb`.
 ### Automated IDE setup examples
 The following examples are IDE configurations that bundle together the essential components of a minimal IDE:
 
-- [Adam's configuration for C/C++][1] features custom plugins for building and debugging, designed for C/C++.
+- [Adam's configuration][1] features custom plugins for building and debugging designed for C/C++.
 - [PerilousBooklet's configuration (WIP)][2] contains an installation script that prepares a comprehensive IDE configuration similar to a minimal version of VSCode, aimed at supporting the most used programming languages.
 
 [1]: https://github.com/adamharrison/lite-xl-ide
