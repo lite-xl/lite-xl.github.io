@@ -22,12 +22,12 @@ You're welcome to submit PRs for an existing issue.
 ## Contributing code changes
 
 We accept PRs for website content. If you want to contribute, make sure
-that you've read the [site rules].
+that you've read the [site rules](#site-rules).
 
 ## Localization
 
-We currently do not support translations due to a lack of contributors.
-We'll reconsider localization if there are contributors.
+Localizations are welcomed, but we have limited capacity to proofread the content.
+As such, the canonical source of information will be the English version.
 
 ## Site Rules
 
@@ -53,7 +53,7 @@ Use confusing / misleading titles and descriptions.
 #### Do
 
 Create a relevant title / heading when creating new content.
-If applicable, you may specify a description in the front matter.
+Always specify a description in the front matter in the form of "Learn X in Lite XL".
 
 #### Don't
 
@@ -83,18 +83,19 @@ function updatePage() {
 
 Write incredibly long lines that cannot be broken down.
 
-> This does not apply to links as they cannot be broken down.
-
 ```md
 I love Lite XL because the editor provides many features out of the box such as syntax highlighting, filesystem tree and lua scripting which I use extensively to customize the editor to such an extent where it is so much better than the original jeez >//< i love lite-xl so muchhhhh!!!!
 ```
 
 #### Do
 
-Ensure that each line does not exceed the 80-character limit.
+Adhere to a 90 character soft-limit and a 100-character hard limit.
+For long lines, break them down appropriately, e.g. adding line breaks
+after punctuations and stop words.
+Start sentences on new lines when appropriate.
 
-For long list items, break them down into multiple lines and indent
-the following lines with 2 spaces.
+For long list items, break them down into multiple lines
+and indent the following lines with 2 spaces.
 
 ```md
 I love Lite XL because the editor provides many features:
@@ -105,9 +106,9 @@ I love Lite XL because the editor provides many features:
 - a killer feature that we probably don't have yet but we'll
   have in the future
 
-I use the lua scripting feature extensively to customize the editor so
-that it is better than the original jeez >//< i love lite-xl so
-muchhhhh!!!!
+I use the lua scripting feature extensively to customize the editor
+so that it is better than the original jeez >//<
+i love lite-xl so muchhhhh!!!!
 ```
 
 #### Don't
@@ -179,9 +180,7 @@ Link to secure websites.
 
 #### Don't
 
-Use inline links.
-
-> This rule does not apply to autolinks or anchor links.
+Use inline links except for autolinks or anchors.
 
 ```md
 Follow [this link](https://someurl.com) and also [this interesting one](https://interesting-one.com).
@@ -231,13 +230,12 @@ Create messy Markdown tables (unless machine generated).
 - Align the pipe character (`|`) to the left.
 - Ensure dashes (excluding the alignment colon character(`:`)) aligns with
   the table header.
+- Add indentation so text is aligned with the column's alignment.
+  If the column aligns to the right, the text inside should too.
 
 ```md
-| name   | Description
-| ----:  | -----------
-| John   | Doe
+|   name | Description
+|   ----:| -----------
+|   John | Doe
 | Jeanne | Doe
 ```
-
-
-[site rules]: #site-rules
