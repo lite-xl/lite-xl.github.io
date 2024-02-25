@@ -43,7 +43,7 @@ Snippets can be easily added following the [official guide][5].
 ## Code formatters
 `formatter` provides automatic file-specific formatting for several programming languages.
 
-### Integrated terminal
+## Integrated terminal
 `lite-xl-terminal` provides an integrated terminal.
 
 ### Version control
