@@ -40,7 +40,7 @@ An example of installing bundled lsp servers is `lpm install lsp_rust` which ins
 
 Snippets can be easily added following the [official guide][5].
 
-### Code formatters
+## Code formatters
 `formatter` provides automatic file-specific formatting for several programming languages.
 
 ### Integrated terminal
