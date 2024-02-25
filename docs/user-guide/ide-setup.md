@@ -46,7 +46,7 @@ Snippets can be easily added following the [official guide][5].
 ## Integrated terminal
 `lite-xl-terminal` provides an integrated terminal.
 
-### Version control
+## Version control
 `scm` provides source code control integration to Lite XL.
 
 `gitblame` can be added to show git commit information of the line where the cursor rests.
