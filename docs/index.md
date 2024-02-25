@@ -11,7 +11,7 @@ hide:
   }
 </style>
 
-# Fast, Lightweight and Powerful Text-Editing Experience { .text-center style="font-size:2.5em;margin-bottom:1em;font-weight:400;" }
+# Fast, Lightweight and Powerful Text-Editing Experience { #headline }
 
 _A simple, fast, feature-filled and extremely extensible text editor
 written in C and Lua, adapted from [lite][1]._{ .text-center style="margin-top:0" }
