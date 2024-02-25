@@ -72,6 +72,7 @@ The following examples are configurations and scripts that bundle together the e
 - [Adam's configuration][1] features custom plugins for building and debugging designed for C/C++.
 - [PerilousBooklet's configuration (WIP)][2] contains an installation script that prepares a comprehensive IDE configuration similar to a minimal version of VSCode, aimed at supporting the most used programming languages.
 
+
 [1]: https://github.com/adamharrison/lite-xl-ide
 [2]: https://github.com/PerilousBooklet/lite-xl-ide
 [3]: https://github.com/lite-xl/lite-xl-lsp?tab=readme-ov-file#setting-a-lsp-server
