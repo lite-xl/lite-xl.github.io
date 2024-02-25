@@ -56,7 +56,7 @@ Snippets can be easily added following the [official guide][5].
 
 More flags can be added in the `init.lua` following the [official guide][4].
 
-### Build integration
+## Build integration
 `build` provides a build system, messages window, and easily clickable errors.
 
 A the moment it only supports `make`, but it can be extended to any build system.
