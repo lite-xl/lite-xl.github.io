@@ -23,7 +23,7 @@ The following plugins are meant to enrich Lite XL with handy features that make 
 - `devicons` provides fancy icons in the project treeview for many different file types.
 - `meta_colors` installs all available theme files
 
-### Syntax highlighting
+## Syntax highlighting
 `meta_languages` is a metapackage that installs all supported syntax-highlighting plugins.
 
 ### Intellisense
