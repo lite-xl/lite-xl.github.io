@@ -5,9 +5,11 @@ description: Learn how to set up Lite XL as an integrated development environmen
 # Setup Lite XL as an IDE
 
 Lite XL can be configured to be a proper IDE for most programming languages.
-The following is a brief overview of the plugins that, when used together, create the experience of a minimal and modern IDE.
+The following is a brief overview of the plugins that, when used together, provide the experience 
+of a minimal and modern IDE.
 
-## Bells and whistles
+## Bells and Whistles
+
 The following plugins are meant to enrich Lite XL with handy features that improve
 the coding experience:
 
@@ -18,60 +20,79 @@ the coding experience:
 - `indentguide` adds indent guides to make it easier to see function boundaries.
 - `rainbowparen` applies rainbow colours to nesting parentheses to make it easier to distinguish them.
 - `scalestauts` displays current scale (zoom) in the status view (it depends on the `scale` plugin).
-- `selectionhighlight` highlights regions of code that match the current selection, to preview for search/replace actions.
+- `selectionhighlight` highlights regions of code that match the current selection, 
+  to preview for search/replace actions.
 - `sticky_scroll` keeps track of the current scope at the top of the view.
 - `minimap` adds VSCode's minimap.
 - `devicons` provides fancy icons in the project treeview for many different file types.
-- `meta_colors` installs all available theme files
+- `meta_colors` installs all available theme files.
 
-## Syntax highlighting
-`meta_languages` is a metapackage that installs all supported syntax-highlighting plugins.
+## Syntax Highlighting
+
+`meta_languages` installs all supported syntax-highlighting plugins.
 
 ## Intellisense
-`lsp` is a plugin that provides support for intellisense (LSP protocol), while `lintplus` provides support for linters in case A LSP server lacks an integrated linter.
+
+`lsp` is a plugin that provides support for intellisense (LSP protocol), while `lintplus` provides support 
+for linters in case A LSP server lacks an integrated linter.
 
 There is also `lsp_snippets`, which adds snippets support from `lsp` to the `snippets` plugin.
 
-`lsp` can be configured manually by following the [official guide][3], or it can interface with the `lite-xl-lsp-servers` repository that allows the installation of bundled lsp servers, which don't require manual configuration.
+`lsp` can be configured manually by following the [official guide][3], or it can interface with 
+the `lite-xl-lsp-servers` repository that allows the installation of bundled LSP servers, which don't 
+require manual configuration.
 
-An example of installing bundled lsp servers is `lpm install lsp_rust` which installs the binary files required to run the `rust-analyzer` lsp.
+An example of installing bundled LSP servers is `lpm install lsp_rust` which installs the binary 
+files required to run `rust-analyzer`.
 
-## Code snippets
+## Code Snippets
+
 `snippets` adds support for code snippets.
 
-Snippets can be easily added following the [official guide][5].
+Snippets can easily be added by following the [official guide][5].
 
-## Code formatters
-`formatter` provides automatic file-specific formatting for several programming languages.
+## Code Formatters
 
-## Integrated terminal
+`formatter` provides file-specific formatting for several programming languages.
+
+## Integrated Terminal
+
 `lite-xl-terminal` provides an integrated terminal.
 
-## Version control
+## Version Control
+
 `scm` provides source code control integration to Lite XL.
 
 `gitblame` can be added to show git commit information of the line where the cursor rests.
 
-## TODO treeview
-`todotreeview` is a plugin that adds a custom treeview with the goal of keeping tracks of flagged comments (TODO, WIP, FIX, ...) for better workflow organization.
+## TODO Treeview
+
+`todotreeview` is a plugin that adds a custom treeview with the goal of keeping tracks of 
+flagged comments (TODO, WIP, FIX, ...) for better workflow organization.
 
 More flags can be added in the `init.lua` following the [official guide][4].
 
-## Build integration
+## Build Integration
+
 `build` provides a build system, messages window, and easily clickable errors.
 
 A the moment it only supports `make`, but it can be extended to any build system.
 
-## Debug integration
+## Debug Integration
+
 `debugger` provides debugger integration, with pluggable backends.
 
 At the moment it only supports `gdb`.
 
 ## Automatic Setup
-The following examples are configurations and scripts that bundle together the essential components of a minimal IDE:
 
-- [Adam's configuration][1] features custom plugins for building and debugging designed for C/C++.
-- [PerilousBooklet's configuration (WIP)][2] contains an installation script that prepares a comprehensive IDE configuration similar to a minimal version of VSCode, aimed at supporting the most used programming languages.
+The following examples are configurations and scripts that bundle together the essential components 
+of a minimal IDE:
+
+- [Adam's configuration][1] is made for C/C++ and features custom plugins for building and debugging.
+- [PerilousBooklet's configuration (WIP)][2] contains an installation script that prepares a 
+comprehensive IDE configuration similar to a minimal version of VSCode, aimed at supporting 
+the most used programming languages.
 
 
 [1]: https://github.com/adamharrison/lite-xl-ide
