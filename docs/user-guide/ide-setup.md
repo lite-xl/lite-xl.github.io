@@ -7,7 +7,7 @@ description: Learn how to set up Lite XL as an integrated development environmen
 Lite XL can be configured to be a proper IDE for most programming languages.
 The following is a brief overview of the plugins that, when used together, create the experience of a minimal and modern IDE.
 
-### Bells and whistles
+## Bells and whistles
 The following plugins are meant to enrich Lite XL with handy features that make coding quicker and more pleasant to the eyes:
 
 - `autoinsert` and `lfautoinsert` add automatic bracket/quote insertion and text-wrapping.
