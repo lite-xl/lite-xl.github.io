@@ -67,7 +67,7 @@ A the moment it only supports `make`, but it can be extended to any build system
 At the moment it only supports `gdb`.
 
 ## Automatic Setup
-The following examples are IDE configurations that bundle together the essential components of a minimal IDE:
+The following examples are configurations and scripts that bundle together the essential components of a minimal IDE:
 
 - [Adam's configuration][1] features custom plugins for building and debugging designed for C/C++.
 - [PerilousBooklet's configuration (WIP)][2] contains an installation script that prepares a comprehensive IDE configuration similar to a minimal version of VSCode, aimed at supporting the most used programming languages.
