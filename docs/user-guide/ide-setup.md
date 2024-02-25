@@ -8,7 +8,8 @@ Lite XL can be configured to be a proper IDE for most programming languages.
 The following is a brief overview of the plugins that, when used together, create the experience of a minimal and modern IDE.
 
 ## Bells and whistles
-The following plugins are meant to enrich Lite XL with handy features that make coding quicker and more pleasant to the eyes:
+The following plugins are meant to enrich Lite XL with handy features that improve
+the coding experience:
 
 - `autoinsert` and `lfautoinsert` add automatic bracket/quote insertion and text-wrapping.
 - `autosave` allows automatic file saving after every change.
