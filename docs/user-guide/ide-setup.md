@@ -13,7 +13,7 @@ The following plugins are meant to enrich Lite XL with handy features that make 
 - `autoinsert` and `lfautoinsert` add automatic bracket/quote insertion and text-wrapping.
 - `autosave` allows automatic file saving after every change.
 - `bracketmatch` underlines brackets matching pairs under the caret.
-- `colorpreview` underlays color values (eg. #ff00ff or rgb(255, 0, 255)) with their respective color.
+- `colorpreview` underlays color values (eg. `#ff00ff` or `rgb(255, 0, 255)`) with their respective color.
 - `indentguide` adds indent guides to make it easier to see function boundaries.
 - `rainbowparen` applies rainbow colours to nesting parentheses to make it easier to distinguish them.
 - `scalestauts` displays current scale (zoom) in the status view (it depends on the `scale` plugin).
