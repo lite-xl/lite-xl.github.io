@@ -35,7 +35,7 @@ There is also `lsp_snippets`, which adds snippets support from `lsp` to the `sni
 
 An example of installing bundled lsp servers is `lpm install lsp_rust` which installs the binary files required to run the `rust-analyzer` lsp.
 
-### Code snippets
+## Code snippets
 `snippets` adds support for code snippets.
 
 Snippets can be easily added following the [official guide][5].
