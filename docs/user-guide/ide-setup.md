@@ -66,7 +66,7 @@ A the moment it only supports `make`, but it can be extended to any build system
 
 At the moment it only supports `gdb`.
 
-### Automated IDE setup examples
+## Automatic Setup
 The following examples are IDE configurations that bundle together the essential components of a minimal IDE:
 
 - [Adam's configuration][1] features custom plugins for building and debugging designed for C/C++.
