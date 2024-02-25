@@ -28,7 +28,7 @@ the coding experience:
 `meta_languages` is a metapackage that installs all supported syntax-highlighting plugins.
 
 ## Intellisense
-`lsp` is a plugin that provides support for intellisense (LSP protocol), while `lintplus` provides support for linters and is used when the an lsp server lacks an integrated linter.
+`lsp` is a plugin that provides support for intellisense (LSP protocol), while `lintplus` provides support for linters in case A LSP server lacks an integrated linter.
 
 There is also `lsp_snippets`, which adds snippets support from `lsp` to the `snippets` plugin.
 
