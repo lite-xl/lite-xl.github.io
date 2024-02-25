@@ -61,7 +61,7 @@ More flags can be added in the `init.lua` following the [official guide][4].
 
 A the moment it only supports `make`, but it can be extended to any build system.
 
-### Debug integration
+## Debug integration
 `debugger` provides debugger integration, with pluggable backends.
 
 At the moment it only supports `gdb`.
