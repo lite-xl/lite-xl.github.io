@@ -1,3 +1,7 @@
+---
+description: Learn how to set up Lite XL as an integrated development environment.
+---
+
 # Setup Lite XL as an IDE
 
 Lite XL can be configured to be a proper IDE for most programming languages.
