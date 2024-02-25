@@ -51,7 +51,7 @@ Snippets can be easily added following the [official guide][5].
 
 `gitblame` can be added to show git commit information of the line where the cursor rests.
 
-### TODO treeview
+## TODO treeview
 `todotreeview` is a plugin that adds a custom treeview with the goal of keeping tracks of flagged comments (TODO, WIP, FIX, ...) for better workflow organization.
 
 More flags can be added in the `init.lua` following the [official guide][4].
