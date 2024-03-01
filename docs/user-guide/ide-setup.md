@@ -34,7 +34,7 @@ the coding experience:
 ## Intellisense
 
 `lsp` is a plugin that provides support for intellisense (LSP protocol), while `lintplus` provides support 
-for linters in case A LSP server lacks an integrated linter.
+for linters in case a LSP server lacks an integrated linter.
 
 There is also `lsp_snippets`, which adds snippets support from `lsp` to the `snippets` plugin.
 
