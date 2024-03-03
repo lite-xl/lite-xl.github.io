@@ -144,6 +144,7 @@ nav:
       - "Classes and Objects": developer-guide/classes-and-objects.md
       - "Documents": developer-guide/documents.md
       - "Views": developer-guide/views.md
+      - "Examples of Custom Views": developer-guide/views-examples.md
       - "Background Tasks": developer-guide/background-tasks.md
       - "Debugging": developer-guide/debugging.md
       - "Using Regular Expressions": developer-guide/using-regular-expressions.md
