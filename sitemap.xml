@@ -126,12 +126,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/lsp/</loc>
+         <lastmod>2024-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://takase1121.github.io/lite-xl-docs/user-guide/macos-keymap/</loc>
          <lastmod>2024-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/plugins/</loc>
+         <loc>https://takase1121.github.io/lite-xl-docs/user-guide/managing-plugins/</loc>
          <lastmod>2024-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
