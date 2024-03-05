@@ -14,7 +14,7 @@ In this article, we will discuss how to properly set up language servers for use
 
 The LSP plugin can be installed like any other Lite XL plugins.
 
-Lite XL depends on the [widget] and optionally [lint+] and [lsp_snippets] plugin for rendering UI elements.
+The LSP plugin depends on the [widget] and optionally [lint+] and [lsp_snippets] plugin for rendering UI elements.
 When installing the plugin manually, you must also install these plugins as well.
 
 === "lpm"

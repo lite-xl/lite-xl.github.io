@@ -18,7 +18,7 @@ The following plugins are meant to enrich Lite XL with handy features that impro
 - `colorpreview` underlays color values (e.g. `#ff00ff` or `rgb(255, 0, 255)`) with their respective color.
 - `indentguide` adds indent guides to make it easier to see function boundaries.
 - `rainbowparen` applies rainbow colors to nesting parentheses to make it easier to distinguish them.
-- `scalestauts` displays current scale (zoom) in the status view (it depends on the `scale` plugin).
+- `scalestatus` displays current scale (zoom) in the status view (it depends on the `scale` plugin).
 - `selectionhighlight` highlights regions of code that match the current selection, 
   to preview for search/replace actions.
 - `sticky_scroll` keeps track of the current scope at the top of the view.
