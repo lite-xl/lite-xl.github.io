@@ -89,7 +89,7 @@ I love Lite XL because the editor provides many features out of the box such as 
 
 #### Do
 
-Adhere to a 90 character soft-limit and a 100-character hard limit.
+Adhere to a 90 character soft-limit and a 110-character hard limit.
 For long lines, break them down appropriately, e.g. adding line breaks
 after punctuations and stop words.
 Start sentences on new lines when appropriate.
