@@ -128,8 +128,9 @@ nav:
   - "User Guide":
       - "Introduction": user-guide/introduction.md
       - "Configuration": user-guide/configuration.md
-      - "Plugins": user-guide/plugins.md
+      - "Managing Plugins": user-guide/managing-plugins.md
       - "IDE Setup": "user-guide/ide-setup.md"
+      - "Language Server support": user-guide/lsp.md
       - "Keymap": user-guide/keymap.md
       - "macOS Keymap": user-guide/macos-keymap.md
   - "Developer Guide":
