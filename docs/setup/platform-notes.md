@@ -14,12 +14,12 @@ Users can just delete the installation folder.
 !!! note
     This is **different** from the Portable Mode mentioned in [Getting Started][1].
     The Portable Mode checkbox will not create the `user` directory,
-    thus the install **will use the user's configuration**.
+    thus the installation **will use the user's configuration**.
 
 ### 32-bit support
 
 32-bit builds of Lite XL are provided, but they are not actively tested for bugs.
-These builds has platform suffix "i386".
+These builds have platform suffix "i386".
 
 ### Custom window decoration
 

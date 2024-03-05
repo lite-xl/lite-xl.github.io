@@ -45,7 +45,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
 -   :material-code-tags:{ .lg .middle } **Source Code**
     
-    [meson] and a C11 compiler needed.
+    [Meson] and a C11 compiler needed.
 
     - [Source tarball][source-tar]
     - [Source ZIP][source-zip]
@@ -173,6 +173,7 @@ Lite XL may have issues on certain platforms that can be worked around
 by the user. A list of issues and workarounds are documented [here][issues].
 
 
+<!-- LTeX: enabled=false -->
 {% set release_url = "https://github.com/lite-xl/lite-xl/releases/download/%s" | format(lite_xl_version) %}
 [GitHub]:                   https://github.com/lite-xl/lite-xl/releases/latest
 [package managers]:         ./install-from-package-managers.md
@@ -185,7 +186,7 @@ by the user. A list of issues and workarounds are documented [here][issues].
 [macos-x86_64-dmg]:         {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-macos-x86_64.dmg
 [macos-aarch64-dmg]:        {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-macos-arm64.dmg
 [macos-universal-dmg]:      {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-macos-universal.dmg
-[meson]:                    https://mesonbuild.com/
+[Meson]:                    https://mesonbuild.com/
 [source-tar]:               https://github.com/lite-xl/lite-xl/archive/refs/tags/{{ lite_xl_version }}.tar.gz
 [source-zip]:               https://github.com/lite-xl/lite-xl/archive/refs/tags/{{ lite_xl_version }}.zip
 [build]:                    ./building-from-source.md

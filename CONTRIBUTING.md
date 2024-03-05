@@ -180,7 +180,7 @@ Link to secure websites.
 
 #### Don't
 
-Use inline links except for autolinks or anchors.
+Use inline links except for auto-links or anchors.
 
 ```md
 Follow [this link](https://someurl.com) and also [this interesting one](https://interesting-one.com).

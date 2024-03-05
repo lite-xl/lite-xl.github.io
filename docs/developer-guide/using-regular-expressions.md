@@ -27,7 +27,7 @@ print(regex.gsub("hello world (.+)!", s, "Hello world $1 Doe!"))
 Most Regex API functions accept a `Regex` object or a string to compile into a regex as their first argument.
 The only exception is `regex:cmatch()` which requires the first argument to be a `Regex` object.
 
-For more information regarding PCRE itself, please consult the [documentation][1] or a [cheatsheet][2].
+For more information regarding PCRE itself, please consult the [documentation][1] or a [cheat sheet][2].
 
 ### Creating a regex
 

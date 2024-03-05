@@ -51,7 +51,7 @@ This plugin provides a GUI to configure Lite XL.
 ## Fonts
 
 Lite XL comes with [JetBrains Mono][1] and [Fira Sans][2] by default.
-JetBrains Mono is is used for the editor itself while Fira Sans is used for other UI elements.
+JetBrains Mono is used for the editor itself while Fira Sans is used for other UI elements.
 
 To change the fonts used by the editor, you can change the
 variable `style.font` and `style.code_font`.
@@ -229,12 +229,10 @@ To remove an existing keyboard shortcut, you can use `keymap.unbind()`.
     ![Screenshot showing the keybindings tab][12]{ loading=lazy }
 
     Scroll until you find the entry containing the command you want to bind to and click on it.
-    In recent versions of the Settings plugin, you can also
-    search for commands with the text box on top.
+    In recent versions of the Settings plugin, you can also search for commands with the text box on top.
     In this example, we pick `doc:move-to-previous-char`.
 
-    To remove a keyboard shortcut, select the shortcut you want to remove
-and press the "Remove" button.
+    To remove a keyboard shortcut, select the shortcut you want to remove and press the "Remove" button.
     Afterwards, press the "Save" button to save the changes.
     ![Screenshot showing the keybind changer][13]{ loading=lazy }
 

@@ -195,8 +195,7 @@ function process:wait(timeout: number): number, string, number end
 `process:running()` returns a boolean immediately indicating whether the process has ended.
 
 !!! note
-    Do not use `process:running()` to determine when to stop reading the output
-    of a child process.
+    Do not use `process:running()` to determine when to stop reading the output of a child process.
     A child process can end and leave residual data in the stream.
     Instead, you should call `process.read_stdout()` or `process.read_stderr()`
     until an appropriate error (`process.ERROR_PIPE`) occurs.
@@ -206,11 +205,10 @@ If the child process has ended, it will return the exit code of the process.
 If the child process is still running or an error occurred,
 it will return `nil` followed by an error message and error code.
 
-If `time` is 0, the method returns immediately.
-If `time` is `process.WAIT_INFINITE`, the method waits until the child process ends.
-If `time` is `process.WAIT_DEADLINE`, the method uses the `timeout` value specified
-when calling `process.start()`.
-If this value is not specified, it will wait until the child process ends.
+`time` is time in milliseconds before the method returns.
+If it is 0, the method returns immediately without waiting for the child process to exit.
+The parameter can also be `process.WAIT_DEADLINE` to use the timeout value provided in `process.start()`
+or `process.WAIT_INFINITE` to wait until the child process exits (the default).
 
 **Examples:**
 
@@ -243,8 +241,7 @@ function process:kill(): boolean, string, number end
 On POSIX platforms, `process:terminate()` sends `SIGTERM` to the child process
 while `process:kill()` sends `SIGKILL` to the child process.
 
-On Windows, `process:terminate()` uses `GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT)` to simulate
-++ctrl+break++.
+On Windows, `process:terminate()` uses `GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT)` to simulate ++ctrl+break++.
 `process:kill()` uses `TerminateProcess()` to terminate the process immediately.
 
 !!! note

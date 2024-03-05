@@ -34,7 +34,7 @@ The packages are prefixed with `lite-xl-(version)-addons`
 
 ## Can I get smart autocompletion (Intellisense/LSP)?
 
-Check out the [lsp] plugin.
+Check out the [LSP] plugin.
 
 ## Where is the integrated terminal?
 
@@ -100,7 +100,7 @@ You need to [vibe].
 [LPM]:                  https://github.com/lite-xl/lite-xl-plugin-manager
 [here]:                 ../user-guide/plugins.md
 [v2.1.0]:               https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
-[lsp]:                  https://github.com/lite-xl/lite-xl-lsp
+[LSP]:                  https://github.com/lite-xl/lite-xl-lsp
 [lite-xl-terminal]:     https://github.com/adamharrison/lite-xl-terminal
 [autowrap]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autowrap.lua?raw=1
 [master-luajit-branch]: https://github.com/lite-xl/lite-xl/pull/880

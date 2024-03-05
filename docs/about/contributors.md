@@ -25,7 +25,7 @@ You can get the contributors for a particular release on the [release page].
 | [liquidev]           | Tab style and animations improvements.
 | [Cukmekerb]          | Syntax highlighting improvements.
 | [Nils Kvist]         | Popup window replacement with CommandView dialog.
-| [vqn]                | Syntax highlighting and other bugfixes.
+| [vqn]                | Syntax highlighting and other bug fixes.
 | [George Timofeev]    | macOS keymap and build improvements.
 | [sammyette]          | Various bug fixes for plugins and the editor itself.
 | [Daniel Rocha]       | Scaling and indentation fixes.
