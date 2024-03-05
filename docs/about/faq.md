@@ -1,5 +1,5 @@
 ---
-description: A list of frequently-asked questions.
+description: A list of frequently-asked questions about Lite XL.
 ---
 
 # FAQ

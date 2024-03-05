@@ -1,5 +1,5 @@
 ---
-description: A list of contributors that contributed to Lite XL.
+description: A list of people that contributed to Lite XL.
 ---
 
 # Contributors

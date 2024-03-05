@@ -12,9 +12,8 @@ who are new to Lite XL to the process of writing plugins for the editor.
 
 ### What does the plugin do?
 
-The plugin displays a message (that is taken as input from the user)
-in the top right corner of the editor window. It also allows the user to toggle
-the visibility of the message.
+The plugin displays a message (that is taken as input from the user) in the top right corner
+of the editor window. It also allows the user to toggle the visibility of the message.
 
 ### I can't write Lua!
 
@@ -23,8 +22,7 @@ If you're new to programming, you can read [this][2].
 
 ### Format of the tutorial
 
-The code contains comments detailing what most (if not all)
-of the code in the file does.
+The code contains comments detailing what most (if not all) of the code in the file does.
 
 
 ### The code

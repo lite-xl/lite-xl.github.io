@@ -3,17 +3,15 @@ description: Learn about how to operate on files opened in Lite XL.
 ---
 
 Lite XL stores an opened file in a Doc.
-A Doc contains the file in lines (`doc.lines`), metadata
-and various states, including
-the syntax highlighter (`doc.highlighter`) and the undo stack.
+A Doc contains the file in lines (`doc.lines`), metadata and various states, including the syntax highlighter
+(`doc.highlighter`) and the undo stack.
 
 ## Creating Docs
 
 To create a Doc, you usually create instances of it directly.
 Instead, it is often easier to call `core.open_doc()`.
-This function accepts a filename and returns a new Doc
-if the file is not open, or an existing Doc
-if the file is already open in the editor.
+This function accepts a filename and returns a new Doc if the file is not open,
+or an existing Doc if the file is already open in the editor.
 
 ```lua
 function core.open_doc(filename: string): Doc end
@@ -21,22 +19,18 @@ function core.open_doc(filename: string): Doc end
 
 ## Getting existing Docs
 
-Other than `core.open_doc()`, you can also access `core.docs`
-for a list of opened Docs in the editor.
-However, you should not modify this table directly but use other
-functions to interact with it.
+Other than `core.open_doc()`, you can also access `core.docs` for a list of opened Docs in the editor.
+However, you should not modify this table directly but use other functions to interact with it.
 
 ## Filenames
 
-The filename is stored in `Doc.filename`
-while the absolute path is stored in `Doc.abs_filename`.
-If a Doc doesn't have a name (created by pressing ++ctrl+n++),
-`Doc.filename` is set to `"unsaved"` and `Doc.abs_filename` is nil.
+The filename is stored in `Doc.filename` while the absolute path is stored in `Doc.abs_filename`.
+If a Doc doesn't have a name (created by pressing ++ctrl+n++), `Doc.filename` is set to `"unsaved"`
+and `Doc.abs_filename` is nil.
 
 ## Changes
 
-If the Document was changed and the changes are not saved,
-it is considered "dirty".
+If the Document was changed and the changes are not saved, it is considered "dirty".
 To check if a Doc is dirty, simply call `Doc:is_dirty()`.
 To reset the dirty flag, call `Doc:clean()`.
 
@@ -52,27 +46,21 @@ To redo an operation, call `Doc:redo()`.
 
 ## Positions
 
-A position within a Doc is represented with two numbers —
-the row and column number.
+A position within a Doc is represented with two numbers — the row and column number.
 
-To ensure that a position is correct (valid for the current Doc),
-you can call `Doc:sanitize_position()`.
-This function accepts a position and clamps it to the following document,
-making sure that it is valid.
+To ensure that a position is correct (valid for the current Doc), you can call `Doc:sanitize_position()`.
+This function accepts a position and clamps it to the following document, making sure that it is valid.
 
 ### Transformations
 
-Doc provides `Doc:position_offset()` to translate a position
-to another (e.g. next word, next character, etc.).
+Doc provides `Doc:position_offset()` to translate a position to another (e.g. next word, next character, etc.).
 
 The function accepts the input position followed by several arguments.
 Depending on the types of arguments, different transformations are carried out.
-The simplest form of the function accepts a byte offset
-and applies it to the input position.
+The simplest form of the function accepts a byte offset and applies it to the input position.
 The second form accepts a line and column offset and applies it to the position.
 The third form accepts a transformation function.
-The transformation function receives the Doc,
-as well as other arguments passed to `Doc:position_offset()`.
+The transformation function receives the Doc, as well as other arguments passed to `Doc:position_offset()`.
 
 The function should return the transformed position.
 
@@ -113,11 +101,9 @@ local x, y = doc:position_offset(1, 1, translate.next_char)
 ## Selections
 
 In Lite XL, selections refer to region of text selected by the user.
-It is represented by four numbers — the starting and ending
-line and column number.
-These numbers are sorted in operational order; for the word "Hello",
-selecting it from `o` to `H` will yield `(1, 5, 1, 1)`
-while selecting it from `H` to `o` will yield `(1, 1, 1, 5)`.
+It is represented by four numbers — the starting and ending line and column number.
+These numbers are sorted in operational order; for the word "Hello", selecting it from `o` to `H`
+will yield `(1, 5, 1, 1)` while selecting it from `H` to `o` will yield `(1, 1, 1, 5)`.
 When displayed to the user, a caret will be drawn at the **ending** position.
 
 A caret is a **special selection where the start and end positions are equal**.
@@ -130,33 +116,28 @@ These functions now operate on the last selection made by the user.
 
 As the Doc is being edited, some selections can be invalidated
 (e.g. the actual lines are shorter than what the selection covers).
-To fix this, you can call `Doc:sanitize_selection()` before operating
-on them.
+To fix this, you can call `Doc:sanitize_selection()` before operating on them.
 This function will normalize any inconsistent selections within the Doc.
 
 ### Getting selections
 
-To check whether the user made any selection (excluding carets),
-you can use `Doc:has_any_selection()`.
+To check whether the user made any selection (excluding carets), you can use `Doc:has_any_selection()`.
 
 To iterate through all the selections, you can use `Doc:get_selections()`.
 This function accepts two arguments `sort_intra` and `idx_reverse`.
 
-If `sort_intra` is true, the positions returned by the iterator is sorted
-in ascending order instead of operational order.
-If `idx_reverse` is true, the iterator will iterate from the latest to the
-oldest selection.
-When a number is passed to `idx_reverse`, the iterator will run for that
-number of iterations from the latest to the oldest.
+If `sort_intra` is true, the positions returned by the iterator is sorted in ascending order
+instead of operational order.
+If `idx_reverse` is true, the iterator will iterate from the latest to the oldest selection.
+When a number is passed to `idx_reverse`, the iterator will run for that number of iterations
+from the latest to the oldest.
 
 To get individual selections, you can use `Doc:get_selection_idx()`.
-This function accepts the selection index (1 is the oldest selection),
-and optionally a boolean indicating the result positions should be sorted
-in ascending order.
+This function accepts the selection index (1 is the oldest selection), and optionally a boolean indicating
+the result positions should be sorted in ascending order.
 
 To get text from multiple selections, use `Doc:get_selection_text()`.
-This function returns the last `limit` selections' text concatenated
-with newline characters.
+This function returns the last `limit` selections' text concatenated with newline characters.
 If `limit` is not provided, the function returns text from all selections.
 
 ```lua
@@ -180,8 +161,8 @@ local text = doc:get_selection_text(5)
 ### Modifying selections
 
 To add a selection, you can use `Doc:add_selection()`.
-This function accepts the start and end positions followed by a boolean
-indicating whether the function should swap the start and end positions.
+This function accepts the start and end positions followed by a boolean indicating whether the function
+should swap the start and end positions.
 This function will replace an existing smaller selection.
 
 To modify an existing selection, you can use `Doc:set_selections()`.
@@ -192,12 +173,10 @@ When the function is called with 3 arguments, the other two arguments
 are the ending positions of the selection.
 This effectively truncates the selection at the index.
 
-When the function is called with 6 arguments, the selection index is
-followed by the start and end positions of the selection and a boolean
-indicating whether the start and end positions should be swapped.
+When the function is called with 6 arguments, the selection index is followed by the start and end positions
+of the selection and a boolean indicating whether the start and end positions should be swapped.
 
-The 7th argument is the number of selections to remove at the index
-before inserting new ones.
+The 7th argument is the number of selections to remove at the index before inserting new ones.
 
 ```lua
 -- add a selection
@@ -238,11 +217,10 @@ end
 
 ### Merging selections
 
-Sometimes operations involving multiline editing can cause inconsistent
-and duplicated selections. To fix this, you can call `Doc:merge_cursors()`.
+Sometimes operations involving multiline editing can cause inconsistent and duplicated selections.
+To fix this, you can call `Doc:merge_cursors()`.
 
-This function takes an optional number `idx`, which will make the function
-merge selections adjacent to `idx`. 
+This function takes an optional number `idx`, which will make the function merge selections adjacent to `idx`. 
 If `idx` is not provided, the function attempts to merge all the selections.
 
 ## Indentation
@@ -252,11 +230,10 @@ This value is either inherited from `config.tab_type` and `config.indent_size`
 or set by the `autoindent` plugin.
 
 To get this info, you can call `Doc:get_indent_info()`.
-This function returns the indent type, indent size and whether this is a guess
-by the `autoindent` plugin or is confirmed to be correct.
+This function returns the indent type, indent size and whether this is a guess by the `autoindent` plugin
+or is confirmed to be correct.
 
-Alternatively, you can call `Doc:get_indent_string()` to get a string
-used to indent a line by one level.
+Alternatively, you can call `Doc:get_indent_string()` to get a string used to indent a line by one level.
 
 ```lua
 -- indent_type is either "soft" for space or "hard" for tabs.
@@ -274,13 +251,11 @@ function Doc:get_indent_info(): "soft"|"hard", number, boolean end
 ### Changing indentation
 
 To add or remove indentation, you can call `Doc:indent_text()`.
-The function accepts a boolean indicating whether you want to add or
-remove indents, optionally followed by the starting and ending position
-of the region to modify.
+The function accepts a boolean indicating whether you want to add or remove indents,
+optionally followed by the starting and ending position of the region to modify.
 
-When indenting, if the cursor is in the beginning whitespace of a line,
-the cursor will insert an appropriate amount of whitespace and
-move to the first non-whitespace character of the line.
+When indenting, if the cursor is in the beginning whitespace of a line, the cursor will insert
+an appropriate amount of whitespace and move to the first non-whitespace character of the line.
 Otherwise, whitespace are inserted, and the cursor does not move.
 
 When removing indentation, the cursor will jump to the start of line
@@ -302,32 +277,27 @@ end
 To get text from a Doc, you can use `Doc:get_text()`.
 This function accepts the start and end position and returns text between it.
 
-`Doc:get_char()` can be used to get the character
-at a specified line and column.
+`Doc:get_char()` can be used to get the character at a specified line and column.
 
 ## Modifying text
 
-Doc provides high-level functions to insert, remove and modify lines,
-along with text input handlers and convenience function to delete words
-or characters.
+Doc provides high-level functions to insert, remove and modify lines, along with text input handlers
+and convenience function to delete words or characters.
 
 ### Inserting and removing text
 
 To insert text at the current cursors' position, you can use `Doc:text_input()`.
 This function will replace selections and handle text overwriting.
-You can pass a selection / cursor index for the second parameter
-to only insert text in the specified cursor.
+You can pass a selection / cursor index for the second parameter to only insert text in the specified cursor.
 
 For inserting text at a specified position, you can use `Doc:insert()`.
-This function takes in the initial position and a string, and inserts it
-into the Doc.
+This function takes in the initial position and a string, and inserts it into the Doc.
 
 To remove text from the Doc, call `Doc:remove()`.
 The function accepts the start and end position of the region of text to remove.
 
-These two functions has their low level counterpart, `Doc:raw_insert()`
-and `Doc:raw_remove()`. These function takes the undo stack
-and the time in seconds as extra arguments.
+These two functions has their low level counterpart, `Doc:raw_insert()` and `Doc:raw_remove()`.
+These function takes the undo stack and the time in seconds as extra arguments.
 They also don't call any event handlers related to Doc change.
 
 ```lua
@@ -347,16 +317,13 @@ doc:remove(1, 1, 1, 3)
 ### Replacing text
 
 To replace text within selections, you can call `Doc:replace()`.
-This function accepts a replace function, which accepts the original
-selection text and returns the replaced text, optionally followed by
-a result value.
-The result values for each replacement are stored in a table and returned
-by `Doc:replace()`.
+This function accepts a replace function, which accepts the original selection text and returns
+the replaced text, optionally followed by a result value.
+The result values for each replacement are stored in a table and returned by `Doc:replace()`.
 If no text is selected, the function will try to replace all text in the Doc.
 
 A lower-level version of the function is available as `Doc:replace_cursor()`,
-which replaces text within a region and inserts the result to the cursor
-at the specified index.
+which replaces text within a region and inserts the result to the cursor at the specified index.
 The function returns the result value from the replace function.
 
 ```lua
@@ -380,14 +347,14 @@ end
 
 ### Convenience functions
 
-`Doc:move_to()` and `Doc:move_to_cursor()` can be used to move the cursors
-to a specified position with similar arguments to `Doc:position_offset()`.
+`Doc:move_to()` and `Doc:move_to_cursor()` can be used to move the cursors to a specified position
+with similar arguments to `Doc:position_offset()`.
 `Doc:move_to_cursor()` accepts a cursor index as the first argument.
 
-`Doc:select_to()` and `Doc:delete_to()` can be used and delete text with
-similar arguments to `Doc:position_offset()`.
-`Doc:select_to_cursor()` and `Doc:delete_to_cursor()` does the same thing
-but allows the user to specify a cursor or selection index to operate on.
+`Doc:select_to()` and `Doc:delete_to()` can be used and delete text with similar arguments
+to `Doc:position_offset()`.
+`Doc:select_to_cursor()` and `Doc:delete_to_cursor()` does the same thing but allows the user to specify
+a cursor or selection index to operate on.
 
 ```lua
 local translate = require "core.doc.translate"
@@ -406,10 +373,8 @@ end
 
 To save a Doc, you can call `Doc:save()`.
 
-This function saves the Doc to a file with the name from `filename`
-or `self.filename` if `filename` is nil.
-If the Doc doesn't have a filename set, this function will
-set the filename for the Doc.
+This function saves the Doc to a file with the name from `filename` or `self.filename` if `filename` is nil.
+If the Doc doesn't have a filename set, this function will set the filename for the Doc.
 
 ```lua
 function Doc:save(filename?: string) end

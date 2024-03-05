@@ -1,16 +1,14 @@
 ---
-description: Learn how to use background tasks
-                to perform long-running operations.
+description: Learn how to use background tasks to perform long-running operations in Lite XL.
 ---
 
-Lite XL performs a few long-running tasks in the background,
-such as syntax highlighting, project search and filesystem monitoring.
-Lite XL implements background tasks with Lua coroutines,
-ensuring that the program runs on a single thread.
+Lite XL performs a few long-running tasks in the background, such as syntax highlighting, project search
+and filesystem monitoring.
+Lite XL implements background tasks with Lua coroutines, ensuring that the program runs on a single thread.
 
 To schedule a background task for execution, you can use `core.add_thread()`.
-This function accepts a coroutine function, a weak reference to an object, and
-other arguments to pass to the coroutine function.
+This function accepts a coroutine function, a weak reference to an object, and other arguments
+to pass to the coroutine function.
 
 The coroutine function takes any arguments passed into `core.add_thread()`
 and should call `coroutine.yield()` with the timeout in seconds.
@@ -38,8 +36,7 @@ end, doc)
 ## Example: Managing a child process
 
 This example uses a background task to manage a long-running child process.
-The background task reads from the child process and prints it to stdout
-after the process exits.
+The background task reads from the child process and prints it to stdout after the process exits.
 
 ```lua
 local core = require "core"
@@ -62,10 +59,10 @@ end)
 
 ## Example: Defer execution of certain functions
 
-This example shows a lesser-known use case for `core.add_thread()` —
-deferring execution until Lite XL is fully loaded.
-Coroutines scheduled with `core.add_thread()` will run after the UI and plugins
-are loaded, so it could be used to run commands added by plugins.
+This example shows a lesser-known use case for `core.add_thread()` — deferring execution
+until Lite XL is fully loaded.
+Coroutines scheduled with `core.add_thread()` will run after the UI and plugins are loaded,
+so it could be used to run commands added by plugins.
 
 ```lua
 local core = require "core"

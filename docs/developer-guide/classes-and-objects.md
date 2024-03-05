@@ -1,15 +1,13 @@
 ---
-description: Learn about Lite XL's class implementation.
+description: Learn how Lite XL implements OOP in Lua.
 ---
 
-We've briefly talked about the class implementation used by Lite XL
-in the introduction.
-In this article, we'll talk about how to use the implementation
-efficiently.
+We've briefly talked about the class implementation used by Lite XL in the introduction.
+In this article, we'll talk about how to use the implementation efficiently.
 
 !!! note
-    Some methods here will be written differently than in
-    the source code to illustrate how the methods _should_ be called.
+    Some methods here will be written differently than in the source code to illustrate
+    how the methods _should_ be called.
 
 ## Creating classes
 
@@ -21,11 +19,9 @@ function Object.extend(base_class: Object): Object end
 ```
 
 This method accepts one parameter — the class to copy.
-This method will create a copy of a `Object` that can
-be extended without affecting the original object.
+This method will create a copy of a `Object` that can be extended without affecting the original object.
 
-You can now define or override methods and metamethods of this
-newly created class.
+You can now define or override methods and metamethods of this newly created class.
 To initialize a class, you can override the `Object:new()` method.
 
 ```lua
@@ -43,8 +39,7 @@ end
 
 !!! tip
     `Object` implements the `__tostring()` and `__call()` metamethods.
-    You can override the `__tostring()` metamethod to return a string
-    that suits your class.
+    You can override the `__tostring()` metamethod to return a string that suits your class.
 
 ## Super class
 
@@ -66,18 +61,15 @@ function Dog:new()
 end
 ```
 
-Note that you must call super class methods with `.` instead of `:`
-and pass `self` as the first parameter.
-If you call the method with `:`, it will call the method with `self`
-as `super`, which is **the super class** and not **the instance**.
+Note that you must call super class methods with `.` instead of `:` and pass `self` as the first parameter.
+If you call the method with `:`, it will call the method with `self` as `super`,
+which is **the super class** and not **the instance**.
 
 ## Class relationships
 
-The `Object` class also provide utility methods for checking relations
-between classes and object.
+The `Object` class also provide utility methods for checking relations between classes and object.
 
-To check whether an object is strictly an instance of a class
-(not an instance of a child class),
+To check whether an object is strictly an instance of a class (not an instance of a child class),
 use `Object:is()`.
 To do the inverse, use `Object:is_class_of()`.
 
@@ -87,13 +79,10 @@ function Object.is_class_of(class: Object, instance: Object): boolean end
 ```
 
 `Object:is()` accepts a parameter — the class to compare it to.
-If the object is strictly an instance of the class,
-the method returns true.
+If the object is strictly an instance of the class, the method returns true.
 
-`Object.is_class_of()` accepts a class and compares it against
-an instance of an object.
-If the object is a strictly an instance of the class,
-the method returns true.
+`Object.is_class_of()` accepts a class and compares it against an instance of an object.
+If the object is a strictly an instance of the class, the method returns true.
 
 **Example:**
 
@@ -114,8 +103,7 @@ print(Cat:is_class_of(doggo)) -- prints false
 print(Animal:is_class_of(doggo)) -- prints false
 ```
 
-To check whether an object is an instance of a class
-(or an instance of child class), use `Object:extends()`.
+To check whether an object is an instance of a class (or an instance of child class), use `Object:extends()`.
 To do the inverse, use `Object:is_extended_by()`.
 
 ```lua
@@ -123,8 +111,7 @@ function Object:extends(class: Object): boolean end
 function Object.is_extended_by: Object, instance: Object): boolean end
 ```
 
-The methods accept the same parameters as `Object:is()`
-and `Object:is_class_of()`.
+The methods accept the same parameters as `Object:is()` and `Object:is_class_of()`.
 
 ```lua
 local Animal = Object:extend()

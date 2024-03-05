@@ -3,56 +3,46 @@ description: Learn to manage plugins manually or via a plugin manager.
 ---
 
 Lite XL implements many features as plugins.
-By default, Lite XL bundles a few plugins to provide some features
-editors would usually have.
-There is also a `addons` package which comes with all plugins.
-
-Extra plugins can be found at [the plugin repository][lite-xl/lite-xl-plugins].
+By default, Lite XL comes with a few built-in plugins for essential features such as [treeview]
+and [workspace], while the [Addons package] provides more.
+All plugins can be found at the [plugin repository][lite-xl/lite-xl-plugins].
 
 !!! note
     These plugins are contributed by the community.
+    Support are provided on a voluntary basis.
 
 ## Location
 
-Plugins that come bundled with Lite XL is usually stored in
-`DATADIR/plugins`.
+Plugins that come bundled with Lite XL is usually stored in `DATADIR/plugins`.
+`DATADIR` is the directory where Lite XL's Lua code is stored.
 
 On macOS, `DATADIR` is always the application resources directory.
-
-On other platforms, Lite XL checks whether the program
-is installed according to Unix Filesystem Hierarchy Standard.
-If that is true,
-then `DATADIR` will be `<path-to-exe>/../share/lite-xl`.
-
-Otherwise, `DATADIR` will be `<path-to-exe>/data`.
+On other platforms, Lite XL checks whether `lite-xl.exe` is inside a directory called `bin`.
+If true, Lite XL will set `DATADIR` as `(path to lite-xl.exe)/../share/lite-xl`.
+This is similar to how most programs are structured on Unix-based platforms.
+Otherwise, Lite XL sets `DATADIR` as `(path to lite-xl.exe)/data`.
 
 User plugins should be installed into `USERDIR/plugins`.
+`USERDIR` is the directory where user configuration is stored.
 
 ## Plugin managers
 
-Recently, we've standardized various aspects of the plugin
-repository so that plugin managers can be built to install
-and manage plugins.
+Recently, we've standardized various aspects of the plugin repository to allow for plugins manager
+such as [lpm] and [Miq] to install and manage plugins.
 
-Currently, there are two plugin managers made for Lite XL —
-[lpm] and [Miq].
-
-lpm is a plugin manager more akin to distro package managers
-such as `apt` and `dnf`.
+lpm is a plugin manager more akin to distro package managers such as `apt` and `dnf`.
 It also provides a GUI for installing plugins.
-Miq is a declarative plugin manager that allows user to declare
-plugins and install/update them all at once.
+Miq is a declarative plugin manager that allows user to declare plugins
+and install/update them all at once.
 
-These two plugin managers use vastly different ways of
-plugin management, so please consult the main page for
-each plugin manager for exact instructions.
+These two plugin managers use vastly different ways of plugin management, 
+so please consult the main page for each plugin manager for exact instructions.
 
 ## Installing plugins
 
-To install a plugin, simply drag the related plugin file into
-`USERDIR/plugins`.
+To install a plugin, simply drag the related plugin file into `USERDIR/plugins`.
 
-??? warning "For plugins that comes in a folder, please consult specific instructions for each plugin."
+??? warning "For plugins that comes in a folder, please consult documentation from the plugins."
     Historically, Lite XL does not enforce a specific file structure
     for these types of plugins.
     Old plugins may not have a `init.lua` file, which is used by
@@ -70,13 +60,13 @@ To install a plugin, simply drag the related plugin file into
 
     This will install/update the lsp plugin.
 
-    To install themes or libraries, you can use
-    `lpm color install` and `lpm library install` respectively.
+    To install themes or libraries, you can use `lpm color install`
+    and `lpm library install` respectively.
 
 === "Miq"
 
-    To install a plugin with Miq, you need to specify the list
-    of plugins to install in `config.plugins.miq.plugins`.
+    To install a plugin with Miq, you need to specify the list of plugins to install
+    in `config.plugins.miq.plugins`.
 
     ```lua
     local config = require "core.config"
@@ -89,17 +79,14 @@ To install a plugin, simply drag the related plugin file into
     }
     ```
 
-    Afterwards, you can run the command `miq:install` to install
-    the plugins.
+    Afterwards, you can run the command `miq:install` to install the plugins.
 
 ## Updating plugins
 
 To update a plugin, you'll need to re-download them.
-For plugins hosted as separate git repositories, you can simply
-pull new updates.
+For plugins hosted as separate git repositories, you can simply pull new updates.
 
-If you have a plugin manager installed, updating plugins should
-be easier.
+If you have a plugin manager installed, updating plugins should be easier.
 
 === "lpm"
 
@@ -128,8 +115,8 @@ To remove a plugin, simply delete the associated file/directory.
     $ lpm plugin uninstall lsp
     ```
 
-    Uninstalling themes and libraries can be done with
-    `lpm color uninstall` and `lpm library uninstall` respectively.
+    Uninstalling themes and libraries can be done with `lpm color uninstall`
+    and `lpm library uninstall` respectively.
 
 === "Miq"
 
@@ -158,7 +145,18 @@ Here are a list of plugins that most users would want:
 | [settings]           | Settings GUI for Lite XL (requires the [widget] plugin)
 | [widgets]            | Widget toolkit for Lite XL. Needed for [lsp] and [settings].
 
+## Feature / Plugin Requests
 
+If no plugins provide the features you wanted, you can request them in the [issue tracker].
+Plugin developers occasionally browse the issue tracker for requests and implement them.
+
+Alternatively, you can take the opportunity to implement the feature yourself,
+based on various [documentation] and existing plugins.
+
+
+[treeview]:                https://github.com/lite-xl/lite-xl/blob/master/data/plugins/treeview.lua
+[workspace]:               https://github.com/lite-xl/lite-xl/blob/master/data/plugins/workspace.lua
+[Addons package]:          ../setup/getting-started.md#base-and-addons-packages
 [lite-xl/lite-xl-plugins]: https://github.com/lite-xl/lite-xl-plugins
 [lpm]:                     https://github.com/lite-xl/lite-xl-plugin-manager
 [Miq]:                     https://github.com/TorchedSammy/Miq
@@ -178,3 +176,5 @@ Here are a list of plugins that most users would want:
 [selectionhighlight]:      https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/selectionhighlight.lua?raw=1
 [settings]:                https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
 [widgets]:                 https://github.com/lite-xl/lite-xl-widgets
+[issue tracker]:           https://github.com/lite-xl/lite-xl-plugins/issues
+[documentation]:           ../developer-guide/introduction.md

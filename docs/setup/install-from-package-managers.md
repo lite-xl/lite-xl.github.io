@@ -7,9 +7,9 @@ description: Learn how to install Lite XL from your distribution's package manag
 Lite XL is available on some package managers.
 Other package managers may require you to configure extra sources in order to install Lite XL.
 
-!!! warning
+!!! note
     The **only official source** of Lite XL binaries are from [GitHub][1].
-    Be careful when installing packages from a 3rd party.
+    Be careful when installing packages from a third party.
 
 ## Linux
 
@@ -148,7 +148,6 @@ Lite XL is available via [MacPorts][14]:
 ```sh
 sudo port install lite-xl
 ```
-
 
 
 [1]:  https://github.com/lite-xl/lite-xl/releases/latest

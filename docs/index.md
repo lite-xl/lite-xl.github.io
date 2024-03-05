@@ -6,20 +6,21 @@ hide:
 ---
 
 <style>
-  .md-content__button {
-    display: none;
-  }
+    /* hide the "view page source" and "edit page" buttons */
+    .md-content__button {
+        display: none;
+    }
 </style>
 
 # Fast, Lightweight and Powerful Text-Editing Experience { #headline }
 
 _A simple, fast, feature-filled and extremely extensible text editor
-written in C and Lua, adapted from [lite][1]._{ .text-center style="margin-top:0" }
+written in C and Lua, adapted from [lite]._{ .text-center .no-margin-top }
 
-![Lite XL with summer theme][2]{ loading=lazy }
-![Lite XL with default theme][3]{ loading=lazy }
+![Lite XL with summer theme][summer]{ loading=lazy }
+![Lite XL with default theme][default]{ loading=lazy }
 
-# All the things you want for editing. { .text-center style="margin-top:0" }
+# All the things you want for editing. { .text-center .no-margin-top }
 
 <div class="grid cards" markdown>
 
@@ -77,7 +78,7 @@ written in C and Lua, adapted from [lite][1]._{ .text-center style="margin-top:0
     Learn how to install Lite XL from the official release,
     package managers and from source.
 
-    [:octicons-arrow-right-24: Set Up][4]
+    [:octicons-arrow-right-24: Set Up][setup]
 
 -   :octicons-command-palette-24:{ .lg .middle } **Customize**
 
@@ -85,7 +86,7 @@ written in C and Lua, adapted from [lite][1]._{ .text-center style="margin-top:0
 
     Learn how to use Lite XL and customize it to suit your needs.
 
-    [:octicons-arrow-right-24: User Guide][5]
+    [:octicons-arrow-right-24: User Guide][user-guide]
 
 -   :octicons-book-24:{ .lg .middle } **Learn**
 
@@ -94,14 +95,14 @@ written in C and Lua, adapted from [lite][1]._{ .text-center style="margin-top:0
     Learn how to add functionality to Lite XL by writing
     themes and plugins!
 
-    [:octicons-arrow-right-24: Developer Guide][6]
+    [:octicons-arrow-right-24: Developer Guide][developer-guide]
 
 </div>
 
 
-[1]: https://github.com/rxi/lite
-[2]: ./assets/screenshots/theme-default.png#only-dark
-[3]: ./assets/screenshots/theme-summer.png#only-light
-[4]: setup/getting-started.md
-[5]: user-guide/introduction.md
-[6]: developer-guide/introduction.md
+[lite]:            https://github.com/rxi/lite
+[summer]:          ./assets/screenshots/theme-summer.png#only-light
+[default]:         ./assets/screenshots/theme-default.png#only-dark
+[setup]:           setup/getting-started.md
+[user-guide]:      user-guide/introduction.md
+[developer-guide]: developer-guide/introduction.md

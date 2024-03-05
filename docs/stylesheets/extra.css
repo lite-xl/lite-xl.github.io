@@ -80,6 +80,10 @@
   font-weight: normal;
 }
 
+.no-margin-top {
+  margin-top: 0;
+}
+
 /* custom keys */
 .key-wheel:before,
 .key-hwheel:before,

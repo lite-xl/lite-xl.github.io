@@ -1,15 +1,13 @@
 ---
-description: Learn how to configure Lite XL — configure
-              fonts, themes and other options.
+description: Learn how to configure Lite XL — configure fonts, themes and other options.
 ---
 
 ## Location
 
-Lite XL searches a list of paths to store user configuration.
-This path is also known as `USERDIR`.
+Lite XL searches a list of paths to store user configuration, known as `USERDIR`.
 The first path that is available will be used.
 
-1. `<path_to_lite_xl_executable>/user`
+1. `(path to lite-xl.exe)/user`
 2. `$LITE_USERDIR`
 3. `$XDG_CONFIG_HOME/lite-xl`
 4. `$HOME/.config/lite-xl`
@@ -19,10 +17,9 @@ On Windows, `$HOME` will be replaced with `$USERPROFILE`.
 ## User Module
 
 Lite XL is mainly configured through the user module.
-The user module is a Lua script run by Lite XL during startup,
-before plugins are loaded.
-Thus, you can change configuration options, bind shortcut keys, load color
-schemes, change the fonts among other things.
+The user module is a Lua script run by Lite XL during startup, before plugins are loaded.
+Thus, you can change configuration options, bind shortcut keys, load color schemes,
+change the fonts among other things.
 
 To modify the user module, you can run the command `core:open-user-module`.
 You can also modify the file `USERDIR/init.lua` directly.
@@ -43,15 +40,18 @@ The command will create a project module if it does not exist.
 
 ## Settings GUI
 
-In recent releases of Lite XL (version 2.1.0), we started bundling
-the settings plugin.
+Since Lite XL v2.1.0, we started bundling the settings plugin.
 This plugin provides a GUI to configure Lite XL.
 
-!!! note "Configuration via Settings GUI will take precedence."
+!!! warning
+    You mustn't set the same configuration option in the user module
+    and the Settings GUI **at the same time**.
+    This can result in undefined behavior.
 
 ## Fonts
 
-Lite XL comes with JetBrains Mono and Fira Sans by default.
+Lite XL comes with [JetBrains Mono][1] and [Fira Sans][2] by default.
+JetBrains Mono is is used for the editor itself while Fira Sans is used for other UI elements.
 
 To change the fonts used by the editor, you can change the
 variable `style.font` and `style.code_font`.
@@ -75,7 +75,7 @@ the fonts are added to the table.
 
 === "User Module"
 
-    For this example, we'll load Noto Sans Mono, which is
+    For this example, we'll load [Noto Sans Mono][3], which is
     located in `/usr/share/fonts/noto/NotoSansMono-Regular.ttf`
     and set it as our code font.
 
@@ -86,7 +86,7 @@ the fonts are added to the table.
     style.code_font = renderer.font.load("/usr/share/fonts/noto/NotoSansMono-Regular.ttf", 15 * SCALE)
     ```
 
-    Next, we'll also load Noto Sans Mono CJK SC, which is located
+    Next, we'll also load [Noto Sans SC][4], which is located
     in `/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc` and use
     it as fallback.
 
@@ -101,50 +101,44 @@ the fonts are added to the table.
     }
     ```
 
-    !!! warning
+    !!! tip
         Lite XL does not support using a specfific face in a
         TrueType collection (.ttc) file.
         Only the first face can be used.
 
 === "Settings GUI"
 
-    To change the code font, navigate to the "Core" tab
-    and expand the "Editor" section.
+    To change the code font, navigate to the "Core" tab and expand the "Editor" section.
     The first entry should be a list of code fonts used by the editor.
-    ![The fonts option under the Editor section][1]{ loading=lazy }
+    ![The fonts option under the Editor section][5]{ loading=lazy }
 
     To add a new font, click the "Add" button.
     A font selector will be shown.
-    ![Font selector][2]{ loading=lazy }
+    ![Font selector][6]{ loading=lazy }
 
-    To choose a font, press the "Mono" button and select a font from
-    the list. The "All" button allows you to select non-monospace
-    fonts.
+    To choose a font, press the "Mono" button and select a font from the list.
+    The "All" button allows you to select non-monospace fonts.
 
-    A demo text will be shown at the textbox
-    on the top of the selector.
-    To change the antialiasing settings of the font, click on the
-    dropdown to the left.
-    To change the hinting settings of the font, click on the dropdown
-    to the right.
+    A demo text will be shown at the textbox on the top of the selector.
+    To change the antialiasing settings of the font, click on the dropdown to the left.
+    To change the hinting settings of the font, click on the dropdown to the right.
     The changes will be reflected automatically on the preview window.
     Press "Save" to add the font or "Cancel" to go back.
 
     If you have more than one fonts set up, you can change
     the fallback order by pressing the "‹" and "›" buttons.
-    ![The buttons to change font ordering][3]{ loading=lazy }
+    ![The buttons to change font ordering][7]{ loading=lazy }
 
 ## Keyboard shortcuts
 
 Keyboard shortcuts are managed by the `core.keymap` module.
 This module maps keyboard shortcuts to one or more commands,
-where each command has a predicate that determine whether
-it should run based on certain conditions.
+where each command has a predicate that determine whether it can be run.
 
 For a list of default keyboard shortcuts, check out these pages:
 
-- [non-macOS platforms (Windows, Linux, etc.)][4]
-- [macOS][5]
+- [non-macOS platforms (Windows, Linux, etc.)][8]
+- [macOS][9]
 
 ### Adding a keyboard shortcut
 
@@ -152,8 +146,7 @@ To add keyboard shortcuts, you can use `keymap.add()`.
 
 === "User Module"
 
-    For example, to bind ++ctrl+m++ to move the cursor backwards
-    and then upwards, do:
+    For example, to bind ++ctrl+m++ to move the cursor backwards and then upwards, do:
 
     ```lua
     local keymap = require "core.keymap"
@@ -165,8 +158,7 @@ To add keyboard shortcuts, you can use `keymap.add()`.
     }
     ```
 
-    Lite XL will automatically execute both commands in the order that
-    they're added.
+    Lite XL will automatically execute both commands in the order that they're added.
 
     Alternatively, to override a keyboard shortcut completely,
     add `true` on the second parameter of `keybind.add()`.
@@ -181,29 +173,26 @@ To add keyboard shortcuts, you can use `keymap.add()`.
     }, true)
     ```
 
-    This will cause Lite XL to only run
-    `core:move-to-previous-line` when ++ctrl+m++ is pressed.
+    This will cause Lite XL to only run `core:move-to-previous-line` when ++ctrl+m++ is pressed.
 
 === "Settings UI"
 
     Navigate to the "Keybindings" tab.
-    ![The keybindings tab][6]{ loading=lazy }
+    ![The keybindings tab][10]{ loading=lazy }
 
-    Scroll until you find the entry containing
-    the command you want to bind to and click on it.
+    Scroll until you find the entry containing the command you want to bind to and click on it.
     In recent versions of the Settings plugin, you can also
     search for commands with the text box on top.
     In this example, we'll pick `doc:move-to-previous-char`.
 
-    To add a keybind, press the "Add" and press the key combination
-    that you want to bind to. Afterwards, press "Save".
-    ![The dialog to assign keyboard shortcuts][7]{ loading=lazy }
-
+    To add a keybind, press the "Add" and press the key combination that you want to bind to.
+    Afterwards, press "Save".
+    ![The dialog to assign keyboard shortcuts][11]{ loading=lazy }
 
     If the keyboard shortcut is set properly,
     you will see the updated keyboard shortcut
     on the "Bindings" section at the right.
-    ![The keybind tab with changed keybinds][8]{ loading=lazy }
+    ![The keybind tab with changed keybinds][12]{ loading=lazy }
 
     To replace previous keyboard shortcuts,
     simply delete any existing keyboard shortcut
@@ -211,8 +200,7 @@ To add keyboard shortcuts, you can use `keymap.add()`.
 
 ### Removing a keyboard shortcut
 
-To remove an existing keyboard shortcut, you can use
-`keymap.unbind()`.
+To remove an existing keyboard shortcut, you can use `keymap.unbind()`.
 
 === "User Module"
 
@@ -238,27 +226,24 @@ To remove an existing keyboard shortcut, you can use
 === "Settings UI"
 
     Navigate to the "Keybindings" tab.
-    ![Screenshot showing the keybindings tab][8]{ loading=lazy }
+    ![Screenshot showing the keybindings tab][12]{ loading=lazy }
 
-    Scroll until you find the entry containing
-    the command you want to bind to and click on it.
+    Scroll until you find the entry containing the command you want to bind to and click on it.
     In recent versions of the Settings plugin, you can also
     search for commands with the text box on top.
     In this example, we pick `doc:move-to-previous-char`.
 
     To remove a keyboard shortcut, select the shortcut you want to remove
-    and press the "Remove" button.
+and press the "Remove" button.
     Afterwards, press the "Save" button to save the changes.
-    ![Screenshot showing the keybind changer][9]{ loading=lazy }
+    ![Screenshot showing the keybind changer][13]{ loading=lazy }
 
 ## Themes
 
 The default theme is a dark theme.
-Themes are implemented as plugins that changes the styling
-variables of Lite XL.
+Themes are implemented as plugins that changes the styling variables of Lite XL.
 
-This can be changed with `core.reload_module()` and loading
-the appropriate theme file.
+This can be changed with `core.reload_module()` and loading the appropriate theme file.
 
 === "User Module"
 
@@ -272,7 +257,7 @@ the appropriate theme file.
 
     Navigate to the "Colors" tab.
 
-    ![The Colors tab][10]{ loading=lazy }
+    ![The Colors tab][14]{ loading=lazy }
 
     Select your desired theme.
     The colors should apply immediately.
@@ -280,7 +265,7 @@ the appropriate theme file.
 ## Other options
 
 There are a lot of configuration options that can be modified.
-A list of these options can be found in [`data/core/config.lua`][11],
+A list of these options can be found in [`data/core/config.lua`][15],
 but we'll list a few common ones here.
 
 ### Indentation
@@ -296,8 +281,8 @@ config.tab_type =      -- "soft" for spaces, "hard" for tabs
 
 ### Window decoration
 
-If you're on platforms such as Wayland where window decoration may be
-client drawn, you can set `config.borderless` to `true`.
+If you're on platforms such as Wayland where window decoration may be client drawn,
+you can set `config.borderless` to `true`.
 This will let Lite XL draw its own window decoration.
 
 ```lua
@@ -308,10 +293,8 @@ config.borderless = true
 
 ### Project files limit
 
-When opening large directories, Lite XL will often complain about reaching
-the project file limit.
-This is because Lite XL becomes slower when it needs to index these files
-on startup.
+When opening large directories, Lite XL will often complain about reaching the project file limit.
+This is because Lite XL becomes slower when it needs to index these files on startup.
 
 If your filesystem has good performance, you can increase this limit
 by setting `config.max_project_files` to something else.
@@ -361,8 +344,7 @@ config.fps = 30
 
 ### Transitions
 
-You can disable any animations/transitions by setting `config.transitions`
-to `false`.
+You can disable any animations/transitions by setting `config.transitions` to `false`.
 To disable individual transitions, you can set any member of
 `config.disabled_transitions` to `true`.
 
@@ -409,7 +391,6 @@ config.animation_rate = 0.5
     | `tab_close_button`        | Shows or hides the tab close button for each tab.
     | `max_clicks`              | Maximum number of clicks you can perform in the editor.
 
-
 ## Plugins
 
 Since the user and project module loads before any plugins, you can configure
@@ -417,8 +398,7 @@ or disable any plugins in the user and project modules.
 Plugins obtain their configuration from a table in the `config.plugins` table.
 You can add code to user module that modifies the table.
 
-To disable a plugin, you need to set the associated `config.plugins` entry
-to `false`.
+To disable a plugin, you need to set the associated `config.plugins` entry to `false`.
 This tells Lite XL to not load the plugin on startup.
 It will not load nor unload the plugin from the current instance.
 
@@ -454,23 +434,27 @@ It will not load nor unload the plugin from the current instance.
     To enable the `drawwhitespace` plugin, expand the "Installed" section
     and enable the corresponding plugin.
 
-    ![The Installed section][12]{ loading=lazy }
+    ![The Installed section][16]{ loading=lazy }
 
     To modify the configuration for a plugin, expand the relevant section.
     The changes will apply automatically.
-    ![Settings for drawwhitespace][13]{ loading=lazy }
+    ![Settings for drawwhitespace][17]{ loading=lazy }
 
 
-[1]:  ../assets/user-guide/settings/fonts/font-option.png
-[2]:  ../assets/user-guide/settings/fonts/font-selector.png
-[3]:  ../assets/user-guide/settings/fonts/font-order.png
-[4]:  ../user-guide/keymap.md
-[5]:  ../user-guide/macos-keymap.md
-[6]:  ../assets/user-guide/settings/keybinds/keybinds.png
-[7]:  ../assets/user-guide/settings/keybinds/keybind-selector.png
-[8]:  ../assets/user-guide/settings/keybinds/keybinds-after.png
-[9]:  ../assets/user-guide/settings/keybinds/keybind-selector-after.png
-[10]: ../assets/user-guide/settings/colors.png
-[11]: https://github.com/lite-xl/lite-xl/blob/master/data/core/config.lua
-[12]: ../assets/user-guide/settings/plugins/installed.png
-[13]: ../assets/user-guide/settings/plugins/options.png
+[1]:  https://www.jetbrains.com/lp/mono/
+[2]:  https://fonts.google.com/specimen/Fira+Sans
+[3]:  https://fonts.google.com/noto/specimen/Noto+Sans+Mono
+[4]:  https://fonts.google.com/noto/specimen/Noto+Sans+SC
+[5]:  ../assets/user-guide/settings/fonts/font-option.png
+[6]:  ../assets/user-guide/settings/fonts/font-selector.png
+[7]:  ../assets/user-guide/settings/fonts/font-order.png
+[8]:  ../user-guide/keymap.md
+[9]:  ../user-guide/macos-keymap.md
+[10]: ../assets/user-guide/settings/keybinds/keybinds.png
+[11]: ../assets/user-guide/settings/keybinds/keybind-selector.png
+[12]: ../assets/user-guide/settings/keybinds/keybinds-after.png
+[13]: ../assets/user-guide/settings/keybinds/keybind-selector-after.png
+[14]: ../assets/user-guide/settings/colors.png
+[15]: https://github.com/lite-xl/lite-xl/blob/master/data/core/config.lua
+[16]: ../assets/user-guide/settings/plugins/installed.png
+[17]: ../assets/user-guide/settings/plugins/options.png

@@ -1,11 +1,9 @@
 ---
-description: Learn how to use the Process API
-              to start and manage child processes.
+description: Learn how to use the Process API to start and manage child processes in Lite XL.
 ---
 
 Lite XL provides a process API to launch external applications.
-This API is meant to replace Lua's `io.popen`,
-`system.exec()` and lite's [pipe-to-a-file][1] approach.
+This API is meant to replace Lua's `io.popen`, `system.exec()` and lite's [pipe-to-a-file][1] approach.
 
 Advantages of this API includes:
 
@@ -21,8 +19,8 @@ with the Process API as it provides more features.
 
 ## Example: reading a file with `cat`
 
-This example uses `cat` to read a file. This approach is impractical,
-but it demonstrates the typical usage of the Process API.
+This example uses `cat` to read a file. This approach is impractical, but it demonstrates the typical usage
+of the Process API.
 
 ```lua
 local core = require "core"
@@ -92,53 +90,43 @@ function process.start(program_args: {string} | string,
 end
 ```
 
-The first argument of the function is a table containing the program name
-and its arguments.
-The program name and its arguments need not be escaped as the API does it
-when necessary.
+The first argument of the function is a table containing the program name and its arguments.
+The program name and its arguments need not be escaped as the API does it when necessary.
 
-Since v2.1.0, users can provide a string instead of a table as the first
-argument to prevent the function from escaping them.
+Since v2.1.0, users can provide a string instead of a table as the first argument to prevent the function
+from escaping them.
 This may help with legacy software on Windows such as `cmd.exe`.
-However, this should not be done on POSIX platforms as the entire string will be
-treated as the program name and cause issues.
+However, this should not be done on POSIX platforms as the entire string will be treated as the program name
+and cause issues.
 
 !!! note
     Before v2.1.0, this table is not escaped on Windows.
 
 The second argument specifies options to control process creation.
 
-`timeout` is an advisory value that will be used by `process:wait()` and
-is optional.
+`timeout` is an advisory value that will be used by `process:wait()` and is optional.
 
 `cwd` is the current working directory of the program.
 If specified, the child process would run as if it was started in the directory.
 
-`stdin`, `stdout` and `stderr` tells Lite XL how to treat standard
-input and output of the child process.
+`stdin`, `stdout` and `stderr` tells Lite XL how to treat standard input and output of the child process.
 There are four possible values:
 
 - `process.REDIRECT_DEFAULT` is the default behavior. It will be deprecated
   in future versions as specifying `nil` is preferred.
-- `process.REDIRECT_PIPE` allows the Process API to write/read
-  the input/output of the child process.
-- `process.REDIRECT_PARENT` redirects the child process' input/output
-  to the parent.
-  If `stdin` has this value, child process will accept input from the parent
-  process' console.
-  If `stdout` or `stderr` has this value, child process will output to the
-  parent process' console.
+- `process.REDIRECT_PIPE` allows the Process API to write/read the input/output of the child process.
+- `process.REDIRECT_PARENT` redirects the child process' input/output to the parent.
+  If `stdin` has this value, child process will accept input from the parent process' console.
+  If `stdout` or `stderr` has this value, child process will output to the parent process' console.
 - `process.REDIRECT_DISCARD` discards any data to/from child process.
-- `process.REDIRECT_STDOUT` can only be used on `stderr` and will redirect
-  the child process' standard error to its standard output.
+- `process.REDIRECT_STDOUT` can only be used on `stderr` and will redirect the child process' standard error
+  to its standard output.
 
-`env` is a table containing the environment variables for the child process as
-key-value pairs.
+`env` is a table containing the environment variables for the child process as key-value pairs.
 
 !!! note
     On POSIX platforms, this table will **extend** the parent's environment.
-    On Windows, this table will **replace** the parent's environment.
-    In the future, this inconsistency may be fixed.
+    On Windows with Lite XL version v2.1.1 and below, this table will **replace** the parent's environment.
 
 The function returns a `Process` object that the user should hold onto until
 the child process can be safely terminated.
@@ -162,8 +150,8 @@ local proc = process.start({ "./site.rb" }, { env = { VERBOSE = "1" } })
 
 ### Reading from a child process
 
-If the child process is created with proper output modes,
-one can read the standard output/error of the child process with the API.
+If the child process is created with proper output modes, one can read the standard output/error
+of the child process with the API.
 
 To read from the child process' standard output, use `process:read_stdout(len)`.
 
@@ -174,8 +162,7 @@ function process:read_stdout(len?: number): string, string, number end
 function process:read_stderr(len?: number): string, string, number end
 ```
 
-The `len` parameter is optional and is used to specify the maximum number of
-bytes to read from the stream.
+The `len` parameter is optional and is used to specify the maximum number of bytes to read from the stream.
 
 These methods return a string with size up to `len` if data can be read.
 Otherwise, they will return `nil`, an error message and the error code.
@@ -205,8 +192,7 @@ function process:running(): boolean end
 function process:wait(timeout: number): number, string, number end
 ```
 
-`process:running()` returns a boolean immediately indicating whether the process
-has ended.
+`process:running()` returns a boolean immediately indicating whether the process has ended.
 
 !!! note
     Do not use `process:running()` to determine when to stop reading the output
@@ -215,17 +201,15 @@ has ended.
     Instead, you should call `process.read_stdout()` or `process.read_stderr()`
     until an appropriate error (`process.ERROR_PIPE`) occurs.
 
-`process:wait(time)` will wait for specified number of milliseconds before
-returning.
+`process:wait(time)` will wait for specified number of milliseconds before returning.
 If the child process has ended, it will return the exit code of the process.
 If the child process is still running or an error occurred,
 it will return `nil` followed by an error message and error code.
 
 If `time` is 0, the method returns immediately.
-If `time` is `process.WAIT_INFINITE`, the method waits until the child process
-ends.
-If `time` is `process.WAIT_DEADLINE`, the method uses the `timeout` value
-specified when calling `process.start()`.
+If `time` is `process.WAIT_INFINITE`, the method waits until the child process ends.
+If `time` is `process.WAIT_DEADLINE`, the method uses the `timeout` value specified
+when calling `process.start()`.
 If this value is not specified, it will wait until the child process ends.
 
 **Examples:**
@@ -246,8 +230,7 @@ print("The process exited with the exit code " .. process:wait(process.WAIT_INFI
 
 ### Terminating a child process
 
-The Process API allows the user to terminate a child process gracefully
-or forcefully.
+The Process API allows the user to terminate a child process gracefully or forcefully.
 
 Use `process:terminate()` to terminate a child process gracefully.
 If it fails, use `process:kill()` to forcefully terminate it.
@@ -260,16 +243,16 @@ function process:kill(): boolean, string, number end
 On POSIX platforms, `process:terminate()` sends `SIGTERM` to the child process
 while `process:kill()` sends `SIGKILL` to the child process.
 
-On Windows, `process:terminate()` uses `GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT)`
-to simulate CTRL+BREAK.
+On Windows, `process:terminate()` uses `GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT)` to simulate
+++ctrl+break++.
 `process:kill()` uses `TerminateProcess()` to terminate the process immediately.
 
 !!! note
     `process:kill()` can only **request** a process to be killed.
-    On POSIX, signals are delivered asynchronously; a child process can be too
-    busy to process them (e.g. stuck at a blocking `read()` or `write()` call).
-    This is the same on Windows except `TerminateProcess()` will
-    request cancellation of all pending IO operations.
+    On POSIX, signals are delivered asynchronously; a child process can be too busy to process them
+    (e.g. stuck at a blocking `read()` or `write()` call).
+    This is the same on Windows except `TerminateProcess()` will request cancellation of all pending
+    IO operations.
     This is impossible on POSIX platforms.
 
 **Examples:**
@@ -293,8 +276,8 @@ It will return `0` if the process is not running.
 `process:returncode()` can be used to get the exit code of the child process
 without calling `process:wait()`.
 
-`process.strerror()` can be used to convert error codes emitted by the
-process API into human-readable error messages.
+`process.strerror()` can be used to convert error codes emitted by the process API into human-readable
+error messages.
 If an error message is unavailable, `nil` will be returned.
 
 `process:close_stream()` can be used to close the child process' streams.
@@ -313,15 +296,12 @@ function process:close_stream(stream: number): number, string, number end
 
 ### Error handling
 
-The Process API functions and methods
-will return error messages/codes or throw errors.
+The Process API functions and methods will return error messages/codes or throw errors.
 
 `process.start()` will throw an error if the program cannot be run.
-On Windows, this usually results in an error message
-`"Error creating a process: 2"`.
+On Windows, this usually results in an error message `"Error creating a process: 2"`.
 
-`process:read()`, `process:read_stdout()`, `process:read_stderr()` and
-`process:write()` may throw errors if:
+`process:read()`, `process:read_stdout()`, `process:read_stderr()` and `process:write()` may throw errors if:
 
 - The child process died.
 - The child process closed their side of the input/output.

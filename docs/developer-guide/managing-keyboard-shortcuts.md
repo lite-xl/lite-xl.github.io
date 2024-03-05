@@ -1,19 +1,17 @@
 ---
-description: Learn in detail how to add and manage keyboard shortcuts
-              in Lite XL.
+description: Learn in detail how to add and manage keyboard shortcuts in Lite XL.
 ---
 
-Mouse clicks, wheel and keyboard events are handled by
-`core.keymap` before it was passed to other parts of the editor.
-The keymap holds the state of various keys, including the modifiers
-(`keymap.modkeys`) and runs a command when it's appropriate.
+Mouse clicks, wheel and keyboard events are handled by `core.keymap`
+before it was passed to other parts of the editor.
+The keymap holds the state of various keys, including the modifiers (`keymap.modkeys`)
+and runs a command when it's appropriate.
 The keymap holds a map of key combinations to commands (`keymap.map`)
 and a map of commands to key combinations (`keymap.reverse_map`).
 
 ## Keyboard shortcut format
 
-The string is split into parts delimited by `+` and
-each part of the split string is treated as a key.
+The string is split into parts delimited by `+` and each part of the split string is treated as a key.
 For the list of valid keys, check out [SDL's documentation][1] (the "Key Name" column).
 
 For mouse buttons, the format is as follows:
@@ -22,8 +20,7 @@ For mouse buttons, the format is as follows:
 
 `nclicks` is the number of clicks and defaults to 1 when not specified.
 `type` is optional and can be one of `l`, `r`, `m`, `x` and `y`.
-These letters correspond to left, right middle, mouse 4 and
-mouse 5.
+These letters correspond to left, right middle, mouse 4 and mouse 5.
 By default, `type` is set to `l`.
 
 !!! note
@@ -54,10 +51,8 @@ local type Commands = string | {string}
 function keymap.add(map: {string: Commands}, overwrite: boolean): () end
 ```
 
-`keymap.add()` takes in a table of keyboard shortcuts and the commands
-for each keyboard shortcut.
-If the second parameter `overwrite` is true, then the commands
-will be replaced instead of appended.
+`keymap.add()` takes in a table of keyboard shortcuts and the commands for each keyboard shortcut.
+If the second parameter `overwrite` is true, then the commands will be replaced instead of appended.
 
 **Example:**
 
@@ -94,14 +89,13 @@ function keymap.unbind(shortcut: string, command?: string): () end
 ```
 
 The function accepts a keyboard shortcut and optionally a command to unbind.
-If a command is specified, the function will unbind that command
-from the key.
+If a command is specified, the function will unbind that command from the key.
 Otherwise, it will unbind all commands from the shortcut.
 
 ## Getting Keyboard Shortcuts
 
-To get all the keyboard shortcuts associated with a command, use
-`keymap.get_binding()` or `keymap.get_bindings()`.
+To get all the keyboard shortcuts associated with a command,
+use `keymap.get_binding()` or `keymap.get_bindings()`.
 
 ```lua
 function keymap.get_binding(cmd: string): string... end
@@ -109,17 +103,14 @@ function keymap.get_binding(cmd: string): string... end
 function keymap.get_bindings(cmd: string): {string} end
 ```
 
-Both functions accept a command and returns the keyboard
-shortcuts associated to it.
-However, `keymap.get_bindings()` returns a table instead
-of a list of values.
+Both functions accept a command and returns the keyboard shortcuts associated to it.
+However, `keymap.get_bindings()` returns a table instead of a list of values.
 
 ## Overriding the Keymap
 
 If your plugin need to override the keymap for extra functionality
-(e.g. redirecting keyboard shortcuts to a terminal), you
-can override `keymap.on_key_pressed()`, `keymap.on_mouse_wheel()`,
-`keymap.on_mouse_pressed()` and `keymap.on_key_released()`.
+(e.g. redirecting keyboard shortcuts to a terminal), you can override `keymap.on_key_pressed()`,
+`keymap.on_mouse_wheel()`, `keymap.on_mouse_pressed()` and `keymap.on_key_released()`.
 
 ```lua
 function keymap.on_key_pressed(key: string, ...: any): boolean end
@@ -137,33 +128,24 @@ function keymap.on_key_released(key: string): () end
 ```
 
 `keymap.on_key_pressed()` accepts the key that is being pressed.
-The other values are reserved for internal usage and should be
-passed as-is.
+The other values are reserved for internal usage and should be passed as-is.
 
-`keymap.on_mouse_wheel()` accepts the X and Y delta — the number
-of "steps" scrolled on the mouse wheel.
-Other values are reserved for internal usage and should be passed
-as-is.
+`keymap.on_mouse_wheel()` accepts the X and Y delta — the number of "steps" scrolled on the mouse wheel.
+Other values are reserved for internal usage and should be passed as-is.
 
 `keymap.on_mouse_pressed()` accepts the type of button being pressed,
-the coordinates where the button is pressed and the number of
-consecutive clicks.
+the coordinates where the button is pressed and the number of consecutive clicks.
 
 `keymap.on_key_released()` accepts the key that is released.
 
-`keymap.on_key_pressed()`, `keymap.on_mouse_wheel()` and
-`keymap.on_mouse_pressed()` returns a boolean that signals
-if the event is being handled.
-If the function returns true, then the event is considered
-handled and will not be propagated further.
-You must handle this condition if you decide to override
-any of these functions.
+`keymap.on_key_pressed()`, `keymap.on_mouse_wheel()` and `keymap.on_mouse_pressed()`
+returns a boolean that signals if the event is being handled.
+If the function returns true, then the event is considered handled and will not be propagated further.
+You must handle this condition if you decide to override any of these functions.
 
 ??? warning "Since v2.1.0, text composition events (IME) should be taken into consideration when handling key events."
-    In recent versions of Lite XL, text composition/input events
-    has been added to support IMEs.
-    When text input is enabled, you may receive a key down event
-    and a text input event.
+    In recent versions of Lite XL, text composition/input events has been added to support IMEs.
+    When text input is enabled, you may receive a key down event and a text input event.
     You need to consider how to handle these new events too.
 
 **Example:**

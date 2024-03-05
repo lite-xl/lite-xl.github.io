@@ -1,12 +1,9 @@
 ---
-description: Learn how to install Lite XL from releases.
+description: Learn how to install Lite XL.
 ---
 
-
 To get started, grab a release of Lite XL.
-All the files are available on [GitHub],
-and some [package managers][install-package-managers] provide packages
-for Lite XL.
+All the files are available on [GitHub], and some [package managers] provide packages for Lite XL.
 
 <div class="grid cards" markdown>
 
@@ -19,7 +16,7 @@ for Lite XL.
     - [32-bit Installer][windows-i686-installer]
     - [32-bit ZIP][windows-i686-zip]
 
-    [:octicons-arrow-right-24: Installation Instructions][installation-windows]
+    [:octicons-arrow-right-24: Installation Instructions](#windows)
 
 -   :simple-linux:{ .lg .middle } **Linux**
 
@@ -32,7 +29,7 @@ for Lite XL.
     - .
     { style="visibility:hidden" }
 
-    [:octicons-arrow-right-24: Installation Instructions][installation-linux]
+    [:octicons-arrow-right-24: Installation Instructions](#linux)
 
 -   :simple-apple:{ .lg .middle } **macOS**
 
@@ -44,7 +41,7 @@ for Lite XL.
     - .
     { style="visibility:hidden" }
 
-    [:octicons-arrow-right-24: Installation Instructions][installation-mac]
+    [:octicons-arrow-right-24: Installation Instructions](#macos)
 
 -   :material-code-tags:{ .lg .middle } **Source Code**
     
@@ -57,20 +54,24 @@ for Lite XL.
     - .
     { style="visibility:hidden" }
 
-    [:octicons-arrow-right-24: Build Instructions][building]
+    [:octicons-arrow-right-24: Build Instructions][build]
 
 </div>
 
-## Normal versus Addons Releases
+## Base and Addons Packages
 
-Lite XL are released in two forms — normal and addons releases.
-Normal releases contain Lite XL and essential plugins
-for a minimal text-editing experience;
-while the addons release contains a full suite of extra plugins and
-language support.
+Since Lite XL v2.1.0, we provide two releases per platform —
+the base and addons packages.
+The base release contains a minimal release of Lite XL and essential plugins,
+while the addons package contains a full suite of plugins and syntax-highlighting support
+out-of-the-box.
 
-In the future, we plan to remove this confusing convention by shipping only
-one variation, and allowing the user to customize their installation later.
+Most users should choose the addons package as it provides most features out-of-the-box.
+However, if you plan to customize Lite XL from scratch, the base release is for you.
+
+!!! tip "The addons package is going away."
+    We know that this dual-package convention is confusing,
+    so we are working on [lpm] to enable users to customize their plugins on first launch.
 
 ## Windows
 
@@ -79,19 +80,19 @@ To use the installer, simply run it and follow the steps outlined by the install
 
 To install Lite XL from a zip archive, extract it to a directory and run it directly.
 
-??? note "Never run Lite XL directly from the zip archive."
+??? tip "Never run Lite XL directly from the zip archive."
     Lite XL requires extra files that are present in the zip archive to function.
     Running it may cause crashes or unexpected errors.
 
 ## Linux
 
 Linux distributions usually install packages via their respective package managers.
-If a package is available for your distribution, you can [install][install-package-manager] it from there.
+If a package is available for your distribution, you can [install][package managers] it from there.
 
 Lite XL is available as an AppImage or tarballs.
 For AppImages, you can simply make it executable and run it.
 
-??? note "If you encounter issues with the AppImage, verify whether fuse is installed."
+??? tip "If you encounter issues with the AppImage, verify whether fuse is installed."
     AppImages require FUSE to function.
     Please visit [AppImage Troubleshooting Guide][appimage-troubleshoot] for details.
 
@@ -118,10 +119,9 @@ directory (`$HOME/.local` or `/usr`) is sufficient.
 
 ### Adding Lite XL to PATH
 
-If you can't launch Lite XL from the terminal after installation, you
-need to put `$HOME/.local/bin` into PATH.
-Instructions may vary according to your shell,
-but for bash, simply run the following line:
+If you can't launch Lite XL from the terminal after installation,
+you need to put `$HOME/.local/bin` into PATH.
+Instructions may vary according to your shell, but for bash, simply run the following line:
 
 ```sh
 echo -e 'export PATH=$PATH:$HOME/.local/bin' >> $HOME/.bashrc
@@ -129,8 +129,7 @@ echo -e 'export PATH=$PATH:$HOME/.local/bin' >> $HOME/.bashrc
 
 ### Lite XL icon not showing on app launchers
 
-On certain systems, you might want to run the following command to update
-the cache:
+On certain systems, you might want to run the following command to update the cache:
 
 ```sh
 xdg-desktop-menu forceupdate
@@ -157,7 +156,7 @@ macOS will display a prompt. Click "OK" and the Lite XL will launch.
 
 Lite XL does not produce binary releases for other platforms.
 To run the editor in other platforms,
-you may want to [build][building] Lite XL yourself.
+you may want to [build] Lite XL yourself.
 
 ## Portable mode
 
@@ -176,13 +175,7 @@ by the user. A list of issues and workarounds are documented [here][issues].
 
 {% set release_url = "https://github.com/lite-xl/lite-xl/releases/download/%s" | format(lite_xl_version) %}
 [GitHub]:                   https://github.com/lite-xl/lite-xl/releases/latest
-[install-package-managers]: ./install-from-package-managers.md
-[appimage-troubleshooting]: https://docs.appimage.org/user-guide/troubleshooting/index.html#troubleshooting
-[meson]:                    https://mesonbuild.com/index.html
-[installation-windows]:     #windows
-[installation-linux]:       #linux
-[installation-mac]:         #macos
-[building]:                 ./building.md
+[package managers]:         ./install-from-package-managers.md
 [windows-x86_64-installer]: {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-x86_64.zip
 [windows-x86_64-zip]:       {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-x86_64.zip
 [windows-i686-installer]:   {{ release_url }}/LiteXL-{{ lite_xl_version }}-addons-i686-setup.exe
@@ -192,6 +185,10 @@ by the user. A list of issues and workarounds are documented [here][issues].
 [macos-x86_64-dmg]:         {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-macos-x86_64.dmg
 [macos-aarch64-dmg]:        {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-macos-arm64.dmg
 [macos-universal-dmg]:      {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-macos-universal.dmg
+[meson]:                    https://mesonbuild.com/
 [source-tar]:               https://github.com/lite-xl/lite-xl/archive/refs/tags/{{ lite_xl_version }}.tar.gz
 [source-zip]:               https://github.com/lite-xl/lite-xl/archive/refs/tags/{{ lite_xl_version }}.zip
+[build]:                    ./building-from-source.md
+[lpm]:                      https://github.com/lite-xl/lite-xl-plugin-manager
+[appimage-troubleshooting]: https://docs.appimage.org/user-guide/troubleshooting/index.html#troubleshooting
 [issues]:                   ./platform-notes.md

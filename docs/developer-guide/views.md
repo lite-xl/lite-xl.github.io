@@ -3,22 +3,18 @@ description: Learn about Views, one of the core concepts for building UIs in Lit
 ---
 
 Lite XL has the concept of Views and Nodes.
-Views in Lite XL is organized into binary tree, with each leaf
-node containing one or more Views.
+Views in Lite XL is organized into binary tree, with each leaf node containing one or more Views.
 A branch can either split vertically or horizontally.
 
 A View is a UI component used to display content to the end user.
-As such, a View contains methods for event handling, state management
-and rendering.
+As such, a View contains methods for event handling, state management and rendering.
 
 ## Creation
 
 A View can be created by extending the `View` class.
-The `View` class contains many important states and provides
-convenience methods for handling events.
+The `View` class contains many important states and provides convenience methods for handling events.
 
-After that, you can create instances of Views and add them
-to a Node.
+After that, you can create instances of Views and add them to a Node.
 
 For example, we'll create a View called `HelloView`.
 
@@ -62,51 +58,39 @@ command.add(nil, {
 ```
 
 Currently, this plugin will do nothing.
-You won't see anything because the View doesn't have a draw
-function.
+You won't see anything because the View doesn't have a draw function.
 
 ## Size, position and scrolling
 
 A View can be thought of as a stencil on canvas.
 Everything drawn within the View dimension will be shown to the user,
-while everything drawn outside of the View are discarded.
-This ties into how Lite XL handles scrolling — the canvas is moved
-around instead of the stencil.
+while everything drawn outside the View are discarded.
+This ties into how Lite XL handles scrolling — the canvas is moved around instead of the stencil.
 
-The size of a View (the stencil) is stored in
-`View.size.x` and `View.size.y`.
+The size of a View (the stencil) is stored in `View.size.x` and `View.size.y`.
 These are the size of the stencil following our analogy.
-The size of the canvas is computed by calling
-`View:get_scrollable_size()` and `View:get_h_scrollable_size()`.
-These methods can return a value larger than the View size to
-enable scrolling or very huge numbers that represents an infinitely
-scrollable View.
+The size of the canvas is computed by calling `View:get_scrollable_size()` and `View:get_h_scrollable_size()`.
+These methods can return a value larger than the View size to enable scrolling
+or very huge numbers that represents an infinitely scrollable View.
 
 The position of the View relative to the window is stored in `View.position`.
 Following our analogy, these values represent where to place the stencil.
 In reality, these values are rarely used directly as values
 returned by `View:get_content_offset()` is more useful.
 
-If a View is scrollable, you should set `View.scrollable` to `true` 
-and override `View:get_scrollable_size()`
+If a View is scrollable, you should set `View.scrollable` to `true` and override `View:get_scrollable_size()`
 and `View:get_h_scrollable_size()`.
-You should also call `View:draw_scrollbar()` in your draw method
-to render Lite XL's scrollbar for convenience.
+You should also call `View:draw_scrollbar()` in your draw method to render Lite XL's scrollbar for convenience.
 
-When a View is scrollable, `View:get_content_offset()` can be used
-to determine where to start drawing.
+When a View is scrollable, `View:get_content_offset()` can be used to determine where to start drawing.
 This method returns starting X and Y coordinates, which may be negative
-to represent hidden content above the View; or larger View size to
-represent hidden content after the View.
+to represent hidden content above the View; or larger View size to represent hidden content after the View.
 
 The scroll state of the View is stored in `View.scroll`.
 This table contains the X and Y offset when the view is scrolled.
-To simulate scrolling, you can change the value of `View.scroll.to.x` or
-`View.scroll.to.y`.
-A positive value will scroll right / down while a negative value
-scrolls left / up.
-Alternatively, you may change `View.scroll.x` or `View.scroll.y`
-directly.
+To simulate scrolling, you can change the value of `View.scroll.to.x` or `View.scroll.to.y`.
+A positive value will scroll right / down while a negative value scrolls left / up.
+Alternatively, you may change `View.scroll.x` or `View.scroll.y` directly.
 
 In our example, we'll implement horizontal and vertical scrolling.
 The surface size is double our View size.
@@ -165,8 +149,7 @@ command.add(nil, {
 })
 ```
 
-You should end up with a View that is scrollable but has nothing
-in it.
+You should end up with a View that is scrollable but has nothing in it.
 We're going to draw something in the next section.
 
 ## Rendering
@@ -176,11 +159,9 @@ This function is called when Lite XL wants to render something.
 
 As mentioned before, you can draw anywhere on the screen,
 but only the contents within the View is shown to the user.
-This is implemented by `Node.draw()` setting the clip rectangle
-to the dimensions of the View.
+This is implemented by `Node.draw()` setting the clip rectangle to the dimensions of the View.
 
-In our example, we're going to draw the caption we've set in
-the constructor.
+In our example, we're going to draw the caption we've set in the constructor.
 
 ```lua
 -- mod-version:3
@@ -258,18 +239,16 @@ Views have several methods to handle events.
 Events are usually propagated from the top (RootView) to the bottom.
 Event handlers are usually called `on_<event_name>` except `update`.
 You can override these methods to provide your own handler logic.
-Some events require you to return `true` to indicate that the
-event is handled and should not be propagated further.
+Some events require you to return `true` to indicate that the event is handled
+and should not be propagated further.
 
 ### Periodic updates
 
 The `update` event is sent right before Lite XL redraws its UI.
-You can use this event to perform some state management among other
-things.
+You can use this event to perform some state management among other things.
 The handler is called without arguments and should return nothing.
 
-In our example, let's extend `HelloView` by displaying the number of seconds
-elapsed since Lite XL started.
+In our example, let's extend `HelloView` by displaying the number of seconds elapsed since Lite XL started.
 
 ```lua
 -- mod-version:3
@@ -376,17 +355,14 @@ function View:on_mouse_wheel(y: number, x: number): boolean end
 `View:on_mouse_moved()` accepts the X and Y coordinates of the mouse
 and the X and Y difference from the mouse's last position.
 
-`View:on_mouse_pressed()` accepts the button pressed, the X and Y coordinates
-where the button is pressed and the number of clicks (from 1 to 3).
+`View:on_mouse_pressed()` accepts the button pressed, the X and Y coordinates where the button is pressed
+and the number of clicks (from 1 to 3).
 
-`View:on_mouse_released()` accepts the same arguments as `View:on_mouse_pressed()`
-except the number of clicks.
+`View:on_mouse_released()` accepts the same arguments as `View:on_mouse_pressed()` except the number of clicks.
 
-`View:on_mouse_wheel()` accepts the number of steps scrolled vertically
-and horizontally.
+`View:on_mouse_wheel()` accepts the number of steps scrolled vertically and horizontally.
 
-All of these methods except `View:on_mouse_released()` returns
-a boolean indicating that the event is handled.
+All of these methods except `View:on_mouse_released()` returns a boolean indicating that the event is handled.
 
 In our example, we'll implement dragging the text around the view.
 
@@ -517,19 +493,18 @@ command.add(nil, {
 })
 ```
 
-We've used `on_mouse_pressed()`, `on_mouse_moved()` and `on_mouse_released()`
-method to track the cursor and draw the caption at the correct position.
-Note that `View:get_scrollable_size()` and `View:get_h_scrollable_size()` is
-used to compute the surface size.
+We've used `on_mouse_pressed()`, `on_mouse_moved()` and `on_mouse_released()` method to track the cursor
+and draw the caption at the correct position.
+Note that `View:get_scrollable_size()` and `View:get_h_scrollable_size()` is used to compute the surface size.
 The text can now be dragged around.
 
 ### Text Input
 
-To receive text input events, you must override `View:supports_text_input()` 
-and return `true`, then override `View:on_text_input()` and handle events.
+To receive text input events, you must override `View:supports_text_input()`  and return `true`,
+then override `View:on_text_input()` and handle events.
 
-Additionally, if you wish to handle IME composition events as well, you can
-override `View:on_ime_text_editing()`.
+Additionally, if you wish to handle IME composition events as well,
+you can override `View:on_ime_text_editing()`.
 Most text editors uses this event to show a preview of the text being composed.
 
 ```lua
@@ -541,10 +516,10 @@ function View:on_ime_text_editing(text: string,
 
 `View:on_text_input()` accepts a string containing the text entered and returns nothing.
 
-`View:on_ime_text_editing()` accepts the text being composited, the start of current
-composition selection and the length of said selection.
-Generally, this event is emitted until the user finalizes the composition, then
-`on_text_input()` will be emitted followed by an empty `on_ime_text_editing` event.
+`View:on_ime_text_editing()` accepts the text being composited, the start of current composition selection
+and the length of said selection.
+Generally, this event is emitted until the user finalizes the composition,
+then `on_text_input()` will be emitted followed by an empty `on_ime_text_editing` event.
 
 For instance, for inputting the text "hello" with a Pinyin IME:
 
@@ -731,14 +706,12 @@ keymap.add {
 ```
 
 There's a lot more to text editing than simply appending and removing text.
-This is just a simple example to acquaint you with how Lite XL handle
-events.
+This is just a simple example to acquaint you with how Lite XL handle events.
 
 ## Layout
 
 Lite XL manages UI layout in a binary tree.
-Each View is stored in a Node, and the Node is stored in a binary tree with
-RootView as the root node.
+Each View is stored in a Node, and the Node is stored in a binary tree with RootView as the root node.
 RootView manages input and rendering events for all the Views.
 
 A Node is the basic unit for a layout.
@@ -750,19 +723,16 @@ To get the Node for a View, you can call `Node:get_node_for_view()`.
 This function recursively searches for the view to find its parent node.
 You can call `RootView:get_node_for_view()` to search the entire layout.
 
-After you got the Node containing the View, you can also call
-`Node:get_view_idx()`.
-This function will return the index of the View in the Node if the Node
-contains multiple Views.
+After you got the Node containing the View, you can also call `Node:get_view_idx()`.
+This function will return the index of the View in the Node if the Node contains multiple Views.
 
 ### Adding Views to the layout
 
 To split a Node, you can call `Node:split(direction, view, locked, resizable)`.
-This function takes 2 to 4 arguments, and returns the new Node containing
-the View passed into the function.
+This function takes 2 to 4 arguments, and returns the new Node containing the View passed into the function.
 
-`dir` specifies the split direction — `up`, `down`, `left` and `right`,
-and `view` is the View to add to the new Node.
+`dir` specifies the split direction — `up`, `down`, `left` and `right`, and `view` is the View
+to add to the new Node.
 
 `locked` is a table in the form `#!lua { x = true, y = true }`.
 `x` and `y` corresponds to the axis of the new Node to "lock".
@@ -772,8 +742,7 @@ A locked axis has a fixed size and cannot be resized by the user.
 and corresponds to axes that will be resizable by the user.
 This table overrides the options in `locked`.
 
-Following the example above, if we want to add a command to open our View
-on the bottom, we can do:
+Following the example above, if we want to add a command to open our View on the bottom, we can do:
 
 ```lua
 command.add {
@@ -786,25 +755,21 @@ command.add {
 }
 ```
 
-Other than splitting the current node, you can also add the View to
-an existing Node.
+Other than splitting the current node, you can also add the View to an existing Node.
 To do this, use `Node:add_view()`.
 This function accepts a View and optionally an index to insert the View to.
 
 ### Remove Views
 
-To remove a View, you can use `Node:remove_view()`. This function accepts the
-RootView and the View to remove.
+To remove a View, you can use `Node:remove_view()`. This function accepts the RootView and the View to remove.
 Alternatively, you can use `Node:close_view()` to close the View as well.
 This function accepts the same arguments as `Node:remove_view()`.
 
 ## Overlays
 
-Sometimes, drawing outside the View is needed, for instance to render overlays
-and popups.
+Sometimes, drawing outside the View is needed, for instance to render overlays and popups.
 
-Lite XL supports this by deferring draw calls after the entirety of RootView
-has been rendered.
+Lite XL supports this by deferring draw calls after the entirety of RootView has been rendered.
 To do this, use `RootView:defer_draw()`.
 
 This function takes a callback that can use various `renderer` draw calls.

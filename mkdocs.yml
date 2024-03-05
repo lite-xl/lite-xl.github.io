@@ -93,6 +93,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.smartsymbols
+  - pymdownx.saneheaders
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji:
@@ -121,8 +123,8 @@ nav:
   - "Set Up":
       - "Getting Started": setup/getting-started.md
       - "Install from Package Managers": setup/install-from-package-managers.md
-      - "Building": setup/building.md
-      - "Platform-specific notes": setup/platform-notes.md
+      - "Building from Source": setup/building-from-source.md
+      - "Platform-Specific Notes": setup/platform-notes.md
   - "User Guide":
       - "Introduction": user-guide/introduction.md
       - "Configuration": user-guide/configuration.md

@@ -1,13 +1,11 @@
 ---
-description: Learn how to debug Lite XL with the debugger plugin,
-                and other related tips.
+description: Learn how to debug Lite XL with the debugger plugin, and other related tips.
 ---
 
 
 ## Making stdin and stdout work on Windows
 
-Before using the interactive debugger, you will need to make sure Lite XL
-is accessible from the terminal.
+Before using the interactive debugger, you will need to make sure Lite XL is accessible from the terminal.
 
 Due to how Windows GUI and text subsystem works, GUI subsystem programs
 such as Lite XL does not open stdout by default.
@@ -40,8 +38,8 @@ To work around this, follow these steps:
 ## Installing lite-debugger
 
 [lite-debugger] can be used to debug Lite XL interactively from the terminal.
-This plugin is not to be confused with the [debugger] plugin,
-which provides debugger integration to Lite XL projects.
+This plugin is not to be confused with the [debugger] plugin, which provides debugger integration
+to Lite XL projects.
 
 There are various ways to install lite-debugger:
 
@@ -70,10 +68,9 @@ There are various ways to install lite-debugger:
 
     Download [lite-debugger] into `~/.config/lite-xl/plugins/lite-debugger.lua`.
 
-After installation, Lite XL will print a message
-indicating that the debugger is loaded.
-There will also be a noticeable slowdown in terms of responsiveness,
-as the plugin needs to hook into all function calls in Lua.
+After installation, Lite XL will print a message indicating that the debugger is loaded.
+There will also be a noticeable slowdown in terms of responsiveness, as the plugin needs to hook into
+all function calls in Lua.
 
 ## Add breakpoints in your code
 
@@ -102,8 +99,7 @@ command.add("core.docview", {
 ```
 ## Using the debugger
 
-When you run `hello:scramble-case` in the command palette,
-Lite XL should freeze.
+When you run `hello:scramble-case` in the command palette, Lite XL should freeze.
 A prompt will appear in the terminal:
 
 ![screenshot of the debugger prompt][debugger-prompt]{ lazy=true }
@@ -184,10 +180,8 @@ Inspecting frame 0
   30    [string "local core..."]:6 in chunk at [string "local core..."]:0
 ```
 
-We are currently inside `lite-debugger`,
-in the handler for the command `debugger:break`.
-We need to enter `d` until we reach frame 5,
-which is where `#!lua command.perform "debugger:break"` is called.
+We are currently inside `lite-debugger`, in the handler for the command `debugger:break`.
+We need to enter `d` until we reach frame 5, which is where `#!lua command.perform "debugger:break"` is called.
 
 ```
 debugger.lua> d
@@ -213,8 +207,7 @@ debugger.lua> w
 debugger.lua>
 ```
 
-Now that we are in the correct scope, we can use `l` to print
-all the local variables in the scope.
+Now that we are in the correct scope, we can use `l` to print all the local variables in the scope.
 
 ```
 debugger.lua> l
@@ -246,8 +239,8 @@ debugger.lua>
 ```
 
 To continue execution, use `c`.
-Since `#!lua command.perform "debugger:break"` is called in a loop,
-the debugger will pause until `debugger:break` is called again.
+Since `#!lua command.perform "debugger:break"` is called in a loop, the debugger will pause
+until `debugger:break` is called again.
 
 ## Limitations
 

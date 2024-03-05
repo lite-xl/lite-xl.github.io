@@ -1,13 +1,9 @@
 ---
-description: A syntax is a plugin for Lite XL that provides
-              highlighting for a certain type of file.
-              Learn how to create syntaxes for highlighting
-              various types of files.
+description: Learn how to add support for other programming languages to Lite XL.
 ---
 
 Syntax highlighting plugins for Lite XL are Lua files.
-These define some patterns or regular expressions that
-match different parts of a given language,
+These define some patterns or regular expressions that match different parts of a given language,
 assigning token types to each match.
 These different token types are then given different colors by your chosen color scheme.
 
@@ -26,10 +22,9 @@ The supported syntax token types, defined by `lite-xl/core/style.lua`, are:
 - `operator`
 - `function`
 
-In your syntax highlighting plugin,
-you write patterns to match parts of the language syntax,
+In your syntax highlighting plugin, you write patterns to match parts of the language syntax,
 assigning these token types to matches.
-You don't have to use them all - just use as many as you need for your language.
+You don't have to use them all — just use as many as you need for your language.
 
 Let's walk through an example syntax definition and see how this works.
 
@@ -76,8 +71,7 @@ Let's take each section in turn and see how it works.
 
 ### Header
 
-The first line is a Lua comment and tells Lite XL
-which version this plugin requires.
+The first line is a Lua comment and tells Lite XL which version this plugin requires.
 The second imports the `core.syntax` module to allow us to declare a new syntax:
 
 ```lua
@@ -92,16 +86,14 @@ The contents of this definition are covered next.
 
 The `files` property tells Lite XL which files this syntax should be used for.
 This is a Lua pattern that matches against the full path of the current file.
-For example, to match against Markdown files (`.md` or a `.markdown` files),
-you could do this:
+For example, to match against Markdown files (`.md` or a `.markdown` files), you could do this:
 
 ```lua
 files = { "%.md$", "%.markdown$" },
 ```
 
-In our original example, we match against the end of the path rather than
-the extension, because SSH config files don't have extensions,
-and we don't want to match all `config` files.
+In our original example, we match against the end of the path rather than the extension,
+because SSH config files don't have extensions, and we don't want to match all `config` files.
 We expect the path for SSH config files to look something like one of these:
 
 - `~/.ssh/config`
@@ -116,27 +108,23 @@ files = { "sshd?/?_?config$" },
 
 ### Comment
 
-The `comment` property is used to tell Lite XL what to insert in order to
-create a comment.
+The `comment` property is used to tell Lite XL what to insert in order to create a comment.
 It is not a part of syntax definition.
-You can also use `block_comment` to tell Lite XL how to create
-multiline / block comments.
+You can also use `block_comment` to tell Lite XL how to create multiline / block comments.
 
 ### Patterns
 
 A given piece of text can only match one pattern.
-Once Lite XL decides that a piece of text matches a pattern,
-it will assign that token type to it and move on.
-Patterns are tested in the order that they are written in the syntax definition,
-so the first match will win.
+Once Lite XL decides that a piece of text matches a pattern, it will assign that token type to it and move on.
+Patterns are tested in the order that they are written in the syntax definition, so the first match will win.
 
 Patterns are based on Lua patterns or PCRE2.
 
 You may find detailed information on Lua patterns in the [Lua Reference Manual].
 For PCRE, there are various [regex tester websites] that provide documentation.
 
-Lua patterns can be used by specifying `pattern` when defining a pattern, while
-PCRE can be used by specifying `regex` when defining a pattern.
+Lua patterns can be used by specifying `pattern` when defining a pattern,
+while PCRE can be used by specifying `regex` when defining a pattern.
 
 Each pattern takes one of the following forms:
 
@@ -157,8 +145,7 @@ In this case, any line starting with `#` will be assigned the type `comment`.
 { pattern = { "%[", "%]" }, type = "keyword" },
 ```
 
-When `pattern` is a table with 2 elements, Lite XL will use them to test for
-the start and the end of a range.
+When `pattern` is a table with 2 elements, Lite XL will use them to test for the start and the end of a range.
 Everything between the start and the end will be assigned the given token type.
 
 In this case, everything between `[` and `]` will be assigned the type `keyword`.
@@ -172,30 +159,29 @@ Inputs such as `[\]]` will be interpreted wrongly as `[\]` and `]`.
 { pattern = { '"', '"', '\\' }, type = "string" },
 ```
 
-When `pattern` is a table with 3 elements, Lite XL will use the first two to
-test for the start and the end of a range.
+When `pattern` is a table with 3 elements, Lite XL will use the first two to test for the start
+and the end of a range.
 The last element is used to denote an "escape sequence".
-If the text matches the 3rd element followed by the 2nd element, it will not be
-interpreted as the end of a range.
+If the text matches the 3rd element followed by the 2nd element, it will not be interpreted
+as the end of a range.
 
 In this case, everything between `"` and `"` will be assigned the type `string`.
 A `string` can have escape sequences prefixed with `\`.
 
-Given the input `"\"Hello John\""`, the entire input will be assigned the type
-`string`.
+Given the input `"\"Hello John\""`, the entire input will be assigned the type `string`.
 
 ### Symbols
 
-> This is **not related to the `symbol` token type**.
 
-The `symbols` section allows you to assign token types to
-particular keywords or strings - usually reserved words
-in the language you are highlighting.
-The token type in this section **always take precedence** over
-token types declared in patterns.
+The `symbols` section allows you to assign token types to particular keywords or strings —
+usually reserved words in the language you are highlighting.
+The token type in this section **always take precedence** over token types declared in patterns.
 
-For example this highlights `Host` using the `function` token type,
-`HostName` as a `keyword`, `yes`, `no`, `any` and `ask` as a `literal`:
+!!! note
+    This is **not related to the `symbol` token type**.
+
+For example this highlights `Host` using the `function` token type, `HostName` as a `keyword`, `yes`, `no`,
+`any` and `ask` as a `literal`:
 
 ```lua
 ["Host"]                         = "function",
@@ -209,8 +195,7 @@ For example this highlights `Host` using the `function` token type,
 
 #### Tips: double-check your patterns!
 
-There are a few common mistakes that can be made when
-using the `symbols` table in conjunction with patterns.
+There are a few common mistakes that can be made when using the `symbols` table in conjunction with patterns.
 
 ##### Case 1: Spaces between two `symbols` tokens
 
@@ -235,14 +220,13 @@ pattern =
 ```
 
 Afterwards, you add an entry `["my"] = "literal"` in the `symbols` table.
-You test the syntax with `my function`
-and found that `"my"` isn't highlighted as `literal`. Why did that happen?
+You test the syntax with `my function` and found that `"my"` isn't highlighted as `literal`.
+Why did that happen?
 
 **`symbols` table requires an exact match**.
-If you look carefully,
-the empty parentheses (`()`) is placed **after the space**!
-This tells Lite XL that `WORD followed by (one or more %s)` is a token,
-which will match `my ` (note the space in the match).
+If you look carefully, the empty parentheses (`()`) is placed **after the space**!
+This tells Lite XL that `WORD followed by (one or more %s)` is a token, which will match `my `
+(note the space in the match).
 
 The fix is to add a `normal` token for the whitespace between the two tokens:
 
@@ -255,8 +239,7 @@ The fix is to add a `normal` token for the whitespace between the two tokens:
 One might assume that Lite XL magically matches text against the `symbols` table.
 This is not the case.
 
-In some languages, people may add a generic pattern
-to delegate the matching to the `symbols` table.
+In some languages, people may add a generic pattern to delegate the matching to the `symbols` table.
 
 ```lua
 { pattern = "[%a_][%w_]*", "symbol" }
@@ -271,13 +254,11 @@ symbols = {
 }
 ```
 
-`"my-symbol` contains a dash (`-`)
-and `"..something_else"` contains 2 dots (`.`).
+`"my-symbol` contains a dash (`-`) and `"..something_else"` contains 2 dots (`.`).
 None of the characters are matched by `[%a_][%w_]*`!
 
 **Beware of the text you intend to match in the `symbols` table.**
-**If you want to use it,
-you need to ensure that it matches one of the patterns.**
+**If you want to use it, you need to ensure that it matches one of the patterns.**
 
 The correct patterns are:
 
@@ -294,11 +275,9 @@ To test your new syntax highlighting you need to do two things:
 - Load a file in your chosen language and see how it looks
 
 To reload the core, you can either restart Lite XL or reload it.
-To do this, type `ctrl+shit+p` to open the command palette,
-then select `Core: Restart` (or type `crr` or something similar to match it),
-then press Enter.
-You will need to restart the core after any changes you make
-to the syntax highlighting definition.
+To do this, type `ctrl+shit+p` to open the command palette, then select `Core: Restart`
+(or type `crr` or something similar to match it), then press Enter.
+You will need to restart the core after any changes you make to the syntax highlighting definition.
 
 
 ## Example advanced syntax: Markdown
@@ -519,48 +498,40 @@ core.add_thread(function()
 end)
 ```
 
-It demonstrates a lot of syntax highlighting features that were added to v2.1.0
-and some workarounds needed.
+It demonstrates a lot of syntax highlighting features that were added to v2.1.0 and some workarounds needed.
 
 ### Syntax fonts (Since 1.16.10)
 
-The syntax allows users to set different font styles (bold, italic, etc.)
-for different patterns.
-To change the font style of a token,
-add a Font to `style.syntax_fonts[token_type]`.
+The syntax allows users to set different font styles (bold, italic, etc.) for different patterns.
+To change the font style of a token, add a Font to `style.syntax_fonts[token_type]`.
 
 For example:
-```
+
+```lua
 -- will ensure every "fancysyntax_fancy_token" is italic
 style.syntax_fonts["fancysyntax_fancy_token"] = renderer.font.load("myfont.ttf", 14 * SCALE, { italic = true })
 ```
 
 The markdown example automates this with a for loop.
 
-The limitations here are that fonts cannot be copied with different attributes,
-thus the font path has to be hard-coded.
-Other than that, abusing `style.syntax_fonts`
-may lead to **slow performance** and **high memory consumption**.
-This is very obvious when the user tries to
-resize the editor with `ctrl-scroll` or `ctrl+` and `ctrl-`.
+The limitations here are that fonts cannot be copied with different attributes, thus the font path
+has to be hard-coded.
+Other than that, abusing `style.syntax_fonts` may lead to **slow performance** and **high memory consumption**.
+This is very obvious when the user tries to resize the editor with `ctrl-scroll` or `ctrl+` and `ctrl-`.
 Please use it in moderation.
 
 ### Space handling (since v2.1.0)
 
-By default, Lite XL prepends a pattern `{ pattern = "%s+", type = "normal" }`
-to the syntax.
-This improves the performance drastically on lines that
-starts with whitespace (e.g. heavily indented lines).
-It works by matching the whitespace before other patterns in order to
-prevent Lite XL from iterating the entire syntax.
-However, there may be syntaxes that
-require matching spaces (e.g. Markdown with indented blocks)
+By default, Lite XL prepends a pattern `{ pattern = "%s+", type = "normal" }` to the syntax.
+This improves the performance drastically on lines that starts with whitespace (e.g. heavily indented lines).
+It works by matching the whitespace before other patterns in order to prevent Lite XL from iterating
+the entire syntax.
+However, there may be syntaxes that require matching spaces (e.g. Markdown with indented blocks)
 so this can be disabled by setting `space_handling` to `false.`
 
-> To keep the space handling optimization or
-> to support older versions of Lite XL,
-> `{ pattern = "%s+", type = "normal" }` can be added
-> after patterns that require space.
+!!! tip
+    To keep the space handling optimization or to support older versions of Lite XL,
+    `{ pattern = "%s+", type = "normal" }` can be added after patterns that require space.
 
 ### Simple patterns with multiple tokens (v1.16.10)
 
@@ -576,8 +547,7 @@ local in_squares_match = "^%[%]"
 ```
 
 Sometimes it makes sense to highlight different parts of a pattern differently.
-An empty parenthesis (`()`) in Lua patterns will return
-the position of the text in the parentheses.
+An empty parenthesis (`()`) in Lua patterns will return the position of the text in the parentheses.
 This will tell Lite XL when to change the type of token.
 For instance, `^%s*%[%^` is `"function"`,
 `["..in_squares_match.."]+` is `"number"`
@@ -593,9 +563,8 @@ For example:
 { pattern = { "```cpp", "```" },        type = "string", syntax = ".cpp" },
 ```
 
-This would highlight `` ```cpp `` and `` ``` `` with `"string"`
-while everything inside them will be highlighted
-with a syntax that matches `".cpp"`.
+This would highlight `` ```cpp `` and `` ``` `` with `"string"` while everything inside them
+will be highlighted with a syntax that matches `".cpp"`.
 
 
 [Lua Reference Manual]: https://www.lua.org/manual/5.4/manual.html

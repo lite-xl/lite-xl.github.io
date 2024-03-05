@@ -1,22 +1,19 @@
 ---
-description: Learn how to interact with the OS, such
-              as reading and writing to the clipboard,
-              setting window properties and getting
-              high-resolution time.
+description: Learn how to interact with the OS, such as reading and writing to the clipboard,
+              setting window properties and getting high-resolution time within Lite XL.
 ---
 
 This is where Lite XL's Lua code interact with its underlying C engine.
 
 ## Using the System API
 
-There are many functions that belong to this API; not all are necessary for
-plugin development.
+There are many functions that belong to this API; not all are necessary for plugin development.
 As such, we'll ignore them here and only document the useful ones.
 
 ### Clipboard
 
-`system.set_clipboard()` sets the clipboard content,
-while `system.get_clipboard()` retrieves the clipboard content.
+`system.set_clipboard()` sets the clipboard content, while `system.get_clipboard()`
+retrieves the clipboard content.
 
 The functions do not support rich content such as images and files.
 
@@ -75,8 +72,8 @@ function system.get_file_info(path: string): FileInfo, string end
 - `type`: Type of the path (Can be `file` or `dir`).
 - `symlink`: The directory is a symlink (Only set on Linux and on directories).
 
-All the functions listed above except `system.chdir()` will return `nil`
-followed by an error message when an error occurred.
+All the functions listed above except `system.chdir()` will return `nil` followed by an error message
+when an error occurred.
 `system.chdir()` will throw an error if an error occurred.
 
 **Examples:**
@@ -192,16 +189,14 @@ function system.window_has_focus(): boolean end
 function system.show_fatal_error(title: string, msg: string): () end
 ```
 
-The `height` parameter in `system.set_window_hit_test()` refers to the height
-of the top decoration. Users can drag this part of the window to move it.
+The `height` parameter in `system.set_window_hit_test()` refers to the height of the top decoration.
+Users can drag this part of the window to move it.
 `control_width` specifies the width of various window controls
 (minimize, maximize and close) buttons in the top right corner of the window.
-`resize_border` specifies the width of a "border region" where users can
-drag the window to resize it.
+`resize_border` specifies the width of a "border region" where users can drag the window to resize it.
 This value does not overlap with the `height` parameter.
 
-`system.get_window_size()` returns the width, height, x-coordinate
-and y-coordinate of the window respectively.
+`system.get_window_size()` returns the width, height, x-coordinate and y-coordinate of the window respectively.
 
 `system.set_window_opacity()` will return `false` if the operation failed.
 Otherwise, it returns `true`.
@@ -209,8 +204,7 @@ Otherwise, it returns `true`.
 ## Miscellaneous
 
 `system.exec()` runs a command in the background.
-It is useful if you just want to run a program and doesn't care about its
-output and exit code.
+It is useful if you just want to run a program and doesn't care about its output and exit code.
 If you want more features, consider using the [Process API][1].
 
 `system.fuzzy_match()` generates a score for sorting text based on relevance.
@@ -224,9 +218,8 @@ end
 ```
 
 `system.exec()` accepts a string containing a command to run.
-This command will be run as `system("<command> &")` on POSIX platforms and
-`cmd /c "<command>"` on Windows, so make sure that the command is escaped
-properly.
+This command will be run as `system("<command> &")` on POSIX platforms and `cmd /c "<command>"` on Windows,
+so make sure that the command is escaped properly.
 
 `system.fuzzy_match()` takes in a `haystack` (a possible match) and a `needle`
 (the string to search) to generate a similarity score.
