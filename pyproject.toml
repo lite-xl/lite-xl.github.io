@@ -8,13 +8,13 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.8"
-mkdocs-material = "^9.5.8"
-Pillow = "^9.4.0"
+mkdocs-material = {extras = ["imaging"], version = "^9.5.13"}
 CairoSVG = "^2.6.0"
 mkdocs-git-revision-date-localized-plugin = "^1.1.0"
 mkdocs-glightbox = "^0.3.1"
 mkdocs-macros-plugin = "^0.7.0"
 mkdocs-minify-plugin = {git = "https://github.com/takase1121/mkdocs-minify-plugin.git", rev = "workaround-pathlib-glob-not-supporting-dir-symlinks"}
+setuptools = "^69.1.1"
 
 
 [build-system]
