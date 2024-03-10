@@ -178,6 +178,64 @@ Press ++ctrl+alt+e++ to view diagnostics messages for the workspace.
 ![lsp-view-doc-diagnostics]{ loading=lazy }
 ![lsp-view-all-diagnostics]{ loading=lazy }
 
+## Troubleshooting
+
+We are constantly updating the LSP plugin to fix bugs, add features and improve performance.
+If you encounter any issues, you should **always update to the latest version** before trying other steps.
+
+### Enable Debug Logging
+
+If you encounter an error message such as `[LSP] (language server name) was shutdown, revise your configuration`,
+you should try to enable debug logging to see what is happening when the language server is run.
+
+This is very useful on Windows as the plugin runs the language server with `cmd.exe`
+(to work around wrappers like those provided by npm) and this can cause errors to never propagate back
+to the plugin.
+
+=== "User Module"
+
+    In your user module, add:
+
+    ```lua
+    config.plugins.lsp.log_server_stderr = true
+    ```
+
+=== "Settings GUI"
+
+    Navigate to the "Plugins" tab.
+    Under the "Language Server Protocol" section, enable "Log Standard Error".
+
+    ![lsp-debug-logging]{ loading=lazy }
+
+### Language Servers not starting
+
+There are many reasons why a language server will not launch, the most common being the plugin cannot find
+the language server in `PATH`.
+
+On Windows, this often manifests as 
+`(language server name) is not recognized as an internal or external command, operable program or batch file.`.
+The LSP plugin uses `cmd.exe` on Windows to launch the language server in order to work around
+different file extensions such as `.cmd`, `.bat` and `.exe`.
+
+To solve this issue, make sure that the language server is on `PATH`.
+For non-native language servers (e.g. typescript-language-server), make sure their installation path
+with respect to the package managers are on `PATH` as well.
+For npm, this is usually `AppData\Roaming\npm` on Windows.
+
+### jdt.ls launches Microsoft Store
+
+If you've installed [jdt.ls] from their website, you might run into issues where Microsoft Store is launched
+instead of running the language server properly.
+
+jdt.ls seems to expect users to have Python installed, and Windows has app execution aliases built in to
+redirect `python.exe` and `python3.exe` to Microsoft Store.
+
+![win-execution-alias]{ loading=lazy }
+
+To fix this, install [Python].
+Alternatively, you can follow the [instructions from jdt.ls][jdtls-cmdline] to run the language server
+without Python at all.
+
 
 [Language Server Protocol]:   https://microsoft.github.io/language-server-protocol/
 [LSP]:                        https://github.com/lite-xl/lite-xl-lsp
@@ -216,3 +274,8 @@ Press ++ctrl+alt+e++ to view diagnostics messages for the workspace.
 [lsp-format]:                 ../assets/user-guide/lsp-format.gif
 [lsp-view-doc-diagnostics]:   ../assets/user-guide/lsp-view-doc-diagnostics.gif
 [lsp-view-all-diagnostics]:   ../assets/user-guide/lsp-view-all-diagnostics.gif
+[lsp-debug-logging]:          ../assets/user-guide/settings/plugins/lsp-debug-logging.png
+[jdt.ls]:                     https://github.com/eclipse-jdtls/eclipse.jdt.ls
+[win-execution-alias]:        ../assets/user-guide/win-execution-alias.png
+[Python]:                     https://www.python.org/
+[jdtls-cmdline]:              https://github.com/eclipse-jdtls/eclipse.jdt.ls?tab=readme-ov-file#running-from-the-command-line
