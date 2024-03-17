@@ -32,8 +32,9 @@ The following plugins are meant to enrich Lite XL with handy features that impro
 
 ## Intellisense
 
-`lsp` is a plugin that provides support for Intellisense (LSP protocol),
-while `lintplus` provides support for linters in case a LSP server lacks an integrated linter.
+`lsp` is a plugin that provides support for Intellisense (code completion, goto-definition, 
+document symbols, function signatures and so on) throught the LSP protocol,
+while `lintplus` provides support for info/warning/error diagnostics.
 
 There is also `lsp_snippets`, which adds snippets support from `lsp` to the `snippets` plugin.
 
@@ -56,7 +57,7 @@ Snippets can easily be added by following the [official guide][5].
 
 ## Integrated Terminal
 
-`lite-xl-terminal` provides an integrated terminal.
+`terminal` provides an integrated terminal.
 
 ## Version Control
 
