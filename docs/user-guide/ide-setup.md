@@ -33,7 +33,7 @@ The following plugins are meant to enrich Lite XL with handy features that impro
 ## Intellisense
 
 `lsp` is a plugin that provides support for Intellisense (code completion, goto-definition, 
-document symbols, function signatures and so on) throught the LSP protocol,
+document symbols, function signatures and so on) through the LSP protocol,
 while `lintplus` provides support for info/warning/error diagnostics.
 
 There is also `lsp_snippets`, which adds snippets support from `lsp` to the `snippets` plugin.
