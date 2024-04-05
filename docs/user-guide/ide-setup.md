@@ -89,8 +89,8 @@ At the moment it only supports `gdb`.
 The following examples are configurations and scripts that bundle together the essential components 
 of a minimal IDE:
 
-- [Adam's configuration][1] is made for C/C++ and features custom plugins for building and debugging,
-as well as IDE meta-packages (e.g. `ide_c`, `ide_java`, `ide_python`) that add IDE-like
+- [Adam's configuration][1] contains the `build` and `debugger` plugins,
+as well as several IDE meta-packages (e.g. `ide_c`, `ide_java`, `ide_python`) that add IDE-like
 functionalities to Lite XL for many popular programming languages.
 - [PerilousBooklet's configuration][2] contains documentation about IDE support progress
 status for Lite XL.
