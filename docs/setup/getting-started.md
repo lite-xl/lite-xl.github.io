@@ -191,5 +191,5 @@ by the user. A list of issues and workarounds are documented [here][issues].
 [source-zip]:               https://github.com/lite-xl/lite-xl/archive/refs/tags/{{ lite_xl_version }}.zip
 [build]:                    ./building-from-source.md
 [lpm]:                      https://github.com/lite-xl/lite-xl-plugin-manager
-[appimage-troubleshooting]: https://docs.appimage.org/user-guide/troubleshooting/index.html#troubleshooting
+[appimage-troubleshoot]:    https://docs.appimage.org/user-guide/troubleshooting/index.html#troubleshooting
 [issues]:                   ./platform-notes.md
