@@ -1,8 +1,9 @@
-# About
+# À propos
 
-These pages contain information about Lite XL's features, screenshots and developers. It also contains a FAQ section.
+Ces pages contiennent des captures d'écran ainsi que des informations à propos
+des fonctionnalités de Lite XL et des développeurs. Il y a également une section FAQ.
 
-- [Contributors](/en/about/contributors)
-- [FAQ](/en/about/faq)
-- [Features](/en/about/features)
-- [Screenshots](/en/about/screenshots)
+- [Contributeurs](/fr/about/contributors)
+- [FAQ](/fr/about/faq)
+- [Fonctionnalités](/fr/about/features)
+- [Captures d'écran](/fr/about/screenshots)

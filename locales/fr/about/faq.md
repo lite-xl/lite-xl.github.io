@@ -1,72 +1,73 @@
 # FAQ
 
-#### Can I get smart autocompletion (intellisense/LSP)?
+#### Est-ce que je peux avoir une autocomplétion intelligente (intellisense/LSP) ?
 
-Check out the [LSP] plugin.
+Consultez le plugin [LSP].
 
-#### Where is the integrated terminal?
+#### Où est le terminal intégré.
 
-You can try [lite-xl-terminal].
+Vous pouvez essayer [lite-xl-terminal].
 
-#### Tabs and indent size?
+#### Taille d'une tabulation et d'une indentation ?
 
-In your user config (the cog icon in the file tree):
+Dans la configuration utilisateur (l'icône d'engrenage dans l'arborescence des
+fichiers):
 
 ```lua
-config.tab_type = "soft" -- soft for spaces, hard for real tabs (\t)
-config.indent_size = 4   -- 4 spaces
+config.tab_type = "soft" -- soft pour les espaces, hard pour les vrais tabulations (\t)
+config.indent_size = 4   -- 4 espaces
 ```
 
-#### How to bind commands to keys?
+#### Comment assigner des commandes à un raccourci clavier ?
 
 ```lua
 local keymap = require "core.keymap"
 keymap.add { ["ctrl+escape"] = "core:quit" }
 ```
 
-#### How to unbind commands for certain keys?
+#### Comment désassigner des commandes à un raccourci clavier ?
 
 ```lua
--- the second parameter lets you override commands for certain keys
--- in this case it maps it to nothing
+-- le second paramètre vous laisser remplacer les commandes pour certain raccourcis
+-- dans ce cas on l'assigne à rien
 keymap.add({ ["ctrl+escape"] = {} }, true)
 ```
 
-#### How to get commands for those keybinds?
+#### Comment obtenir les commandes de ces raccourcis ?
 
-You can search for commands in the command palette.
+You pouvez chercher des commandes dans la palette de commandes.
 
-For each command, replace the spaces in the right side with dashes.
+Pour chaque commande, remplacez les espaces dans la partie droite par des tirets.
 
-For example: `Core: Find Command` → `core:find-command`
+Par exemple: `Core: Find Command` → `core:find-command`
 
-#### What version of Lua does Lite XL use?
+#### Quelle version de Lua utilise Lite XL ?
 
 Lua 5.4.
 
-#### Vim mode?
+#### Un mode Vim?
 
-You need to [vibe].
+Vous avez besoin de [vibe].
 
-#### Plugin recommendations
+#### Recommendations de plugins
 
-Just in case you don't want to comb through our [plugin repository][1],
-these are a list of plugins that just makes Lite XL a lot more pleasant.
+Au cas où vous ne voudriez pas passer au peigne fin notre [dépôt de plugins][1],
+il y a une liste de plugins qui rendent Lite XL plus agréable.
 
-| Plugin               | Use case
+| Plugin               | Cas d'usage
 | ---                  | ---
-| [autoinsert]         | Automatically insert closing brackets and quotes
-| [bracketmatch]       | Highlight matching brackets
-| [ephemeral_tabs]     | Ephemeral tabs (previewing files without creating multiple tabs)
-| [gitdiff_highlight]  | Git diff gutter
-| [lint+]              | Linter support
+| [autoinsert]         | Insère automatiquement des parenthèses, crochets et guillemets fermants
+| [bracketmatch]       | Surligne les parenthèses ou crochets correspondants
+| [ephemeral_tabs]     | Onglets éphémères (aperçu des fichiers sans créer plusieurs onglets)
+| [gitdiff_highlight]  | Montre les différences Git
+| [lint+]              | Prise en charge de linter
 | [minimap]            | Minimap
-| [selectionhighlight] | Highlight code that matches the selection
-| [lite-xl-discord]    | Discord rich presence |
+| [selectionhighlight] | Surligne le code correspondant à la sélection
+| [lite-xl-discord]    | Présence riche Discord |
 
-#### Where's feature X? How about Y?
+#### Où est la fonctionnalité X ? Et pourquoi pas Y ?
 
-You can get more info in the [Features page](/en/about/features).
+Vous pouvez trouver plus d'informations sur la [page Fonctionnalités](/fr/about/features).
 
 
 [LSP]:                https://github.com/lite-xl/lite-xl-lsp

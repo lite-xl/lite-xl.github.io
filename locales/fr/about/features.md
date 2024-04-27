@@ -1,54 +1,84 @@
-# Features
+# Fonctionnalités
 
-Currently, Lite XL offers a lot of features out of the box.
+Actuellement, Lite XL offre nativement beaucoup de fonctionnalités.
 
-## Cross-Platform
-We currently support Windows, Linux and MacOS (with Retina display support).
+## Multiplateforme
 
-## Lightweight
-We are currently around 3MB in size and takes about 10MB in RAM (can be lower). No Electron / WebView involved. The whole thing is just Lua running on a rendering engine.
+Nous prenons actuellement en charge Windows, Linux et MacOS (avec prise en charge de l'affichage Retina).
+
+## Léger
+
+LiteXL a actuellement une taille de 3 Mo et occupe environ 10 Mo de RAM
+(possiblement moins). Pas d'Electron / WebView impliqué. Il s'agit simplement
+de Lua fonctionnant sur un moteur de rendu.
 
 ## Extensible
-While the editor is minimal by default, it is very extensible using Lua. In fact, a lot of features are provided by plugins. For example, [VSC-like intellisense](https://github.com/jgmdev/lite-xl-lsp)
 
-## Better font rendering
-The editor looks good in screen of any sizes. Some other options are also configurable, such as hinting and antialiasing.
+Bien que l'éditeur soit minimal par défaut, il est très extensible grâce à
+Lua. En fait, beaucoup de fonctionnalités sont fournies par des plugins. Par
+exemple, [un Intellisense à la VSC](https://github.com/jgmdev/lite-xl-lsp)
 
-## Multi-cursor editing
-You can now place multiple cursors by `ctrl` + `lclick` on lines or `ctrl` + `shift` + `up` or `ctrl` + `shift` + `down`.
+## Un meilleur rendu des polices
+
+L'éditeur s'affiche bien sur les écrans de toute taille. D'autres options sont
+aussi configurables, comme le hinting et l'anticrénelage.
+
+## Édition multi-curseur
+
+Vous pouvez maintenant placer plusieurs curseurs en faisant `ctrl` + `lclick`
+sur des lignes ou `ctrl` + `shift` + `up` ou `ctrl` + `shift` + `down`.
 
 
 ---
 
 
-Here are some features that aren't implemented with the rationales behind it.
-Some of these may be implemented via plugins.
-We encourage you to give it a shot.
+Voici quelques fonctionnalités qui en sont pas encore mises en place avec les
+justifications qui s'y rattachent.
+Certaines peuvent être mises en œuvre via des plugins.
+Nous vous encorageons à tenter le coup.
 
-## Hardware accelerated rendering
-**tl;dr -  franko stated that he isn't considering using OpenGL due to the skills and work involved.**
+## Rendu matériel accéléré
 
-Hardware acceleration was brought up in this [discussion](https://github.com/lite-xl/lite-xl/discussions/450).
-Takase had made 2 attempts at this - at first using [NanoVG](https://github.com/inniyah/nanovg) and then forcing SDL to use GPU rendering.
-In both attempts, the performance gains at best is negligible, while at worst its completely unusable.
-Right now, we decided to focus on optimizing the software renderer and various part of Lua code.
+**tl;dr - franko a déclaré qu'il n'envisage pas d'utiliser OpenGL en raison des compétences et du travail requis.**
 
-## System fonts
-This is painful because various systems has their own mechanism of managing fonts.
-For now, users can use the [fontconfig plugin](https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/fontconfig.lua).
-Fontconfig is widely available on Linux and [installable on MacOS](https://formulae.brew.sh/formula/fontconfig), while [Windows builds](https://github.com/takase1121/mingw-w64-fontconfig) are available.
-In the future, we might consider adding API to read font metadata, allowing us to write a fontconfig alternative in Lua. (no promises here)
+L'accélération matérielle a été évoquée dans cette [discussion](https://github.com/lite-xl/lite-xl/discussions/450).
+Takase avait fait 2 tentatives - d'abord en utilisant [NanoVG](https://github.com/inniyah/nanovg),
+puis en forçant SDL à utiliser le rendu GPU.
+Dans les deux cas, le gain de performance était au mieux négligeable, alors
+que dans le pire des cas, l'éditeur était complètement inutilisable.
+Pour l'instant, nous avons décidé de nous concentrer sur l'optimisation du
+logiciel de rendu et différentes du code Lua.
 
-## Opening UNC paths on Windows (network drives, accessing WSL2 files from Windows)
-Our path handling code can only handle POSIX and Windows paths.
-We also aren't sure how Lite XL will behave in these scenarios.
+## Polices d'écriture du système
 
-## Inter-window communication (dragging tabs between windows and other magic)
-This is by far the hardest to achieve.
-Lite XL has no intention to link to any widget toolkits (Qt and GTK) which are required for these features.
-An alternative approach is to create our own IPC mechanism, but that's [reinventing](https://en.wikipedia.org/wiki/D-Bus) [the](https://en.wikipedia.org/wiki/Inter-Client_Communication_Conventions_Manual) [wheel](https://github.com/swaywm/wlroots).
+C'est pénible car les différents systèmes ont chacun leur propre mécanisme
+de gestion des polices.
+Pour le moment, les utilisateurs peuvent utiliser le [plugin fontconfig](https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/fontconfig.lua).
+Fontconfig est largement disponible sur Linux et [installable sur MacOS](https://formulae.brew.sh/formula/fontconfig),
+et [des versions Windows](https://github.com/takase1121/mingw-w64-fontconfig)
+sont également disponibles.
+À l'avenir, nous pourrions envisager d'ajouter une API pour lire les métadonnées
+des polices, nous permettant d'écrire une alternative à fontconfig en Lua
+(aucune promesse ici).
 
-## Integrated terminal
-A terminal is complex to implement.
-There are projects that _can_ be ported to Lua, such as [xterm.js](https://xtermjs.org/).
-If someone is interested, they can do so.
+## Ouverture de chemins UNC sur Windows (lecteurs réseau, accès aux fichiers WSL2 depuis Windows)
+
+Notre code pour la gestion des chemins peut seulement gérer les chemins POSIX
+et Windows.
+Nous ne savons pas non plus comment Lite XL se comportera dans ces scénarios.
+
+## Communication inter-fenêtre (glisser des onglets entre des fenêtres et autres formes de magie)
+
+C'est de loin la fonctionnalité la plus dure à réaliser.
+Lite XL n'a aucune intention de lier un quelconque widget toolkit (Qt et GTK)
+qui est requis pour ce type de fonctionnalités.
+Une approche alternative est de créer notre propre mécanisme de communication
+inter-processus, mais ce serait [réinventer](https://en.wikipedia.org/wiki/D-Bus)
+[la](https://fr.wikipedia.org/wiki/Manuel_des_Conventions_des_Communications_Inter-Client)
+[roue](https://github.com/swaywm/wlroots).
+
+## Terminal intégré
+
+Un terminal est complexe à mettre en œuvre.
+Il existe des projets qui _peuvent_ être portés en Lua, tels que [xterm.js](https://xtermjs.org/).
+Si ça intéresse quelqu'un, il peut le faire.
