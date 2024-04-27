@@ -1,13 +1,14 @@
-# Downloads
+# Téléchargements
 
-## Binary packages
+## Paquets binaires
 
-Binary packages are available on the [GitHub releases page][1].
+Les paquets binaires sont disponibles sur la [page de versions GitHub][1].
 
-## Install via package management
+## Installer via un gestionnaire de paquets
 
-Alternatively, you can install lite-xl from your distribution's package manager.
-**These packages are maintained by the community and may be outdated.**
+Autrement, vous pouvez installer lite-xl depuis le gestionnaire de
+paquets de votre distribution.
+**Ces paquets sont gérés par la communauté et peuvent être obsolètes.**
 
 - [Windows][2] ([Chocolatey][3] / [Scoop][4])
 - [Mac OS][5] (MacPorts)
@@ -24,10 +25,10 @@ nix-env -i lite-xl                                           # nixos
 sudo dnf install lite-xl                                     # fedora
 ```
 
-## Source Code
+## Code source
 
-Source code is available on [GitHub][9], by downloading zip or tar archives,
-or directly via git:
+Le code source est disponible sur [GitHub][9], en téléchargeant les archives
+zip ou tar, ou directement via git:
 
 ```sh
 git clone https://github.com/lite-xl/lite-xl.git
