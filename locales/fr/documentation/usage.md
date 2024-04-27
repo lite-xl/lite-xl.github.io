@@ -1,63 +1,65 @@
 # Usage
 
-Lite XL is a lightweight text editor written mostly in Lua — it aims to provide
-something practical, pretty, *small* and fast, implemented as simply as
-possible; easy to modify and extend, or to use without doing either.
+Lite XL est un éditeur de texte léger écrit principalement en Lua — il a
+pour but de fournir quelque chose de pratique, beau, *petit* et rapide,
+mis en œuvre; facile à modifier et à étendre, or to use without doing either.
 
 Lite XL is based on the Lite editor and provide some enhancements
 while remaining generally compatible with it.
 
-## Getting Started
+## Prise en main
 
-Lite XL works using a *project directory* — this is the directory where your
-project's code and other data resides.
+Lite XL fonctionne en utilisant un *répertoire de projet* — c'est le
+répertoire dans lequel le code de votre projet et d'autres données résident 
 
-To open a specific project directory the directory name can be passed
-as a command-line argument *(`.` can be passed to use the current directory)*
-or the directory can be dragged onto either the executable or a running instance.
+Pour ouvrir un répertoire de projet spécifique le nom du répertoire doit
+être passé comme argument de ligne de commande *(`.` peut être renseigné
+pour utiliser le répertoire courant)* ou le répertoire peut être glissée vers
+soit l'exécutable soit une instance en cours d'exécution.
 
-Once started the project directory can be changed using the command
-`core:change-project-folder`. The command will close all the documents
-currently opened and switch to the new project directory.
+Une fois lancé le répertoire du projet peut être changé grâce à la
+commande `core:change-project-folder`. Cette commande fermera tous les documents
+actuellement ouverts et basculera vers les nouveau répertoire de projet.
 
-If you want to open a project directory in a new window the command
-`core:open-project-folder` will open a new editor window with the selected
-project directory.
+Si vous voulez ouvrir un répertoire de projet dans une nouvelle fenêtre la
+commande `core:open-project-folder` ouvrira une nouvelle fenêtre de l'éditeur
+avec le répertoire de projet sélectionné.
 
-The main way of opening files in Lite XL is through the `core:find-file` command
-— this provides a fuzzy finder over all of the project's files and can be
-opened using the `ctrl`+`p` shortcut by default.
+La principale façon d'ouvrir des fichiers dans Lite XL est d'utiliser la commande
+`core:find-file` — elle fournit un chercheur flou (fuzzy finder) sur tous les
+fichiers du projet et peut être ouverte par défaut avec le raccourci `ctrl`+`p`.
 
-Commands can be run using keyboard shortcuts, or by using the `core:find-command`
-command bound to `ctrl`+`shift`+`p` by default. For example, pressing
-the above combination and typing `newdoc` then pressing `return`
-would open a new document. The current keyboard shortcut for a command
-can be seen to the right of the command name on the command finder, thus to find
-the shortcut for a command `ctrl`+`shift`+`p` can be pressed
-and the command name typed.
+Les commandes peuvent être lancées avec des raccoucis clavier, ou en utilisant
+la commande `core:find-command` lié à `ctrl`+`shift`+`p` par défaut. Par
+exemple, appuyant sur la combinaison ci-dessus et écrire `newdoc` puis appuyer
+sur `entrée` ouvrira un nouveau document. Le raccourci clavier actuel pour une
+commande est visible à droite du nom de la commande dans l'outil de recherche
+de commandes. Ainsi, pour trouver le raccourci d'une commande, `ctrl`+`shift`+`p`
+peut être appuyé et le nom de la commande renseigné.
 
-## User Data Directories
+## Répertoire de données utilisateur
 
-Lite XL uses standard systems user directories; the user data can be found in
-`$HOME/.config/lite-xl` on Linux and macOS.
-On Windows, the variable `$USERPROFILE` will be used instead of
-`$HOME`.
+Lite XL utilise les répertoires d'utilisateur standards des systèmes ; les
+données de l'utilisateur peuvent être trouvées dans `$HOME/.config/lite-xl`
+sur Linux et macOS.
 
-## User Module
+Sur Windows, la variable `$USERPROFILE` sera utilisée au lieu de `$HOME`.
 
-Lite XL can be configured through use of the user module. The user module can be
-used for changing options in the config module, adding additional key bindings,
-loading custom color themes, modifying the style or changing any other part of
-the editor to your personal preference.
+## Module utilisateur
 
-The user module is loaded when the application starts,
-after the plugins have been loaded.
+Lite XL peut être configuré par l'utilisation du module utilisateur. Le
+module utilisateur peut être utilisé pour changer les options dans le module
+de configuration, ajouter des raccourcis clavier supplémentaires, charger des
+thèmes de couleurs personnalisés, modifier le style ou changer toute autre
+partie de l'éditeur selon vos préférences personnelles.
 
-The user module can be modified by running the `core:open-user-module` command
-or otherwise directly opening the `$HOME/.config/lite-xl/init.lua` file.
+Le module utilisateur est chargé au démarrage de l'application, après
+que les plugins sont chargés.
 
-On Windows, the variable `$USERPROFILE` will be used instead of
-`$HOME`.
+Le module utilisateur peut être modifié en exécutant la commande `core:open-user-module`
+ou alors en ouvrant directement le fichier `$HOME/.config/lite-xl/init.lua`.
+
+Sur Windows, la variable `$USERPROFILE` sera utilisée au lieu de `$HOME`.
 
 **tl;dr:**
 
@@ -65,60 +67,65 @@ On Windows, the variable `$USERPROFILE` will be used instead of
 - MacOS: `/Users/(usernmame)/.config/lite-xl/init.lua`
 - Linux: `/home/(username)/.config/lite-xl/init.lua`
 
-These aren't the exact location, but it gives you an idea where to find.
+Ce ne sont pas les emplacements exacts, mais cela vous donne une idée d'où chercher.
 
-Please note that Lite XL differs from the standard Lite editor for the location
-of the user's module.
+Veuillez noter que Lite XL diffère de l'éditeur standard Lite pour l'emplacement
+du module utilisateur.
 
-## Project Module
+## Module de projet
 
-The project module is an optional module which is loaded from the current
-project's directory when Lite XL is started. Project modules can be useful for
-things like adding custom commands for project-specific build systems, or
-loading project-specific plugins.
+Le module de projet est un module optionnel qui est chargé depuis la répertoire
+courant du projet lorsque Lite XL est lancé. Les modules de projet peuvent être
+utiles pour des choses comme l'ajout de commandes personnalisées pour des systèmes
+de construction spécifiques à un projet, ou pour charger des plugins spécifiques
+à un projet.
 
-The project module is loaded when the application starts,
-after both the plugins and user module have been loaded.
+Le module de projet est chargé au démarrage de l'application, après
+que les plugins et le module utilisateur sont chargés.
 
-The project module can be edited by running the `core:open-project-module`
-command — if the module does not exist for the current project when the
-command is run it will be created.
+Le module de projet peut être modifié en exécutant la commende `core:open-project-module`.
+Si le module n'existe pas pour le projet en cours lorsque la commande est lancée,
+il sera créé.
 
-## Add directories to a project
+## Ajouter des répertoires à un projet
 
-In addition to the project directories it is possible to add other directories
-using the command `core:add-directory`.
-Once added a directory it will be shown in the tree-view on the left side and
-the additional files will be reachable using the `ctrl`+`p` command (find file).
-The additonal files will be also visible when searching across the project.
+En plus des répertoires de projet il est possible d'ajouter d'autres
+répertoires avec la commande `core:add-directory`.
+Une fois le répertoire ajouté il sera affiché dans l'arborescence sur le
+côté gauche et les fichiers supplémentaires seront accessibles à l'aide de
+la commande `ctrl`+`p` (trouver un fichier).
+Les fichiers supplémentaires seront également visibles lors de la recherche
+à travers le projet.
 
-The additional directories can be removed using the command `core:remove-directory`.
+Les répertoires supplémentaires peuvent être supprimés avec la commande `core:remove-directory`.
 
-When you will open again Lite XL on the same project folder the application will
-remember your workspace including the additonal project directories.
+Lorsque vous ouvrez à nouveau Lite XL dans le même répertoire de projet,
+l'application se souviendra de votre espace de travail, y compris les
+répertoires de projet supplémentaires.
 
-Since version 1.15 Lite XL does not need a workspace plugin as it is now
-bundled with the editor.
+Depuis la version 1.15 Lite XL n'a plus besoin de plugin l'espace
+de travail puisqu'il est maintenant fourni avec l'éditeur.
 
-## Create new empty directory
+## Créer un nouveau répertoire vide
 
-Using the command `files:create-directory` or control-click in a directory in the
-tree-view to create a new empty subdirectory.
+Utiliser la commande `files:create-directory` ou contrôle-clique dans un
+répertoire dans l'arborescence créera un nouveau répertoire vide.
 
-## Commands
+## Commandes
 
-Commands are used both through the command finder (`ctrl`+`shift`+`p`) and
-by Lite XL's keyboard shortcut system. Commands consist of 3 components:
+Les commandes sont utilisées à la fois par la biais de l'outil de recherche de
+commandes (`ctrl`+`shift`+`p`) et par le système de raccourcis clavier de Lite
+XL. Les commandes consistent en 3 composants :
 
-* **Name** — The command name in the form of `namespace:action-name`, for
-  example: `doc:select-all`
-* **Predicate** — A function that returns true if the command can be ran, for
-  example, for any document commands the predicate checks whether the active
-  view is a document
-* **Function** — The function which performs the command itself
+* **Le nom** — Le nom de la commande de la forme `espacenom:nom-action`, par
+  exemple: `doc:select-all`
+* **Prédicat** — Une function qui renvoie true si la commande peut être lancée,
+  par exemple, pour toute commande de document le prédicat vérifiera si la vue
+  active est un document.
+* **Fonction** — La fonction qui exécute la commande elle-même.
 
-Commands can be added using the `command.add` function provided by the
-`core.command` module:
+Des commandes peuvent être ajoutées en utilisant la fonction `command.add`
+fournir par le module `core.command` :
 
 ```lua
 local core = require "core"
@@ -132,115 +139,124 @@ command.add("core.docview", {
 })
 ```
 
-Commands can be performed programatically (eg. from another command or by your
-user module) by calling the `command.perform` function after requiring the
-`command` module:
+Des commandes peuvent être exécutée  can be performed de manière programmée
+(eg. à partir d'une autre commande ou par votre module utilisateur) en appelant
+la fonction `command.perform` après avoir requis le module `command` :
 
 ```lua
 local command = require "core.command"
 command.perform "core:quit"
 ```
 
-### Keymap
+### Raccourcis clavier
 
-All keyboard shortcuts are handled by the `core.keymap` module.
-A key binding maps a "stroke" (eg. `ctrl`+`q`) to one or more commands
-(eg. `core:quit`). When the shortcut is pressed Lite XL will iterate each command
-assigned to that key and run the *predicate function* for that command — if the
-predicate passes it stops iterating and runs the command.
+Tous les raccourcis clavier sont gérés par le module `core.keymap`.
+Un raccourci clavier associe un "coup" (eg. `ctrl`+`q`) à une ou plusieurs
+commandes (eg. `core:quit`). Lorsque le raccourci est appuyé, Lite XL itérera
+chaque commande assignée à ces touches et exécutera la *fonction de prédicat*
+pour cette commande — si le prédicat passe l'itération s'arrête et la
+commande s'exécute.
 
-An example of where this used is the default binding of the `tab` key:
+Un exemple d'utilsiation est la liaison par défaut à la touche `tab` :
 
 ``` lua
   ["tab"] = { "command:complete", "doc:indent" },
 ```
 
-When tab is pressed the `command:complete` command is attempted which will only
-succeed if the command-input at the bottom of the window is active. Otherwise
-the `doc:indent` command is attempted which will only succeed if we have a
-document as our active view.
+Lorsque la tabulation est appuyée la commande `command:complete` est essayée,
+ce qui n'aboutira que si l'entrée de commande en bas de la fenêtre est active.
+Autrement la commande `doc:indent` est essayée, ce qui n'aboutira que si nous
+avons un document en tant que vue active.
 
-A new mapping can be added by your user module as follows:
+Une nouvelle association peut être ajoutée par votre module utilisateur comme
+suit :
 
 ```lua
 local keymap = require "core.keymap"
 keymap.add { ["ctrl+q"] = "core:quit" }
 ```
 
-A list of default mappings can be viewed [here][1].
+Une liste des associations par défaut peut être aperçue [ici][1].
 
-### Global variables
+### Variables globales
 
-There are a few global variables set by the editor.
-These variables are available everywhere and shouldn't be overwritten.
+Il y a quelques variables globales fixée par l'éditeur.
+Ces variables sont disponibles partout et ne devraient pas être écrasées.
 
-- `ARGS`: command-line arguments. `argv[1]` is the program name, `argv[2]` is the 1st parameter, ...
-- `PLATFORM`: Output from `SDL_GetPlatform()`. Can be `Windows`, `Mac OS X`, `Linux`, `iOS` and `Android`.
-- `SCALE`: Font scale. Usually 1, but can be higher on HiDPI systems.
-- `EXEFILE`: An absolute path to the executable.
-- `EXEDIR`: The executable directory. **DO NOT WRITE TO THIS DIRECTORY.**
-- `VERSION`: lite-xl version.
-- `MOD_VERSION`: mod-version used in plugins. This is usually incremented when there are API changes.
-- `PATHSEP`: Path seperator. `\` (Windows) or `/` (Other OSes)
-- `DATADIR`: The data directory, where the Lua part of lite-xl resides. **DO NOT WRITE TO THIS DIRECTORY.**
-- `USERDIR`: User configuration directory.
+- `ARGS`: arguments de la ligne de commande. `argv[1]` est le nom du programme, `argv[2]` est le 1er paramètre, ...
+- `PLATFORM`: Affichage de `SDL_GetPlatform()`. Peut être `Windows`, `Mac OS X`, `Linux`, `iOS` et `Android`.
+- `SCALE`: Échelle de police. Généralement 1, mais peut être plus élevé sur les systèmes HiDPI.
+- `EXEFILE`: Un chemin absolu vers l'ex"cutable.
+- `EXEDIR`: Le répertoire de l'exécutable. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
+- `VERSION`: version de lite-xl.
+- `MOD_VERSION`: version de modification. Elle est généralement incrementée lors de changements dans l'API.
+- `PATHSEP`: Séparateur de chemin. `\` (Windows) ou `/` (autres OS)
+- `DATADIR`: Le répertoire de données, où réside la partie en Lua de lite-xl. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
+- `USERDIR`: Répertoire de configuration utilisateur.
 
-> `USERDIR` should be used instead of `DATADIR` when configuring the editor
-> because `DATADIR` might not be writable.
-> (for example, if the editor is installed in `/usr`, `DATADIR` will be `/usr/share/lite-xl`!)
-> `USERDIR` on the other hand should always be writable for the user, and allows multiple users to customize
-> their own editor.
+> `USERDIR` devrait être utilisé à la place de `DATADIR` lors de la
+> configuration de l'éditeur car `DATADIR` pourrait ne pas être accessible en
+> écriture.
+> (par exemple, si l'éditeur est installé dans `/usr`, `DATADIR` vaudra `/usr/share/lite-xl`!)
+> `USERDIR` en revanche devrait toujours être accessible en écriture par
+> l'utilisateur, et autorise plusieurs utilisateurs à personnaliser leur
+> propre éditeur.
 
 ## Plugins
 
-Plugins in Lite XL are normal lua modules and are treated as such — no
-complicated plugin manager is provided, and, once a plugin is loaded, it is never
-expected be to have to unload itself.
+Les plugins dans Lite XL sont des modules Lua normaux et sont traités tels quels
+— aucun gestionnaire de plugins n'est fourni, et une fois qu'un plugin est
+chargé, il n'est jamais prévu qu'il doive se décharger lui-même.
 
-To install a plugin simply drop it in the `plugins` directory in the user
-module directory.
-When Lite XL starts it will first load the plugins included in the data directory
-and will then loads the plugins located in the user module directory.
+Pour installer un plugin glissez-le simplement dans le répertoire `plugins` se
+trouvant dans le répertoire de module utilisateur.
+Lorsque Lite XL démarre il va tout d'abordd charger les plugins inclus dans le
+répertoire de données et chargera ensuite les plugins situés dans le
+répertoire de module utilisateur.
 
-To uninstall a plugin the plugin file can be deleted — any plugin
-(including those included with the default installation)
-can be deleted to remove its functionality.
+Pour désinstaller un plugin vous devez supprimer le fichier de plugin — tout
+plugin (y compris ceux inclus dans l'installation par défaut) peut être
+supprimé pour retirer ses fonctionnalités.
 
-If you want to load a plugin only under a certain circumstance (for example,
-only on a given project) the plugin can be placed somewhere other than the
-`plugins` directory so that it is not automatically loaded. The plugin can
-then be loaded manually as needed by using the `require` function.
+Si vous voulez charger un plugin seulement sous certaines conditions (par
+exemple, seulement dans un projet donné), le plugin peut être placé ailleurs
+que dans le répertoire `plugins` afin qu'il ne soit pas chargé automatiquement.
+Le plugin peut ensuite être chargé manuellement si nécessaire en utilisant
+la fonction `require`.
 
-Plugins can be downloaded from the [plugins repository][2].
+Les plugins peuvent être téléchargés depuis le [dépôt de plugins][2].
 
-## Restarting the editor
+## Redémarrer l'éditeur
 
-If you modify the user configuration file or some of the Lua implementation files
-you may restart the editor using the command `core:restart`.
-The entire application will be restarting by keeping the window that is already in use.
+Si vous modifiez le fichier de configuration utilisateur ou des fichiers Lua
+d'implémentation, vous pouvez redémarrer l'éditeur en utilisant la commande
+`core:restart`.
+L'application entière redémarrera en conservant la fenêtre alors en cours d'utilisation.
 
-## Color Themes
+## Thèmes de couleurs
 
-Colors themes in Lite XL are lua modules which overwrite the color fields of
-Lite XL's `core.style` module.
-Pre-defined color methods are located in the `colors` folder in the data directory.
-Additional color themes can be installed in the user's directory in a folder named
-`colors`.
+Les thèmes de couleurs dans Lite XL sont des modules Lua qui écrasent les
+champs de couleurs du module `core.style`.
+Des méthodes de couleurs prédéfinies se trouvent dans le dossier `colors`
+dans le répertoire de données.
+Des thèmes de couleur supplémentaires peuvent être installés dans le
+répertoire utilisateur, dans un dossier nommé `colors`.
 
-A color theme can be set by requiring it in your user module:
+Un thème de couleur peut être défini en l'imposant dans votre module utilisateur :
 
 ```lua
 core.reload_module "colors.winter"
 ```
 
-In the Lite editor the function `require` is used instead of `core.reload_module`.
-In Lite XL `core.reload_module` should be used to ensure that the color module
-is actually reloaded when saving the user's configuration file.
+Dans l'éditeur Lite la fonction `require` est utilisée au lieu de `core.reload_module`.
+Dans Lite XL `core.reload_module` devrait être utilisée pour s'assurer que le
+module de couleur est bien rechargé lors de la sauvegarde du fichier de
+configuration utilisateur.
 
-Color themes can be downloaded from the [color themes repository][3].
-They are included with Lite XL release packages.
+Des thèmes de couleurs peuvent être télécharges depuis le [dépôt de thèmes de couleurs][3].
+Il sont inclus dans les paquets de release de Lite XL.
 
 
-[1]: /en/documentation/keymap
+[1]: /fr/documentation/keymap
 [2]: https://github.com/lite-xl/lite-xl-plugins
 [3]: https://github.com/lite-xl/lite-xl-colors
