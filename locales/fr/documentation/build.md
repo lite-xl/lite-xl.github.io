@@ -1,76 +1,80 @@
-# Build
+# Compilation
 
-Once you have downloaded the source code, you can build Lite XL yourself using Meson.
-In addition, the `build-packages.sh` script can be used to compile Lite XL and
-create an OS-specific package for Linux, Windows or macOS.
+Une fois que vous avez téléchargé le code source, vous pouvez construire Lite
+XL vous-même en utilisant Meson.
+En outre, le script `build-packages.sh` peut être utilisé pour compiler Lite
+XL et créer un paquet spécifique à un OS pour Linux, Windows ou macOS.
 
-The following libraries are required:
+Les bibliothèques suivantes sont nécessaires :
 
 - freetype2
 - SDL2
 
-The following libraries are **optional**:
+Les bibliothèques suivantes sont **optionnelles**:
 
 - libagg
 - Lua 5.2
 
-If they are not found, they will be downloaded and compiled by Meson.
-Otherwise, if they are present, they will be used to compile Lite XL.
+Si elles ne sont pas trouvées, elles seront téléchargées et compilées par Meson.
+Sinon, si elles sont présentes, elles seront utilisées pour compiler Lite XL.
 
-## Build Script
+## Script de génération
 
-If you compile Lite XL yourself,
-it is recommended to use the script `build-packages.sh`:
+Si vous compilez Lite XL vous-même, il est recommandé d'utiliser le script
+`build-packages.sh` :
 
 ```bash
 bash build-packages.sh -h
 ```
 
-The script will run Meson and create a tar compressed archive with the application or,
-for Windows, a zip file. Lite XL can be easily installed
-by unpacking the archive in any directory of your choice.
+Ce script exécutera Meson et créera une archive compressée tar avec
+l'application ou, pour Windows, un fichier zip. Lite XL peut facilement être
+installé en extrayant l'archive dans le répertoire de votre choix.
 
-On Windows two packages will be created, one called "portable" using the "data"
-folder next to the executable and the other one using a unix-like file layout.
-Both packages works correctly. The one with unix-like file layout is meant
-for people using a unix-like shell and the command line.
+Sur Windows deux paquets seront générés, l'un nommé "portable" utilisant
+le dossier "data" à côté de l'exécutable et l'autre utilisant une organisation
+de fichier à la unix.
+Les deux paquets fonctionnent correctement. Celui avec l'organisation de
+fichier à la unix est destiné aux personnes utilisant un shell à la unix et la ligne de commande.
 
-Please note that there aren't any hard-coded directories in the executable,
-so that the package can be extracted and used in any directory.
+Veuillez noter qu'il n'y a aucun répertoire codé en dur dans l'exécutable,
+afin que le paquet puisse être extrait et utilisé dans n'importe quel répertoire.
 
 ## Portable
 
-When performing the `meson setup` command you may enable the `-Dportable=true`
-option to specify whether files should be installed as in a portable application.
+Lors de l'exécution de la commande `meson setup` vous pouvez activer l'option
+`-Dportable=true` pour spécifier que les fichiers doivent être installés comme
+dans une application portable.
 
-If `portable` is enabled, Lite XL is built to use a `data` directory placed next
-to the executable.
-Otherwise, Lite XL will use unix-like directory locations.
-In this case, the `data` directory will be `$prefix/share/lite-xl`
-and the executable will be located in `$prefix/bin`.
-`$prefix` is determined when the application starts as a directory such that
-`$prefix/bin` corresponds to the location of the executable.
+Si `portable` est activé, Lite XL est construit pour utiliser le répertoire
+`data` placé à côté de l'exécutable
+Sinon, Lite XL utilisera des emplacements de répertoires à la unix.
+Dans ce cas, le répertoire `data` sera `$prefix/share/lite-xl` et l'exécutable
+se trouvera dans `$prefix/bin`.
+`$prefix` est déterminé lorsque l'application démarre dans un répertoire
+de telle sorte que `$prefix/bin` corresponde à l'emplacement de l'exécutable.
 
-The `user` directory does not depend on the `portable` option and will always be
+Le répertoire `user` ne dépend pas de l'option `portable` et sera toujours
 `$HOME/.config/lite-xl`.
-`$HOME` is determined from the corresponding environment variable.
-As a special case on Windows the variable `$USERPROFILE` will be used instead.
+`$HOME` est déterminé à partir de la variable d'environnement correspondante.
+Dans le cas particulier de Windows la variable `$USERPROFILE` ser utilisée à
+la place.
 
 ## Linux
 
-On Debian-based systems the required libraries and Meson can be installed
-using the following commands:
+Sur les systèmes basés sur Debian les bibliothèques nécessaires et Meson
+peuvent être installés grâce aux commandes suivantes :
 
 ```bash
-# To install the required libraries:
+# Pour installer les bibliothèques nécessaires :
 sudo apt install libfreetype6-dev libsdl2-dev
 
-# To install Meson:
+# Pour installer Meson :
 sudo apt install meson
-# or pip3 install --user meson
+# ou pip3 install --user meson
 ```
 
-To build Lite XL with Meson the commands below can be used:
+Pour construire Lite XL avec Meson les commandes ci-dessous peuvent être utilisées :
 
 ```bash
 meson setup --buildtype=release --prefix <prefix> build
@@ -78,12 +82,12 @@ meson compile -C build
 DESTDIR="$(pwd)/lite-xl" meson install --skip-subprojects -C build
 ```
 
-where `<prefix>` depends on the OS you are using:
-- on Linux is `/usr`
-- on macOS application bundle can be `"/Lite XL.app"`
+où `<prefix>` dépend du système d'exploitation que vous utilisez :
+- sur Linux c'est `/usr`
+- sur macOS le paquet peut être `"/Lite XL.app"`
 
-If you are using a version of Meson below 0.54
-you need to use diffent commands to compile and install:
+Si vous utilisez une version de Meson antérieure à la 0.54
+vous devez utiliser des commandes différentes pour la compilation et l'installation :
 
 ```bash
 meson setup --buildtype=release build
@@ -93,19 +97,19 @@ ninja -C build install
 
 ## macOS
 
-macOS is fully supported and a notarized app disk image is provided in the
-[release page][1]. 
-In addition the application can be compiled using the generic instructions given above.
+macOS est entièrement pris en charge et une application image disque notarisée
+est fournie dans la [page de versions][1].
+De plus l'e application peut être compilée en utilisant les instructions génériques indiquées ci-dessus.
 
 ## Windows MSYS2
 
-The build environment chosen for Lite XL on Windows is [MSYS2][2].
-Follow the install instructions in the link.
+L'environnement de développement choisi pour Lite XL sur Windows est [MSYS2][2].
+Suivez les instructions d'installation dans le lien.
 
-- Open `MinGW 64-bit` or `MinGW 32-bit` shell from the start menu.
-- Update the MSYS2 installation with `pacman -Syu`
-- Restart the shell
-- Install the dependencies:
+- Ouvrez le shell `MinGW 64-bit` ou `MinGW 32-bit` depuis le menu Démarrer.
+- Mettez à jour l'installation MSYS2 avec `pacman -Syu`
+- Rédemarrez le shell
+- Installez les dépendances :
 
 ```sh
 pacman -S \
@@ -119,8 +123,8 @@ pacman -S \
 pip3 install meson
 ```
 
-`${MINGW_PACKAGE_PREFIX}` expands either to `mingw-w64-i686` or `mingw-w64-x86_64`
-depending if the current shell is 32 or 64 bit.
+`${MINGW_PACKAGE_PREFIX}` se développe soit en `mingw-w64-i686` soit en
+`mingw-w64-x86_64` selon que le shell actuel est en 32 ou 64 bits.
 
 [1]: https://github.com/lite-xl/lite-xl/releases/latest/
 [2]: https://www.msys2.org/
