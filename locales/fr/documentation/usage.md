@@ -1,4 +1,4 @@
-# Usage
+# Utilisation
 
 Lite XL est un éditeur de texte léger écrit principalement en Lua — il a
 pour but de fournir quelque chose de pratique, beau, *petit* et rapide,

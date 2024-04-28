@@ -11,7 +11,7 @@ Les avantages de cette API comprennent :
 - Ne créer pas de fichiers temporaires
 - Principalement multiplateforme (ne requiert pas de code spécial pour chaque shell)
 
-## Usage de l'API Process
+## Utilisation de l'API Process
 
 ### Gestion d'erreurs
 
@@ -28,61 +28,76 @@ Pour démarrer un processus, utilisez `process.start(args, options)`.
 
 Voici quelques arguments parmi les plus utiles :
 
-- `args`: L'exécutable et des arguments, eg: `{ "sh", "-c", "echo hello world" }`
+- `args`: L'exécutable et les arguments, eg : `{ "sh", "-c", "echo hello world" }`
 - `options`: Options pour `process.start()`
-  - `env`: A key-value table containing the env. **Note that if this is provided,
-            environment variables will not be inherited.**
-  - `stdin`: Specify where to redirect stdin
-  - `stdout`: Specify where to redirect stdout
-  - `stderr`: Specify where to redirect stderr
+  - `env`: Une table de clés-valeurs contenant des variables d'environnement.
+  **Notez que si cet argument est fourni, les variables d'environnement ne
+  seront pas héritées.**
+  - `stdin`: Spécifie où rediriger stdin
+  - `stdout`: Spécifie où rediriger stdout
+  - `stderr`: Spécifie où rediriger stderr
 
-for `options.std{in,out,err}`, valid values are:
+Pour `options.std{in,out,err}`, les valeurs valides sont :
 
-- `process.REDIRECT_PIPE` (Make it available to subprocess API for reading / writing)
-- `process.REDIRECT_DISCARD` (Discard the output. Use this to prevent buffering)
-- `process.REDIRECT_STDOUT` (`stderr` only, for redirecting `stderr` to `stdout`)
+- `process.REDIRECT_PIPE` (Met le processus à disposition de l'API subprocess
+  pour la lecture / l'écriture)
+- `process.REDIRECT_DISCARD` (Rejette la sortie. Utilisez-le pour empêcher le
+  buffering)
+- `process.REDIRECT_STDOUT` (seulement pour `stderr`, pour rediriger `stderr`
+  vers `stdout`)
 
-### Reading from process
-To read from `stdout` or `stderr` of a process, use `process:read_stdout()` and
-`process:read_stderr()` respectively.
+### Lecture du processus
 
-You can specify a numeric argument to them, which will change the size of internal buffer used
-to read the output.
+Pour lire depuis le `stdout` ou `stderr` d'un processus, utilisez respectivement
+`process:read_stdout()` et `process:read_stderr()`.
 
-Alternatively, you could use `process:read()` with `process.STREAM_STDERR` and `process.STREAM_STDOUT`.
+Vous pouvez leur spécifier un argument numérique, qui changera la taille de
+ma mémoire tampon interne utilisée pour lire la sortie.
 
-**Example:**
+Autrement, vous pouvez utiliser `process:read()` avec `process.STREAM_STDERR`
+et `process.STREAM_STDOUT`.
+
+**Exemple :**
 
 ```lua
 local proc = process.start { "sh", "-c", "echo hello world!" }
 
--- do not use `while proc:running()` if you care about output.
--- The process could die and leave data in the buffer
--- You should just read until `proc:read_stdout()` returns nil
+-- n'utilisez pas `while proc:running()` si vous vous souciez de la sortie
+-- le processus pourrait s'arrêter et laisser des données dans la mémoire tampon
+-- Vous devriez seulement lire jusqu'à ce que `proc:read_stdout()` renvoie nil
 while true do
   local rdbuf = proc:read_stdout()
   if not rdbuf then break end
-  -- yay, output
+  -- youpi, une sortie
 end
 ```
 
-### Writing to process
-You can use `process:write(data)` to write a string to `stdin`.
+### Écriture dans le processus
 
-### Checking completion
-- `process:running()` returns a boolean to indicate whether if the process is running.
-- `process:wait(time)` also does the same thing, but you specify how long it should wait (or 0 to return immediately).
+Vous pouvez utiliser `process:write(data)` pour écrire une chaîne de
+caractères dans `stdin`.
 
-### Terminating process
-- `process:terminate()` sends SIGTERM (or Windows equivalent) to the process.
-- `process:kill()` sends SIGKILL (or Windows equivalent) to the progress.
-**Use this only if `process:terminate()` cannot kill the process, [as it can cause issues][3].**
+### Vérifier la complétion
 
-### Misc
-- `process:pid()` returns the PID of the process.
-**There are no guarantees for this PID to be correct if the process terminated early.**
-- `process:returncode()` returns the exit code of the process, if any
-- `process:close_stream()` closes `stdin`, `stdout` or `stderr` stream of the process.
+- `process:running()` renvoie un booléen pour indiquer si le processus est en
+  cours d'exécution.
+- `process:wait(time)` fait la même chose, mais vous spécifiez le temps d'attent (ou 0 pour renvoyer immédiatement).
+
+### Interrompre un processus
+
+- `process:terminate()` envoie un SIGTERM (ou l'équivalent Windows) au
+  processus.
+- `process:kill()` envoie un SIGKILL (ou l'équivalent Windows) au processus.
+  **Utilisez-le seulement si `process:terminate()` ne peut pas tuer le
+  processus, [car cela peut poser des problèmes][3].**
+
+### Divers
+
+- `process:pid()` renvoie l'identifiant du processus (PID).
+  **IL n'y a aucune garantie que ce PID soit correct si le processus est
+  interrompu plus tôt.**
+- `process:returncode()` renvoie le code de sortie du processus s'il y en a un.
+- `process:close_stream()` ferme le flux `stdin`, `stdout` ou `stderr` du processus.
 
 
 [1]: https://github.com/rxi/console/blob/fb3d414d085d4110364314d6cd8380dc1d386249/init.lua#L100
