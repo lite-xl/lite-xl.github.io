@@ -1,33 +1,35 @@
-# Process API
+# API Process
 
-Lite XL provides a process API to launch external applications. This API is meant to replace
-lua's `io.popen` and lite's [pipe-to-a-file][1] approach.
+Lite XL fournit une API Process pour lancer des applications externes. Cette
+API a pour but de remplacer `io.popen` de Lua et l'approche [pipe-to-a-file][1] de Lite.
 
-Advantages of this API includes:
+Les avantages de cette API comprennent :
 
-- Proper argument escaping (arguments are supplied via a table)
-- Nonblocking IO
-- Able to detach processes from Lite XL [(in progress)][2]
-- Does not create temporary files
-- Mostly cross-platform (does not require special code for each shell)
+- Un argument avec un échappement propre (les arguments sont fournis via une table)
+- E-S non bloquante
+- Possibilité de détacher les processus de Lite XL [(en cours d'élaboration)][2]
+- Ne créer pas de fichiers temporaires
+- Principalement multiplateforme (ne requiert pas de code spécial pour chaque shell)
 
-## Using the Process API
+## Usage de l'API Process
 
-### Error handling
-- `process.start()` may throw errors if it cannot run the program.
-- `process.read*` and `process.write` functions may throw errors if
-  - the process ended
-  - the process closed the stream
-  - you closed the stream
-- there might be other errors to look forward to too
+### Gestion d'erreurs
 
-### Starting a process
-To start a process, use `process.start(args, options)`.
+- `process.start()` peut générer des erreurs s'il ne peut pas exécuter le programme.
+- `process.read*` er `process.write` peuvent générer des erreurs si :
+  - le processus s'est achevé
+  - le processus a fermé le flux
+  - vous avez fermé le flux
+- il pourrait y avoir d'autres erreurs auxquelles s'attendre également
 
-Here are some of the more useful arguments.
+### Démarrer un processus
 
-- `args`: The executable and any arguments, eg: `{ "sh", "-c", "echo hello world" }`
-- `options`: Options for `process.start()`
+Pour démarrer un processus, utilisez `process.start(args, options)`.
+
+Voici quelques arguments parmi les plus utiles :
+
+- `args`: L'exécutable et des arguments, eg: `{ "sh", "-c", "echo hello world" }`
+- `options`: Options pour `process.start()`
   - `env`: A key-value table containing the env. **Note that if this is provided,
             environment variables will not be inherited.**
   - `stdin`: Specify where to redirect stdin

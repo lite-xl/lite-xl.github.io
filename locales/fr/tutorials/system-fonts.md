@@ -1,19 +1,26 @@
-# Using system fonts
+# Utiliser les polices d'écriture système
 
-lite-xl does not provide a convenient way to use fonts on the system.
-There is literally _different APIs for the each platforms we support (Windows, Linux and Mac).
-This is where [fontconfig][1] comes to our rescue. fontconfig is
-installable on a lot of OSes.
+lite-xl n'offre pas de moyen pratique pour utiliser des polices provenant du
+système.
+Il y a littéralement des API _différentes_ pour chaque plateforme que nous
+prenons en charge (Windows, Linux et Mac).
+C'est là que [fontconfig][1] vient à notre rescousse. fontconfig est
+installable sur un grand nombre d'OS.
 
-lite-xl has a [fontconfig plugin][2] that we can use to find system fonts.
+lite-xl a un [plugin fontconfig][2] que nous pouvons utiliser pour trouver les
+polices système.
 
-## Installing fontconfig
+## Installation de fontconfig
+
 #### Windows
-[mingw-w64-fontconfig][3] provides a build that can be used directly on Windows.
-Download the file, extract it to somewhere and (optionally) add it to the PATH.
+
+[mingw-w64-fontconfig][3] fournit une version pouvant être utilisée directement
+sur Windows.
+Téléchargez le fichier, extrayez-le quelque part et (optionnellement) ajoutez-le dans le PATH.
 
 #### Linux
-Check your distro-specific instructions.
+
+Vérifiez les instructions spécifiques à votre distribution.
 
 ```sh
 # ubuntu / debian
@@ -31,10 +38,10 @@ dnf install fontconfig
 brew install fontconfig
 ```
 
-### Setting up
+### Mise en place
 
-1. Install the plugin
-2. Put this in your user module:
+1. Installez le plugin
+2. Mettez-le dans votre module utilisateur :
 
 ```lua
 local fontconfig = require "plugins.fontconfig"
@@ -44,12 +51,12 @@ fontconfig.use {
 }
 ```
 
-`"sans"` and `"monospace"` can be any [fontconfig syntax. (check "Font Names")][4]
+`"sans"` et `"monospace"` peuvent être n'importe quelle [syntaxe de fontconfig. (voir "Font Names")][4]
 
-
-Note that the font might not load immediately (because we need to wait for `fc-match` to return.
-If you want that, replace `fontconfig.use` with `fontconfig.use_blocking`. Doing this will force
-lite-xl to wait for `fc-match`, which can be much slower.
+Notez que la police peut ne pas se charger immédiatement (car nous devons
+attendre que `fc-match` renvoie une valeur).
+Si c'est ce que vous souhaitez, remplacez `fontconfig.use` par `fontconfig.use_blocking`.
+Faire ceci forcera lite-xl à attendre `fc-match`, ce qui peut être plus lent.
 
 
 [1]: https://www.freedesktop.org/wiki/Software/fontconfig/

@@ -1,60 +1,72 @@
-# System API
+# API System
 
-This is where Lite XL's lua code interact with its underlying C engine.
-Some of the functions here will be omitted because they're not useful for
-plugins.
+C'est là que le code Lua de Lite XL interagit avec son moteur C sous-jacent.
+Certaines fonctionnalités ici seront omises car elles ne sont pas utiles pour
+les plugins.
 
-## Clipboard
-- `system.set_clipboard(text)` sets the clipboard content.
-- `system.get_clipboard()` retrieves the content of the clipboard.
+## Presse-papier
 
-## File / Directory manipulation
-- `system.list_dir(dir)` returns a list of filenames in a directory.
-- `system.rmdir(dir)` removes a directory. Use this instead of `os.remove()`.
-  **The directory must be empty.**
-- `system.chdir(dir)` changes the current working directory (like `cd`).
-- `system.mkdir(dir)` creates a new directory.
-  **It does not recursively create directories.**
-- `system.absolute_path(path)` resolves the path components (`.. and .`) to an absolute path.
-- `system.get_file_info(path)` returns info about a path.
-  - `modified`: last modification time of the file in seconds since UNIX epoch.
-  - `size`: file size in bytes.
-  - `type`: Path type (`"file"` or `"dir"`).
+- `system.set_clipboard(text)` définit le contenu du presse-papier.
+- `system.get_clipboard()` récupère le contenu du presse-papier.
 
-## Timing
-- `system.get_time()` returns time in seconds (as floating point number) since Lite XL started.
-  Use this instead of `os.time()` for higher precision timers.
-- `system.sleep(time)` sleeps for `time` in milliseconds.
-  **Do not use this. Write asynchronous code.**
+## Manipulation de fichier / répertoire
 
-## Window manipulation
-- `system.set_window_opacity(o)` sets the window opacity from 0 to 1.
-- `system.set_window_title(title)` sets the window title.
-- `system.set_window_mode(mode)` sets window mode:
-  - `"normal"`: also known as "restored" on Windows.
-  - `"maximized"`: Maximize the window.
-  - `"minimized"`: Minimize the window.
-  - `"fullscreen"`: Fullscreen
-- `system.set_window_bordered(bordered)` enables or disable window border (decoration).
-- `system.set_window_hit_test(height, control_width, resize_border)` sets window hit test (used for
-  `config.borderless` to make custom drawn border interactable).
-  - If no argument is supplied, reset the hit test values.
-  - `height`: height of the title bar.
-  - `controls_width`: Not too sure about this, but it should be the size of the title bar controls
-    (Maximize, Minimize and Normal buttons on the right).
-    It seems to be fixed at the right side of the title bar.
-  - `resize_border`: Number of pixels reserved for resizing the window.
-    (setting this to a large value means that you can resize the window way easier)
-- `system.get_window_size()` gets the window size.
-- `system.set_window_size(w, h, x, y)` sets the window size (and also position).
-- `system.window_has_focus()` checks whether the window is in focus.
-- `system.show_fatal_error(title, msg)` shows an system error message box.
-  **Use nagview whenever possible.**
+- `system.list_dir(dir)` renvoie une liste de noms de fichiers dans un répertoire.
+- `system.rmdir(dir)` supprime un répertoire. Utilisez-le au lieu de `os.remove()`.
+  **Le répertoire doit être vide.**
+- `system.chdir(dir)` modifie le répertoire de travail actuel (comme `cd`).
+- `system.mkdir(dir)` crée un nouveau répertoire.
+  **Il ne crée pas de répertoire récursivement.**
+- `system.absolute_path(path)` convertit les composants du chemin (`.. and .`)
+  en un chemin absolu.
+- `system.get_file_info(path)` renvoie des informations sur le chemin :
+  - `modified` : date de la dernière modification en secondes depuis l'époque UNIX.
+  - `size` : taille du fichier en octets.
+  - `type` : type de chemin (`"file"` ou `"dir"`).
 
-## Misc
-- `system.exec(command)` runs a command. Use the [Process API][1] instead of this.
-- `system.fuzzy_match(haystack, needle, file)` generates a score depends on how close the needle
-  matches the haystack.
-  - `file`: match backwards (more accurate for filename matching).
+## Minutage
 
-[1]: /en/tutorials/overview/process
+- `system.get_time()` renvoie le temps en secondes (sous forme de nombre flottant) depuis que Lite XL a été lancé.
+  Utilisez-le au lieu de `os.time()` pour des minuteurs de plus haute précision.
+- `system.sleep(time)` endort pendant `time` en millisecondes.
+  **N'utilisez pas cette fonction. Écrivez du code asynchrone.**
+
+## Manipulation de fenêtre
+
+- `system.set_window_opacity(o)` définit l'opacité de la fenêtre de 0 à 1.
+- `system.set_window_title(title)` définit le titre de la fenêtre.
+- `system.set_window_mode(mode)` définit le mode de la fenêtre :
+  - `"normal"` : aussi connu sous le nom de "restored" sur Windows.
+  - `"maximized"` : Maximise la fenêtre.
+  - `"minimized"` : Réduit la fenêtre.
+  - `"fullscreen"` : Plein écran.
+- `system.set_window_bordered(bordered)` active ou désactive les bordures de
+  la fenêtre (décoration).
+- `system.set_window_hit_test(height, control_width, resize_border)` définit
+  le hit test de la fenêtre (utilisé par `config.borderless` pour créer des
+  bordures personnalisées interactives).
+  - Si aucun argument n'est renseigné, réinitialise les valeurs du hit test.
+  - `height` : hauteur de la barre de titre.
+  - `controls_width` : Pas très sûr à ce sujet, mais ça doit être la taille
+    des contrôles de la barre de titre (les boutons Maximiser, Réduire et
+    Normal sur la droite).
+    Ils semblent être fixé sur le côté droit de la barre de titre.
+  - `resize_border` : Nombre de pixels réservés pour redimensionner la
+    fenêtre (lui définir une grande valeur signifie que vous pouvez
+    redimensionner la fenêtre plus facilement).
+- `system.get_window_size()` renvoie les dimensions de la fenêtre.
+- `system.set_window_size(w, h, x, y)` définit les dimensions de la fenêtre
+  (et aussi la position).
+- `system.window_has_focus()` vérifie si la fenêtre est au premier plan.
+- `system.show_fatal_error(title, msg)` affiche une erreur système sous la
+  forme d'une boîte de dialogue.
+  **Utilisez nagview chaque fois que cela est possible.**
+
+## Divers
+
+- `system.exec(command)` exécute une commande. Utilisez [l'API Process][1] à la place.
+- `system.fuzzy_match(haystack, needle, file)` génère un score dépendant de
+  la proximité de `needle` avec `haystack`.
+  - `file`: apparie à l'envers (plus précis pour l'appariement de nom de fichier).
+
+[1]: /fr/tutorials/overview/process

@@ -253,7 +253,7 @@ Dans Lite XL `core.reload_module` devrait être utilisée pour s'assurer que le
 module de couleur est bien rechargé lors de la sauvegarde du fichier de
 configuration utilisateur.
 
-Des thèmes de couleurs peuvent être télécharges depuis le [dépôt de thèmes de couleurs][3].
+Des thèmes de couleurs peuvent être téléchargés depuis le [dépôt de thèmes de couleurs][3].
 Il sont inclus dans les paquets de release de Lite XL.
 
 
