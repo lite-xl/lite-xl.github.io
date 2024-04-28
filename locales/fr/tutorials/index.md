@@ -1,8 +1,8 @@
-# Tutorials
+# Tutoriels
 
-These pages contain tutorials and documentations for building plugins in Lite XL.
+Ces pages contiennent des tutoriels et des documentations pour créer des plugins dans Lite XL.
 
-- [API Overview](/en/tutorials/api-overview)
-- [Simple Plugin](/en/tutorials/simple-plugin)
-- [Syntax Highlighting](/en/tutorials/syntax-highlighting)
-- [System Fonts](/en/tutorials/system-fonts)
+- [Aperçu de l'API](/fr/tutorials/api-overview)
+- [Plugin Simple](/fr/tutorials/simple-plugin)
+- [Coloration syntaxique](/fr/tutorials/syntax-highlighting)
+- [Polices d'écriture système](/fr/tutorials/system-fonts)
