@@ -1,6 +1,6 @@
 # Contributeurs
 
-| Name                                                       | Contributions
+| Nom                                                        | Contributions
 -------------------------------------------------------------|----------------------------------------------------------
 | [rxi](https://github.com/rxi)                              | Développement original de l'éditeur lite.
 | [Francesco](https://github.com/franko)                     | Créateur du fork lite-xl depuis rxi/lite.

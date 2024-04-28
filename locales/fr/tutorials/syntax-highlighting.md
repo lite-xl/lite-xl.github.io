@@ -1,29 +1,37 @@
-# Syntax Highlighting
+# Coloration syntaxique
 
-## How to create syntax highlighting plugins for Lite XL
+## Comment créer un plugin de coloration syntaxique pour Lite XL
 
-Syntax highlighting plugins for Lite XL are Lua files. These define some patterns or regular expressions that
-match different parts of a given language, assigning token types to each match.
-These different token types are then given different colors by your chosen color scheme.
+Les plugins de coloration syntaxique pour Lite XL sont des fichiers Lua. Ils
+définissent des motifs (patterns) ou des expressions régulières qui
+correspondent à différentes parties d'un langage donné, attribuant un type
+de token à chaque correspondance.
+Ces différents types de tokens sont ensuite colorés différemment selon la
+palette de couleurs choisie.
 
-Like other plugins, syntax definitions are sourced from the following folders, in order:
+Comme les autres plugins, les définitions syntaxiques proviennent des dossiers
+dans l'ordre suivant :
 
 - `/usr/share/lite-xl/plugins/`
 - `$HOME/.config/lite-xl/plugins/`
 
-NOTE: The exact location of these folders will depend on your OS and installation method. For example, on Windows, the variable `$USERPROFILE` will be used instead of `$HOME`.
+NOTE : L'emplacement exact de ces dossiers dépendra de votre OS et de la
+méthode d'installation. Par exemple, sur Windows, la variable `$USERPROFILE`
+sera utilisée à la place de `$HOME`.
 
-The user module folder for Lite XL can generally be found in these places on different OSes:
+Le dossier de module utilisateur pour Lite XL peut généralement être trouvé
+à ces endroits sur différents OS :
 
-- Windows: `C:\Users\(username)\.config\lite-xl`
-- MacOS: `/Users/(usernmame)/.config/lite-xl`
-- Linux: `/home/(username)/.config/lite-xl`
+- Windows : `C:\Users\(username)\.config\lite-xl`
+- MacOS : `/Users/(usernmame)/.config/lite-xl`
+- Linux : `/home/(username)/.config/lite-xl`
 
-So, to create a new syntax definition on Linux, you can just create a `.lua` file in your `$HOME/.config/lite-xl/plugins/` folder.
+Donc pour créer une nouvelle définition syntaxique sur Linux, vous pouvez
+tout simplement créer un fichier `.lua` dans votre dossier `$HOME/.config/lite-xl/plugins/`.
 
-## What syntax token types are supported?
+## Quels types de tokens syntaxiques sont pris en charge ?
 
-The supported syntax token types, defined by `lite-xl/core/style.lua`, are:
+Les types de tokens syntaxiques pris en charge, défini dans `lite-xl/core/style.lua`, sont :
 
 - normal
 - symbol
@@ -36,13 +44,17 @@ The supported syntax token types, defined by `lite-xl/core/style.lua`, are:
 - operator
 - function
 
-In your syntax highlighting plugin, you write patterns to match parts of the language syntax, assigning these token types to matches. You don't have to use them all - just use as many as you need for your language.
+Dans votre plugin de coloration syntaxique, vous écrivez des motifs
+correspondant à des parties de la syntaxe du langage, attribuant ces
+types de tokens à des appariements. Vous n'avez pas besoin de tous les
+utiliser - utilisez seulement autant que nécessaire pour votre langage.
 
-Let's walk through an example syntax definition and see how this works.
+Prenons un exemple de définition syntaxique et voyons comment ça marche.
 
-## Example syntax: ssh config files
+## Exemple de syntaxe : fichiers de configuration ssh
 
-This is a small, simple example of a syntax definition. It's intended to highlight SSH Config files and looks like this:
+Il s'agit d'un exemple bref et simple d'une définition syntaxique. Il a pour
+but de surligner les fichiers de configuration SSH et ressemble à ça :
 
 ```lua
 -- mod-version:2 -- lite-xl 2.0
@@ -58,7 +70,7 @@ syntax.add {
     { pattern = "@",            type = "operator" },
   },
   symbols = {
-    -- ssh config
+    -- Configuration ssh
     ["Host"]                         = "function",
     ["ProxyCommand"]                 = "function",
 
@@ -66,10 +78,10 @@ syntax.add {
     ["IdentityFile"]                 = "keyword",
     ...
 
-    -- sshd config
+    -- Configuration sshd
     ["Subsystem"]                    = "keyword2",
 
-    -- Literals
+    -- Littéraux
     ["yes"]      = "literal",
     ["no"]       = "literal",
     ["any"]      = "literal",
@@ -78,90 +90,115 @@ syntax.add {
 }
 ```
 
-Let's take each section in turn and see how it works.
+Prenons chaque section l'une après l'autre et voyons comment elle fonctionne.
 
-### Header
+### En-tête
 
-The first line is a Lua comment & tells Lite XL which version this plugin requires. The second imports the `core.syntax` module
-for us to use:
+La première ligne est un commentaire Lua et indique à Lite XL quelle version
+nécessite ce plugin. La seconde ligne importe le module `core.syntax` pour que
+nous puissions l'utiliser :
 
 ```lua
 -- mod-version:2 -- lite-xl 2.0
 local syntax = require "core.syntax"
 ```
 
-We then add a syntax definition to lite, using `syntax.add {...}`. The contents of this definition are covered next.
+Nous ajoutons ensuite une définition syntaxique à lite-xl en utilisant
+`syntax.add {...}`. Le contenu de cette définition est abordé après.
 
-#### Files
+#### Fichiers
 
-The `files` property tells Lite XL which files this syntax should be used for. This is a Lua pattern that matches against the full path of the file being opened. For example, to match against Markdown files - with either a `.md` or a `.markdown` extension,
-you could do this:
+La propriété `files` indique à Lite XL pour quels fichiers cette syntaxe
+doit être utilisée. C'est un motif Lua correspondant au chemin complet du
+fichier ouvert. Par exemple, pour correspondre aux fichiers Markdown - avec
+comme extension soit `.md` soit `.markdown`, vous pourriez faire ceci :
 
 ```lua
 files = { "%.md$", "%.markdown$" },
 ```
 
-In our original example, we match against the end of the path rather than the extension, because SSH config files don't have extensions - and we don't want to match all `config` files. We expect the path for SSH config files to look something like one of these:
+Dans notre exemple initial, nous faisons une correspondance avec la fin du
+chemin plutôt que l'extension, car les fichiers de configuration SSH n'ont pas
+d'extension - et nous ne voulons pas faire correspondre tous les fichiers `config`.
+Nous nous attendons à ce que le chemin des fichiers de configuration SSH
+ressemble à l'un des éléments suivants :
 
 - `~/.ssh/config`
 - `/etc/ssh/ssh_config`
 - `/etc/ssh/sshd_config`
 
-This pattern matches paths that look like that:
+Le motif permettant de faire correspondre ces chemins est celui-ci :
 
 ```lua
 files = { "sshd?/?_?config$" },
 ```
 
-### Comment
+### Commentaire
 
-The comment property _doesn't_ define which parts of the syntax are comments - see Patterns for that, below. This property tells Lite XL which character to insert at the start of selected lines when you press `ctrl+/`.
-You can also use `block_comment` to tell Lite XL how to create multiline / block comments.
+La propriété `comment` ne définit _pas_ quelles parties de la syntaxe sont
+des commentaires - voir la section Motifs ci-dessous pour cela. Cette
+propriété indique à Lite XL quel charactère insérer au début des lignes
+sélectionnées lorsque vous appuyez sur `ctrl+/`.
+Vous pouvez également utiliser `block_comment` pour indiquer à Lite XL
+comment créer des commentaires multilignes / en bloc.
 
-### Patterns
+### Motifs
 
-A given piece of text can only match one pattern. Once Lite XL decides that a piece of text matches a pattern, it will assign that token type to that piece and move on.
-Patterns are tested in the order that they are written in the syntax definition, so the first match will win.
+Un texte donnée ne peut correspondre qu'à un seul motif. Une fois que Lite
+XL décide que ce texte correspond à un motif, il lui attribuera ce type de
+token et avancer.
+Les motifs sont essayés dans l'ordre dans lequel ils sont écrits dans la
+définition syntaxique, la première correspondance sera donc gagnante.
 
-Each pattern takes one of the following forms:
+Chaque motif prend l'une des formes suivantes :
 
-#### Simple Pattern
+#### Motif simple
 
 ```lua
 { pattern = "#.*\n",        type = "comment" },
 ```
 
-This form matches the line against the pattern and if it matches, assigns the matching text to the given token `type` - `comment`, in this case.
+Cette forme fait correspondre la ligne au motif et si ça marche, lui attribue
+le token donné par `type` — `comment`, dans ce cas-ci.
 
-#### Start & End Pattern
+#### Motif de début et de fin
 
 ```lua
 { pattern = { "%[", "%]" }, type = "keyword" },
 ```
 
-This form has two patterns - one that matches against the start of the range and one that matches against the end. Everything between the start and the end will be assigned the given token `type`.
+Cette forme a deux motifs - un qui correspond au début de l'intervalle et un
+autre qui correspond à la fin. Tout ce qui est entre le début et la fin se
+verra attribué le token donnée par `type`.
 
-#### Start & End Pattern, with Escape
+#### Motif de début et de fin, avec échappement
 
 ```lua
 { pattern = { '"', '"', '\\' }, type = "string" },
 ```
 
-This is the same as the previous form, but with an extra, third parameter.
-The 3rd part, the `'\\'` part in this example, specifies the character that allows escaping the closing match.
+Il s'agit de la même forme que la précédente, mais avec un troisième
+paramètre.
+La 3ème partie, ici `'\\'`, spécifie le caractère permettant d'échapper à
+la correspondance de fin.
 
-For more on Lua Patterns, see: [Lua Pattern Reference](https://www.lua.org/manual/5.3/manual.html#6.4.1)
+Pour en savoir plus sur les motifs Lua, voir : [Lua Pattern Reference](https://www.lua.org/manual/5.3/manual.html#6.4.1)
 
-If you need to use PCRE Regular Expressions, instead of Lua Patterns, you can use the `regex` keyword here, instead of `pattern`.
+Si vous avez besoin d'expressions régulières PCRE, au lieu des motifs, vous
+pouvez utiliser le mot-clé `regex` ici, à la place de `pattern`.
 
-### Symbols
+### Symboles
 
-> This is **not related to the `symbol` token type**.
+> Ceci **n'est pas lié au type de token `symbol`**.
 
-The symbols section allows you to assign token types to particular keywords or strings - usually reserved words in the language you are highlighting.
-The token type in this section **always take precedence** over token types declared in patterns.
+La section des symboles vous permet d'assigner des types de tokens à des
+mot-clés ou chaînes particuliers - généralement des mots réservés dans le
+langage que vous colorez.
+Le type de token dans cette section **est toujours prioritaire** face aux types
+de token déclarés dans les motifs.
 
-For example this highlights `Host` using the `function` token type, `HostName` as a `keyword` and `yes`, `no`, `any` & `ask` as a `literal`:
+Par exemple ceci surligne `Host` avec le type de token `function`, `HostName`
+comme `keyword` et `yes`, `no`, `any` & `ask` comme `literal` :
 
 ```lua
 ["Host"]                         = "function",
@@ -173,56 +210,62 @@ For example this highlights `Host` using the `function` token type, `HostName` a
 ["ask"]      = "literal",
 ```
 
-#### Tips: double check your patterns!
+#### Astuces : revérifiez vos motifs !
 
-There are a few common mistakes that can be made when using the `symbols` table in conjunction with patterns.
+IL y a quelques erreurs fréquentes qui peuvent être faites lorsque vous
+utilisez la table de `symbols` avec des motifs.
 
-##### Case 1: Spaces between two `symbols` tokens
+##### Cas 1 : espaces entre deux tokens `symbols`
 
-Let's have an example:
+Prenons l'exemple suivant :
 
 ```lua
 { pattern = "[%a_][%w_]+%s+()[%a_][%w_]+", type = { "keyword2", "symbol" } }
 ```
 
-Let's explain the pattern a bit (omitting the empty parentheses):
+Expliquons un peu le motif (on omet les parenthèses vides) :
 
 ```
-[%a_] = any alphabet and underscore
-[%w_] = any alphabet, numbers and underscore
-%s = any whitespace character
+[%a_] = n'importe quelle lettre, et underscore
+[%w_] = n'importe quelle lettre, nombre et underscore
+%s = n'importe quel espace blanc (espace, tabulation, retour à la ligne)
 
-WORD =
-  [%a_] followed by (1 or more [%w_])
+MOT =
+  [%a_] suivi (1 ou plusieurs [%w_])
 
-pattern =
-  WORD followed by (one or more %s) followed by WORD
+motif =
+  WORD suivi de (un ou plusieurs %s) suivi de WORD
 ```
 
-Afterwards, you add an entry `["my"] = "literal"` in the `symbols` table.
-You test the syntax with `my function` found that `"my"` isn't highlighted as `literal`. Why did that happen?
+Par la suite, vous ajoutez une entrée `["my"] = "literal"` dans la table
+`symbols`.
+Vous testez la syntaxe avec `my function` et vous constatez que `"my"` n'est
+pas surligné comme `literal`. Pourquoi donc ?
 
-**`symbols` table requires an exact match**.
-If you look carefully, the empty parentheses (`()`) is placed **after the space**!
-This tells Lite XL that `WORD followed by (one or more %s)` is a token, which will match `my ` (note the space in the match).
+**La table `symbols` requiert une correspondance exacte**.
+Si vous observez bien, les parenthèses vides (`()`) sont placées **après l'espace** !
+Cela indique à Lite XL que `MOT suivi de (un ou plusieurs %s)` est un token,
+ce qui fera correspondre `my ` (notez l'espace dans la correspondance).
 
-The fix is to add a `normal` token for the whitespace between the two tokens:
+La solution est d'ajouter un token `normal` pour l'espace blanc entre les deux tokens:
 
 ```lua
 { pattern = "[%a_][%w_]+()%s+()[%a_][%w_]+", type = { "keyword2", "normal", "symbol" } }
 ```
 
-##### Case 2: Patterns & `symbols` tokens
+##### Cas 2 : Motifs & tokens `symbols`
 
-One might assume that Lite XL magically matches text against the `symbols` table. This is not the case.
+On peut supposer que Lite XL apparie par magie le texte avec la table
+`symbols`. Ce n'est pas le cas.
 
-In some languages, people may add a generic pattern to delegate the matching to the `symbols` table.
+Dans certains languages, des gens peuvent ajouter un motif générique pour
+déléguer l'appariement à la table `symbols`.
 
 ```lua
 { pattern = "[%a_][%w_]*", "symbol" }
 ```
 
-However, the `symbols` table may look like this:
+Cependant, la table `symbols` peut se présenter comme suit :
 
 ```lua
 symbols = {
@@ -231,35 +274,43 @@ symbols = {
 }
 ```
 
-`"my-symbol` contains a dash (`-`) and `"..something_else"` contains 2 dots (`.`).
-None of the characters are matched by `[%a_][%w_]*`!
+`"my-symbol` contient un tiret (`-`) et `"..something_else"` contient 2 points (`.`).
+Aucun des caractères ne correspond à `[%a_][%w_]*`!
 
-**Beware of the text you intend to match in the `symbols` table.**
-**If you want to use it, you need to ensure that it can matched by one of the patterns.**
+**Attention au texte que vous avez l'intention de faire correspondre à la
+table `symbols`.**
+**Si vous voulez l'utiliser, vous devez vous assurer qu'il peut correspondre à l'un des motifs.**
 
-The correct patterns are:
+Les motifs corrects sont :
 
 ```lua
 { pattern = "[%a_][%w%-_]*", "symbol" },
 { pattern = "%.%.[%a_][%w_]*", "symbol" },
 ```
 
-## Testing Your New Syntax
+## Tester votre nouvelle syntaxe
 
-To test your new syntax highlighting you need to do two things:
+Pour tester votre nouvelle coloration syntaxique vous devez faire deux choses :
 
-- Reload the Lite XL core
-- Load a file in your chosen language and see how it looks
+- Recharger le noyau de Lite XL
+- Charger un fichier dans le langage de votre choix et voir ce que ça donne
 
-To reload the core, you can either restart Lite XL, or reload the core from the command palette, without needing to restart.
-To do this, type `ctrl+shit+p` to show the command palette, then select `Core: Restart` (or type `crr` or something similar to match it), then press Enter. You will need to restart the core after any changes you make to the syntax highlighting definition.
+Pour recharger le noyau, vous pouvez soit redémarrer Lite XL, soit utiliser la
+palette de commande, sans avoir à redémarrer.
+Pour ce faire, appuyez sur `ctrl+shit+p` pour afficher la palette de commande,
+puis sélectionnez `Core: Restart` (ou tapez `crr` ou quelque chose de
+similaire pour que ça corresponde), puis appuyez sur Entrée. Vous devrez
+redémarrer le noyau après tout changement effectué sur la définition de la
+coloration syntaxique.
 
+## Exemple de syntaxe avancée : Markdown
 
-## Example advanced syntax: Markdown
+> **Note : Cet exemple emploie des fonctionnalités de la 2.1. Il n'est pas
+compatible avec les anciennes versions de lite-xl.**
 
-> **Note: This example has features from 2.1. It is not compatible with older versions of lite-xl.**
-
-Not all languages are as simple as SSH config files. Markup languages like HTML and Markdown are especially hard to parse correctly. Here's the markdown syntax file in its full glory:
+Tous les langages ne sont pas aussi simples que les fichiers de configuration
+SSH. Les langages de balisage comme HTML et Markdown sont particulièrement
+difficile à analyser correctement. Voici le fichier de syntaxe markdown dans toute sa splendeur :
 
 ```lua
 -- mod-version:3
@@ -269,7 +320,7 @@ local core = require "core"
 
 local initial_color = style.syntax["keyword2"]
 
--- Add 3 type of font styles for use on markdown files
+-- on ajoute 3 types de styles de police à utiliser pour les fichiers markdown
 for _, attr in pairs({"bold", "italic", "bold_italic"}) do
   local attributes = {}
   if attr ~= "bold_italic" then
@@ -278,13 +329,14 @@ for _, attr in pairs({"bold", "italic", "bold_italic"}) do
     attributes["bold"] = true
     attributes["italic"] = true
   end
-  -- no way to copy user custom font with additional attributes :(
+  -- impossible de copier une police personnalisée par l'utilisateur avec des
+  -- attributs supplémentaires :(
   style.syntax_fonts["markdown_"..attr] = renderer.font.load(
     DATADIR .. "/fonts/JetBrainsMono-Regular.ttf",
     style.code_font:get_size(),
     attributes
   )
-  -- also add a color for it
+  -- on ajoute également une couleur
   style.syntax["markdown_"..attr] = style.syntax["keyword2"]
 end
 
@@ -295,23 +347,23 @@ syntax.add {
   name = "Markdown",
   files = { "%.md$", "%.markdown$" },
   block_comment = { "<!--", "-->" },
-  space_handling = false, -- turn off this feature to handle it our selfs
+  space_handling = false, -- on désactive cette fonctionnalité pour la gérer nous-mêmes
   patterns = {
-  ---- Place patterns that require spaces at start to optimize matching speed
-  ---- and apply the %s+ optimization immediately afterwards
-    -- bullets
+  ---- On place des motifs requérant des espaces au début pour optimiser la vitesse
+  ---- d'appariement et appliquer l'optimisation %s+ tout de suite après
+    -- puce
     { pattern = "^%s*%*%s",                 type = "number" },
     { pattern = "^%s*%-%s",                 type = "number" },
     { pattern = "^%s*%+%s",                 type = "number" },
-    -- numbered bullet
+    -- pucesnumérotée
     { pattern = "^%s*[0-9]+[%.%)]%s",       type = "number" },
-    -- blockquote
+    -- citation
     { pattern = "^%s*>+%s",                 type = "string" },
-    -- alternative bold italic formats
+    -- formats alternatifs d'italique et gras
     { pattern = { "%s___", "___%f[%s]" },   type = "markdown_bold_italic" },
     { pattern = { "%s__", "__%f[%s]" },     type = "markdown_bold" },
     { pattern = { "%s_[%S]", "_%f[%s]" },   type = "markdown_italic" },
-    -- reference links
+    -- référence de liens
     {
       pattern = "^%s*%[%^()["..in_squares_match.."]+()%]: ",
       type = { "function", "number", "function" }
@@ -320,12 +372,12 @@ syntax.add {
       pattern = "^%s*%[%^?()["..in_squares_match.."]+()%]:%s+.+\n",
       type = { "function", "number", "function" }
     },
-    -- optimization
+    -- optimisation
     { pattern = "%s+",                      type = "normal" },
 
-  ---- HTML rules imported and adapted from language_html
-  ---- to not conflict with markdown rules
-    -- Inline JS and CSS
+  ---- règles HTML importées et adaptées de language_html pour ne pas
+  ---- entrer en conflit avec les règles markdown
+    -- JS et CSS intégrés
     {
       pattern = {
       "<%s*[sS][cC][rR][iI][pP][tT]%s+[tT][yY][pP][eE]%s*=%s*" ..
@@ -351,13 +403,13 @@ syntax.add {
       syntax = ".css",
       type = "function"
     },
-    -- Comments
+    -- Commentaires
     { pattern = { "<!%-%-", "%-%->" },   type = "comment" },
     -- Tags
     { pattern = "%f[^<]![%a_][%w_]*",    type = "keyword2" },
     { pattern = "%f[^<][%a_][%w_]*",     type = "function" },
     { pattern = "%f[^<]/[%a_][%w_]*",    type = "function" },
-    -- Attributes
+    -- Attributs
     {
       pattern = "[a-z%-]+%s*()=%s*()\".-\"",
       type = { "keyword", "operator", "string" }
@@ -370,48 +422,48 @@ syntax.add {
       pattern = "[a-z%-]+%s*()=%s*()%-?%d[%d%.]*",
       type = { "keyword", "operator", "number" }
     },
-    -- Entities
+    -- Entités
     { pattern = "&#?[a-zA-Z0-9]+;",         type = "keyword2" },
 
-  ---- Markdown rules
+  ---- règles markdown
     -- math
     { pattern = { "%$%$", "%$%$", "\\"  },  type = "string", syntax = ".tex"},
     { pattern = { "%$", "%$", "\\" },       type = "string", syntax = ".tex"},
-    -- code blocks
+    -- blocs de code
     { pattern = { "```c++", "```" },        type = "string", syntax = ".cpp" },
-    -- ... there's some other patterns here, but I removed them for brevity
+    -- ... il y a d'autres motifs ici, mais je les ai retirés pour des raisons de brièveté
     { pattern = { "```lobster", "```" },    type = "string", syntax = ".lobster" },
     { pattern = { "```", "```" },           type = "string" },
     { pattern = { "``", "``" },             type = "string" },
     { pattern = { "%f[\\`]%`[%S]", "`" },   type = "string" },
-    -- strike
+    -- biffage
     { pattern = { "~~", "~~" },             type = "keyword2" },
-    -- highlight
+    -- surlignage
     { pattern = { "==", "==" },             type = "literal" },
-    -- lines
+    -- lignes
     { pattern = "^%-%-%-+\n",               type = "comment" },
     { pattern = "^%*%*%*+\n",               type = "comment" },
     { pattern = "^___+\n",                  type = "comment" },
-    -- bold and italic
+    -- gras et italique
     { pattern = { "%*%*%*%S", "%*%*%*" },   type = "markdown_bold_italic" },
     { pattern = { "%*%*%S", "%*%*" },       type = "markdown_bold" },
-    -- handle edge case where asterisk can be at end of line and not close
+    -- gestion les cas spéciaux où l'astérisque peut être à la fin de la ligne et non fermé
     {
       pattern = { "%f[\\%*]%*[%S]", "%*%f[^%*]" },
       type = "markdown_italic"
     },
-    -- alternative bold italic formats
+    -- formats alternatifs gras italique
     { pattern = "^___[%s%p%w]+___%s" ,      type = "markdown_bold_italic" },
     { pattern = "^__[%s%p%w]+__%s" ,        type = "markdown_bold" },
     { pattern = "^_[%s%p%w]+_%s" ,          type = "markdown_italic" },
-    -- heading with custom id
+    -- titre avec identifiant personnalisé
     {
       pattern = "^#+%s[%w%s%p]+(){()#[%w%-]+()}",
       type = { "keyword", "function", "string", "function" }
     },
-    -- headings
+    -- titres
     { pattern = "^#+%s.+\n",                type = "keyword" },
-    -- superscript and subscript
+    -- exposant et indice
     {
       pattern = "%^()%d+()%^",
       type = { "function", "number", "function" }
@@ -420,11 +472,11 @@ syntax.add {
       pattern = "%~()%d+()%~",
       type = { "function", "number", "function" }
     },
-    -- definitions
+    -- définitions
     { pattern = "^:%s.+",                   type = "function" },
-    -- emoji
+    -- émoji
     { pattern = ":[a-zA-Z0-9_%-]+:",        type = "literal" },
-    -- images and link
+    -- images et liens
     {
       pattern = "!?%[!?%[()["..in_squares_match.."]+()%]%(()["..in_parenthesis_match.."]+()%)%]%(()["..in_parenthesis_match.."]+()%)",
       type = { "function", "string", "function", "number", "function", "number", "function" }
@@ -433,7 +485,7 @@ syntax.add {
       pattern = "!?%[!?%[?()["..in_squares_match.."]+()%]?%]%(()["..in_parenthesis_match.."]+()%)",
       type = { "function", "string", "function", "number", "function" }
     },
-    -- reference links
+    -- liens de référence
     {
       pattern = "%[()["..in_squares_match.."]+()%] *()%[()["..in_squares_match.."]+()%]",
       type = { "function", "string", "function", "function", "number", "function" }
@@ -442,7 +494,7 @@ syntax.add {
       pattern = "!?%[%^?()["..in_squares_match.."]+()%]",
       type = { "function", "number", "function" }
     },
-    -- url's and email
+    -- url et email
     {
       pattern = "<[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+%.[a-zA-Z0-9-.]+>",
       type = "function"
@@ -455,7 +507,7 @@ syntax.add {
   symbols = { },
 }
 
--- Adjust the color on theme changes
+-- on ajuste les couleurs lors de changement de thème
 core.add_thread(function()
   while true do
     if initial_color ~= style.syntax["keyword2"] then
@@ -469,60 +521,74 @@ core.add_thread(function()
 end)
 ```
 
-### Syntax fonts (Since 1.16.10)
+### Syntaxe des polices (depuis 1.16.10)
 
-The syntax allows users to set different font styles (bold, italic, etc.) for different patterns.
-To change the font style of a token, add a Font to `style.syntax_fonts[token_type]`.
-For example:
-```
--- will ensure every "fancysyntax_fancy_token" is italic
+Cette syntaxe permet aux utilisateurs de définir différents styles de police
+(gras, italique, etc.) pour différents motifs.
+Pour changer le style de police d'un token, ajoutez une police à `style.syntax_fonts[token_type]`.
+Par exemple :
+
+```lua
+-- s'assure que toutes les "fancysyntax_fancy_token" soient en italique
 style.syntax_fonts["fancysyntax_fancy_token"] = renderer.font.load("myfont.ttf", 14 * SCALE, { italic = true })
 ```
 
-The markdown example automates this with a for loop.
+L'exemple avec markdown automatise cela avec une boucle for.
 
-The limitations here are that fonts cannot be copied with different attributes, thus the font path has to be hardcoded.
-Other than that, abusing `style.syntax_fonts` may lead to **slow performance** and **high memory consumption**.
-This is very obvious when the user tries to resize the editor with `ctrl-scroll` or `ctrl+` and `ctrl-`.
-Please use it in moderation.
+Les limitations ici sont que les polices ne peuvent pas être copiées avec
+différents attributs. Le chemin d'accès aux polices doit donc être codé en
+dur.
+En dehors de cela, abuser des `style.syntax_fonts` peut mener à **une lenteur
+des performances** et **une consommation élevée de mémoire**.
+Cela est évident lorsque l'utilisateur tente de redimensionner l'éditeur avec `ctrl-scroll` ou `ctrl+` et `ctrl-`.
+À utiliser avec modération.
 
-### Space handling (v2.1 (upcoming) / `master`)
+### Gestion des espaces (v2.1 / `master`)
 
-By default, Lite XL prepends a pattern `{ pattern = "%s+", type = "normal" }` to the syntax.
-This improves the performance drastically on lines that starts with whitespaces (eg. heavily indented lines)
-by matching the whitespace before other patterns in order to prevent Lite XL from iterating the entire syntax.
-However, there may be syntaxes that require matching spaces (eg. Markdown with indented blocks)
-so this can be disabled by setting `space_handling` to `false.`
+Par défaut, Lite XL ajoute à la syntaxe le motif `{ pattern = "%s+", type = "normal" }`.
+Cela améliore drastiquement les performances sur les lignes débutant par des
+espaces blancs (eg. les lignes fortement indentées) en faisant correspondre
+les espaces blancs avant les autres motifs afin d'empêcher Lite XL de
+parcourir toute la syntaxe.
+Cependant, il y a des syntaxes requérant un appariement d'espaces (eg.
+Markdown avec les blocs indentés) donc cela peut être désactivé en
+définissant `space_handling` comme `false.`
 
-> To keep the space handling optimization or to support older versions of Lite XL,
-> `{ pattern = "%s+", type = "normal" }` can be added after patterns that require space.
+> Pour conserver l'optimisation de gestion des espaces ou pour prendre en
+charge d'anciennes versions de Lite XL,
+> `{ pattern = "%s+", type = "normal" }` peut être ajouté après les motifs
+nécessitant des espaces.
 
-### Simple patterns with multiple tokens (v1.16.10)
+### Motifs simples aves plusieurs items (v1.16.10)
 
-This is an excerpt taken from the markdown plugin:
+Il y a un extrait provenant du plugin markdown :
 
 ```lua
 local in_squares_match = "^%[%]"
--- reference links
+-- liens de référence
 {
   pattern = "^%s*%[%^()["..in_squares_match.."]+()%]: ",
   type = { "function", "number", "function" }
 },
 ```
 
-Sometimes it makes sense to highlight different parts of a pattern differently.
-An empty parentheses (`()`) in Lua patterns will return the position of the text in the parentheses.
-This will tell Lite XL when to change the type of token.
-For instance, `^%s*%[%^` is `"function"`, `["..in_squares_match.."]+` is `"number"` and `%]: ` is `"function"`.
+Parfois cela a du sens de surligner différentes parties d'un motif
+différement.
+Les parenthèses vides (`()`) dans les motifs Lua renverront la position du
+texte dans les parentheses.
+Elles indiqueront à Lite XL quand changer de type d'item.
+Par exemple, `^%s*%[%^` est une `"function"`, `["..in_squares_match.."]+` est
+un `"number"` et `%]: ` est une `"function"`.
 
-### Subsyntaxes (Since v1.16.10)
+### Sous-syntaxes (depuis v1.16.10)
 
-Lite XL supports embedding another syntax into the existing syntax.
-This is used to support code blocks inside the markdown syntax.
+Lite XL prend en charge l'intégration d'une autre syntaxe dans une syntaxe existante.
+Cela est utilisé pour prendre en compte les blocs de code dans la syntaxe markdown.
 
-For example:
+Par exemple :
 ```lua
 { pattern = { "```cpp", "```" },        type = "string", syntax = ".cpp" },
 ```
 
-This would highlight `` ```cpp `` and `` ``` `` with `"string"` while everything inside them will be highlighted with a syntax that matches `".cpp"`.
+Cela surlignerait `` ```cpp `` et `` ``` `` comme `"string"` tandis que tout ce
+qui se trouve à l'intérieur sera surligné avec une syntaxe correspondant à `".cpp"`.

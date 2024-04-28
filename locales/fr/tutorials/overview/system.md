@@ -1,6 +1,6 @@
 # API System
 
-C'est là que le code Lua de Lite XL interagit avec son moteur C sous-jacent.
+C'est ici que le code Lua de Lite XL interagit avec son moteur C sous-jacent.
 Certaines fonctionnalités ici seront omises car elles ne sont pas utiles pour
 les plugins.
 

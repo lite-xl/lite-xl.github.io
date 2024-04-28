@@ -1,7 +1,8 @@
 # Raccourcis clavier par défaut
 
-Les raccourcis clavier sur différents systèmes d'exploitation ont la même fonctionnalité, elles sont juste reliées
-de manière légèrement différente afin d'être conformes aux attentes normales de ce système d'exploitation.
+Les raccourcis clavier sur différents systèmes d'exploitation ont la même
+fonctionnalité, elles sont juste reliées de manière légèrement différente
+afin d'être conformes aux attentes normales de ce système d'exploitation.
 
 Actuellement, il y a seulement deux dispositions de clavier de système
 d'exploitation. [MacOS](/fr/documentation/keymap-macos), et les autres.

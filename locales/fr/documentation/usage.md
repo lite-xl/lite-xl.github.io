@@ -183,15 +183,20 @@ Une liste des associations par défaut peut être aperçue [ici][1].
 Il y a quelques variables globales fixée par l'éditeur.
 Ces variables sont disponibles partout et ne devraient pas être écrasées.
 
-- `ARGS`: arguments de la ligne de commande. `argv[1]` est le nom du programme, `argv[2]` est le 1er paramètre, ...
-- `PLATFORM`: Affichage de `SDL_GetPlatform()`. Peut être `Windows`, `Mac OS X`, `Linux`, `iOS` et `Android`.
-- `SCALE`: Échelle de police. Généralement 1, mais peut être plus élevé sur les systèmes HiDPI.
+- `ARGS`: arguments de la ligne de commande. `argv[1]` est le nom du programme,
+  `argv[2]` est le 1er paramètre, ...
+- `PLATFORM`: Affichage de `SDL_GetPlatform()`. Peut être `Windows`,
+  `Mac OS X`, `Linux`, `iOS` et `Android`.
+- `SCALE`: Échelle de police. Généralement 1, mais peut être plus élevé
+  sur les systèmes HiDPI.
 - `EXEFILE`: Un chemin absolu vers l'ex"cutable.
 - `EXEDIR`: Le répertoire de l'exécutable. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
 - `VERSION`: version de lite-xl.
-- `MOD_VERSION`: version de modification. Elle est généralement incrementée lors de changements dans l'API.
+- `MOD_VERSION`: version de modification. Elle est généralement incrementée
+  lors de changements dans l'API.
 - `PATHSEP`: Séparateur de chemin. `\` (Windows) ou `/` (autres OS)
-- `DATADIR`: Le répertoire de données, où réside la partie en Lua de lite-xl. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
+- `DATADIR`: Le répertoire de données, où réside la partie en Lua de
+  lite-xl. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
 - `USERDIR`: Répertoire de configuration utilisateur.
 
 > `USERDIR` devrait être utilisé à la place de `DATADIR` lors de la
