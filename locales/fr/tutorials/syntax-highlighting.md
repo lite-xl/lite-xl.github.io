@@ -5,8 +5,8 @@
 Les plugins de coloration syntaxique pour Lite XL sont des fichiers Lua. Ils
 définissent des motifs (patterns) ou des expressions régulières qui
 correspondent à différentes parties d'un langage donné, attribuant un type
-de token à chaque correspondance.
-Ces différents types de tokens sont ensuite colorés différemment selon la
+d'item à chaque correspondance.
+Ces différents types d'items (tokens types) sont ensuite colorés différemment selon la
 palette de couleurs choisie.
 
 Comme les autres plugins, les définitions syntaxiques proviennent des dossiers
@@ -29,9 +29,9 @@ Le dossier de module utilisateur pour Lite XL peut généralement être trouvé
 Donc pour créer une nouvelle définition syntaxique sur Linux, vous pouvez
 tout simplement créer un fichier `.lua` dans votre dossier `$HOME/.config/lite-xl/plugins/`.
 
-## Quels types de tokens syntaxiques sont pris en charge ?
+## Quels types d'items syntaxiques sont pris en charge ?
 
-Les types de tokens syntaxiques pris en charge, défini dans `lite-xl/core/style.lua`, sont :
+Les types d'items syntaxiques pris en charge, défini dans `lite-xl/core/style.lua`, sont :
 
 - normal
 - symbol
@@ -46,7 +46,7 @@ Les types de tokens syntaxiques pris en charge, défini dans `lite-xl/core/style
 
 Dans votre plugin de coloration syntaxique, vous écrivez des motifs
 correspondant à des parties de la syntaxe du langage, attribuant ces
-types de tokens à des appariements. Vous n'avez pas besoin de tous les
+types d'items à des appariements. Vous n'avez pas besoin de tous les
 utiliser - utilisez seulement autant que nécessaire pour votre langage.
 
 Prenons un exemple de définition syntaxique et voyons comment ça marche.
@@ -145,8 +145,8 @@ comment créer des commentaires multilignes / en bloc.
 ### Motifs
 
 Un texte donnée ne peut correspondre qu'à un seul motif. Une fois que Lite
-XL décide que ce texte correspond à un motif, il lui attribuera ce type de
-token et avancer.
+XL décide que ce texte correspond à un motif, il lui attribuera ce type
+d'item et avancer.
 Les motifs sont essayés dans l'ordre dans lequel ils sont écrits dans la
 définition syntaxique, la première correspondance sera donc gagnante.
 
@@ -159,7 +159,7 @@ Chaque motif prend l'une des formes suivantes :
 ```
 
 Cette forme fait correspondre la ligne au motif et si ça marche, lui attribue
-le token donné par `type` — `comment`, dans ce cas-ci.
+l'item donné par `type` — `comment`, dans ce cas-ci.
 
 #### Motif de début et de fin
 
@@ -169,7 +169,7 @@ le token donné par `type` — `comment`, dans ce cas-ci.
 
 Cette forme a deux motifs - un qui correspond au début de l'intervalle et un
 autre qui correspond à la fin. Tout ce qui est entre le début et la fin se
-verra attribué le token donnée par `type`.
+verra attribué l'item donnée par `type`.
 
 #### Motif de début et de fin, avec échappement
 
@@ -189,15 +189,15 @@ pouvez utiliser le mot-clé `regex` ici, à la place de `pattern`.
 
 ### Symboles
 
-> Ceci **n'est pas lié au type de token `symbol`**.
+> Ceci **n'est pas lié au type d'item `symbol`**.
 
-La section des symboles vous permet d'assigner des types de tokens à des
+La section des symboles vous permet d'assigner des types d'items à des
 mot-clés ou chaînes particuliers - généralement des mots réservés dans le
 langage que vous colorez.
-Le type de token dans cette section **est toujours prioritaire** face aux types
-de token déclarés dans les motifs.
+Le type d'item dans cette section **est toujours prioritaire** face aux types
+d'item déclarés dans les motifs.
 
-Par exemple ceci surligne `Host` avec le type de token `function`, `HostName`
+Par exemple ceci surligne `Host` avec le type d'item `function`, `HostName`
 comme `keyword` et `yes`, `no`, `any` & `ask` comme `literal` :
 
 ```lua
@@ -215,7 +215,7 @@ comme `keyword` et `yes`, `no`, `any` & `ask` comme `literal` :
 IL y a quelques erreurs fréquentes qui peuvent être faites lorsque vous
 utilisez la table de `symbols` avec des motifs.
 
-##### Cas 1 : espaces entre deux tokens `symbols`
+##### Cas 1 : espaces entre deux items `symbols`
 
 Prenons l'exemple suivant :
 
@@ -244,16 +244,16 @@ pas surligné comme `literal`. Pourquoi donc ?
 
 **La table `symbols` requiert une correspondance exacte**.
 Si vous observez bien, les parenthèses vides (`()`) sont placées **après l'espace** !
-Cela indique à Lite XL que `MOT suivi de (un ou plusieurs %s)` est un token,
+Cela indique à Lite XL que `MOT suivi de (un ou plusieurs %s)` est un item,
 ce qui fera correspondre `my ` (notez l'espace dans la correspondance).
 
-La solution est d'ajouter un token `normal` pour l'espace blanc entre les deux tokens:
+La solution est d'ajouter un item `normal` pour l'espace blanc entre les deux items:
 
 ```lua
 { pattern = "[%a_][%w_]+()%s+()[%a_][%w_]+", type = { "keyword2", "normal", "symbol" } }
 ```
 
-##### Cas 2 : Motifs & tokens `symbols`
+##### Cas 2 : Motifs & items `symbols`
 
 On peut supposer que Lite XL apparie par magie le texte avec la table
 `symbols`. Ce n'est pas le cas.
@@ -436,7 +436,7 @@ syntax.add {
     { pattern = { "```", "```" },           type = "string" },
     { pattern = { "``", "``" },             type = "string" },
     { pattern = { "%f[\\`]%`[%S]", "`" },   type = "string" },
-    -- biffage
+    -- rayage
     { pattern = { "~~", "~~" },             type = "keyword2" },
     -- surlignage
     { pattern = { "==", "==" },             type = "literal" },
@@ -525,7 +525,7 @@ end)
 
 Cette syntaxe permet aux utilisateurs de définir différents styles de police
 (gras, italique, etc.) pour différents motifs.
-Pour changer le style de police d'un token, ajoutez une police à `style.syntax_fonts[token_type]`.
+Pour changer le style de police d'un item, ajoutez une police à `style.syntax_fonts[token_type]`.
 Par exemple :
 
 ```lua
