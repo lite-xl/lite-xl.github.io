@@ -4,7 +4,7 @@
 
 Les paquets binaires sont disponibles sur la [page de versions GitHub][1].
 
-## Installer via un gestionnaire de paquets
+## Installation via un gestionnaire de paquets
 
 Autrement, vous pouvez installer lite-xl depuis le gestionnaire de
 paquets de votre distribution.
@@ -40,7 +40,7 @@ git clone https://github.com/lite-xl/lite-xl.git
 [3]: https://community.chocolatey.org/packages/lite-xl
 [4]: https://github.com/ScoopInstaller/Extras/blob/master/bucket/lite-xl.json
 [5]: https://ports.macports.org/port/lite-xl/
-[6]: https://aur.archlinux.org/packages/lite-xl/
+[6]: https://aur.archlinux.org/packages/lite-xl-bin/
 [7]: https://github.com/NixOS/nixpkgs/blob/release-21.11/pkgs/applications/editors/lite-xl/default.nix
 [8]: https://src.fedoraproject.org/rpms/lite-xl
 [9]: https://github.com/lite-xl/lite-xl

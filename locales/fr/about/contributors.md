@@ -9,7 +9,7 @@
 | [liquidev](https://github.com/liquidev)                    | Amélioration du style des onglets et des animations.
 | [Adam](https://github.com/adamharrison)                    | Coloration syntaxique multilangue et bien d'autres améliorations.
 | [Cukmekerb](https://github.com/vincens2005)                | Améliorations de la coloration syntaxique.
-| [Janis-Leuenberger](https://github.com/Janis-Leuenberger)  | Ajout d'un fichier d'aide sur les raccourcis claviers et tests sur macOS.
-| Mat Mariani                                                | Aide pour le portage macOS. Quelques ressources tirées de mathewmariani/lite-macos.
+| [Janis-Leuenberger](https://github.com/Janis-Leuenberger)  | Ajout d'un fichier d'aide sur les raccourcis clavier et tests sur macOS.
+| Mat Mariani                                                | Aide pour le portage sur macOS. Quelques ressources tirées de mathewmariani/lite-macos.
 | [daubaris](https://github.com/daubaris)                    | Mise en œuvre de la requête Xft.dpi en utilisant la commande xrdb.
 | [Robert Štojs](https://github.com/netrobert)               | Configuration de l'intégration continue.

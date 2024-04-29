@@ -4,7 +4,7 @@
 
 Consultez le plugin [LSP].
 
-#### Où est le terminal intégré.
+#### Où est le terminal intégré ?
 
 Vous pouvez essayer [lite-xl-terminal].
 
@@ -35,7 +35,7 @@ keymap.add({ ["ctrl+escape"] = {} }, true)
 
 #### Comment obtenir les commandes de ces raccourcis ?
 
-You pouvez chercher des commandes dans la palette de commandes.
+Vous pouvez chercher des commandes dans la palette de commandes.
 
 Pour chaque commande, remplacez les espaces dans la partie droite par des tirets.
 
@@ -52,7 +52,8 @@ Vous avez besoin de [vibe].
 #### Recommendations de plugins
 
 Au cas où vous ne voudriez pas passer au peigne fin notre [dépôt de plugins][1],
-il y a une liste de plugins qui rendent Lite XL plus agréable.
+il y a une liste de plugins qui rendent l'expérience avec Lite XL plus
+agréable.
 
 | Plugin               | Cas d'usage
 | ---                  | ---
