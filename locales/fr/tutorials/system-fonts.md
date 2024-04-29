@@ -1,13 +1,12 @@
-# Utiliser les polices d'écriture système
+# Polices système
 
-lite-xl n'offre pas de moyen pratique pour utiliser des polices provenant du
-système.
+Lite XL n'offre pas de moyen pratique pour utiliser des polices système.
 Il y a littéralement des API _différentes_ pour chaque plateforme que nous
 prenons en charge (Windows, Linux et Mac).
-C'est là que [fontconfig][1] vient à notre rescousse. fontconfig est
+C'est là que [fontconfig][1] vient à notre rescousse. Fontconfig est
 installable sur un grand nombre d'OS.
 
-lite-xl a un [plugin fontconfig][2] que nous pouvons utiliser pour trouver les
+Lite XL a un [plugin fontconfig][2] que nous pouvons utiliser pour trouver les
 polices système.
 
 ## Installation de fontconfig
@@ -51,12 +50,12 @@ fontconfig.use {
 }
 ```
 
-`"sans"` et `"monospace"` peuvent être n'importe quelle [syntaxe de fontconfig. (voir "Font Names")][4]
+`"sans"` et `"monospace"` peuvent être n'importe quelle [syntaxe de fontconfig (voir "Font Names").][4]
 
 Notez que la police peut ne pas se charger immédiatement (car nous devons
 attendre que `fc-match` renvoie une valeur).
 Si c'est ce que vous souhaitez, remplacez `fontconfig.use` par `fontconfig.use_blocking`.
-Faire ceci forcera lite-xl à attendre `fc-match`, ce qui peut être plus lent.
+Faire ceci forcera Lite XL à attendre `fc-match`, ce qui peut être plus lent.
 
 
 [1]: https://www.freedesktop.org/wiki/Software/fontconfig/

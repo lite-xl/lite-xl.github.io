@@ -2,8 +2,8 @@
 
 ### Qu'est-ce que Simple ?
 
-Simple est un plugin très basique écrit avec l'intention d'introduire aux
-développeurs qui sont nouveaux sur Lite XL au processus d'écriture de plugins
+Simple est un plugin très basique, écrit avec l'intention d'introduire aux
+développeurs nouveaux sur Lite XL au processus d'écriture de plugins
 pour l'éditeur.
 
 ### Que fait ce plugin ?
@@ -28,8 +28,8 @@ ce n'est l'intégralité) du code dans le fichier.
 -- mod-version:3
 
 -- vous DEVEZ mettre mod-version:x sur la première ligne de votre plugin
--- mod-version corresponds généralement aux versions de lite-xl (eg. mod-version: 2 == lite-xl 2.0)
--- lite-xl ne chargera pas le plugin si le mod-version ne correspond pas
+-- mod-version corresponds généralement aux versions de Lite XL (eg. mod-version: 2 == lite-xl 2.0)
+-- Lite XL ne chargera pas le plugin si le mod-version ne correspond pas
 
 -----------------------------------------------------------------------
 -- NOM         : Simple
@@ -38,10 +38,10 @@ ce n'est l'intégralité) du code dans le fichier.
 -- OBJECTIF    : Afficher du texte dans l'éditeur
 -----------------------------------------------------------------------
 -- Avertissement :
--- Je ne suis pas un développeur Lua, et mes connaissans autour de l'écriture
+-- Je ne suis pas un développeur Lua, et mes connaissances autour de l'écriture
 -- de plugins pour Lite XL sont très limitées. Ce fichier a pour but d'aider
 -- le lecteur à démarrer avec le développement de plugins pour Lite XL, et
--- donc montre seulement des fonctionnalités très basiques. Pour voir le
+-- montre donc seulement des fonctionnalités très basiques. Pour voir le
 -- développement d'un plugin plus complexe, allez voir le code source
 -- d'autres plugins après avoir parcouru ce fichier.
 -----------------------------------------------------------------------
@@ -54,7 +54,7 @@ local core = require "core"
 -- le module "command" nous aidera à enregistrer des commandes pour notre plugin
 local command = require "core.command"
 
--- le module "style" nous permettra d'utilser des options de styles
+-- le module "style" nous permettra d'utiliser des options de styles
 local style = require "core.style"
 
 -- le module "config" sera utilisé pour stocker certains éléments comme les
@@ -71,7 +71,7 @@ local RootView = require "core.rootview"
 -- la configuration par plugin doit rester dans config.plugins.(nom_du_plugin)
 config.plugins.simple = {}
 
--- les couleurs sont juste trois ou quatre valeurs séparées par des virgules (RGBA) (entre 0 et 255)
+-- les couleurs sont juste trois ou quatre valeurs (entre 0 et 255) séparées par des virgules (RGBA)
 -- placées à l'intérieur de '{ }'. Nous ajouterons notre couleur dans le module config.
 config.plugins.simple.text_color = {200, 140, 220} -- ou utilisez `{ common.color "#C88CDC" }`
 -----------------------------------------------------------------------
@@ -86,7 +86,7 @@ function config.plugins.simple.get_text_coordinates(message)
    -- longueur et hauteur de l'éditeur.
 
    -- La taille actuelle de la police d'écriture peut être obtenue grâce au module "style".
-   -- Les dimensions de l'éditeur peuvent être obtenues avec
+   -- Les dimensions de l'éditeur peuvent être obtenues avec :
    --   1. LARGEUR  : core.root_view.size.x
    --   2. HAUTEUR : core.root_view.size.y
 
@@ -119,11 +119,11 @@ function RootView:draw()
    if config.plugins.simple.show_my_message then
       -- Nous obtiendrons le message que nous allons afficher comme entrée de l'utilisateur
       -- plus tard. Nous stockerons cette entrée dans `config.plugins.simple.hw_message`.
-      -- (NOTE: cette variable n'est pas intégrée dans lite-xl;
+      -- (NOTE: cette variable n'est pas intégrée dans Lite XL;
       --        c'est une variable que nous définirons plus tard.)
 
       -- Connservons la valeur de config.plugins.simple.hw_message dans une variable locale
-      -- `message`. Si config.plugins.simple.hw_message est vide la variable message vaudra
+      -- `message`. Si config.plugins.simple.hw_message est vide, la variable message vaudra
       -- "Le message n'est pas encore défini !"
       local message
 
@@ -188,7 +188,7 @@ keymap.add {
 
 ### Lectures complémentaires
 
-- [Lite: An Implementation Overview][3], un excellent article de rxi qui reste pertinent pour lite-xl.
+- [Lite: An Implementation Overview][3], un excellent article de rxi qui reste pertinent pour Lite XL.
 - [Aperçu de l'API][4], où quelques APIs sont expliquées.
 
 

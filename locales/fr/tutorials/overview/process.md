@@ -8,7 +8,7 @@ Les avantages de cette API comprennent :
 - Un argument avec un échappement propre (les arguments sont fournis via une table)
 - E-S non bloquante
 - Possibilité de détacher les processus de Lite XL [(en cours d'élaboration)][2]
-- Ne créer pas de fichiers temporaires
+- Ne crée pas de fichiers temporaires
 - Principalement multiplateforme (ne requiert pas de code spécial pour chaque shell)
 
 ## Utilisation de l'API Process
@@ -16,32 +16,32 @@ Les avantages de cette API comprennent :
 ### Gestion d'erreurs
 
 - `process.start()` peut générer des erreurs s'il ne peut pas exécuter le programme.
-- `process.read*` er `process.write` peuvent générer des erreurs si :
+- `process.read*` et `process.write` peuvent générer des erreurs si :
   - le processus s'est achevé
   - le processus a fermé le flux
   - vous avez fermé le flux
-- il pourrait y avoir d'autres erreurs auxquelles s'attendre également
+- Il pourrait y avoir d'autres erreurs auxquelles s'attendre également.
 
-### Démarrer un processus
+### Démarrage du processus
 
 Pour démarrer un processus, utilisez `process.start(args, options)`.
 
 Voici quelques arguments parmi les plus utiles :
 
-- `args`: L'exécutable et les arguments, eg : `{ "sh", "-c", "echo hello world" }`
-- `options`: Options pour `process.start()`
-  - `env`: Une table de clés-valeurs contenant des variables d'environnement.
+- `args` : L'exécutable et les arguments, eg : `{ "sh", "-c", "echo hello world" }`
+- `options` : Options pour `process.start()`
+  - `env` : Une table de clés-valeurs contenant des variables d'environnement.
   **Notez que si cet argument est fourni, les variables d'environnement ne
   seront pas héritées.**
-  - `stdin`: Spécifie où rediriger stdin
-  - `stdout`: Spécifie où rediriger stdout
-  - `stderr`: Spécifie où rediriger stderr
+  - `stdin` : Spécifie où rediriger stdin.
+  - `stdout` : Spécifie où rediriger stdout.
+  - `stderr` : Spécifie où rediriger stderr.
 
 Pour `options.std{in,out,err}`, les valeurs valides sont :
 
-- `process.REDIRECT_PIPE` (Met le processus à disposition de l'API subprocess
+- `process.REDIRECT_PIPE` (met le processus à disposition de l'API subprocess
   pour la lecture / l'écriture)
-- `process.REDIRECT_DISCARD` (Rejette la sortie. Utilisez-le pour empêcher le
+- `process.REDIRECT_DISCARD` (rejette la sortie. Utilisez-le pour empêcher le
   buffering)
 - `process.REDIRECT_STDOUT` (seulement pour `stderr`, pour rediriger `stderr`
   vers `stdout`)
@@ -52,7 +52,7 @@ Pour lire depuis le `stdout` ou `stderr` d'un processus, utilisez respectivement
 `process:read_stdout()` et `process:read_stderr()`.
 
 Vous pouvez leur spécifier un argument numérique, qui changera la taille de
-ma mémoire tampon interne utilisée pour lire la sortie.
+la mémoire tampon interne utilisée pour lire la sortie.
 
 Autrement, vous pouvez utiliser `process:read()` avec `process.STREAM_STDERR`
 et `process.STREAM_STDOUT`.
@@ -64,7 +64,7 @@ local proc = process.start { "sh", "-c", "echo hello world!" }
 
 -- n'utilisez pas `while proc:running()` si vous vous souciez de la sortie
 -- le processus pourrait s'arrêter et laisser des données dans la mémoire tampon
--- Vous devriez seulement lire jusqu'à ce que `proc:read_stdout()` renvoie nil
+-- vous devriez seulement lire jusqu'à ce que `proc:read_stdout()` renvoie nil
 while true do
   local rdbuf = proc:read_stdout()
   if not rdbuf then break end
@@ -77,13 +77,13 @@ end
 Vous pouvez utiliser `process:write(data)` pour écrire une chaîne de
 caractères dans `stdin`.
 
-### Vérifier la complétion
+### Vérification de la complétion
 
 - `process:running()` renvoie un booléen pour indiquer si le processus est en
   cours d'exécution.
-- `process:wait(time)` fait la même chose, mais vous spécifiez le temps d'attent (ou 0 pour renvoyer immédiatement).
+- `process:wait(time)` fait la même chose, mais vous spécifiez le temps d'attente (ou 0 pour renvoyer immédiatement).
 
-### Interrompre un processus
+### Interruption du processus
 
 - `process:terminate()` envoie un SIGTERM (ou l'équivalent Windows) au
   processus.
@@ -94,7 +94,7 @@ caractères dans `stdin`.
 ### Divers
 
 - `process:pid()` renvoie l'identifiant du processus (PID).
-  **IL n'y a aucune garantie que ce PID soit correct si le processus est
+  **Il n'y a aucune garantie que ce PID soit correct si le processus est
   interrompu plus tôt.**
 - `process:returncode()` renvoie le code de sortie du processus s'il y en a un.
 - `process:close_stream()` ferme le flux `stdin`, `stdout` ou `stderr` du processus.

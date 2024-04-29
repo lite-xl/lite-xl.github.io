@@ -6,7 +6,7 @@ Les paquets binaires sont disponibles sur la [page de versions GitHub][1].
 
 ## Installation via un gestionnaire de paquets
 
-Autrement, vous pouvez installer lite-xl depuis le gestionnaire de
+Autrement, vous pouvez installer Lite XL depuis le gestionnaire de
 paquets de votre distribution.
 **Ces paquets sont gérés par la communauté et peuvent être obsolètes.**
 

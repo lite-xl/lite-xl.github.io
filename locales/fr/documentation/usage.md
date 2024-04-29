@@ -192,12 +192,12 @@ Ces variables sont disponibles partout et ne devraient pas être écrasées.
   élevée sur les systèmes HiDPI.
 - `EXEFILE` : un chemin absolu vers l'exécutable.
 - `EXEDIR` : le répertoire de l'exécutable. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
-- `VERSION` : la version de lite-xl.
+- `VERSION` : la version de Lite XL.
 - `MOD_VERSION` : la version de modification. Elle est généralement incrementée
   lors de changements dans l'API.
 - `PATHSEP` : le séparateur de chemin. `\` (Windows) ou `/` (autres OS)
 - `DATADIR` : le répertoire de données, où réside la partie en Lua de
-  lite-xl. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
+  Lite XL. **NE PAS ÉCRIRE DANS CE RÉPERTOIRE.**
 - `USERDIR` : le répertoire de configuration utilisateur.
 
 > `USERDIR` devrait être utilisé à la place de `DATADIR` lors de la

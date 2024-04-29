@@ -1,7 +1,7 @@
 # API System
 
-C'est ici que le code Lua de Lite XL interagit avec son moteur C sous-jacent.
-Certaines fonctionnalités ici seront omises car elles ne sont pas utiles pour
+C'est ici que le code Lua de Lite XL interagit avec le moteur C sous-jacent.
+Certaines fonctionnalités seront omises, car elles ne sont pas utiles pour
 les plugins.
 
 ## Presse-papier
@@ -9,7 +9,7 @@ les plugins.
 - `system.set_clipboard(text)` définit le contenu du presse-papier.
 - `system.get_clipboard()` récupère le contenu du presse-papier.
 
-## Manipulation de fichier / répertoire
+## Manipulation de fichiers / répertoires
 
 - `system.list_dir(dir)` renvoie une liste de noms de fichiers dans un répertoire.
 - `system.rmdir(dir)` supprime un répertoire. Utilisez-le au lieu de `os.remove()`.
@@ -33,13 +33,13 @@ les plugins.
 
 ## Manipulation de fenêtre
 
-- `system.set_window_opacity(o)` définit l'opacité de la fenêtre de 0 à 1.
+- `system.set_window_opacity(o)` définit l'opacité de la fenêtre entre 0 et 1.
 - `system.set_window_title(title)` définit le titre de la fenêtre.
 - `system.set_window_mode(mode)` définit le mode de la fenêtre :
-  - `"normal"` : aussi connu sous le nom de "restored" sur Windows.
-  - `"maximized"` : Maximise la fenêtre.
-  - `"minimized"` : Réduit la fenêtre.
-  - `"fullscreen"` : Plein écran.
+  - `"normal"` : aussi connu sous le nom de "restored" sur Windows
+  - `"maximized"` : maximise la fenêtre.
+  - `"minimized"` : réduit la fenêtre.
+  - `"fullscreen"` : plein écran.
 - `system.set_window_bordered(bordered)` active ou désactive les bordures de
   la fenêtre (décoration).
 - `system.set_window_hit_test(height, control_width, resize_border)` définit
@@ -50,7 +50,7 @@ les plugins.
   - `controls_width` : Pas très sûr à ce sujet, mais ça doit être la taille
     des contrôles de la barre de titre (les boutons Maximiser, Réduire et
     Normal sur la droite).
-    Ils semblent être fixé sur le côté droit de la barre de titre.
+    Ils semblent être fixés sur le côté droit de la barre de titre.
   - `resize_border` : Nombre de pixels réservés pour redimensionner la
     fenêtre (lui définir une grande valeur signifie que vous pouvez
     redimensionner la fenêtre plus facilement).
@@ -67,6 +67,6 @@ les plugins.
 - `system.exec(command)` exécute une commande. Utilisez [l'API Process][1] à la place.
 - `system.fuzzy_match(haystack, needle, file)` génère un score dépendant de
   la proximité de `needle` avec `haystack`.
-  - `file`: apparie à l'envers (plus précis pour l'appariement de nom de fichier).
+  - `file` : effectue la correspondance à l'envers (plus précis pour la correspondance de nom de fichier).
 
 [1]: /fr/tutorials/overview/process

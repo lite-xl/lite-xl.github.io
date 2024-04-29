@@ -5,4 +5,4 @@ Ces pages contiennent des tutoriels et des documentations pour créer des plugin
 - [Aperçu de l'API](/fr/tutorials/api-overview)
 - [Plugin Simple](/fr/tutorials/simple-plugin)
 - [Coloration syntaxique](/fr/tutorials/syntax-highlighting)
-- [Polices d'écriture système](/fr/tutorials/system-fonts)
+- [Polices système](/fr/tutorials/system-fonts)

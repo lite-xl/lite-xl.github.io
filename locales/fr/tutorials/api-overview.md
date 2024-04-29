@@ -2,7 +2,7 @@
 
 ### Il s'agit d'un travail en cours.
 
-Nous fournissons ici quelques ressources et explications sur certains aspect
+Nous fournissons ici quelques ressources et explications sur certains aspects
 de l'API et de Lite XL.
 Pour la documentation de l'API, elle est disponible dans [le dépôt][1].
 De fait, nous n'expliquerons pas _tout_, seulement les fonctionnalités les plus
