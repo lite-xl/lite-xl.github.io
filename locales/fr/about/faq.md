@@ -49,7 +49,7 @@ Lua 5.4.
 
 Vous avez besoin de [vibe].
 
-#### Recommendations de plugins
+#### Des recommendations de plugins ?
 
 Au cas où vous ne voudriez pas passer au peigne fin notre [dépôt de plugins][1],
 il y a une liste de plugins qui rendent l'expérience avec Lite XL plus
