@@ -52,7 +52,7 @@ specifies the desired icon font and assigns the icons to their respective comman
 toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolbar_view, {y = true})
 ```
 
-This instruction splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the y axis.
+This code splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
 
 `return toolbar` returns the toolbar table to Lite XL.
 
