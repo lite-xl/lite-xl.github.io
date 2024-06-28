@@ -56,16 +56,23 @@ This code splits the `TreeView` according to the `up` direction, adds the `toolb
 
 `return toolbar` returns the toolbar table to whatever function called it.
 
+### Creating a custom icon font
+
 To prepare a simple icon font with Fontello, you can do the following:
 
 1. Go to [Fontello](https://fontello.com/)
-2. Drag and drop the desired icons in the light-gray rectangle in the middle of the page, or 
-upload your own svg files
-3. Use `mouse-left-click` to select the icons you want to include in the font
+2. Drag and drop the desired icons in the light-gray rectangle in the middle of the page: ![Drag & Drop][drag-n-drop]
+
+3. Select the icons you want to include in the font
 4. Press on the `Customize Codes` tab on the top-left of the page and copy each icon glyph and 
 paste it into the corresponding place in the `toolbar_commands` table
+
+    ![Customize Codes][customize-codes]
+
 5. Specify the icon font name in the white text input field in the top right
-6. Press the big red button in the top right corner of the page to create and download the icon font
+6. Press the rectangular red button with `Download webfont` in the top right corner of the page to create and download the icon font: 
+
+    ![Red Button][red-button]
 
 ### Example
 
