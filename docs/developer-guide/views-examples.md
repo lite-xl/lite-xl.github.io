@@ -10,13 +10,7 @@ brief introduction
 
 ### Creating a plugin
 
-```lua
--- mod-version:3 -- lite-xl 2.1
-```
-
-This is required to specify Lite XL version compatibility.
-
-The instructions that begin with `require` add necessary libraries.
+Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
 
 ```lua
 local toolbar = common.merge({
