@@ -2,9 +2,13 @@
 description: Learn about the most used custom view examples of Lite XL.
 ---
 
-## Toolbar
+## Example: ToolbarView
 
-### Tutorial
+brief introduction
+
+![Screenshot of a ToolBarView example][screenshot-toolbarview]
+
+### Creating a plugin
 
 ```lua
 -- mod-version:3 -- lite-xl 2.1
