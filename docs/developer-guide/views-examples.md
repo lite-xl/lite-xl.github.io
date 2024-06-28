@@ -54,7 +54,7 @@ toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolb
 
 This code splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
 
-`return toolbar` returns the toolbar table to Lite XL.
+`return toolbar` returns the toolbar table to whatever function called it.
 
 To prepare a simple icon font with Fontello, you can do the following:
 
