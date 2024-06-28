@@ -122,3 +122,5 @@ toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolb
 
 return toolbar
 ```
+
+[screenshot-toolbarview]: ../assets/screenshots/views/toolbarview.png
