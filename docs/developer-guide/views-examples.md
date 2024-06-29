@@ -12,23 +12,46 @@ brief introduction
 
 Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
 
+### Adding configuration settings
+
+WIP: write some setting option examples
+
+WIP: explain why we merge the tables
+
 ```lua
 local toolbar = common.merge({
   -- plugin configuration options go here
 }, config.plugins.build)
 ```
 
-The code above contains the (optional) configuration options of the plugin.
+### Checking if the plugin directory exists
 
-The `get_plugin_directory()` function gets the plugin folder path and tells the 
-plugin where to find the icon font.
-The iteration code is used to check if every folder detected by `get_plugin_directory()` 
-actually exists and if the folder doesn't exist, a `nil` value is returned.
-
-`local ToolBar = ToolbarView:extend()` is used to create a new custom View and make it 
-inherit ToolbarView.
+The code below is used to check if every folder detected by `get_file_info()` 
+actually exists and if it doesn't, a `nil` value is returned.
 
 ```lua
+local function get_plugin_directory()
+  local paths = {
+    USERDIR .. PATHSEP .. "plugins" .. PATHSEP .. "toolbar",
+    DATADIR .. PATHSEP .. "plugins" .. PATHSEP .. "toolbar"
+  }
+  for i, v in ipairs(paths) do
+    if system.get_file_info(v) then
+      return v
+    end
+  end
+  return nil
+end
+```
+
+### Creating the view
+
+The code below creates an instance of our custom Toolbar View, inherits the ToolbarView super-constructor, 
+specifies the desired icon font and assigns the icons to their respective commands.
+
+```lua
+local ToolBar = ToolbarView:extend()
+
 function ToolBar:new()
   ToolBar.super.new(self)
   self.toolbar_font = renderer.font.load(get_plugin_directory() .. PATHSEP .. "toolbar.ttf", style.icon_big_font:get_size())
@@ -43,16 +66,26 @@ function ToolBar:new()
 end
 ```
 
-The code above creates an instance of our custom Toolbar view, inherits the ToolbarView super-constructor, 
-specifies the desired icon font and assigns the icons to their respective commands.
+`local ToolBar = ToolbarView:extend()` is used to create a new custom View and make it 
+inherit ToolbarView.
 
-`toolbar.example_toolbar_view = ToolBar()` saves the toolbar in an exported table, to allow any plugin to require it, thus accessing the bar.
+The `renderer.font.load` function assigns the icon font to the View.
+
+The `get_plugin_directory()` function gets the plugin folder path.
+
+### Adding the view
+
+The code below saves the toolbar in an exported table, to allow any plugin to require it, thus accessing the bar.
+
+```lua
+toolbar.example_toolbar_view = ToolBar()
+```
+
+The code below splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
 
 ```lua
 toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolbar_view, {y = true})
 ```
-
-This code splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
 
 `return toolbar` returns the toolbar table to whatever function called it.
 
@@ -125,3 +158,7 @@ return toolbar
 ```
 
 [screenshot-toolbarview]: ../assets/screenshots/views/toolbarview.png
+[drag-n-drop]: ../assets/screenshots/views/drag-n-drop.png
+[red-button]: ../assets/screenshots/views/red-button.png
+[customize-codes]: ../assets/screenshots/views/customize-codes.png
+[learning-lua]: https://www.lua.org/pil/contents.html
