@@ -21,7 +21,7 @@ WIP: explain why we merge the tables
 ```lua
 local toolbar = common.merge({
   -- plugin configuration options go here
-}, config.plugins.build)
+}, config.plugins.toolbar)
 ```
 
 ### Checking if the plugin directory exists
@@ -121,7 +121,7 @@ local ToolbarView = require "plugins.toolbarview"
 
 local toolbar = common.merge({
   -- plugin configuration options go here
-}, config.plugins.build)
+}, config.plugins.toolbar)
 
 local function get_plugin_directory()
   local paths = {
