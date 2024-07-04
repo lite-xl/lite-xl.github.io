@@ -93,7 +93,7 @@ toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolb
 
 To prepare a simple icon font with Fontello, you can do the following:
 
-1. Go to [Fontello](https://fontello.com/)
+1. Go to [Fontello][fontello]
 2. Drag and drop the desired icons in the light-gray rectangle in the middle of the page: ![Drag & Drop][drag-n-drop]
 
 3. Select the icons you want to include in the font
@@ -162,3 +162,4 @@ return toolbar
 [red-button]: ../assets/screenshots/views/red-button.png
 [customize-codes]: ../assets/screenshots/views/customize-codes.png
 [learning-lua]: https://www.lua.org/pil/contents.html
+[fontello]: https://fontello.com/
