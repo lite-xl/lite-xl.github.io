@@ -1,5 +1,5 @@
 ---
-description: Learn about the most used custom view examples of Lite XL.
+description: Learn to extend a View in Lite XL for extra functionality.
 ---
 
 ## Example: ToolbarView
