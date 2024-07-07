@@ -4,8 +4,6 @@ description: Learn to extend a View in Lite XL for extra functionality.
 
 ## Example: ToolbarView
 
-brief introduction
-
 ![Screenshot of a ToolBarView example][screenshot-toolbarview]
 
 ### Creating a plugin
@@ -75,19 +73,19 @@ The `get_plugin_directory()` function gets the plugin folder path.
 
 ### Adding the view
 
-The code below saves the toolbar in an exported table, to allow any plugin to require it, thus accessing the bar.
-
 ```lua
 toolbar.example_toolbar_view = ToolBar()
-```
-
-The code below splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
-
-```lua
 toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolbar_view, {y = true})
+return toolbar
 ```
 
-`return toolbar` returns the toolbar table to whatever function called it.
+The first line of code saves the toolbar in an exported table.
+
+The second line of code splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
+
+The third line of code returns the toolbar table to whatever function called it.
+
+This way the toolbar can be extended, by requiring it in a new plugin with `local toolbar = require "plugins.toolbar"`.
 
 ### Creating a custom icon font
 
