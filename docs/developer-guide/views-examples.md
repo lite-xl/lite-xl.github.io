@@ -10,18 +10,6 @@ description: Learn to extend a View in Lite XL for extra functionality.
 
 Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
 
-### Adding configuration settings
-
-WIP: write some setting option examples
-
-WIP: explain why we merge the tables
-
-```lua
-local toolbar = common.merge({
-  -- plugin configuration options go here
-}, config.plugins.toolbar)
-```
-
 ### Checking if the plugin directory exists
 
 The code below is used to check if every folder detected by `get_file_info()` 
