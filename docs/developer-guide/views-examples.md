@@ -101,10 +101,6 @@ local style = require "core.style"
 local TreeView = require "plugins.treeview"
 local ToolbarView = require "plugins.toolbarview"
 
-local toolbar = common.merge({
-  -- plugin configuration options go here
-}, config.plugins.toolbar)
-
 local function get_plugin_directory()
   local paths = {
     USERDIR .. PATHSEP .. "plugins" .. PATHSEP .. "toolbar",
