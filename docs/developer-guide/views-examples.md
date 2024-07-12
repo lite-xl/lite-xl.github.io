@@ -6,6 +6,8 @@ description: Learn to extend a View in Lite XL for extra functionality.
 
 ![Screenshot of a ToolBarView example][screenshot-toolbarview]
 
+A toolbar is a GUI component that allows mouse-driven activation of commands by pressing buttons.
+
 ### Creating a plugin
 
 Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
