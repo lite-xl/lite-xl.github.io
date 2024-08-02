@@ -82,7 +82,7 @@ To prepare a simple icon font with Fontello, you can do the following:
 
 3. Select the icons you want to include in the font
 4. Press on the `Customize Codes` tab on the top-left of the page and copy each icon glyph and 
-paste it into the corresponding place in the `toolbar_commands` table
+paste it into the corresponding place in the `toolbar_commands` table (the example contains letters, so replace those letters with the corresponding glyphs)
 
     ![Customize Codes][customize-codes]
 
