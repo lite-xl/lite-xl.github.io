@@ -44,12 +44,12 @@ function ToolBar:new()
   ToolBar.super.new(self)
   self.toolbar_font = renderer.font.load(get_plugin_directory() .. PATHSEP .. "toolbar.ttf", style.icon_big_font:get_size())
   self.toolbar_commands = {
-    {symbol = "", command = "core:open-log"},
-    {symbol = "", command = "core:new-doc"},
-    {symbol = "", command = ""},
-    {symbol = "", command = ""},
-    {symbol = "", command = ""},
-    {symbol = "", command = ""},
+    {symbol = "A", command = "core:open-log"},
+    {symbol = "B", command = "core:new-doc"},
+    {symbol = "C", command = ""},
+    {symbol = "D", command = ""},
+    {symbol = "E", command = ""},
+    {symbol = "F", command = ""},
   }
 end
 ```
@@ -122,12 +122,12 @@ function ToolBar:new()
   ToolBar.super.new(self)
   self.toolbar_font = renderer.font.load(get_plugin_directory() .. PATHSEP .. "toolbar.ttf", style.icon_big_font:get_size())
   self.toolbar_commands = {
-    {symbol = "", command = "core:open-log"},
-    {symbol = "", command = "core:new-doc"},
-    {symbol = "", command = ""},
-    {symbol = "", command = ""},
-    {symbol = "", command = ""},
-    {symbol = "", command = ""},
+    {symbol = "A", command = "core:open-log"},
+    {symbol = "B", command = "core:new-doc"},
+    {symbol = "C", command = ""},
+    {symbol = "D", command = ""},
+    {symbol = "E", command = ""},
+    {symbol = "F", command = ""},
   }
 end
 
