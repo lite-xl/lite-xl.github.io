@@ -145,7 +145,8 @@ nav:
       - "Documents": developer-guide/documents.md
       - "Views":
         - "Creation and Management": developer-guide/views.md
-        - "Extending Views": developer-guide/views-examples.md
+        - "Extending Views": 
+          - "ToolBarView": developer-guide/views-toolbarview.md
       - "Background Tasks": developer-guide/background-tasks.md
       - "Debugging": developer-guide/debugging.md
       - "Using Regular Expressions": developer-guide/using-regular-expressions.md

@@ -2,20 +2,19 @@
 description: Learn to extend a View in Lite XL for extra functionality.
 ---
 
-## Example: ToolbarView
-
 ![Screenshot of a ToolBarView example][screenshot-toolbarview]
 
 A toolbar is a GUI component that allows mouse-driven activation of commands by pressing buttons.
 
-### Creating a plugin
+## Creating a plugin
 
 Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
 
-### Checking if the plugin directory exists
+...
 
-The code below is used to check if every folder detected by `get_file_info()` 
-actually exists and if it doesn't, a `nil` value is returned.
+## Check if the plugin directory exists
+
+To begin with, we add some code that retrieves information like folder paths of plugins and fonts.
 
 ```lua
 local function get_plugin_directory()
@@ -24,6 +23,7 @@ local function get_plugin_directory()
     DATADIR .. PATHSEP .. "plugins" .. PATHSEP .. "toolbar"
   }
   for i, v in ipairs(paths) do
+    -- Check if folder exists
     if system.get_file_info(v) then
       return v
     end
@@ -32,10 +32,10 @@ local function get_plugin_directory()
 end
 ```
 
-### Creating the view
+## Create the view
 
-The code below creates an instance of our custom Toolbar View, inherits the ToolbarView super-constructor, 
-specifies the desired icon font and assigns the icons to their respective commands.
+Next we create an instance of our custom toolbar View, make it inherit the ToolbarView super-constructor, 
+specify the desired icon font and assign the icons to their respective commands.
 
 ```lua
 local ToolBar = ToolbarView:extend()
@@ -54,28 +54,21 @@ function ToolBar:new()
 end
 ```
 
-`local ToolBar = ToolbarView:extend()` is used to create a new custom View and make it 
-inherit ToolbarView.
+## Add the view
 
-The `renderer.font.load` function assigns the icon font to the View.
-
-The `get_plugin_directory()` function gets the plugin folder path.
-
-### Adding the view
-
-The code below inserts the toolbar into Lite XL and makes it extendable by other plugins with `local toolbar = require "plugins.toolbar"`.
+Now we insert the toolbar into Lite XL and make it extendable by other plugins with `local toolbar = require "plugins.toolbar"`.
 
 ```lua
 toolbar.example_toolbar_view = ToolBar()
+-- TreeView is split along the up direction and the ToolbarView is added at the bottom
+-- {y = true} indicates that the ToolBarView size should be fixed along the y axis
 toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolbar_view, {y = true})
 return toolbar
 ```
 
-The second line of code splits the `TreeView` according to the `up` direction, adds the `toolbar.example_toolbar_view` and fixes its size along the Y-axis.
+## Create a custom icon font
 
-### Creating a custom icon font
-
-To prepare a simple icon font with Fontello, you can do the following:
+The last step is preparing a simple icon font with Fontello; to do this, you must do the following:
 
 1. Go to [Fontello][fontello]
 2. Drag and drop the desired icons in the light-gray rectangle in the middle of the page: ![Drag & Drop][drag-n-drop]
@@ -91,7 +84,7 @@ paste it into the corresponding place in the `toolbar_commands` table (the examp
 
     ![Red Button][red-button]
 
-### Example
+## Complete Example
 
 The following is an example of a very simple toolbar with a custom icon font:
 ```lua
