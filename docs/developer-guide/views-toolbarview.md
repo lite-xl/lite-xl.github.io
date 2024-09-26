@@ -2,7 +2,7 @@
 description: Learn to extend a View in Lite XL for extra functionality.
 ---
 
-![Screenshot of a ToolBarView example][screenshot-toolbarview]
+![Screenshot of a ToolbarView example][screenshot-toolbarview]
 
 A toolbar is a GUI component that allows mouse-driven activation of commands by pressing buttons.
 
@@ -10,7 +10,7 @@ A toolbar is a GUI component that allows mouse-driven activation of commands by 
 
 Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
 
-...
+Now let's start writing the plugin.
 
 ## Check if the plugin directory exists
 
@@ -34,14 +34,14 @@ end
 
 ## Create the view
 
-Next we create an instance of our custom toolbar View, make it inherit the ToolbarView super-constructor, 
+Next we create an instance of our custom toolbar view, make it inherit the ToolbarView super-constructor, 
 specify the desired icon font and assign the icons to their respective commands.
 
 ```lua
-local ToolBar = ToolbarView:extend()
+local Toolbar = ToolbarView:extend()
 
-function ToolBar:new()
-  ToolBar.super.new(self)
+function Toolbar:new()
+  Toolbar.super.new(self)
   self.toolbar_font = renderer.font.load(get_plugin_directory() .. PATHSEP .. "toolbar.ttf", style.icon_big_font:get_size())
   self.toolbar_commands = {
     {symbol = "A", command = "core:open-log"},
@@ -54,14 +54,16 @@ function ToolBar:new()
 end
 ```
 
+You can add existing commands inside the empty fields or write your own.
+
 ## Add the view
 
 Now we insert the toolbar into Lite XL and make it extendable by other plugins with `local toolbar = require "plugins.toolbar"`.
 
 ```lua
-toolbar.example_toolbar_view = ToolBar()
+toolbar.example_toolbar_view = Toolbar()
 -- TreeView is split along the up direction and the ToolbarView is added at the bottom
--- {y = true} indicates that the ToolBarView size should be fixed along the y axis
+-- {y = true} indicates that the ToolbarView size should be fixed along the y axis
 toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolbar_view, {y = true})
 return toolbar
 ```
@@ -109,10 +111,10 @@ local function get_plugin_directory()
   return nil
 end
 
-local ToolBar = ToolbarView:extend()
+local Toolbar = ToolbarView:extend()
 
-function ToolBar:new()
-  ToolBar.super.new(self)
+function Toolbar:new()
+  Toolbar.super.new(self)
   self.toolbar_font = renderer.font.load(get_plugin_directory() .. PATHSEP .. "toolbar.ttf", style.icon_big_font:get_size())
   self.toolbar_commands = {
     {symbol = "A", command = "core:open-log"},
@@ -124,7 +126,7 @@ function ToolBar:new()
   }
 end
 
-toolbar.example_toolbar_view = ToolBar()
+toolbar.example_toolbar_view = Toolbar()
 toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolbar_view, {y = true})
 
 return toolbar
