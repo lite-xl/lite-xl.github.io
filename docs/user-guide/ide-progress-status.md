@@ -2,11 +2,11 @@
 description: Check if your favourite language is supported.
 ---
 
-# Check if your favourite language is supported
+# Lite XL IDE Progress Status
 
 intro
 
-Development boards:
+## Development boards
 
 - [Intellisense](https://github.com/users/PerilousBooklet/projects/6/views/1)
 - [Utilities](https://github.com/users/PerilousBooklet/projects/7/views/1)
@@ -15,6 +15,22 @@ Development boards:
 - [Profiling Integration](https://github.com/users/PerilousBooklet/projects/10/views/1)
 
 ## Features
+
+- Syntax highlighting for 100+ languages
+- Intellisense support for 25+ languages
+- Language-specific treeview icons
+- VSCode-like minimap
+- Project-wide text and filename search
+- Multi-cursor editing
+- Single/multi-line commenting with shortcuts
+- Go to line n command
+- Todo treeview
+- Tooltips
+- Integrated terminal
+- Git integration
+- Builder integration
+- Debugger integration
+- Markdown rendering support via [ghmarkdown](https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/ghmarkdown.lua) or [mdpreview](https://github.com/Not-a-web-Developer/lite-xl-mdpreview)
 
 ### WIP
 - Foldable code blocks
