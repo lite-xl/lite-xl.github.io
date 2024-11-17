@@ -1,42 +1,83 @@
 # Build
 
 Once you have downloaded the source code, you can build Lite XL yourself using Meson.
-In addition, the `build-packages.sh` script can be used to compile Lite XL and
-create an OS-specific package for Linux, Windows or macOS.
+In addition, the `build.sh` script can be used to compile Lite XL with some
+level of customization.
 
-The following libraries are required:
+The following dependencies are required:
 
-- freetype2
-- SDL2
+- Meson (>=0.63)
+- Ninja
+- GCC / Clang / MSVC
+- Bash (installed from brew on macOS)
 
 The following libraries are **optional**:
 
-- libagg
-- Lua 5.2
+- FreeType2
+- SDL2
+- PCRE2
+- Lua 5.4
 
 If they are not found, they will be downloaded and compiled by Meson.
 Otherwise, if they are present, they will be used to compile Lite XL.
 
+On Linux, you may need to install other dependencies to compile
+the SDL2 X11 / Wayland backend:
+
+- `libX11-devel`
+- `libXi-devel`
+- `libXcursor-devel`
+- `libxkbcommon-devel`
+- `libXrandr-devel`
+- `wayland-devel`
+- `wayland-protocols-devel`
+- `dbus-devel`
+- `ibus-devel`
+
+These dependencies can also be installed as `libsdl2-dev` on Debian-based
+distros and `SDL2-devel` on CentOS / RHEL-based distros and Fedora.
+
+We recommend using [lite-xl-build-box][1] as it provides a containerized Linux
+environment specifically for compiling Lite XL.
+
 ## Build Script
 
-If you compile Lite XL yourself,
-it is recommended to use the script `build-packages.sh`:
+You can use `scripts/build.sh` to compile Lite XL yourself.
 
-```bash
-bash build-packages.sh -h
+```sh
+$ bash build.sh --help
+# Usage: scripts/build.sh <OPTIONS>
+# 
+# Available options:
+# 
+# -b --builddir DIRNAME         Sets the name of the build directory (not path).
+#                               Default: 'build-x86_64-linux'.
+#    --debug                    Debug this script.
+# -f --forcefallback            Force to build dependencies statically.
+# -h --help                     Show this help and exit.
+# -d --debug-build              Builds a debug build.
+# -p --prefix PREFIX            Install directory prefix. Default: '/'.
+# -B --bundle                   Create an App bundle (macOS only)
+# -A --addons                   Add in addons
+# -P --portable                 Create a portable binary package.
+# -r --reconfigure              Tries to reuse the meson build directory, if possible.
+#                               Default: Deletes the build directory and recreates it.
+# -O --pgo                      Use profile guided optimizations (pgo).
+#                               macOS: disabled when used with --bundle,
+#                               Windows: Implicit being the only option.
+#    --cross-platform PLATFORM  Cross compile for this platform.
+#                               The script will find the appropriate
+#                               cross file in 'resources/cross'.
+#    --cross-arch ARCH          Cross compile for this architecture.
+#                               The script will find the appropriate
+#                               cross file in 'resources/cross'.
+#    --cross-file CROSS_FILE    Cross compile with the given cross file.
 ```
 
-The script will run Meson and create a tar compressed archive with the application or,
-for Windows, a zip file. Lite XL can be easily installed
-by unpacking the archive in any directory of your choice.
+The script will run Meson and compile Lite XL.
 
-On Windows two packages will be created, one called "portable" using the "data"
-folder next to the executable and the other one using a unix-like file layout.
-Both packages works correctly. The one with unix-like file layout is meant
-for people using a unix-like shell and the command line.
-
-Please note that there aren't any hard-coded directories in the executable,
-so that the package can be extracted and used in any directory.
+To create platform-dependent packages that can be installed on your machine,
+you should check out the various `scripts/package-*.sh` scripts.
 
 ## Portable
 
@@ -63,7 +104,7 @@ using the following commands:
 
 ```bash
 # To install the required libraries:
-sudo apt install libfreetype6-dev libsdl2-dev
+sudo apt install libsdl2-dev
 
 # To install Meson:
 sudo apt install meson
@@ -94,12 +135,12 @@ ninja -C build install
 ## macOS
 
 macOS is fully supported and a notarized app disk image is provided in the
-[release page][1]. 
+[release page][2]. 
 In addition the application can be compiled using the generic instructions given above.
 
 ## Windows MSYS2
 
-The build environment chosen for Lite XL on Windows is [MSYS2][2].
+The build environment chosen for Lite XL on Windows is [MSYS2][3].
 Follow the install instructions in the link.
 
 - Open `MinGW 64-bit` or `MinGW 32-bit` shell from the start menu.
@@ -109,18 +150,19 @@ Follow the install instructions in the link.
 
 ```sh
 pacman -S \
-  ${MINGW_PACKAGE_PREFIX}-freetype \
+  git \
+  zip \
+  patch \
   ${MINGW_PACKAGE_PREFIX}-gcc \
   ${MINGW_PACKAGE_PREFIX}-ninja \
-  ${MINGW_PACKAGE_PREFIX}-pcre2 \
-  ${MINGW_PACKAGE_PREFIX}-pkg-config \
-  ${MINGW_PACKAGE_PREFIX}-python-pip \
-  ${MINGW_PACKAGE_PREFIX}-SDL2
-pip3 install meson
+  ${MINGW_PACKAGE_PREFIX}-meson \
+  ${MINGW_PACKAGE_PREFIX}-ca-certificates \
+  ${MINGW_PACKAGE_PREFIX}-pkg-config
 ```
 
 `${MINGW_PACKAGE_PREFIX}` expands either to `mingw-w64-i686` or `mingw-w64-x86_64`
 depending if the current shell is 32 or 64 bit.
 
-[1]: https://github.com/lite-xl/lite-xl/releases/latest/
-[2]: https://www.msys2.org/
+[1]: https://github.com/lite-xl/lite-xl-build-box
+[2]: https://github.com/lite-xl/lite-xl/releases/latest/
+[3]: https://www.msys2.org/
