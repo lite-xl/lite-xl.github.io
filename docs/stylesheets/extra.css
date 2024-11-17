@@ -73,6 +73,49 @@
   width: 100%;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.hero .downloads {
+  margin-top: 2em;
+}
+
+.hero .downloads p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.hero .footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+@media screen and (min-width: 1200px) {
+  .hero {
+      height: 85vh;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .hero {
+      height: 80vh;
+  }
+}
+
 #headline {
   text-align: center;
   font-size: 2.5em;

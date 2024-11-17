@@ -7,15 +7,37 @@ hide:
 
 <style>
     /* hide the "view page source" and "edit page" buttons */
-    .md-content__button {
+    .md-content__button, .md-source-file, .md-footer__inner.md-footer__inner {
         display: none;
     }
 </style>
 
+<div class="hero flex-center" markdown>
+<div markdown>
+
 # Fast, Lightweight and Powerful Text-Editing Experience { #headline }
 
-_A simple, fast, feature-filled and extremely extensible text editor
-written in C and Lua, adapted from [lite]._{ .text-center .no-margin-top }
+A simple, fast, feature-filled and extremely extensible text editor
+written in C and Lua, adapted from [lite].
+{ .text-center .no-margin-top }
+
+<div class="downloads" markdown>
+
+[Download :material-download:](#lets-get-started){ .button .md-button .md-button--primary }
+[GitHub :material-github:][github]{ .button .md-button }
+
+</div>
+
+<div class="footer" markdown>
+<span markdown>
+:material-linux: :material-microsoft-windows: :material-apple:
+</span>
+Available for Linux, Windows and macOS
+{ .text-align-center }
+</div>
+
+</div>
+</div>
 
 ![Lite XL with summer theme][summer]{ loading=lazy }
 ![Lite XL with default theme][default]{ loading=lazy }
@@ -101,6 +123,7 @@ written in C and Lua, adapted from [lite]._{ .text-center .no-margin-top }
 
 
 [lite]:            https://github.com/rxi/lite
+[github]:          https://github.com/lite-xl/lite-xl
 [summer]:          ./assets/screenshots/theme-summer.png#only-light
 [default]:         ./assets/screenshots/theme-default.png#only-dark
 [setup]:           setup/getting-started.md
