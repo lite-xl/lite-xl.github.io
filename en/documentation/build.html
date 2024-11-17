@@ -90,43 +90,86 @@
         <h1 id="build">Build</h1>
 
 <p>Once you have downloaded the source code, you can build Lite XL yourself using Meson.
-In addition, the <code>build-packages.sh</code> script can be used to compile Lite XL and
-create an OS-specific package for Linux, Windows or macOS.</p>
+In addition, the <code>build.sh</code> script can be used to compile Lite XL with some
+level of customization.</p>
 
-<p>The following libraries are required:</p>
+<p>The following dependencies are required:</p>
 
 <ul>
-<li>freetype2</li>
-<li>SDL2</li>
+<li>Meson (&gt;=0.63)</li>
+<li>Ninja</li>
+<li>GCC / Clang / MSVC</li>
+<li>Bash (installed from brew on macOS)</li>
 </ul>
 
 <p>The following libraries are <strong>optional</strong>:</p>
 
 <ul>
-<li>libagg</li>
-<li>Lua 5.2</li>
+<li>FreeType2</li>
+<li>SDL2</li>
+<li>PCRE2</li>
+<li>Lua 5.4</li>
 </ul>
 
 <p>If they are not found, they will be downloaded and compiled by Meson.
 Otherwise, if they are present, they will be used to compile Lite XL.</p>
 
+<p>On Linux, you may need to install other dependencies to compile
+the SDL2 X11 / Wayland backend:</p>
+
+<ul>
+<li><code>libX11-devel</code></li>
+<li><code>libXi-devel</code></li>
+<li><code>libXcursor-devel</code></li>
+<li><code>libxkbcommon-devel</code></li>
+<li><code>libXrandr-devel</code></li>
+<li><code>wayland-devel</code></li>
+<li><code>wayland-protocols-devel</code></li>
+<li><code>dbus-devel</code></li>
+<li><code>ibus-devel</code></li>
+</ul>
+
+<p>These dependencies can also be installed as <code>libsdl2-dev</code> on Debian-based
+distros and <code>SDL2-devel</code> on CentOS / RHEL-based distros and Fedora.</p>
+
+<p>We recommend using <a title='' target='_blank' href='https://github.com/lite-xl/lite-xl-build-box'>lite-xl-build-box</a> as it provides a containerized Linux
+environment specifically for compiling Lite XL.</p>
+
 <h2 id="build-script">Build Script</h2>
 
-<p>If you compile Lite XL yourself,
-it is recommended to use the script <code>build-packages.sh</code>:</p>
-<pre>bash build-packages.sh <span class="nt">-h</span>
+<p>You can use <code>scripts/build.sh</code> to compile Lite XL yourself.</p>
+<pre><span class="nv">$ </span>bash build.sh <span class="nt">--help</span>
+<span class="c"># Usage: scripts/build.sh &lt;OPTIONS&gt;</span>
+<span class="c"># </span>
+<span class="c"># Available options:</span>
+<span class="c"># </span>
+<span class="c"># -b --builddir DIRNAME         Sets the name of the build directory (not path).</span>
+<span class="c">#                               Default: 'build-x86_64-linux'.</span>
+<span class="c">#    --debug                    Debug this script.</span>
+<span class="c"># -f --forcefallback            Force to build dependencies statically.</span>
+<span class="c"># -h --help                     Show this help and exit.</span>
+<span class="c"># -d --debug-build              Builds a debug build.</span>
+<span class="c"># -p --prefix PREFIX            Install directory prefix. Default: '/'.</span>
+<span class="c"># -B --bundle                   Create an App bundle (macOS only)</span>
+<span class="c"># -A --addons                   Add in addons</span>
+<span class="c"># -P --portable                 Create a portable binary package.</span>
+<span class="c"># -r --reconfigure              Tries to reuse the meson build directory, if possible.</span>
+<span class="c">#                               Default: Deletes the build directory and recreates it.</span>
+<span class="c"># -O --pgo                      Use profile guided optimizations (pgo).</span>
+<span class="c">#                               macOS: disabled when used with --bundle,</span>
+<span class="c">#                               Windows: Implicit being the only option.</span>
+<span class="c">#    --cross-platform PLATFORM  Cross compile for this platform.</span>
+<span class="c">#                               The script will find the appropriate</span>
+<span class="c">#                               cross file in 'resources/cross'.</span>
+<span class="c">#    --cross-arch ARCH          Cross compile for this architecture.</span>
+<span class="c">#                               The script will find the appropriate</span>
+<span class="c">#                               cross file in 'resources/cross'.</span>
+<span class="c">#    --cross-file CROSS_FILE    Cross compile with the given cross file.</span>
 </pre>
-<p>The script will run Meson and create a tar compressed archive with the application or,
-for Windows, a zip file. Lite XL can be easily installed
-by unpacking the archive in any directory of your choice.</p>
+<p>The script will run Meson and compile Lite XL.</p>
 
-<p>On Windows two packages will be created, one called &quot;portable&quot; using the &quot;data&quot;
-folder next to the executable and the other one using a unix-like file layout.
-Both packages works correctly. The one with unix-like file layout is meant
-for people using a unix-like shell and the command line.</p>
-
-<p>Please note that there aren&#39;t any hard-coded directories in the executable,
-so that the package can be extracted and used in any directory.</p>
+<p>To create platform-dependent packages that can be installed on your machine,
+you should check out the various <code>scripts/package-*.sh</code> scripts.</p>
 
 <h2 id="portable">Portable</h2>
 
@@ -151,7 +194,7 @@ As a special case on Windows the variable <code>$USERPROFILE</code> will be used
 <p>On Debian-based systems the required libraries and Meson can be installed
 using the following commands:</p>
 <pre><span class="c"># To install the required libraries:</span>
-<span class="nb">sudo </span>apt <span class="nb">install </span>libfreetype6-dev libsdl2-dev
+<span class="nb">sudo </span>apt <span class="nb">install </span>libsdl2-dev
 
 <span class="c"># To install Meson:</span>
 <span class="nb">sudo </span>apt <span class="nb">install </span>meson
@@ -190,14 +233,14 @@ Follow the install instructions in the link.</p>
 <li>Install the dependencies:</li>
 </ul>
 <pre>pacman <span class="nt">-S</span> <span class="se">\</span>
-  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-freetype</span> <span class="se">\</span>
+  git <span class="se">\</span>
+  zip <span class="se">\</span>
+  patch <span class="se">\</span>
   <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-gcc</span> <span class="se">\</span>
   <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-ninja</span> <span class="se">\</span>
-  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-pcre2</span> <span class="se">\</span>
-  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-pkg-config</span> <span class="se">\</span>
-  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-python-pip</span> <span class="se">\</span>
-  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-SDL2</span>
-pip3 <span class="nb">install </span>meson
+  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-meson</span> <span class="se">\</span>
+  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-ca-certificates</span> <span class="se">\</span>
+  <span class="k">${</span><span class="nv">MINGW_PACKAGE_PREFIX</span><span class="k">}</span><span class="nt">-pkg-config</span>
 </pre>
 <p><code>${MINGW_PACKAGE_PREFIX}</code> expands either to <code>mingw-w64-i686</code> or <code>mingw-w64-x86_64</code>
 depending if the current shell is 32 or 64 bit.</p>
