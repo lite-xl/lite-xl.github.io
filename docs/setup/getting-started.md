@@ -7,7 +7,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
 <div class="grid cards" markdown>
 
--   :simple-windows:{ .lg .middle } **Windows**
+-   :material-microsoft-windows:{ .lg .middle } **Windows**
     
     For Windows 7 Service Pack 2 and above.
 
@@ -18,7 +18,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
     [:octicons-arrow-right-24: Installation Instructions](#windows)
 
--   :simple-linux:{ .lg .middle } **Linux**
+-   :material-linux:{ .lg .middle } **Linux**
 
     For Ubuntu 18.04 and above.
 
@@ -31,7 +31,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
     [:octicons-arrow-right-24: Installation Instructions](#linux)
 
--   :simple-apple:{ .lg .middle } **macOS**
+-   :material-apple:{ .lg .middle } **macOS**
 
     For OSX El Capitan and above.
 
