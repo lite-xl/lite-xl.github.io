@@ -98,7 +98,7 @@ You need to [vibe].
 [rejected]:             https://github.com/rxi/lite/issues/145#issuecomment-643636679
 [plugin repository]:    https://github.com/lite-xl/lite-xl-plugins
 [LPM]:                  https://github.com/lite-xl/lite-xl-plugin-manager
-[here]:                 ../user-guide/plugins.md
+[here]:                 ../user-guide/managing-plugins.md
 [v2.1.0]:               https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
 [LSP]:                  https://github.com/lite-xl/lite-xl-lsp
 [lite-xl-terminal]:     https://github.com/adamharrison/lite-xl-terminal
