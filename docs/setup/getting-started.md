@@ -109,6 +109,7 @@ cd lite-xl
 
 # remove previous installation files
 rm -rf $HOME/.local/share/lite-xl $HOME/.local/bin/lite-xl
+# create the directories and copy the new files over
 mkdir -p $HOME/.local/bin && cp lite-xl $HOME/.local/bin
 mkdir -p $HOME/.local/share/lite-xl && cp -r data/* $HOME/.local/share/lite-xl
 ```
