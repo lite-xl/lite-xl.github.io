@@ -219,8 +219,8 @@ To remove an existing keyboard shortcut, you can use `keymap.unbind()`.
 
     ```lua
     local keymap = require "core.keymap"
-    keymap.unbind("ctrl+m", "doc:move-to-previous-line")
-    keymap.unbind("ctrl+m", "doc:move-to-previous-char")
+    keymap.unbind "ctrl+m"
+    keymap.unbind "ctrl+m"
     ```
 
 === "Settings UI"
