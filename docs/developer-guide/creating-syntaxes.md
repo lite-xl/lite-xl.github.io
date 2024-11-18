@@ -193,7 +193,7 @@ For example this highlights `Host` using the `function` token type, `HostName` a
 ["ask"]      = "literal",
 ```
 
-#### Tips: double-check your patterns!
+#### Tip: double-check your patterns!
 
 There are a few common mistakes that can be made when using the `symbols` table in conjunction with patterns.
 
