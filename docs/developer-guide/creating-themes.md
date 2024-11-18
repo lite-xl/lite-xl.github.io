@@ -8,6 +8,50 @@ including syntax highlighting. It can be modified by the user module, a plugin,
 or a theme file. As Lite XL uses immediate-mode rendering, most UI elements will be
 updated once the table were modified.
 
+## Example: Dracula Theme
+
+This is an example of how a theme file could look like.
+This dracula theme is taken from the [colors repository].
+
+```lua
+-- import the style table, and the common module
+-- which provides hex / rgb() -> color conversion functions
+local style = require "core.style"
+local common = require "core.common"
+
+-- set user interface colors
+style.background = { common.color "#282a36" }
+style.background2 = { common.color "#21222b" }
+style.background3 = { common.color "#21222b" }
+style.text = { common.color "#7b81a6" }
+style.caret = { common.color "#f8f8f0" }
+style.accent = { common.color "#8be9fd" }
+style.dim = { common.color "#4f5873" }
+style.divider = { common.color "#1f2029" }
+style.selection = { common.color "#44475a" }
+style.line_number = { common.color "#53576e" }
+style.line_number2 = { common.color "#f8f8f0" }
+style.line_highlight = { common.color "#313442" }
+style.scrollbar = { common.color "#44475a" }
+style.scrollbar2 = { common.color "#ff79c6" }
+
+-- set syntax highlighting colors
+style.syntax["normal"] = { common.color "#f8f8f2" }
+style.syntax["symbol"] = { common.color "#f8f8f2" }
+style.syntax["comment"] = { common.color "#6272a4" }
+style.syntax["keyword"] = { common.color "#ff79c6" }
+style.syntax["keyword2"] = { common.color "#ff79c6" }
+style.syntax["number"] = { common.color "#bd93f9" }
+style.syntax["literal"] = { common.color "#f1fa8c" }
+style.syntax["string"] = { common.color "#f1fa8c" }
+style.syntax["operator"] = { common.color "#ff79c6" }
+style.syntax["function"] = { common.color "#50fa7b" }
+```
+
+When placed into `$USERDIR/colors/dracula.lua`, the theme can be loaded by using
+`#!lua core.reload_module "colors.dracula"` or via the Settings GUI plugin.
+The theme file is executed as a normal Lua module when applied.
+
 ## Look-and-Feel
 
 The following sections describe a list of keys in the `style` table that can be used to customize Lite XL.
@@ -137,6 +181,7 @@ It's not recommended to change these values unless you know what you're doing.
 | `style.margin.tab.top`              | The top margin of editor tabs.
 
 
-[basic-layout]: ../assets/developer-guide/creating-themes/basic-layout.png
-[scrollbar]:    ../assets/developer-guide/creating-themes/scrollbar.png
-[nagbar]:      ../assets/developer-guide/creating-themes/nagbar.png
+[colors repository]: https://github.com/lite-xl/lite-xl-colors/blob/master/colors/dracula.lua
+[basic-layout]:      ../assets/developer-guide/creating-themes/basic-layout.png
+[scrollbar]:         ../assets/developer-guide/creating-themes/scrollbar.png
+[nagbar]:            ../assets/developer-guide/creating-themes/nagbar.png
