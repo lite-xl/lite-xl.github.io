@@ -64,7 +64,7 @@ Available options:
 
 ```
 
-The script will run Meson and create an directory with the application.
+The script will run Meson and create a directory with the application.
 You can copy, compress or symlink the directory, or run Lite XL straight from it.
 
 Lite XL supports two directory structures — portable or a Unix-like layout.
@@ -131,7 +131,7 @@ docker run --rm -t -v .:/lite-xl ghcr.io/lite-xl/lite-xl-build-box-manylinux:v3 
 
 ## macOS
 
-macOS is fully supported and an app disk image is provided in [GitHub Releases].
+macOS is fully supported, and an app disk image is provided in [GitHub Releases].
 Due to a lack of support from Apple to open-source software such as Lite XL,
 official Lite XL releases are self-signed with an ad-hoc signature, which requires extra steps to run.
 In addition, the application can be compiled using the generic instructions

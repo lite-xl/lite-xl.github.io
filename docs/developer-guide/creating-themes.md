@@ -11,7 +11,7 @@ updated once the table were modified.
 ## Example: Dracula Theme
 
 This is an example of how a theme file could look like.
-This dracula theme is taken from the [colors repository].
+This Dracula theme is taken from the [lite-xl-colors] repository.
 
 ```lua
 -- import the style table, and the common module
@@ -56,13 +56,13 @@ The theme file is executed as a normal Lua module when applied.
 
 The following sections describe a list of keys in the `style` table that can be used to customize Lite XL.
 Plugins may choose to use any of the styles defined in the table for their own purposes,
-and there are no guidelines for the purpose of each styles defined here.
+and there are no guidelines for the purpose of all styles defined here.
 Some plugins may use non-standard names within the `style` table, so you should consult
 documentation for those plugins if you wish to modify their style.
 
 ### Fonts
 
-The following entries defines the fonts that are used in Lite XL.
+The following entries define the fonts that are used in Lite XL.
 Lite XL uses icon fonts to render icons and images in the user interface,
 and the icon set can be overridden by specifying an icon font that has the correct mapping.
 
@@ -77,7 +77,7 @@ and the icon set can be overridden by specifying an icon font that has the corre
 
 ### Base Colors
 
-These colors makes up the majority of Lite XL's user interface.
+These colors make up the majority of Lite XL's user interface.
 
 ![Base Colors][basic-layout]{ loading=lazy }
 
@@ -111,7 +111,7 @@ These colors makes up the scrollbar in Lite XL.
 
 The Nagbar is a dialog interfaced used in Lite XL to convey important choices,
 such as saving or discarding files when exiting.
-These colors controls the appearance of the nagbar.
+These colors control the appearance of the Nagbar.
 
 ![Nagbar Colors][nagbar]{ loading=lazy }
 
@@ -119,7 +119,7 @@ These colors controls the appearance of the nagbar.
 | ----                | -----------
 | `style.nagbar`      | The background color of the Nagbar.
 | `style.nagbar_text` | The foreground (text and button) color of the Nagbar.
-| `style.nagbar_dim`  | The overlay color used to dim other parts of the editor when the nagbar is present.
+| `style.nagbar_dim`  | The overlay color used to dim other parts of the editor when the Nagbar is present.
 
 ### Miscellaneous
 
@@ -163,8 +163,8 @@ and are intentionally loosely defined.
 
 ## Size & Dimensions
 
-The following entries defines various sizes and dimensions used in Lite XL's user interface.
-It's not recommended to change these values unless you know what you're doing.
+The following entries define various sizes and dimensions used in Lite XL's user interface.
+It's not recommended changing these values unless you know what you're doing.
 
 | Name                                | Description
 | ----                                | -----------
@@ -181,7 +181,7 @@ It's not recommended to change these values unless you know what you're doing.
 | `style.margin.tab.top`              | The top margin of editor tabs.
 
 
-[colors repository]: https://github.com/lite-xl/lite-xl-colors/blob/master/colors/dracula.lua
-[basic-layout]:      ../assets/developer-guide/creating-themes/basic-layout.png
-[scrollbar]:         ../assets/developer-guide/creating-themes/scrollbar.png
-[nagbar]:            ../assets/developer-guide/creating-themes/nagbar.png
+[lite-xl-colors]: https://github.com/lite-xl/lite-xl-colors/blob/master/colors/dracula.lua
+[basic-layout]:   ../assets/developer-guide/creating-themes/basic-layout.png
+[scrollbar]:      ../assets/developer-guide/creating-themes/scrollbar.png
+[nagbar]:         ../assets/developer-guide/creating-themes/nagbar.png
