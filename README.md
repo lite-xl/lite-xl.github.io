@@ -24,7 +24,7 @@ This will install all dependencies and run `mkdocs serve`.
 ### Windows
 
 On Windows with MSYS2, there is [an issue] that breaks the minifier we're using.
-Instead, install Python with the Python installer and install poetry with pip,
+Instead, install Python with the Python installer and install uv with pip,
 then run the commands above.
 
 You might also need [GTK Runtime] to support all the imaging stuff (e.g. social cards).
@@ -32,7 +32,7 @@ You might also need [GTK Runtime] to support all the imaging stuff (e.g. social 
 The server supports auto code reloading, so the website will automatically
 refresh if changes were made.
 
-To build the website, run `poetry run mkdocs build`.
+To build the website, run `uv run mkdocs build`.
 The website will be built in the `site/` directory.
 
 ## Configuration
