@@ -3,7 +3,7 @@ name: Deploy site
 on: { push: { branches: [master] } }
 
 permissions:
-  pages: write
+  contents: write
 
 jobs:
   deploy:
