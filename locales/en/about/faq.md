@@ -44,10 +44,6 @@ For example: `Core: Find Command` → `core:find-command`
 
 Lua 5.4.
 
-#### Vim mode?
-
-You need to [vibe].
-
 #### Plugin recommendations
 
 Just in case you don't want to comb through our [plugin repository][1],
@@ -71,7 +67,6 @@ You can get more info in the [Features page](/en/about/features).
 
 [LSP]:                https://github.com/lite-xl/lite-xl-lsp
 [lite-xl-terminal]:   https://github.com/adamharrison/lite-xl-terminal
-[vibe]:               https://github.com/eugenpt/lite-xl-vibe
 [autoinsert]:         https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1
 [bracketmatch]:       https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/bracketmatch.lua?raw=1
 [ephemeral_tabs]:     https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/ephemeral_tabs.lua?raw=1
