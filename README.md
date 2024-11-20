@@ -13,11 +13,10 @@ If you want to make small changes without changing how the website
 is structured, you can simply use GitHub's online editor and open a PR.
 
 If you want to make huge changes or build the website yourself, install
-[poetry] and run:
+[uv] and run:
 
 ```sh
-$ poetry install
-$ poetry run mkdocs serve
+$ uv run mkdocs serve
 ```
 
 This will install all dependencies and run `mkdocs serve`.
@@ -90,5 +89,5 @@ This can be found in `fix-keymap.py`.
 [mkdocs-macros-plugin]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/
 [an issue]:             https://github.com/tdewolff/minify/issues/679
 [GTK Runtime]:          https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer
-[poetry]:               https://python-poetry.org
+[uv]:                   https://docs.astral.sh/uv/
 [pymdown]:              https://facelessuser.github.io/pymdown-extensions/extensions/keys

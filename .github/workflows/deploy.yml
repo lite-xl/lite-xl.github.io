@@ -3,7 +3,7 @@ name: Deploy site
 on: { push: { branches: [master] } }
 
 permissions:
-  contents: write
+  pages: write
 
 jobs:
   deploy:
@@ -14,24 +14,28 @@ jobs:
         with:
           # needed for accurate dates
           fetch-depth: 0
+
       # environment has these deps.
       # - name: Install dependencies
       #   run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+          
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
-          cache: poetry
+          python-version-file: pyproject.toml
+
       - name: Cache build data
         uses: actions/cache@v4
         with:
           key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/mkdocs.yml') }}
           path: .cache
-      - name: Install dependencies
-        run: poetry install
-      - name: Set up environment variables
-        run: echo "CARDS=true" >> $GITHUB_ENV
+
       - name: Build and deploy
-        run: poetry run mkdocs gh-deploy --force
+        env: { CARDS: 'true' }
+        run: uv run mkdocs gh-deploy --force

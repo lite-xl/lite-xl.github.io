@@ -1,22 +1,19 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "takase1121", email = "20792268+takase1121@users.noreply.github.com"},
+]
+requires-python = "<4.0,>=3.8"
+dependencies = [
+    "mkdocs-material[imaging]<10.0.0,>=9.5.13",
+    "CairoSVG<3.0.0,>=2.6.0",
+    "mkdocs-git-revision-date-localized-plugin<2.0.0,>=1.1.0",
+    "mkdocs-glightbox<1.0.0,>=0.3.1",
+    "mkdocs-macros-plugin<1.0.0,>=0.7.0",
+    "mkdocs-minify-plugin @ git+https://github.com/takase1121/mkdocs-minify-plugin.git@workaround-pathlib-glob-not-supporting-dir-symlinks",
+    "setuptools<70.0.0,>=69.1.1",
+]
 name = "lite-xl-docs"
 version = "0.1.0"
 description = "The website for Lite XL."
-authors = ["takase1121 <20792268+takase1121@users.noreply.github.com>"]
 readme = "README.md"
 package-mode = false
-
-[tool.poetry.dependencies]
-python = "^3.8"
-mkdocs-material = {extras = ["imaging"], version = "^9.5.13"}
-CairoSVG = "^2.6.0"
-mkdocs-git-revision-date-localized-plugin = "^1.1.0"
-mkdocs-glightbox = "^0.3.1"
-mkdocs-macros-plugin = "^0.7.0"
-mkdocs-minify-plugin = {git = "https://github.com/takase1121/mkdocs-minify-plugin.git", rev = "workaround-pathlib-glob-not-supporting-dir-symlinks"}
-setuptools = "^69.1.1"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
