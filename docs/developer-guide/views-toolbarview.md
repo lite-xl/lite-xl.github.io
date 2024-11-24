@@ -2,21 +2,36 @@
 description: Learn to extend a View in Lite XL for extra functionality.
 ---
 
-![Screenshot of a ToolbarView example][screenshot-toolbarview]
+### What is ToolbarView?
 
+ToolbarView provides a generic toolbar above the existing one in Lite XL.
 A toolbar is a GUI component that allows mouse-driven activation of commands by pressing buttons.
 
-## Creating a plugin
+### What does the plugin do?
+
+The plugin allows users to create their own toolbars with custom icons and functionality.
+For example, the toolbar can be configured for Git operations, which is shown below.
+
+![Screenshot of a ToolbarView example][screenshot-toolbarview]
+
+### Create a plugin
 
 Before reading further, it may be useful to refresh Lua basics by reading the [Lua manual][learning-lua].
 
 Now let's start writing the plugin.
+Create a directory called `toolbar` in `USERDIR/plugins`.
+`USERDIR` usually corresponds to `~/.config/lite-xl` on Linux and macOS,
+and `%USERPROFILE/.config/lite-xl` on Windows.
 
-## Check if the plugin directory exists
+Inside the directory, create a file called `init.lua`.
+Add `#!lua -- mod-version:3` to the first line of the file to indicate
+the versions of Lite XL supported by the plugin.
 
-To begin with, we add some code that retrieves information like folder paths of plugins and fonts.
+### Get plugin directory
 
-```lua
+We add some code that retrieves information like folder paths of plugins and fonts.
+
+```lua title="USERDIR/plugins/toolbar/init.lua"
 local function get_plugin_directory()
   local paths = {
     USERDIR .. PATHSEP .. "plugins" .. PATHSEP .. "toolbar",
@@ -32,12 +47,19 @@ local function get_plugin_directory()
 end
 ```
 
-## Create the view
+The `get_plugin_directory()` function is needed as we may load icon fonts from the plugin
+directory itself.
+Lua does not provide the path of the current file (e.g. `__filename` and `__dirname` in Node.js),
+so we have to improvise and hard-code the path.
+For this reason, the code will not work if the plugin is saved as `USERDIR/plugins/toolbar.lua`,
+even if Lite XL could load the plugin.
+
+### Create the view
 
 Next we create an instance of our custom toolbar view, make it inherit the ToolbarView super-constructor, 
 specify the desired icon font and assign the icons to their respective commands.
 
-```lua
+```lua title="USERDIR/plugins/toolbar/init.lua"
 local Toolbar = ToolbarView:extend()
 
 function Toolbar:new()
@@ -56,11 +78,12 @@ end
 
 You can add existing commands inside the empty fields or write your own.
 
-## Add the view
+### Add the view
 
-Now we insert the toolbar into Lite XL and make it extendable by other plugins with `local toolbar = require "plugins.toolbar"`.
+Now we insert the toolbar into Lite XL and make it extendable by other plugins with
+`#!lua local toolbar = require "plugins.toolbar"`.
 
-```lua
+```lua title="USERDIR/plugins/toolbar/init.lua"
 toolbar.example_toolbar_view = Toolbar()
 -- TreeView is split along the up direction and the ToolbarView is added at the bottom
 -- {y = true} indicates that the ToolbarView size should be fixed along the y axis
@@ -68,7 +91,7 @@ toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolb
 return toolbar
 ```
 
-## Create a custom icon font
+### Create a custom icon font
 
 The last step is preparing a simple icon font with Fontello; to do this, you must do the following:
 
@@ -86,10 +109,11 @@ paste it into the corresponding place in the `toolbar_commands` table (the examp
 
     ![Red Button][red-button]
 
-## Complete Example
+### The code
 
 The following is an example of a very simple toolbar with a custom icon font:
-```lua
+
+```lua title="USERDIR/plugins/toolbar/init.lua"
 -- mod-version:3 -- lite-xl 2.1
 
 local config = require "core.config"
@@ -132,9 +156,10 @@ toolbar.example_toolbar_node = TreeView.node.b:split("up", toolbar.example_toolb
 return toolbar
 ```
 
+
 [screenshot-toolbarview]: ../assets/screenshots/views/toolbarview.png
-[drag-n-drop]: ../assets/screenshots/views/drag-n-drop.png
-[red-button]: ../assets/screenshots/views/red-button.png
-[customize-codes]: ../assets/screenshots/views/customize-codes.png
-[learning-lua]: https://www.lua.org/pil/contents.html
-[fontello]: https://fontello.com/
+[drag-n-drop]:            ../assets/screenshots/views/drag-n-drop.png
+[red-button]:             ../assets/screenshots/views/red-button.png
+[customize-codes]:        ../assets/screenshots/views/customize-codes.png
+[learning-lua]:           https://www.lua.org/pil/contents.html
+[fontello]:               https://fontello.com/
