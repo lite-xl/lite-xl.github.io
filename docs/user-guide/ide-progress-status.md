@@ -1,10 +1,10 @@
 ---
-description: Check if your favourite language is supported.
+description: Check if your favorite language is supported.
 ---
 
 # Lite XL IDE Progress Status
 
-intro
+WIP: intro
 
 ## Development boards
 
