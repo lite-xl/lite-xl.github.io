@@ -43,8 +43,8 @@ jobs:
       - name: Install Lite XL (macOS)
         if: ${{ startsWith(matrix.platform.runs_on, 'macos') }}
         run: |
-          wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
-          hdiutil mount -noverify "lite-xl-${{ inputs.lite_xl_version }}-macos-x86_64.dmg"
+          wget "https://github.com/lite-xl/lite-xl/releases/download/${{ inputs.lite_xl_version }}/lite-xl-${{ inputs.lite_xl_version }}-macos-universal.dmg"
+          hdiutil mount -noverify "lite-xl-${{ inputs.lite_xl_version }}-macos-universal.dmg"
 
       - name: Install keymap-export
         run: |
@@ -81,6 +81,7 @@ jobs:
     name: Create PR
     runs-on: ubuntu-latest
     needs: generate_keymap
+    permissions: { contents: write }
     steps:
 
       - name: Checkout
