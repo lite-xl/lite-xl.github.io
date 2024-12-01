@@ -9,7 +9,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     outputs:
-      lite_xl_version: ${{ steps.version.outputs.lxl }}
+      lxl: ${{ steps.version.outputs.lxl }}
     steps:
 
       - name: Get Lite XL version
