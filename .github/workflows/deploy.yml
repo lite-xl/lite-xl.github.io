@@ -3,7 +3,6 @@ name: Deploy site
 on: { push: { branches: [master] } }
 
 jobs:
-
   version:
     runs-on: ubuntu-latest
     outputs: { lxl: ${{ steps.version.outputs.lxl }} }
