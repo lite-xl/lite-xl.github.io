@@ -2,15 +2,15 @@
 authors = [
     {name = "takase1121", email = "20792268+takase1121@users.noreply.github.com"},
 ]
-requires-python = "<4.0,>=3.8"
+requires-python = "<4.0,>=3.9"
 dependencies = [
     "mkdocs-material[imaging]<10.0.0,>=9.5.13",
     "CairoSVG<3.0.0,>=2.6.0",
     "mkdocs-git-revision-date-localized-plugin<2.0.0,>=1.1.0",
     "mkdocs-glightbox<1.0.0,>=0.3.1",
     "mkdocs-macros-plugin<1.0.0,>=0.7.0",
-    "mkdocs-minify-plugin @ git+https://github.com/takase1121/mkdocs-minify-plugin.git@workaround-pathlib-glob-not-supporting-dir-symlinks",
     "setuptools<70.0.0,>=69.1.1",
+    "mkdocs-publisher>=1.4.3",
 ]
 name = "lite-xl-docs"
 version = "0.1.0"

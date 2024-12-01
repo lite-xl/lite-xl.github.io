@@ -1,0 +1,24 @@
+{
+  "name": "lite-xl-docs",
+  "version": "0.1.0",
+  "description": "Documentation in mkdocs-material",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cssnano": "^7.0.6",
+    "html-minifier-terser": "^7.2.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-svgo": "^7.0.1",
+    "uglify-js": "^3.19.3"
+  }
+}

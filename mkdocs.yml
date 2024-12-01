@@ -72,16 +72,8 @@ plugins:
         font_family: Roboto
         background_color: "#252529"
         color: "#e1e1e6"
-  - minify:
-      minify_html: true
-      minify_css: true
-      minify_js: true
-      cache_safe: true
-      js_files:
-        - javascripts/wade.min.js
-        - javascripts/search.js
-      css_files:
-        - stylesheets/extra.css
+  - pub-minifier:
+      cache_dir: .cache/plugin/pub-minifier
 
 markdown_extensions:
   - admonition
