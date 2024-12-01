@@ -2,20 +2,16 @@ name: Deploy site
 
 on: { push: { branches: [master] } }
 
-permissions:
-  contents: write
-
 jobs:
+
   version:
     runs-on: ubuntu-latest
-    outputs:
-      lxl: ${{ steps.version.outputs.lxl }}
+    outputs: { lxl: ${{ steps.version.outputs.lxl }} }
     steps:
 
       - name: Get Lite XL version
         id: version
-        env:
-          GH_TOKEN: ${{ github.token }}
+        env: { GH_TOKEN: ${{ github.token }} }
         run: echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
 
   generate_keymap:
@@ -25,11 +21,10 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-
     with:
       lite_xl_version: ${{ needs.version.outputs.lxl }}
 
-  deploy:
+  build:
     runs-on: ubuntu-latest
     needs: [version, generate_keymap]
     steps:
@@ -71,8 +66,28 @@ jobs:
           echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" >> $GITHUB_ENV
 
-      - name: Build and deploy
+      - name: Build
         env:
           CARDS: 'true'
           LITE_XL_VERSION: ${{ needs.version.outputs.lxl }}
-        run: uv run mkdocs gh-deploy --force
+        run: uv run mkdocs build
+
+      - name: Upload page artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
