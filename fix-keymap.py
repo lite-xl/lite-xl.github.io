@@ -73,6 +73,8 @@ def main():
     for [entry, keys] in content:
         for i in range(0, len(keys)):
             keys[i] = "+".join(replace_key(key) for key in keys[i].split("+"))
+        keys.sort()
+    content.sort(key=lambda x: x[0])
 
     json.dump(content, args.output)
 
