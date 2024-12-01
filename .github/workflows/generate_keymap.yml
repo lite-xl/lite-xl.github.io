@@ -22,9 +22,15 @@ on:
         default: 'v2.1.6'
 
 jobs:
+  generate_keymap_skip:
+    name: Generate keymap (skipped)
+    if: inputs.skip
+    runs-on: ubuntu-latest
+    steps: []
+
   generate_keymap:
     name: Generate keymap
-    if: ${{ ! inputs.skip }}
+    if: !inputs.skip
     strategy:
       matrix:
         platform:
