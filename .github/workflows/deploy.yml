@@ -6,14 +6,34 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  version:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Lite XL version
+        env: { GH_TOKEN: ${{ github.token }} }
+        run: echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
+
+  generate_keymap:
+    uses: ./.github/workflows/generate_keymap.yml
+    needs: version
+    with:
+      lite_xl_version: ${{ needs.version.outputs.lxl }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [version, generate_keymap]
+    steps:
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # needed for accurate dates
           fetch-depth: 0
+
+      - name: Download updated keymaps
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: docs/assets
 
       # environment has these deps.
       # - name: Install dependencies
@@ -24,7 +44,7 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
-          
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
@@ -35,16 +55,14 @@ jobs:
         with:
           key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/mkdocs.yml') }}
           path: .cache
-          
+
       - name: Setup environment variables
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          echo "LITE_XL_VERSION=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> $GITHUB_ENV
           echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" >> $GITHUB_ENV
-          
 
       - name: Build and deploy
-        env: { CARDS: 'true' }
+        env:
+          CARDS: 'true'
+          LITE_XL_VERSION: ${{ needs.version.outputs.lxl }}
         run: uv run mkdocs gh-deploy --force
