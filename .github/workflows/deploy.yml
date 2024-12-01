@@ -95,7 +95,7 @@ jobs:
         env:
           CARDS: 'true'
           LITE_XL_VERSION: ${{ needs.version.outputs.lxl }}
-        run: uv run mkdocs build
+        run: npm run build
 
       - name: Upload page artifact
         id: deployment
