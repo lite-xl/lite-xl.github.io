@@ -8,9 +8,12 @@ permissions:
 jobs:
   version:
     runs-on: ubuntu-latest
+    outputs:
+      lite_xl_version: ${{ steps.version.outputs.lxl }}
     steps:
 
       - name: Get Lite XL version
+        id: version
         env:
           GH_TOKEN: ${{ github.token }}
         run: echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
