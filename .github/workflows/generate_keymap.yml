@@ -32,7 +32,7 @@ jobs:
 
   generate_keymap:
     name: Generate keymap
-    if: ! inputs.skip
+    if: ${{ !inputs.skip }}
     strategy:
       matrix:
         platform:
