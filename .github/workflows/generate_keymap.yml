@@ -18,7 +18,7 @@ on:
 jobs:
   generate_keymap:
     name: Generate keymap
-    strategy: matrix
+    strategy:
       matrix:
         platform:
           - { runs_on: 'ubuntu-latest', suffix: '' }
