@@ -81,7 +81,10 @@ jobs:
     name: Create PR
     runs-on: ubuntu-latest
     needs: generate_keymap
-    permissions: { contents: write }
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
 
       - name: Checkout
