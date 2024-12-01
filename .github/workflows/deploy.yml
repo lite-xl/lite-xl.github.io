@@ -3,7 +3,7 @@ name: Deploy site
 on:
   push:
     branches: [master]
-    paths-ignore: ['docs/assets/keymap*.json']
+    paths-ignore: ['docs/assets/keymap*.json', 'README.md']
 
 jobs:
   version:

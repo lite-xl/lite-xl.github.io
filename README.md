@@ -21,13 +21,23 @@ $ uv run mkdocs serve
 
 This will install all dependencies and run `mkdocs serve`.
 
+### Minification
+
+The website uses [pub-minifier] to create minified JS, CSS and HTML code
+when running `mkdocs build`.
+The minification is optional and will only take place if you have the tools.
+To use this feature, run the following commands instead of `uv run mkdocs build`:
+
+```sh
+$ npm ci
+$ npm run build
+```
+
+These commands assume that you have node.js installed.
+
 ### Windows
 
-On Windows with MSYS2, there is [an issue] that breaks the minifier we're using.
-Instead, install Python with the Python installer and install uv with pip,
-then run the commands above.
-
-You might also need [GTK Runtime] to support all the imaging stuff (e.g. social cards).
+You might need [GTK Runtime] to support all the imaging stuff (e.g. social cards).
 
 The server supports auto code reloading, so the website will automatically
 refresh if changes were made.
@@ -50,6 +60,10 @@ It is required if you plan to host the website on another domain
 
 This is the URL of the website repository.
 You might want to change this so that the `Edit` buttons work properly.
+
+##### `LITE_XL_VERSION`
+
+This is the version of Lite XL to download in the setup page.
 
 ## Site organization
 
@@ -87,7 +101,7 @@ This can be found in `fix-keymap.py`.
 [MkDocs]:               https://www.mkdocs.org/
 [mkdocs-material]:      https://squidfunk.github.io/mkdocs-material/
 [mkdocs-macros-plugin]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/
-[an issue]:             https://github.com/tdewolff/minify/issues/679
+[pub-minifier]:         https://mkdocs-publisher.github.io/setup/seo-and-sharing/pub-minifier/
 [GTK Runtime]:          https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer
 [uv]:                   https://docs.astral.sh/uv/
 [pymdown]:              https://facelessuser.github.io/pymdown-extensions/extensions/keys
