@@ -22,6 +22,10 @@ jobs:
     uses: ./.github/workflows/generate_keymap.yml
     needs: version
     secrets: inherit
+    permissions:
+      contents: write
+      pull-requests: write
+
     with:
       lite_xl_version: ${{ needs.version.outputs.lxl }}
 
