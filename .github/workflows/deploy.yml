@@ -36,7 +36,9 @@ jobs:
           key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/mkdocs.yml') }}
           path: .cache
           
-      - name: Get latest lite-xl version
+      - name: Setup environment variables
+        env:
+          GH_TOKEN: ${{ github.token }}
         run:
           echo "LITE_XL_VERSION=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> $GITHUB_ENV
           echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
