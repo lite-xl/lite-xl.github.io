@@ -35,6 +35,10 @@ jobs:
         with:
           key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/mkdocs.yml') }}
           path: .cache
+          
+      - name: Get latest lite-xl version
+        run:
+          echo "LITE_XL_VERSION=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> $GITHUB_ENV
 
       - name: Build and deploy
         env: { CARDS: 'true' }
