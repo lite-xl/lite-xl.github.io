@@ -1,123 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://lite-xl.com/docs/</loc>
+         <loc>https://lite-xl.github.io/docs/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/about/contributors/</loc>
+         <loc>https://lite-xl.github.io/docs/about/contributors/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/about/faq/</loc>
+         <loc>https://lite-xl.github.io/docs/about/faq/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/background-tasks/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/background-tasks/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/child-processes/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/child-processes/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/classes-and-objects/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/classes-and-objects/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/commands/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/commands/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/creating-syntaxes/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/creating-syntaxes/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/creating-themes/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/creating-themes/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/debugging/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/debugging/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/documents/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/documents/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/interacting-with-the-os/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/interacting-with-the-os/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/introduction/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/introduction/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/managing-keyboard-shortcuts/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/managing-keyboard-shortcuts/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/renderer-internals/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/renderer-internals/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/simple-plugin/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/simple-plugin/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/using-regular-expressions/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/using-regular-expressions/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/views-toolbarview/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/views-toolbarview/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/developer-guide/views/</loc>
+         <loc>https://lite-xl.github.io/docs/developer-guide/views/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/setup/building-from-source/</loc>
+         <loc>https://lite-xl.github.io/docs/setup/building-from-source/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/setup/getting-started/</loc>
+         <loc>https://lite-xl.github.io/docs/setup/getting-started/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/setup/install-from-package-managers/</loc>
+         <loc>https://lite-xl.github.io/docs/setup/install-from-package-managers/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/setup/platform-notes/</loc>
+         <loc>https://lite-xl.github.io/docs/setup/platform-notes/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/configuration/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/configuration/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/ide-setup/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/ide-setup/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/introduction/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/introduction/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/keymap/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/keymap/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/lsp/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/lsp/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/macos-keymap/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/macos-keymap/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
     <url>
-         <loc>https://lite-xl.com/docs/user-guide/managing-plugins/</loc>
+         <loc>https://lite-xl.github.io/docs/user-guide/managing-plugins/</loc>
          <lastmod>2024-12-01</lastmod>
     </url>
 </urlset>
