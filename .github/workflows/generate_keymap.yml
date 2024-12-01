@@ -8,6 +8,11 @@ on:
         required: true
         default: 'v2.1.6'
         type: string
+      skip:
+        description: 'Skip this step'
+        required: false
+        default: false
+        type: boolean
 
   workflow_dispatch:
     inputs:
@@ -19,6 +24,7 @@ on:
 jobs:
   generate_keymap:
     name: Generate keymap
+    if: ${{ ! inputs.skip }}
     strategy:
       matrix:
         platform:

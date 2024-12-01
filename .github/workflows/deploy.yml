@@ -30,7 +30,6 @@ jobs:
   generate_keymap:
     uses: ./.github/workflows/generate_keymap.yml
     needs: version
-    if: needs.version.outputs.lxl != needs.version.outputs.keymap || needs.version.outputs.lxl != needs.version.outputs.keymap_macos
     secrets: inherit
 
     permissions:
@@ -39,6 +38,7 @@ jobs:
 
     with:
       lite_xl_version: ${{ needs.version.outputs.lxl }}
+      skip: needs.version.outputs.lxl == needs.version.outputs.keymap && needs.version.outputs.lxl == needs.version.outputs.keymap_macos
 
   build:
     runs-on: ubuntu-latest
