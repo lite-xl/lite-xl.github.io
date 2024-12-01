@@ -9,8 +9,10 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
+
       - name: Get Lite XL version
-        env: { GH_TOKEN: ${{ github.token }} }
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
 
   generate_keymap:
