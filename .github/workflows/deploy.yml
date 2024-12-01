@@ -24,8 +24,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
-          echo "keymap=$(jq .version docs/assets/keymap.json)" >> "$GITHUB_OUTPUT"
-          echo "keymap_macos=$(jq .version docs/assets/keymap-macos.json)" >> "$GITHUB_OUTPUT"
+          echo "keymap=$(jq -r .version docs/assets/keymap.json)" >> "$GITHUB_OUTPUT"
+          echo "keymap_macos=$(jq -r .version docs/assets/keymap-macos.json)" >> "$GITHUB_OUTPUT"
 
   generate_keymap:
     uses: ./.github/workflows/generate_keymap.yml
