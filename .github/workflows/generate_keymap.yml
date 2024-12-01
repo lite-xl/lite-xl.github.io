@@ -83,7 +83,7 @@ jobs:
     needs: generate_keymap
     permissions:
       contents: write
-      pull_requests: write
+      pull-requests: write
 
     steps:
 
