@@ -39,6 +39,9 @@ jobs:
       - name: Get latest lite-xl version
         run:
           echo "LITE_XL_VERSION=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> $GITHUB_ENV
+          echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+          echo "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" >> $GITHUB_ENV
+          
 
       - name: Build and deploy
         env: { CARDS: 'true' }
