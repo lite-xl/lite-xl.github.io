@@ -62,6 +62,9 @@ def main():
         description="Converts the keymap into something pymdown can handle"
     )
     parser.add_argument(
+      "--version", help="The version of Lite XL this keymap is meant for"
+    )
+    parser.add_argument(
         "input", type=FileType("r", encoding="utf-8"), help="Input keymap JSON file"
     )
     parser.add_argument(
@@ -76,7 +79,7 @@ def main():
         keys.sort()
     content.sort(key=lambda x: x[0])
 
-    json.dump(content, args.output)
+    json.dump({ "map": content, "version": args.version }, args.output)
 
 
 if __name__ == "__main__":
