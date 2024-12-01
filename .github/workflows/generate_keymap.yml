@@ -26,7 +26,9 @@ jobs:
     name: Generate keymap (skipped)
     if: inputs.skip
     runs-on: ubuntu-latest
-    steps: []
+    steps:
+      - name: Do nothing
+        run: bash --version
 
   generate_keymap:
     name: Generate keymap
