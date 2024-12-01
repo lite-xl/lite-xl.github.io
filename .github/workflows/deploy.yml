@@ -10,17 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       lxl: ${{ steps.version.outputs.lxl }}
+      keymap: ${{ steps.version.outputs.keymap }}
+      keymap_macos: ${{ steps.version.outputs.keymap_macos }}
     steps:
 
-      - name: Get Lite XL version
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get versions
         id: version
         env:
           GH_TOKEN: ${{ github.token }}
-        run: echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
+          echo "keymap=$(jq .version docs/assets/keymap.json)" >> "$GITHUB_OUTPUT"
+          echo "keymap_macos=$(jq .version docs/assets/keymap-macos.json)" >> "$GITHUB_OUTPUT"
 
   generate_keymap:
     uses: ./.github/workflows/generate_keymap.yml
     needs: version
+    if: needs.version.outputs.lxl != needs.version.outputs.keymap || needs.version.outputs.lxl != needs.version.outputs.keymap_macos
     secrets: inherit
     permissions:
       contents: write
