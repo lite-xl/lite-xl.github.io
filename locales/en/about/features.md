@@ -49,6 +49,4 @@ Lite XL has no intention to link to any widget toolkits (Qt and GTK) which are r
 An alternative approach is to create our own IPC mechanism, but that's [reinventing](https://en.wikipedia.org/wiki/D-Bus) [the](https://en.wikipedia.org/wiki/Inter-Client_Communication_Conventions_Manual) [wheel](https://github.com/swaywm/wlroots).
 
 ## Integrated terminal
-A terminal is complex to implement.
-There are projects that _can_ be ported to Lua, such as [xterm.js](https://xtermjs.org/).
-If someone is interested, they can do so.
+There is a [plug-in providing an integrated terminal for lite-xl](https://github.com/pdenapo/lite-xl.github.io/tree/document-plugin-terminal). 
