@@ -39,8 +39,8 @@ jobs:
           - { runs_on: 'ubuntu-latest', suffix: '' }
           - { runs_on: 'macos-latest', suffix: '-macos' }
     runs-on: ${{ matrix.platform.runs_on }}
-    steps:
 
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -100,7 +100,6 @@ jobs:
       pull-requests: write
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -118,5 +117,4 @@ jobs:
             This is an automated PR that updates keymap.json and keymap-macos.json
             based on changes in Lite XL ${{ inputs.lite_xl_version }}.
           commit-message: Update keymap.json and keymap-macos.json with changes from ${{ inputs.lite_xl_version }}
-          add-paths: |
-            docs/assets/keymap*.json
+          add-paths: docs/assets/keymap*.json

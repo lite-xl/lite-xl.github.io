@@ -1,6 +1,7 @@
 name: Deploy site
 
 on:
+  workflow_dispatch:
   push:
     branches: [master]
     paths-ignore: ['docs/assets/keymap*.json', 'README.md']
@@ -20,8 +21,7 @@ jobs:
 
       - name: Get versions
         id: version
-        env:
-          GH_TOKEN: ${{ github.token }}
+        env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
           echo "keymap=$(jq -r .version docs/assets/keymap.json)" >> "$GITHUB_OUTPUT"
@@ -98,7 +98,6 @@ jobs:
         run: npm run build
 
       - name: Upload page artifact
-        id: deployment
         uses: actions/upload-pages-artifact@v3
         with: { path: site }
 
