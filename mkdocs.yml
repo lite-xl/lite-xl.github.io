@@ -1,7 +1,7 @@
 site_name: Lite XL
 
-site_url: !ENV [SITE_URL, "https://lite-xl.com/docs"]
-repo_url: !ENV [REPO_URL, "https://github.com/lite-xl/docs"]
+site_url: !ENV [SITE_URL, "https://lite-xl.com/"]
+repo_url: !ENV [REPO_URL, "https://github.com/lite-xl/lite-xl.github.io"]
 
 site_description: "Lightweight and powerful code editor, available for Windows, Linux and macOS."
 site_author: "takase1121 <20792268+takase1121@users.noreply.github.com>"
@@ -45,7 +45,7 @@ extra_javascript:
   - javascripts/search.js
 
 extra:
-  lite_xl_version: !ENV [LITE_XL_VERSION, "v2.1.6"]
+  lite_xl_version: !ENV [LITE_XL_VERSION, "v2.1.7"]
   version:
     provider: mike
   social:
