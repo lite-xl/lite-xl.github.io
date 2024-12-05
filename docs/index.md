@@ -39,8 +39,8 @@ Available for Linux, Windows and macOS
 </div>
 </div>
 
-![Lite XL with summer theme][summer]{ loading=lazy }
-![Lite XL with default theme][default]{ loading=lazy }
+![Lite XL with summer theme][summer]{ data-gallery=screenshot-light }
+![Lite XL with default theme][default]{ data-gallery=screenshot-dark }
 
 # All the things you want for editing. { .text-center .no-margin-top }
 
