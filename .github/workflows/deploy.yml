@@ -88,7 +88,11 @@ jobs:
 
       - name: Setup environment variables
         run: |
-          echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+          if [[ "${GITHUB_REPOSITORY}" = *.github.io ]]; then
+            echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/" >> $GITHUB_ENV
+          else
+            echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+          fi
           echo "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" >> $GITHUB_ENV
 
       - name: Build
