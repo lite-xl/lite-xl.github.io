@@ -6,7 +6,7 @@ description: A list of people that contributed to Lite XL.
 
 This is a list of people with more than 2 commits to Lite XL.
 The actual number of contributors is far, far greater than what we're able to
-list here, including plugins, themes, LPM and bug hunters and beta testers.
+list here, including plugins, themes, lpm, bug hunters and beta testers.
 We deeply appreciate the effort you have put into making Lite XL better.
 
 You can get the contributors for a particular release on the [release page].

@@ -73,35 +73,32 @@ keymap.add({ ["ctrl+escape"] = {} }, true)
 
 You can search for commands in the command palette.
 
-For each command, replace the spaces on the right side with dashes.
+For each command, replace the spaces with dashes.
 
 For example: `Core: Find Command` → `core:find-command`
 
 ## What version of Lua does Lite XL use?
 
-Lua 5.4 since v2.1.0 and Lua 5.4.2 before v2.1.0.
-There's some activity around using LuaJIT instead (which is 5.1)
-but it can provide some Lua 5.2 compatibility.
-[Ongoing work][master-luajit-branch] is being done to
-maintain compatibility between LuaJIT and Lua 5.4,
-but this is not officially supported.
+Lua 5.4, since [v2.1.0], released in late 2022.
+
+Lite XL used Lua 5.2 before [v2.1.0].
 
 ## Vim mode?
 
 You need to [vibe].
 
 
-[lite]:                 https://github.com/rxi/lite
-[rxi]:                  https://github.com/rxi/lite
-[FreeType]:             https://freetype.org/
-[AGG]:                  https://agg.sourceforge.net/antigrain.com/index.html
-[rejected]:             https://github.com/rxi/lite/issues/145#issuecomment-643636679
-[plugin repository]:    https://github.com/lite-xl/lite-xl-plugins
-[LPM]:                  https://github.com/lite-xl/lite-xl-plugin-manager
-[here]:                 ../user-guide/managing-plugins.md
-[v2.1.0]:               https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
-[LSP]:                  https://github.com/lite-xl/lite-xl-lsp
-[lite-xl-terminal]:     https://github.com/adamharrison/lite-xl-terminal
-[autowrap]:             https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autowrap.lua?raw=1
-[master-luajit-branch]: https://github.com/lite-xl/lite-xl/pull/880
-[vibe]:                 https://github.com/eugenpt/lite-xl-vibe
+[lite]:              https://github.com/rxi/lite
+[rxi]:               https://github.com/rxi/lite
+[FreeType]:          https://freetype.org/
+[AGG]:               https://agg.sourceforge.net/antigrain.com/index.html
+[rejected]:          https://github.com/rxi/lite/issues/145#issuecomment-643636679
+[plugin repository]: https://github.com/lite-xl/lite-xl-plugins
+[LPM]:               https://github.com/lite-xl/lite-xl-plugin-manager
+[here]:              ../user-guide/managing-plugins.md
+[v2.1.0]:            https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
+[LSP]:               https://github.com/lite-xl/lite-xl-lsp
+[lite-xl-terminal]:  https://github.com/adamharrison/lite-xl-terminal
+[autowrap]:          https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autowrap.lua?raw=1
+[Pragtical]:         https://pragtical.dev
+[vibe]:              https://github.com/eugenpt/lite-xl-vibe
