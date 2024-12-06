@@ -1,9 +1,5 @@
 # Lite XL Website
 
-> **Note**
-> This website is still under construction.
-> Expect jank and general problems.
-
 This website is written in Markdown with [MkDocs] and [mkdocs-material].
 We also use [mkdocs-macros-plugin] for rendering certain pages.
 
@@ -87,11 +83,15 @@ This project follows typical [MkDocs] file structure.
     - `extra.css`: Styles for custom syntax highlighting.
   - `user-guide/`
   - `index.md`: Homepage.
+- `overrides/`: Overrides for the theme
 
 # Keymap
 
 The "generate keymap" action should be run after each release to update
 the keymap.
+This workflow should run automatically, provided that the API keys used
+to invoke this workflow is still valid.
+
 The keymap generation is currently a two-part process involving some
 fix up on our side to match [pymdown]'s syntax.
 This can be found in `fix-keymap.py`.
