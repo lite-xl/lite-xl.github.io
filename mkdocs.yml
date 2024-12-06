@@ -30,9 +30,13 @@ theme:
   features:
     - navigation.footer
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
-    - navigation.top
     - navigation.tabs
+    - navigation.sections
+    - navigation.prune
+    - navigation.indexes
+    - navigation.top
     - content.code.copy
     - content.action.view
     - content.action.edit
@@ -127,25 +131,28 @@ nav:
       - "Keymap": user-guide/keymap.md
       - "macOS Keymap": user-guide/macos-keymap.md
   - "Developer Guide":
-      - "Introduction": developer-guide/introduction.md
+      - developer-guide/index.md
       - "Syntaxes and Themes":
-        - "Creating Syntaxes": developer-guide/creating-syntaxes.md
-        - "Creating Themes": developer-guide/creating-themes.md
-      - "Commands": developer-guide/commands.md
-      - "Managing Keyboard Shortcuts": developer-guide/managing-keyboard-shortcuts.md
-      - "Classes and Objects": developer-guide/classes-and-objects.md
-      - "Documents": developer-guide/documents.md
-      - "Views": developer-guide/views.md
-      - "Background Tasks": developer-guide/background-tasks.md
-      - "Debugging": developer-guide/debugging.md
-      - "Using Regular Expressions": developer-guide/using-regular-expressions.md
-      - "Interacting with the OS": developer-guide/interacting-with-the-os.md
-      - "Child Processes": developer-guide/child-processes.md
+        - "Creating Syntaxes": developer-guide/syntaxes-and-themes/creating-syntaxes.md
+        - "Creating Themes": developer-guide/syntaxes-and-themes/creating-themes.md
+      - "Commands and Shortcuts":
+        - "Commands": developer-guide/commands-and-shortcuts/commands.md
+        - "Managing Keyboard Shortcuts": developer-guide/commands-and-shortcuts/managing-keyboard-shortcuts.md
+      - "Writing Plugins":
+        - "Classes and Objects": developer-guide/writing-plugins/classes-and-objects.md
+        - "Documents": developer-guide/writing-plugins/documents.md
+        - "Views": developer-guide/writing-plugins/views.md
+        - "Background Tasks": developer-guide/writing-plugins/background-tasks.md
+        - "Debugging": developer-guide/writing-plugins/debugging.md
+      - "Using Libraries":
+        - "Using Regular Expressions": developer-guide/using-libraries/using-regular-expressions.md
+        - "Interacting with the OS": developer-guide/using-libraries/interacting-with-the-os.md
+        - "Child Processes": developer-guide/using-libraries/child-processes.md
       - "Samples":
-        - "Simple Plugin": developer-guide/simple-plugin.md
-        - "ToolbarView": developer-guide/views-toolbarview.md
+        - "Simple Plugin": developer-guide/samples/simple-plugin.md
+        - "ToolbarView": developer-guide/samples/views-toolbarview.md
       - "Advanced Topics":
-        - "How Renderer Works": developer-guide/renderer-internals.md
+        - "How Renderer Works": developer-guide/advanced-topics/renderer-internals.md
   - "About":
       - "Contributors": about/contributors.md
       - "FAQ": about/faq.md

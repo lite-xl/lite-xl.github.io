@@ -128,4 +128,4 @@ Available for Linux, Windows and macOS
 [default]:         ./assets/screenshots/theme-default.png#only-dark
 [setup]:           setup/getting-started.md
 [user-guide]:      user-guide/introduction.md
-[developer-guide]: developer-guide/introduction.md
+[developer-guide]: developer-guide/index.md

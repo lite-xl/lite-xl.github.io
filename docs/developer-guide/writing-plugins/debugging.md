@@ -250,4 +250,4 @@ The debugger cannot set breakpoints by line numbers.
 [lite-debugger]:   https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/lite-debugger.lua?raw=1
 [debugger]:        https://github.com/adamharrison/lite-xl-ide.git
 [lpm]:             https://github.com/lite-xl/lite-xl-plugin-manager
-[debugger-prompt]: ../assets/developer-guide/debugging/debugger-prompt.png
+[debugger-prompt]: ../../assets/developer-guide/debugging/debugger-prompt.png

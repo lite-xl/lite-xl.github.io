@@ -191,4 +191,4 @@ based on our [documentation] and existing plugins.
 [terminal]:                https://github.com/adamharrison/lite-xl-terminal.git
 [widgets]:                 https://github.com/lite-xl/lite-xl-widgets
 [issue tracker]:           https://github.com/lite-xl/lite-xl-plugins/issues
-[documentation]:           ../developer-guide/introduction.md
+[documentation]:           ../developer-guide/index.md

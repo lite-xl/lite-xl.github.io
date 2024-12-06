@@ -2,6 +2,8 @@
 description: An introduction about Lite XL's concepts and how they tie in to plugin development.
 ---
 
+# Developer Guide
+
 Lite XL has little functionalities without plugins — anything that can be implemented as plugins can
 and _will_ be implemented as one.
 
@@ -43,4 +45,4 @@ Follow [this guide][9] to learn how it works.
 [6]: https://github.com/rxi/lite
 [7]: https://rxi.github.io/lite_an_implementation_overview.html
 [8]: https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/lite-debugger.lua?raw=1
-[9]: ./debugging.md
+[9]: ./writing-plugins/debugging.md

@@ -182,6 +182,6 @@ It's not recommended changing these values unless you know what you're doing.
 
 
 [lite-xl-colors]: https://github.com/lite-xl/lite-xl-colors/blob/master/colors/dracula.lua
-[basic-layout]:   ../assets/developer-guide/creating-themes/basic-layout.png
-[scrollbar]:      ../assets/developer-guide/creating-themes/scrollbar.png
-[nagbar]:         ../assets/developer-guide/creating-themes/nagbar.png
+[basic-layout]:   ../../assets/developer-guide/creating-themes/basic-layout.png
+[scrollbar]:      ../../assets/developer-guide/creating-themes/scrollbar.png
+[nagbar]:         ../../assets/developer-guide/creating-themes/nagbar.png

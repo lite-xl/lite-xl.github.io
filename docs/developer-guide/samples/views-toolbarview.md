@@ -157,9 +157,9 @@ return toolbar
 ```
 
 
-[screenshot-toolbarview]: ../assets/screenshots/views/toolbarview.png
-[drag-n-drop]:            ../assets/screenshots/views/drag-n-drop.png
-[red-button]:             ../assets/screenshots/views/red-button.png
-[customize-codes]:        ../assets/screenshots/views/customize-codes.png
+[screenshot-toolbarview]: ../../assets/screenshots/views/toolbarview.png
+[drag-n-drop]:            ../../assets/screenshots/views/drag-n-drop.png
+[red-button]:             ../../assets/screenshots/views/red-button.png
+[customize-codes]:        ../../assets/screenshots/views/customize-codes.png
 [learning-lua]:           https://www.lua.org/pil/contents.html
 [fontello]:               https://fontello.com/
