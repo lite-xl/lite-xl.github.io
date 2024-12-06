@@ -23,8 +23,12 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
   # no custom fonts
-  font: false
+  font:
+    text: Inter
+    code: JetBrains Mono
+
   logo: assets/icon.svg
   favicon: assets/favicon.png
   features:
@@ -36,6 +40,9 @@ theme:
     - navigation.prune
     - navigation.indexes
     - navigation.top
+    - search.suggest
+    - search.highlighting
+    - search.share
     - content.code.copy
     - content.action.view
     - content.action.edit
@@ -61,6 +68,7 @@ extra:
       link: https://matrix.to/#/#lite-xl:matrix.org
 
 plugins:
+  - privacy
   - search
   - glightbox
   - macros:
