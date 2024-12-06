@@ -33,7 +33,6 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
-    - navigation.sections
     - navigation.prune
     - navigation.indexes
     - navigation.top
@@ -133,26 +132,32 @@ nav:
   - "Developer Guide":
       - developer-guide/index.md
       - "Syntaxes and Themes":
+        - developer-guide/syntaxes-and-themes/index.md
         - "Creating Syntaxes": developer-guide/syntaxes-and-themes/creating-syntaxes.md
         - "Creating Themes": developer-guide/syntaxes-and-themes/creating-themes.md
       - "Commands and Shortcuts":
+        - developer-guide/commands-and-shortcuts/index.md
         - "Commands": developer-guide/commands-and-shortcuts/commands.md
         - "Managing Keyboard Shortcuts": developer-guide/commands-and-shortcuts/managing-keyboard-shortcuts.md
       - "Writing Plugins":
+        - developer-guide/writing-plugins/index.md
         - "Classes and Objects": developer-guide/writing-plugins/classes-and-objects.md
         - "Documents": developer-guide/writing-plugins/documents.md
         - "Views": developer-guide/writing-plugins/views.md
         - "Background Tasks": developer-guide/writing-plugins/background-tasks.md
         - "Debugging": developer-guide/writing-plugins/debugging.md
       - "Using Libraries":
+        - developer-guide/using-libraries/index.md
         - "Using Regular Expressions": developer-guide/using-libraries/using-regular-expressions.md
         - "Interacting with the OS": developer-guide/using-libraries/interacting-with-the-os.md
         - "Child Processes": developer-guide/using-libraries/child-processes.md
       - "Samples":
+        - developer-guide/samples/index.md
         - "Simple Plugin": developer-guide/samples/simple-plugin.md
-        - "ToolbarView": developer-guide/samples/views-toolbarview.md
+        - "ToolbarView": developer-guide/samples/toolbarview.md
       - "Advanced Topics":
-        - "How Renderer Works": developer-guide/advanced-topics/renderer-internals.md
+        - developer-guide/advanced-topics/index.md
+        - "How Renderer Works": developer-guide/advanced-topics/how-renderer-works.md
   - "About":
       - "Contributors": about/contributors.md
       - "FAQ": about/faq.md
