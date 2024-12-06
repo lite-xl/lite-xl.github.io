@@ -8,9 +8,9 @@ dependencies = [
     "CairoSVG<3.0.0,>=2.6.0",
     "mkdocs-git-revision-date-localized-plugin<2.0.0,>=1.1.0",
     "mkdocs-glightbox<1.0.0,>=0.3.1",
-    "mkdocs-macros-plugin<1.0.0,>=0.7.0",
     "setuptools<70.0.0,>=69.1.1",
     "mkdocs-publisher>=1.4.3",
+    "mkdocs-macros-plugin<2.0.0,>=1.3.7",
 ]
 name = "lite-xl-docs"
 version = "0.1.0"
