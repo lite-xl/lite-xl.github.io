@@ -27,6 +27,7 @@ jobs:
           echo "keymap=$(jq -r .version docs/assets/keymap.json)" >> "$GITHUB_OUTPUT"
           echo "keymap_macos=$(jq -r .version docs/assets/keymap-macos.json)" >> "$GITHUB_OUTPUT"
 
+
   generate_keymap:
     uses: ./.github/workflows/generate_keymap.yml
     needs: version
@@ -39,6 +40,7 @@ jobs:
     with:
       lite_xl_version: ${{ needs.version.outputs.lxl }}
       skip: ${{ needs.version.outputs.lxl == needs.version.outputs.keymap && needs.version.outputs.lxl == needs.version.outputs.keymap_macos }}
+
 
   build:
     runs-on: ubuntu-latest
@@ -56,9 +58,8 @@ jobs:
           merge-multiple: true
           path: docs/assets
 
-      # environment has these deps.
-      # - name: Install dependencies
-      #   run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+      - name: Install dependencies
+        run: sudo apt-get install -y libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant
 
       - name: Install uv
         uses: astral-sh/setup-uv@v3
