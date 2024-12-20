@@ -8,7 +8,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 <div class="grid cards" markdown>
 
 -   :material-microsoft-windows:{ .lg .middle } **Windows**
-    
+
     For Windows 7 Service Pack 2 and above.
 
     - [64-bit Installer][windows-x86_64-installer]
@@ -44,7 +44,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
     [:octicons-arrow-right-24: Installation Instructions](#macos)
 
 -   :material-code-tags:{ .lg .middle } **Source Code**
-    
+
     [Meson] and a C11 compiler needed.
 
     - [Source tarball][source-tar]
@@ -178,7 +178,7 @@ by the user. A list of issues and workarounds are documented [here][issues].
 {% set release_url = "https://github.com/lite-xl/lite-xl/releases/download/%s" | format(lite_xl_version) %}
 [GitHub]:                   https://github.com/lite-xl/lite-xl/releases/latest
 [package managers]:         ./install-from-package-managers.md
-[windows-x86_64-installer]: {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-x86_64.zip
+[windows-x86_64-installer]: {{ release_url }}/LiteXL-{{ lite_xl_version }}-addons-x86_64-setup.exe
 [windows-x86_64-zip]:       {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-x86_64.zip
 [windows-i686-installer]:   {{ release_url }}/LiteXL-{{ lite_xl_version }}-addons-i686-setup.exe
 [windows-i686-zip]:         {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-i686.zip
