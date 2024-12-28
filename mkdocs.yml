@@ -44,6 +44,7 @@ theme:
     - search.suggest
     - search.highlighting
     - search.share
+    - content.tooltips
     - content.code.copy
     - content.action.view
     - content.action.edit

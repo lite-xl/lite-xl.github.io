@@ -47,12 +47,12 @@ Available for Linux, Windows and macOS
 <div class="grid cards" markdown>
 
 -   :material-feather:{ .lg .middle } **Lightweight**
-    
+
     ---
 
-    Lite XL is super lightweight;
-    10 MB of RAM and no GPU requirements at all.
-    If your platform is supported by SDL2, **it will work**.
+    Lite XL comes in a bundle less than 5MB and runs well on most platforms -
+    from desktops to single board computers with a weak ARM CPU
+    and 1GB of RAM.
 
 -   :material-lightning-bolt:{ .lg .middle } **Powerful**
 
@@ -65,8 +65,8 @@ Available for Linux, Windows and macOS
 
     ---
 
-    Lite XL is insanely hackable — there are no rigid plugin API to hold you back.
-    Override anything and everything, do whatever you want.
+    Lite XL is insanely hackable — there are no rigid APIs to hold you back,
+    and the code is simple to tinker with.
 
 </div>
 
@@ -75,10 +75,17 @@ Available for Linux, Windows and macOS
 -   :material-code-tags:{ .lg .middle } **Customizable**
 
     ---
-    
-    Lite XL is extremely customizable, completely scriptable with Lua.
-    In fact, most of Lite XL is written entirely in Lua, C is only
-    used when necessary.
+
+    Lite XL is completely scriptable with Lua.
+    C is only used to communicate with the OS while Lua is used for everything else.
+
+-   :material-monitor:{ .lg .middle } **Portable**
+
+    ---
+
+    Lite XL runs on many platforms, including Windows, Linux, macOS,
+    FreeBSD, [Android][android], [AmigaOS & MorphOS][amiga]
+    and [the Web][wasm]!
 
 -   :material-connection:{ .lg .middle } **Hyperextensible**
 
@@ -126,6 +133,9 @@ Available for Linux, Windows and macOS
 [github]:          https://github.com/lite-xl/lite-xl
 [summer]:          ./assets/screenshots/theme-summer.png#only-light
 [default]:         ./assets/screenshots/theme-default.png#only-dark
+[android]:         https://github.com/adamharrison/lite-xl-android "Lite XL Android Port by Adam"
+[amiga]:           https://git.walkero.gr/walkero/lite-xl "AmigaOS & MorphOS Port by Walkero"
+[wasm]:            https://lite-xl.com/playground "Lite XL compiled into WebAssembly"
 [setup]:           setup/getting-started.md
 [user-guide]:      user-guide/introduction.md
 [developer-guide]: developer-guide/index.md
