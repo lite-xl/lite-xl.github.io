@@ -77,6 +77,22 @@ For each command, replace the spaces with dashes.
 
 For example: `Core: Find Command` → `core:find-command`
 
+## How to increase all UI size/scale?
+
+There are a few ways of setting the scale:
+
+    - If you use the settings plugin, you can find the scale options under Plugins -> Scale
+    - If you want to set those via Lua, in your user module add
+
+    ```lua
+    config.plugins.scale.mode = "ui"
+    config.plugins.scale.default_scale = 2
+    ```
+
+    - Set the LITE_SCALE env var
+
+    source,https://github.com/lite-xl/lite-xl/issues/2032#issuecomment-2711153517
+
 ## What version of Lua does Lite XL use?
 
 Lua 5.4, since [v2.1.0], released in late 2022.
