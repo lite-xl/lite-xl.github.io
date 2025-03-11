@@ -90,6 +90,7 @@ There are a few ways of setting the scale:
     ```
     
 - Set the LITE_SCALE env var
+
 source,https://github.com/lite-xl/lite-xl/issues/2032#issuecomment-2711153517
 
 ## What version of Lua does Lite XL use?
