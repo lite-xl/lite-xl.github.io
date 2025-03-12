@@ -79,7 +79,9 @@ For example: `Core: Find Command` → `core:find-command`
 
 ## How to make the Lite XL UI look larger?
 
-There are a few ways of setting the scale:
+Due to a limitation with the SDL2 library,
+Lite XL is unable to get the scaling factor of your monitors.
+There are a few ways to manually specify a scale:
 
 - If you use the settings plugin, you can find the scale options under Plugins -> Scale
 - If you want to set those via Lua, in your user module add
