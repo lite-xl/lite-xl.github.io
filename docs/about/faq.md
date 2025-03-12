@@ -91,7 +91,7 @@ There are a few ways to manually specify a scale:
     config.plugins.scale.default_scale = 2
     ```
     
-- Set the LITE_SCALE env var
+- Set the `LITE_SCALE` environment variable, e.g. running `LITE_SCALE=1.25 lite-xl` in your terminal.
 
 source,https://github.com/lite-xl/lite-xl/issues/2032#issuecomment-2711153517
 
