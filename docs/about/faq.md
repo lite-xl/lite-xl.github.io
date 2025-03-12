@@ -77,7 +77,7 @@ For each command, replace the spaces with dashes.
 
 For example: `Core: Find Command` → `core:find-command`
 
-## How to increase all UI size/scale?
+## How to make the Lite XL UI look larger?
 
 There are a few ways of setting the scale:
 
