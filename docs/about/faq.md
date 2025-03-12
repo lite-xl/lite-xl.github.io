@@ -84,7 +84,7 @@ Lite XL is unable to get the scaling factor of your monitors.
 There are a few ways to manually specify a scale:
 
 - If you use the settings plugin, you can find the scale options under Plugins -> Scale
-- If you want to set those via Lua, in your user module add
+- Otherwise, you can set them through Lua by adding the following lines to your user module:
 
     ```lua title="USERDIR/init.lua"
     config.plugins.scale.mode = "ui"
