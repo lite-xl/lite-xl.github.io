@@ -84,7 +84,7 @@ There are a few ways of setting the scale:
 - If you use the settings plugin, you can find the scale options under Plugins -> Scale
 - If you want to set those via Lua, in your user module add
 
-    ```lua
+    ```lua title="USERDIR/init.lua"
     config.plugins.scale.mode = "ui"
     config.plugins.scale.default_scale = 2
     ```
