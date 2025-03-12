@@ -93,7 +93,6 @@ There are a few ways to manually specify a scale:
     
 - Set the `LITE_SCALE` environment variable, e.g. running `LITE_SCALE=1.25 lite-xl` in your terminal.
 
-source,https://github.com/lite-xl/lite-xl/issues/2032#issuecomment-2711153517
 
 ## What version of Lua does Lite XL use?
 
