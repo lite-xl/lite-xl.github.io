@@ -77,22 +77,57 @@ For each command, replace the spaces with dashes.
 
 For example: `Core: Find Command` → `core:find-command`
 
-## How to make the Lite XL UI look larger?
+## Lite XL doesn't look right on my monitor!
 
-Due to a limitation with the SDL2 library,
-Lite XL is unable to get the scaling factor of your monitors.
-There are a few ways to manually specify a scale:
+This is a known issue with Lite XL as it uses [SDL2],
+which has issues inferring the correct DPI on different platforms.
+Common symptoms are:
 
-- If you use the settings plugin, you can find the scale options under Plugins -> Scale
-- Otherwise, you can set them through Lua by adding the following lines to your user module:
+### Text too large / small
 
-    ```lua title="USERDIR/init.lua"
+This issue is caused by Lite XL defaulting to the scale factor of 1.
+You can change the default scale with the `scale` plugin,
+which comes bundled with all Lite XL installations.
+
+The `scale` plugin support scaling only the code editor or all UI elements.
+To change this setting, you can use the following steps:
+
+=== "User Module"
+
+    The `scale` plugin reads the mode and default scale in `config.plugins.scale` on startup.
+    In your user module, add the following lines:
+
+    ```lua
     config.plugins.scale.mode = "ui"
     config.plugins.scale.default_scale = 2
     ```
-    
-- Set the `LITE_SCALE` environment variable, e.g. running `LITE_SCALE=1.25 lite-xl` in your terminal.
 
+=== "Settings GUI"
+
+    To change the scale, navigate to the "Plugins" tab and expand the "Scale" section.
+    Select "Everything" for the "Mode" dropdown and choose a default scaling factor
+    that suits your monitor.
+    The changes will apply on editor restart.
+
+    ![scale plugin settings]{ loading=lazy }
+
+=== "Environment Variable"
+
+    The `LITE_SCALE` environment variable can be used to set the scaling factor
+    for testing purposes.
+
+    ```sh
+    LITE_SCALE=1.25 lite-xl
+    ```
+
+### Text is blurry
+
+This issue is commonly faced on Windows with displays of different scaling factors,
+and the main display has a lower scaling factor than the other.
+This is because Lite XL is only [system API aware] instead of per-monitor DPI aware.
+
+Currently, there are no fixes for this issue.
+It will be fixed when Lite XL eventually adopts SDL3 and handles DPI changes correctly.
 
 ## What version of Lua does Lite XL use?
 
@@ -105,17 +140,21 @@ Lite XL used Lua 5.2 before [v2.1.0].
 You need to [vibe].
 
 
-[lite]:              https://github.com/rxi/lite
-[rxi]:               https://github.com/rxi/lite
-[FreeType]:          https://freetype.org/
-[AGG]:               https://agg.sourceforge.net/antigrain.com/index.html
-[rejected]:          https://github.com/rxi/lite/issues/145#issuecomment-643636679
-[plugin repository]: https://github.com/lite-xl/lite-xl-plugins
-[LPM]:               https://github.com/lite-xl/lite-xl-plugin-manager
-[here]:              ../user-guide/managing-plugins.md
-[v2.1.0]:            https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
-[LSP]:               https://github.com/lite-xl/lite-xl-lsp
-[lite-xl-terminal]:  https://github.com/adamharrison/lite-xl-terminal
-[autowrap]:          https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autowrap.lua?raw=1
-[Pragtical]:         https://pragtical.dev
-[vibe]:              https://github.com/eugenpt/lite-xl-vibe
+[lite]:                  https://github.com/rxi/lite
+[rxi]:                   https://github.com/rxi/lite
+[FreeType]:              https://freetype.org/
+[AGG]:                   https://agg.sourceforge.net/antigrain.com/index.html
+[rejected]:              https://github.com/rxi/lite/issues/145#issuecomment-643636679
+[plugin repository]:     https://github.com/lite-xl/lite-xl-plugins
+[LPM]:                   https://github.com/lite-xl/lite-xl-plugin-manager
+[here]:                  ../user-guide/managing-plugins.md
+[v2.1.0]:                https://github.com/lite-xl/lite-xl/releases/tag/v2.1.0
+[LSP]:                   https://github.com/lite-xl/lite-xl-lsp
+[lite-xl-terminal]:      https://github.com/adamharrison/lite-xl-terminal
+[autowrap]:              https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autowrap.lua?raw=1
+[Pragtical]:             https://pragtical.dev
+[vibe]:                  https://github.com/eugenpt/lite-xl-vibe
+[SDL2]:                  https://github.com/libsdl-org/SDL/tree/SDL2
+[Settings GUI]:          https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/settings.lua?raw=1
+[scale plugin settings]: ../assets/user-guide/settings/plugins/scale.png
+[system API aware]:      https://learn.microsoft.com/en-us/windows/win32/hidpi/high-dpi-desktop-application-development-on-windows#dpi-awareness-mode
