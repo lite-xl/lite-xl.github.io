@@ -67,7 +67,7 @@ WIP: intro
 | Fortran | :check_mark: | :check_mark: |  |  |  |  |  |
 | GDScript | :check_mark: |  |  |  | :check_mark: |  |  |
 | Go | :check_mark: | :check_mark: |  | :check_mark: | :check_mark: |  |  |
-| Groovy | :check_mark: | :check_mark: \* | :check_mark: |  | [WIP]() |  |  |
+| Groovy | :check_mark: | :check_mark: \* | :check_mark: |  |  |  |  |
 | Haskell | :check_mark: | :check_mark: |  | :check_mark: | :check_mark: |  |  |
 | HTML | :check_mark: | :check_mark: |  | :check_mark: | :check_mark: |  |  |
 | Java | :check_mark: | :check_mark: | :check_mark: | :check_mark: | :check_mark: |  |  |
