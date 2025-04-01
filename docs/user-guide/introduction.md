@@ -42,7 +42,7 @@ local keymap = require "core.keymap"
 keymap.add { ["ctrl+q"] = "core:quit" }
 ```
 
-A list of default mappings can be viewed [here][mapping].
+A list of default mappings can be viewed [here][3].
 
 ## Multiple selections (multiple cursors)
 
