@@ -17,6 +17,8 @@ Advantages of this API includes:
 Unless you plan to run a command and forget about it, you should stick
 with the Process API as it provides more features.
 
+See notes below before using the write method.
+
 ## Example: reading a file with `cat`
 
 This example uses `cat` to read a file. This approach is impractical, but it demonstrates the typical usage
@@ -307,6 +309,45 @@ On Windows, this usually results in an error message `"Error creating a process:
 Not all errors are documented here.
 In general, it is recommended to call the functions with `pcall()` until this
 inconsistency is fixed in the future.
+
+
+### Writing data to a process
+
+Be informed that send data is not guaranteed to be fully written, so you need to handle it. For this, the API
+will return the number of successfully written bytes and you can take it from there.
+
+Refer to this example of LSP server (as of April 2025), where it checks if all data was sent and if not, send the remaining parts.
+This includes exponential backoff.
+```
+-- https://github.com/lite-xl/lite-xl-lsp/blob/b2523423b34712dd5cefc5d7ee6f7a500f4ac2ed/server.lua#L907
+  local failures, data_len = 0, #data
+  local written, errmsg = proc:write(data)
+  local total_written = written or 0
+
+  while total_written < data_len and not errmsg do
+    written, errmsg = proc:write(data:sub(total_written + 1))
+    total_written = total_written + (written or 0)
+
+    if (not written or written <= 0) and not errmsg and coroutine.running() then
+      -- with each consecutive fail the yield timeout is increased by 5ms
+      coroutine.yield((failures * 5) / 1000)
+
+      failures = failures + 1
+      if failures > 19 then -- after ~1000ms we error out
+        errmsg = "maximum amount of consecutive failures reached"
+        break
+      end
+    else
+      failures = 0
+    end
+  end
+
+  if errmsg then
+    self:log("Error sending data: '%s'\n%s", errmsg, data)
+  end
+
+  return total_written == data_len, errmsg
+```
 
 
 [1]: https://github.com/rxi/console/blob/fb3d414d085d4110364314d6cd8380dc1d386249/init.lua#L100
