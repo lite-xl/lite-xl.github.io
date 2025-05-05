@@ -52,6 +52,7 @@ core.add_thread(function()
     -- core.log() accepts the same parameters as string.format(),
     -- so you risk injecting invalid format strings!
     core.log("read: %s", process_output)
+  end
 end)
 ```
 
