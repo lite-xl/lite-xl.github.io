@@ -236,6 +236,15 @@ To remove an existing keyboard shortcut, you can use `keymap.unbind()`.
     Afterwards, press the "Save" button to save the changes.
     ![Screenshot showing the keybind changer][13]{ loading=lazy }
 
+### X11: Remapping CapsLock and Ctrl
+
+Lite-XL reads scancodes from SDL so it's not aware of any remapping done via X11 (e.g. via `xkbset` or GNOME settings).
+The tool `setscancodes` can be used as a workaround. A common use case is to map CapsLock to an additional Ctrl:
+
+```bash
+sudo setkeycodes 3a 29
+```
+
 ## Themes
 
 The default theme is a dark theme.
