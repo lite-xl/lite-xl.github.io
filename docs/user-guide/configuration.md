@@ -239,7 +239,7 @@ To remove an existing keyboard shortcut, you can use `keymap.unbind()`.
 
 !!! tip "Keyboard mapping on X11"
     Lite XL interprets keypresses based on their physical location, regardless of the keyboard layout.
-    Tools such as `xmodmap` with therefore have no effect; instead you'll have to modify your keymap in Lite XL directly.
+    Tools such as `xmodmap` will therefore have no effect; instead you'll have to modify your keymap in Lite XL directly.
     For example, to remap CapsLock to Control add this to your user module:
     ```lua
     local modkeys = require("core.modkeys-" .. (PLATFORM == "Mac OS X" and "macos" or "generic"))
