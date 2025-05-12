@@ -211,11 +211,11 @@ local function write_data(proc, data)
   local written, errmsg = proc:write(data)
   local total_written = written or 0
 
-  while total_written < data_len and not errmsg do
+  while written and not errmsg and total_written < data_len do
     written, errmsg = proc:write(data:sub(total_written + 1))
     total_written = total_written + (written or 0)
 
-    if (not written or written <= 0) and not errmsg and coroutine.running() then
+    if written == 0 and not errmsg and coroutine.running() then
       -- with each consecutive fail the yield timeout is increased by 5ms
       coroutine.yield((failures * 5) / 1000)
 
