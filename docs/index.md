@@ -23,7 +23,7 @@ written in C and Lua, adapted from [lite].
 
 <div class="downloads" markdown>
 
-[Download :material-download:](#lets-get-started){ .button .md-button .md-button--primary }
+[Download :material-download:][setup]{ .button .md-button .md-button--primary }
 [GitHub :material-github:][github]{ .button .md-button }
 
 </div>
