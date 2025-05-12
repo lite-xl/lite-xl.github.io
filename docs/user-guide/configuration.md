@@ -236,6 +236,22 @@ To remove an existing keyboard shortcut, you can use `keymap.unbind()`.
     Afterwards, press the "Save" button to save the changes.
     ![Screenshot showing the keybind changer][13]{ loading=lazy }
 
+
+!!! tip
+    On X11, Lite XL interprets keypresses based on their physical location,
+    regardless of the keyboard layout set in your DE settings.
+    Tools such as `xmodmap` will therefore have no effect; instead you'll have to modify your keymap
+    in Lite XL directly.
+
+    For example, to remap ++caps-lock++ to ++ctrl++, add this to your user module:
+
+    ```lua
+    local modkeys = require("core.modkeys-" .. (PLATFORM == "Mac OS X" and "macos" or "generic"))
+    modkeys.map["capslock"] = "ctrl" -- this maps capslock to ctrl
+    table.insert(modkeys.keys, "capslock") -- this enables capslock as modifier
+    modkeys.map["left ctrl"] = "capslock" -- this maps left ctrl to capslock
+    ```
+
 ## Themes
 
 The default theme is a dark theme.
