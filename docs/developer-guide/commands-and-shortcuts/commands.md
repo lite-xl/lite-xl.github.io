@@ -2,8 +2,6 @@
 description: Learn how to create and call commands programmatically in Lite XL.
 ---
 
-As explained in the User Guide, a lot of Lite XL's functionalities are implemented as commands.
-
 Each command has a predicate — a condition to check if Lite XL should run the command.
 The predicate will return a boolean and other values to be consumed by the command function.
 

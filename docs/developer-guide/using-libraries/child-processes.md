@@ -52,6 +52,7 @@ core.add_thread(function()
     -- core.log() accepts the same parameters as string.format(),
     -- so you risk injecting invalid format strings!
     core.log("read: %s", process_output)
+  end
 end)
 ```
 
@@ -177,6 +178,59 @@ print(proc:read_stdout())
 -- read default number of bytes (2048) from the process' standard error
 -- ensure that stderr of the process is not set to process.REDIRECT_STDOUT!
 print(proc:read_stderr())
+```
+
+### Writing data to a process
+
+If the child process is created with the correct input mode,
+you can write to the standard input of the process with `process:write()`.
+
+```lua
+function process:write(data: string): integer|nil, string|nil end
+```
+
+The function accepts a byte string containing the data to write,
+and returns the number of bytes successfully written.
+If it encounters an error, it will return nil and an error message.
+
+The function is asynchronous and will return immediately, even when data is not written.
+As such, the number of bytes written may be less than the number of bytes in the input.
+You should handle this by chunking the data manually and implement exponetial backoff.
+
+```lua
+---Writes data asynchronously to a process, with chunking and exponetial backoff.
+---The exponetial backoff will only work when calling this function inside a thread created with core.add_thread().
+---adapted from https://github.com/lite-xl/lite-xl-lsp/blob/b2523423b34712dd5cefc5d7ee6f7a500f4ac2ed/server.lua#L907
+---
+---@param proc process The child process to write to.
+---@param data string The data to write.
+---@return boolean success
+---@return string error
+local function write_data(proc, data)
+  local failures, data_len = 0, #data
+  local written, errmsg = proc:write(data)
+  local total_written = written or 0
+
+  while written and not errmsg and total_written < data_len do
+    written, errmsg = proc:write(data:sub(total_written + 1))
+    total_written = total_written + (written or 0)
+
+    if written == 0 and not errmsg and coroutine.running() then
+      -- with each consecutive fail the yield timeout is increased by 5ms
+      coroutine.yield((failures * 5) / 1000)
+
+      failures = failures + 1
+      if failures > 19 then -- after ~1000ms we error out
+        errmsg = "maximum amount of consecutive failures reached"
+        break
+      end
+    else
+      failures = 0
+    end
+  end
+
+  return total_written == data_len, errmsg
+end
 ```
 
 ### Waiting for a child process

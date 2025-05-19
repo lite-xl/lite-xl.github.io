@@ -1,37 +1,124 @@
 name: Deploy site
 
-on: { push: { branches: [master] } }
-
-permissions:
-  contents: write
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths-ignore: ['docs/assets/keymap*.json', 'README.md']
 
 jobs:
-  deploy:
+  version:
     runs-on: ubuntu-latest
+
+    outputs:
+      lxl: ${{ steps.version.outputs.lxl }}
+      keymap: ${{ steps.version.outputs.keymap }}
+      keymap_macos: ${{ steps.version.outputs.keymap_macos }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get versions
+        id: version
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          echo "lxl=$(gh -R lite-xl/lite-xl release list --exclude-drafts --exclude-pre-releases --limit 1 --json tagName --jq .[].tagName)" >> "$GITHUB_OUTPUT"
+          echo "keymap=$(jq -r .version docs/assets/keymap.json)" >> "$GITHUB_OUTPUT"
+          echo "keymap_macos=$(jq -r .version docs/assets/keymap-macos.json)" >> "$GITHUB_OUTPUT"
+
+
+  generate_keymap:
+    uses: ./.github/workflows/generate_keymap.yml
+    needs: version
+    secrets: inherit
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    with:
+      lite_xl_version: ${{ needs.version.outputs.lxl }}
+      skip: ${{ needs.version.outputs.lxl == needs.version.outputs.keymap && needs.version.outputs.lxl == needs.version.outputs.keymap_macos }}
+
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [version, generate_keymap]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # needed for accurate dates
           fetch-depth: 0
-      # environment has these deps.
-      # - name: Install dependencies
-      #   run: sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+
+      - name: Download updated keymaps
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: docs/assets
+
+      - name: Install dependencies
+        run: sudo apt-get install -y libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
-          cache: poetry
+          python-version-file: pyproject.toml
+
+      - name: Install node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: npm
+
+      - name: Install node.js tools
+        run: npm ci
+
       - name: Cache build data
         uses: actions/cache@v4
         with:
-          key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/mkdocs.yml') }}
+          key: mkdocs-cache-${{ runner.os }}-${{ hashFiles('**/uv.lock', '**/package-lock.json', '**/mkdocs.yml') }}
           path: .cache
-      - name: Install dependencies
-        run: poetry install
-      - name: Set up environment variables
-        run: echo "CARDS=true" >> $GITHUB_ENV
-      - name: Build and deploy
-        run: poetry run mkdocs gh-deploy --force
+
+      - name: Setup environment variables
+        run: |
+          if [[ "${GITHUB_REPOSITORY}" = *.github.io ]]; then
+            echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/" >> $GITHUB_ENV
+          else
+            echo "SITE_URL=https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+          fi
+          echo "REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" >> $GITHUB_ENV
+
+      - name: Build
+        env:
+          CARDS: 'true'
+          LITE_XL_VERSION: ${{ needs.version.outputs.lxl }}
+        run: npm run build
+
+      - name: Upload page artifact
+        uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

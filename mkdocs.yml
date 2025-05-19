@@ -1,13 +1,15 @@
 site_name: Lite XL
 
-site_url: !ENV [SITE_URL, "https://takase1121.github.io/lite-xl-docs/"]
-repo_url: !ENV [REPO_URL, "https://github.com/takase1121/lite-xl-docs/"]
+site_url: !ENV [SITE_URL, "https://lite-xl.com/"]
+repo_url: !ENV [REPO_URL, "https://github.com/lite-xl/lite-xl.github.io"]
 
 site_description: "Lightweight and powerful code editor, available for Windows, Linux and macOS."
 site_author: "takase1121 <20792268+takase1121@users.noreply.github.com>"
 
 theme:
   name: material
+  custom_dir: overrides
+
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -22,16 +24,27 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
   # no custom fonts
-  font: false
+  font:
+    text: Inter
+    code: JetBrains Mono
+
   logo: assets/icon.svg
   favicon: assets/favicon.png
   features:
     - navigation.footer
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
-    - navigation.top
     - navigation.tabs
+    - navigation.prune
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlighting
+    - search.share
+    - content.tooltips
     - content.code.copy
     - content.action.view
     - content.action.edit
@@ -45,7 +58,8 @@ extra_javascript:
   - javascripts/search.js
 
 extra:
-  lite_xl_version: v2.1.3
+  source_repo_url: "https://github.com/lite-xl/lite-xl"
+  lite_xl_version: !ENV [LITE_XL_VERSION, "v2.1.7"]
   version:
     provider: mike
   social:
@@ -57,6 +71,7 @@ extra:
       link: https://matrix.to/#/#lite-xl:matrix.org
 
 plugins:
+  - privacy
   - search
   - glightbox
   - macros:
@@ -72,16 +87,8 @@ plugins:
         font_family: Roboto
         background_color: "#252529"
         color: "#e1e1e6"
-  - minify:
-      minify_html: true
-      minify_css: true
-      minify_js: true
-      cache_safe: true
-      js_files:
-        - javascripts/wade.min.js
-        - javascripts/search.js
-      css_files:
-        - stylesheets/extra.css
+  - pub-minifier:
+      cache_dir: .cache/plugin/pub-minifier
 
 markdown_extensions:
   - admonition
@@ -135,21 +142,34 @@ nav:
       - "Keymap": user-guide/keymap.md
       - "macOS Keymap": user-guide/macos-keymap.md
   - "Developer Guide":
-      - "Introduction": developer-guide/introduction.md
+      - developer-guide/index.md
       - "Syntaxes and Themes":
-        - "Creating Syntaxes": developer-guide/creating-syntaxes.md
-        - "Creating Themes": developer-guide/creating-themes.md
-      - "Simple Plugin": developer-guide/simple-plugin.md
-      - "Commands": developer-guide/commands.md
-      - "Managing Keyboard Shortcuts": developer-guide/managing-keyboard-shortcuts.md
-      - "Classes and Objects": developer-guide/classes-and-objects.md
-      - "Documents": developer-guide/documents.md
-      - "Views": developer-guide/views.md
-      - "Background Tasks": developer-guide/background-tasks.md
-      - "Debugging": developer-guide/debugging.md
-      - "Using Regular Expressions": developer-guide/using-regular-expressions.md
-      - "Interacting with the OS": developer-guide/interacting-with-the-os.md
-      - "Child Processes": developer-guide/child-processes.md
+        - developer-guide/syntaxes-and-themes/index.md
+        - "Creating Syntaxes": developer-guide/syntaxes-and-themes/creating-syntaxes.md
+        - "Creating Themes": developer-guide/syntaxes-and-themes/creating-themes.md
+      - "Commands and Shortcuts":
+        - developer-guide/commands-and-shortcuts/index.md
+        - "Commands": developer-guide/commands-and-shortcuts/commands.md
+        - "Managing Keyboard Shortcuts": developer-guide/commands-and-shortcuts/managing-keyboard-shortcuts.md
+      - "Writing Plugins":
+        - developer-guide/writing-plugins/index.md
+        - "Classes and Objects": developer-guide/writing-plugins/classes-and-objects.md
+        - "Documents": developer-guide/writing-plugins/documents.md
+        - "Views": developer-guide/writing-plugins/views.md
+        - "Background Tasks": developer-guide/writing-plugins/background-tasks.md
+        - "Debugging": developer-guide/writing-plugins/debugging.md
+      - "Using Libraries":
+        - developer-guide/using-libraries/index.md
+        - "Using Regular Expressions": developer-guide/using-libraries/using-regular-expressions.md
+        - "Interacting with the OS": developer-guide/using-libraries/interacting-with-the-os.md
+        - "Child Processes": developer-guide/using-libraries/child-processes.md
+      - "Samples":
+        - developer-guide/samples/index.md
+        - "Simple Plugin": developer-guide/samples/simple-plugin.md
+        - "ToolbarView": developer-guide/samples/toolbarview.md
+      - "Advanced Topics":
+        - developer-guide/advanced-topics/index.md
+        - "How Renderer Works": developer-guide/advanced-topics/how-renderer-works.md
   - "About":
       - "Contributors": about/contributors.md
       - "FAQ": about/faq.md

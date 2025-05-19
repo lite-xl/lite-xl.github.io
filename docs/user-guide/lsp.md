@@ -19,7 +19,7 @@ When installing the plugin manually, you must also install these plugins as well
 
 === "lpm"
 
-    To install LPM via the command line, run:
+    To install a plugin with lpm via the command line, run:
     ```sh
     $ lpm plugin install lsp
     ```

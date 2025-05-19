@@ -7,8 +7,8 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
 <div class="grid cards" markdown>
 
--   :simple-windows:{ .lg .middle } **Windows**
-    
+-   :material-microsoft-windows:{ .lg .middle } **Windows**
+
     For Windows 7 Service Pack 2 and above.
 
     - [64-bit Installer][windows-x86_64-installer]
@@ -18,7 +18,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
     [:octicons-arrow-right-24: Installation Instructions](#windows)
 
--   :simple-linux:{ .lg .middle } **Linux**
+-   :material-linux:{ .lg .middle } **Linux**
 
     For Ubuntu 18.04 and above.
 
@@ -31,7 +31,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
 
     [:octicons-arrow-right-24: Installation Instructions](#linux)
 
--   :simple-apple:{ .lg .middle } **macOS**
+-   :material-apple:{ .lg .middle } **macOS**
 
     For OSX El Capitan and above.
 
@@ -44,7 +44,7 @@ All the files are available on [GitHub], and some [package managers] provide pac
     [:octicons-arrow-right-24: Installation Instructions](#macos)
 
 -   :material-code-tags:{ .lg .middle } **Source Code**
-    
+
     [Meson] and a C11 compiler needed.
 
     - [Source tarball][source-tar]
@@ -109,6 +109,7 @@ cd lite-xl
 
 # remove previous installation files
 rm -rf $HOME/.local/share/lite-xl $HOME/.local/bin/lite-xl
+# create the directories and copy the new files over
 mkdir -p $HOME/.local/bin && cp lite-xl $HOME/.local/bin
 mkdir -p $HOME/.local/share/lite-xl && cp -r data/* $HOME/.local/share/lite-xl
 ```
@@ -177,7 +178,7 @@ by the user. A list of issues and workarounds are documented [here][issues].
 {% set release_url = "https://github.com/lite-xl/lite-xl/releases/download/%s" | format(lite_xl_version) %}
 [GitHub]:                   https://github.com/lite-xl/lite-xl/releases/latest
 [package managers]:         ./install-from-package-managers.md
-[windows-x86_64-installer]: {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-x86_64.zip
+[windows-x86_64-installer]: {{ release_url }}/LiteXL-{{ lite_xl_version }}-addons-x86_64-setup.exe
 [windows-x86_64-zip]:       {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-x86_64.zip
 [windows-i686-installer]:   {{ release_url }}/LiteXL-{{ lite_xl_version }}-addons-i686-setup.exe
 [windows-i686-zip]:         {{ release_url }}/lite-xl-{{ lite_xl_version }}-addons-windows-i686.zip

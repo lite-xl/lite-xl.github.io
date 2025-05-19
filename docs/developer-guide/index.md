@@ -2,6 +2,8 @@
 description: An introduction about Lite XL's concepts and how they tie in to plugin development.
 ---
 
+# Developer Guide
+
 Lite XL has little functionalities without plugins — anything that can be implemented as plugins can
 and _will_ be implemented as one.
 
@@ -23,24 +25,28 @@ Lite XL is a fork of [lite][6].
 As such, a lot of concepts used in lite is inherited in Lite XL.
 [Lite: An Implementation Overview][7] is an excellent article that explains many concepts about lite.
 
-## Types of plugins
+## In this section
 
-There are a few types of plugins.
-Syntaxes and colors are considered as subset of plugins.
-These subsets of plugins only interact with the syntax highlighter and the `style` table respectively.
+| Topics                      | Descrption
+| ------                      | ----------
+| [Syntaxes and Themes][8]    | Learn how Lite XL loads syntax definitions and themes.
+| [Commands and Shortcuts][9] | Learn how Lite XL perform tasks with commands and keyboard shortcuts.
+| [Writing Plugins][10]       | Learn how to write plugins for Lite XL.
+| [Using Libraries][11]       | Learn how to use library functions in Lite XL.
+| [Samples][12]               | View samples of plugins built for Lite XL.
+| [Advanced Topics][13]       | Learn about the internals that power Lite XL.
 
-## Interactive debugging
 
-Other than using GDB to debug the C part of Lite XL, you can also debug the Lua part with [lite-debugger][8].
-Follow [this guide][9] to learn how it works.
-
-
-[1]: https://www.lua.org/manual/5.4/
-[2]: https://www.lua.org/pil/
-[3]: https://tylerneylon.com/a/learn-lua/
-[4]: http://www.tutorialspoint.com/lua/lua_overview.htm
-[5]: http://lua-users.org/wiki/LuaTutorial
-[6]: https://github.com/rxi/lite
-[7]: https://rxi.github.io/lite_an_implementation_overview.html
-[8]: https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/lite-debugger.lua?raw=1
-[9]: ./debugging.md
+[1]:  https://www.lua.org/manual/5.4/
+[2]:  https://www.lua.org/pil/
+[3]:  https://tylerneylon.com/a/learn-lua/
+[4]:  http://www.tutorialspoint.com/lua/lua_overview.htm
+[5]:  http://lua-users.org/wiki/LuaTutorial
+[6]:  https://github.com/rxi/lite
+[7]:  https://rxi.github.io/lite_an_implementation_overview.html
+[8]:  ./syntaxes-and-themes/index.md
+[9]:  ./commands-and-shortcuts/index.md
+[10]: ./writing-plugins/index.md
+[11]: ./using-libraries/index.md
+[12]: ./samples/index.md
+[13]: ./advanced-topics/index.md

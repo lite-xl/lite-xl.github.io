@@ -38,17 +38,27 @@ apk add lite-xl
 
 ### Arch Linux (via AUR)
 
-Packages for Arch Linux are available as 3 AUR repositories: [`lite-xl`][2], [`lite-xl-git`][3] and [`lite-xl-bin`][4].
+Packages for Arch Linux are available in the [extra repository][2].
+Alternatively, [`lite-xl-git`][3] is available in the AUR,
+which builds Lite XL from the latest source code.
 
-To install, you can clone the [git repository][5] to a working directory and run `makepkg`:
+To install Lite XL, run the following command:
 
 ```sh
-git clone https://aur.archlinux.org/lite-xl.git
+pacman -Syu
+pacman -S lite-xl
+```
+
+To install the `lite-xl-git` package,
+you can clone the [git repository][4] to a working directory and run `makepkg`:
+
+```sh
+git clone https://aur.archlinux.org/lite-xl-git.git
 cd lite-xl
 makepkg -si
 ```
 
-Alternatively, install it via an AUR helper such as [yay][6].
+Alternatively, install it via an AUR helper such as [yay][5] or [paru][6].
 
 ### Fedora
 
@@ -151,11 +161,11 @@ sudo port install lite-xl
 
 
 [1]:  https://github.com/lite-xl/lite-xl/releases/latest
-[2]:  https://aur.archlinux.org/packages/lite-xl
+[2]:  https://archlinux.org/packages/?sort=&q=lite-xl&maintainer=&flagged=
 [3]:  https://aur.archlinux.org/packages/lite-xl-git
-[4]:  https://aur.archlinux.org/packages/lite-xl-bin
-[5]:  https://aur.archlinux.org/lite-xl.git
-[6]:  https://github.com/Jguer/yay
+[4]:  https://aur.archlinux.org/lite-xl-git.git
+[5]:  https://github.com/Jguer/yay
+[6]:  https://github.com/Morganamilo/paru
 [7]:  https://copr.fedorainfracloud.org/coprs/sentry/lite/
 [8]:  https://packages.guix.gnu.org/packages/lite-xl/
 [9]:  https://www.makedeb.org/

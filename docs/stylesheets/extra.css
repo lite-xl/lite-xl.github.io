@@ -1,6 +1,3 @@
-/* load Roboto and Roboto Mono from a GDPR friendly source */
-@import url(https://fonts.bunny.net/css?family=roboto:300,400,400i,700|roboto-mono:400);
-
 /* use the font */
 :root {
   --md-text-font: "Roboto";
@@ -65,12 +62,64 @@
   color: var(--md-code-hl-constant-color);
 }
 
+/** full width tables */
+.md-typeset__table {
+  width: 100%;
+}
+
+.md-typeset__table table:not([class]) {
+  display: table
+}
+
 
 /* custom classes */
 .text-center {
   display: block;
   text-align: center;
   width: 100%;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.hero .downloads {
+  margin-top: 2em;
+}
+
+.hero .downloads p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.hero .footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+@media screen and (min-width: 1200px) {
+  .hero {
+      height: 85vh;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .hero {
+      height: 80vh;
+  }
 }
 
 #headline {

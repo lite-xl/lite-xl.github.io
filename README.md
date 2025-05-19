@@ -1,9 +1,5 @@
 # Lite XL Website
 
-> **Note**
-> This website is still under construction.
-> Expect jank and general problems.
-
 This website is written in Markdown with [MkDocs] and [mkdocs-material].
 We also use [mkdocs-macros-plugin] for rendering certain pages.
 
@@ -13,27 +9,36 @@ If you want to make small changes without changing how the website
 is structured, you can simply use GitHub's online editor and open a PR.
 
 If you want to make huge changes or build the website yourself, install
-[poetry] and run:
+[uv] and run:
 
 ```sh
-$ poetry install
-$ poetry run mkdocs serve
+$ uv run mkdocs serve
 ```
 
 This will install all dependencies and run `mkdocs serve`.
 
+### Minification
+
+The website uses [pub-minifier] to create minified JS, CSS and HTML code
+when running `mkdocs build`.
+The minification is optional and will only take place if you have the tools.
+To use this feature, run the following commands instead of `uv run mkdocs build`:
+
+```sh
+$ npm ci
+$ npm run build
+```
+
+These commands assume that you have node.js installed.
+
 ### Windows
 
-On Windows with MSYS2, there is [an issue] that breaks the minifier we're using.
-Instead, install Python with the Python installer and install poetry with pip,
-then run the commands above.
-
-You might also need [GTK Runtime] to support all the imaging stuff (e.g. social cards).
+You might need [GTK Runtime] to support all the imaging stuff (e.g. social cards).
 
 The server supports auto code reloading, so the website will automatically
 refresh if changes were made.
 
-To build the website, run `poetry run mkdocs build`.
+To build the website, run `uv run mkdocs build`.
 The website will be built in the `site/` directory.
 
 ## Configuration
@@ -51,6 +56,10 @@ It is required if you plan to host the website on another domain
 
 This is the URL of the website repository.
 You might want to change this so that the `Edit` buttons work properly.
+
+##### `LITE_XL_VERSION`
+
+This is the version of Lite XL to download in the setup page.
 
 ## Site organization
 
@@ -74,11 +83,15 @@ This project follows typical [MkDocs] file structure.
     - `extra.css`: Styles for custom syntax highlighting.
   - `user-guide/`
   - `index.md`: Homepage.
+- `overrides/`: Overrides for the theme
 
 # Keymap
 
 The "generate keymap" action should be run after each release to update
 the keymap.
+This workflow should run automatically, provided that the API keys used
+to invoke this workflow is still valid.
+
 The keymap generation is currently a two-part process involving some
 fix up on our side to match [pymdown]'s syntax.
 This can be found in `fix-keymap.py`.
@@ -88,7 +101,7 @@ This can be found in `fix-keymap.py`.
 [MkDocs]:               https://www.mkdocs.org/
 [mkdocs-material]:      https://squidfunk.github.io/mkdocs-material/
 [mkdocs-macros-plugin]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/
-[an issue]:             https://github.com/tdewolff/minify/issues/679
+[pub-minifier]:         https://mkdocs-publisher.github.io/setup/seo-and-sharing/pub-minifier/
 [GTK Runtime]:          https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer
-[poetry]:               https://python-poetry.org
+[uv]:                   https://docs.astral.sh/uv/
 [pymdown]:              https://facelessuser.github.io/pymdown-extensions/extensions/keys
