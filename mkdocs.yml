@@ -136,7 +136,6 @@ nav:
       - "Introduction": user-guide/introduction.md
       - "Configuration": user-guide/configuration.md
       - "Managing Plugins": user-guide/managing-plugins.md
-      - "IDE Progress Status": "user-guide/ide-progress-status.md"
       - "IDE Setup": "user-guide/ide-setup.md"
       - "Language Server support": user-guide/lsp.md
       - "Keymap": user-guide/keymap.md
