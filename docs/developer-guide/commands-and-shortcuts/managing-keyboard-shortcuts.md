@@ -156,7 +156,7 @@ local keymap = require "core.keymap"
 -- a simple function that logs your keypresses
 local keymap_on_key_pressed = keymap.on_key_pressed
 function keymap.on_key_pressed(key, ...)
-  local handled = keymap_on_key_pressed(self, key, ...)
+  local handled = keymap_on_key_pressed(key, ...)
   print(key, "Pressed!")
 end
 
@@ -170,7 +170,7 @@ function keymap.on_key_pressed(key, ...)
   -- on Linux this behavior is not observed so it can
   -- be skipped
   if PLATFORM ~= "Linux" and ime.editing then return false end
-  local handled = keymap_on_key_pressed(self, key, ...)
+  local handled = keymap_on_key_pressed(key, ...)
   print(key, "Pressed!")
 end
 ```
