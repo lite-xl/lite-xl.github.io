@@ -13,13 +13,6 @@ In this article, we will discuss how to properly set up language servers for use
 To find out if your favourite language of choice is fully supported on Lite XL, take a look at the
 [Language Support Status][pb-ide-language-support-status] page.
 
-If you're interested in helping us add or improve support for more languages, take a look at the following pages:
-
-- [Intellisense][pb-ide-intellisense]
-- [Utilities][pb-ide-utilities]
-- [Build Integration][pb-ide-build]
-- [Debug Integration][pb-ide-debug]
-
 ## Installation
 
 The LSP plugin can be installed like any other Lite XL plugins.
@@ -291,7 +284,3 @@ without Python at all.
 [jdtls-cmdline]:              https://github.com/eclipse-jdtls/eclipse.jdt.ls?tab=readme-ov-file#running-from-the-command-line
 
 [pb-ide-language-support-status]: https://github.com/PerilousBooklet/lite-xl-ide?tab=readme-ov-file#language-support-status
-[pb-ide-intellisense]: https://github.com/users/PerilousBooklet/projects/6/views/1
-[pb-ide-utilities]: https://github.com/users/PerilousBooklet/projects/7/views/1
-[pb-ide-build]: https://github.com/users/PerilousBooklet/projects/8/views/1
-[pb-ide-debug]: https://github.com/users/PerilousBooklet/projects/9/views/1
