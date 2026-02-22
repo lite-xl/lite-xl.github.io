@@ -84,7 +84,6 @@ At the moment it only supports `make`, but it can be extended to any build syste
 
 At the moment it only supports `gdb`.
 
-[1]: https://github.com/adamharrison/lite-xl-ide
 [2]: https://github.com/PerilousBooklet/lite-xl-ide
 [3]: https://github.com/lite-xl/lite-xl-lsp?tab=readme-ov-file#setting-a-lsp-server
 [4]: https://github.com/drmargarido/TodoTreeView?tab=readme-ov-file#instructions
