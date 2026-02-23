@@ -84,19 +84,6 @@ At the moment it only supports `make`, but it can be extended to any build syste
 
 At the moment it only supports `gdb`.
 
-## Automatic Setup
-
-The following examples are configurations and scripts that bundle together the essential components 
-of a minimal IDE:
-
-- [Adam's configuration][1] contains the `build` and `debugger` plugins,
-as well as several IDE meta-packages (e.g. `ide_c`, `ide_java`, `ide_python`) that add IDE-like
-functionalities to Lite XL for many popular programming languages.
-- [PerilousBooklet's configuration][2] contains documentation about IDE support progress
-status for Lite XL.
-
-
-[1]: https://github.com/adamharrison/lite-xl-ide
 [2]: https://github.com/PerilousBooklet/lite-xl-ide
 [3]: https://github.com/lite-xl/lite-xl-lsp?tab=readme-ov-file#setting-a-lsp-server
 [4]: https://github.com/drmargarido/TodoTreeView?tab=readme-ov-file#instructions
