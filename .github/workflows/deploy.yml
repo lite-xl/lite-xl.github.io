@@ -53,7 +53,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download updated keymaps
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           merge-multiple: true
           path: docs/assets
