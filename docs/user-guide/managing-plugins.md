@@ -30,7 +30,8 @@ User plugins should be installed into `USERDIR/plugins`.
 [lpm] is the de-facto plugin manager for Lite XL.
 It is similar to `apt` and `dnf` which provides a command-line interface to manage plugins.
 [Miq] is an alternative declarative plugin manager that allow users to declare a list of plugins
-that should be loaded, and install / updates them all at once.
+that should be loaded, and install / updates them all at once. [Miq] is no longer developed and its
+author archived the repository.
 Both plugin managers operate on [manifest files] which contains plugin metadata and install instructions.
 
 These two plugin managers use vastly different ways of plugin management, 
