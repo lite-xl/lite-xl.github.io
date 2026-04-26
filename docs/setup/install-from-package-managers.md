@@ -86,15 +86,18 @@ guix install lite-xl
 
 ### Debian-based (via MPR)
 
-[makedeb][9] provides an AUR-like experience to install Lite XL.
+!!! warning
+    makedeb is [unmaintained][9]. Consider migrating to a different package manager.
 
-First, install [makedeb][9]:
+[makedeb][10] provides an AUR-like experience to install Lite XL.
+
+First, install [makedeb][10]:
 
 ```sh
 bash -ci "$(wget -qO - 'https://shlink.makedeb.org/install')"
 ```
 
-Then, clone the [git repository][10] into a working directory and run `makedeb`:
+Then, clone the [git repository][11] into a working directory and run `makedeb`:
 
 ```sh
 git clone https://mpr.makedeb.org/lite-xl.git
@@ -168,9 +171,10 @@ sudo port install lite-xl
 [6]:  https://github.com/Morganamilo/paru
 [7]:  https://copr.fedorainfracloud.org/coprs/sentry/lite/
 [8]:  https://packages.guix.gnu.org/packages/lite-xl/
-[9]:  https://www.makedeb.org/
-[10]: https://mpr.makedeb.org/lite-xl.git
-[11]: https://community.chocolatey.org/packages/lite-xl
-[12]: https://scoop.sh/#/apps?q=lite-xl
-[13]: https://github.com/ScoopInstaller/Extras
-[14]: https://ports.macports.org/port/lite-xl/
+[9]:  https://hunterwittenborn.com/blog/stepping-back-from-open-source/
+[10]: https://www.makedeb.org/
+[11]: https://mpr.makedeb.org/lite-xl.git
+[12]: https://community.chocolatey.org/packages/lite-xl
+[13]: https://scoop.sh/#/apps?q=lite-xl
+[14]: https://github.com/ScoopInstaller/Extras
+[15]: https://ports.macports.org/port/lite-xl/
