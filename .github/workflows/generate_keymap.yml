@@ -6,7 +6,7 @@ on:
       lite_xl_version:
         description: 'Lite XL version'
         required: true
-        default: 'v2.1.6'
+        default: 'v2.1.8'
         type: string
       skip:
         description: 'Skip this step'
@@ -19,7 +19,7 @@ on:
       lite_xl_version:
         description: 'Lite XL version'
         required: true
-        default: 'v2.1.6'
+        default: 'v2.1.8'
 
 jobs:
   generate_keymap_skip:
@@ -42,10 +42,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -86,7 +86,7 @@ jobs:
         run: ./fix-keymap.py --version ${{ inputs.lite_xl_version }} keymap-source.json keymap${{ matrix.platform.suffix }}.json
 
       - name: Upload keymap.json
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: keymap${{ matrix.platform.suffix }}
           path: keymap${{ matrix.platform.suffix }}.json
@@ -101,16 +101,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           merge-multiple: true
           path: docs/assets
 
       - name: Create PR
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           title: Update keymap files
           body: |
