@@ -188,24 +188,32 @@
 
 .keymap-search {
   margin-bottom: 1em;
+  background-color: rgba(0,0,0,.03);
+}
+
+.keymap-search:hover {
+  background-color: rgba(0,0,0,.03)!important;
 }
 
 .keymap-search input {
-  background-color: var(--md-default-bg-color);
-}
-
-/* make the search box bigger */
-[dir=ltr] .keymap-search input {
+  /* background-color: var(--md-default-bg-color); */
   padding-left: 2.9rem;
   padding-right: 0;
 }
 
-[dir=ltr] .keymap-search.md-search__icon[for=__search] {
+.keymap-search input::placeholder {
+  color: var(--md-typeset-color)!important;
+  opacity: 0.6;
+}
+
+.keymap-search .md-search__icon {
+  color: var(--md-typeset-color)!important;
+  opacity: 0.7;
   left: 0.5rem;
 }
 
 @media screen and (min-width: 60em) {
-  [dir=ltr] .keymap-search input {
+  .keymap-search input {
     padding-left: 2.2rem;
   }
 }
