@@ -29,13 +29,6 @@ User plugins should be installed into `USERDIR/plugins`.
 
 [lpm] is the de-facto plugin manager for Lite XL.
 It is similar to `apt` and `dnf` which provides a command-line interface to manage plugins.
-[Miq] is an alternative declarative plugin manager that allow users to declare a list of plugins
-that should be loaded, and install / updates them all at once. [Miq] is no longer developed and its
-author archived the repository.
-Both plugin managers operate on [manifest files] which contains plugin metadata and install instructions.
-
-These two plugin managers use vastly different ways of plugin management, 
-so please consult the documentation for each plugin manager for exact instructions.
 
 ## Installing plugins
 
@@ -53,27 +46,9 @@ so please consult the documentation for each plugin manager for exact instructio
     To install themes or libraries, you can use `lpm color install`
     and `lpm library install` respectively.
 
-=== "Miq"
-
-    To install a plugin with Miq, you need to specify the list of plugins to install
-    in `config.plugins.miq.plugins`.
-
-    ```lua
-    local config = require "core.config"
-    config.plugins.miq.plugins = {
-      -- this allows Miq to manage itself
-      'TorchedSammy/Miq',
-
-      -- install lsp
-      'lite-xl/lite-xl-lsp',
-    }
-    ```
-
-    Afterwards, you can run the command `miq:install` to install the plugins.
-
 === "Manually"
 
-    To install a plugin manually without using plugin managers such as lpm or Miq,
+    To install a plugin manually without using plugin managers such as lpm,
     you need to locate the `USERDIR` directory in your system.
     This directory is usually located in the following locations:
     
@@ -99,15 +74,11 @@ so please consult the documentation for each plugin manager for exact instructio
 
     This will update all the plugins to their latest versions.
 
-=== "Miq"
-
-    To update plugins with Miq, run `miq:update` in Lite XL.
-
 === "Manually"
 
     To update a plugin manually, you can download the latest version
     and replace the files in the `USERDIR/plugins`.
-    **Do not update plugins installed by lpm or Miq manually.**
+    **Do not update plugins installed by lpm manually.**
 
 ## Uninstalling plugins
 
@@ -122,10 +93,6 @@ so please consult the documentation for each plugin manager for exact instructio
 
     Uninstalling themes and libraries can be done with `lpm color uninstall`
     and `lpm library uninstall` respectively.
-
-=== "Miq"
-
-    **Uninstalling plugins in Miq is currently not supported.**
 
 === "Manually"
 
@@ -171,8 +138,6 @@ based on our [documentation] and existing plugins.
 [Addons package]:          ../setup/getting-started.md#base-and-addons-packages
 [lite-xl/lite-xl-plugins]: https://github.com/lite-xl/lite-xl-plugins
 [lpm]:                     https://github.com/lite-xl/lite-xl-plugin-manager
-[Miq]:                     https://github.com/TorchedSammy/Miq
-[manifest files]:          https://github.com/lite-xl/lite-xl-plugin-manager/blob/master/SPEC.md
 [align_carets]:            https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/align_carets.lua?raw=1
 [autoinsert]:              https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1
 [autosave]:                https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autosave.lua?raw=1
