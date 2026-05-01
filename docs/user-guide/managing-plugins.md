@@ -7,9 +7,13 @@ By default, Lite XL comes with a few built-in plugins for essential features suc
 and [workspace], while the [Addons package] provides more.
 All plugins can be found at the [plugin repository][lite-xl/lite-xl-plugins].
 
+!!! warning
+    Use caution as plugins may be managed externally by their contributors.
+    The Lite XL team cannot guarantee the **safety, stability or quality** of community-contributed plugins.
+
 !!! note
-    These plugins are contributed by the community.
-    Support is provided on a voluntary basis.
+    Support for plugins are provided on a best-effort basis.
+    If the plugin is located in another repository, please open any issues / PRs on that repository.
 
 ## Location
 
