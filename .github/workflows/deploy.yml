@@ -64,7 +64,7 @@ jobs:
           sudo apt-get install -y libcairo2-dev libfreetype-dev libffi-dev libjpeg-dev libpng-dev zlib1g-dev pngquant
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v8
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           enable-cache: "auto"
           cache-dependency-glob: "uv.lock"
