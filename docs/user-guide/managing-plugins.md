@@ -55,9 +55,9 @@ It is similar to `apt` and `dnf` which provides a command-line interface to mana
     To install a plugin manually without using plugin managers such as lpm,
     you need to locate the `USERDIR` directory in your system.
     This directory is usually located in the following locations:
-    
+
     - Linux / Unix-based systems: `~/.config/lite-xl`
-    - Winodws: `C:/Users/<username>/.config/lite-xl`
+    - Windows: `C:/Users/<username>/.config/lite-xl`
     - macOS: `/Users/<username>/.config/lite-xl`
 
     Open `USERDIR` in a file manager / shell of your preference and navigate to the `plugins` folder.
