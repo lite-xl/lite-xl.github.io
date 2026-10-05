@@ -264,7 +264,7 @@ This can be changed with `core.reload_module()` and loading the appropriate them
     To load the theme `summer`, add `core.reload_module "colors.summer"`.
 
     ```lua
-    core.reload_module "color.summer"
+    core.reload_module "colors.summer"
     ```
 
 === "Settings GUI"
