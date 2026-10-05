@@ -128,7 +128,7 @@ These colors do not belong to any particular category, but is still used in the 
 | Name                           | Description
 | ----                           | -----------
 | `#!lua style.drag_overlay`     | The overlay color covering other parts of the editor when a tab is dragged.
-| `#!lua style.drag_overlay_tab` | The overlay color covering the tab when a tab is dragged.
+| `#!lua style.drag_overlay_tab` | The indicator bar that shows where a dragged tab will be inserted in the tab bar.
 | `#!lua style.good`             | The color used to indicate a successful operation.
 | `#!lua style.warn`             | The color used to display warning.
 | `#!lua style.error`            | The color used to indicate an error.
